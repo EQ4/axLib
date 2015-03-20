@@ -21,11 +21,13 @@
  ******************************************************************************/
 #import <Cocoa/Cocoa.h>
 
-
+//NSOpenGLView,
+//NSOpenGLView,
 @interface axAppDelegate : NSOpenGLView
 {
   
 }
+
 
 // Windows paint callback.
 - (void) drawRect: (NSRect)bounds;
@@ -41,6 +43,7 @@
 
 - (id) MemberTestFunc;
 
+@property(assign) id< NSApplicationDelegate > delegate;
 @end
 
 extern axAppDelegate* GlobalAppDelegate;

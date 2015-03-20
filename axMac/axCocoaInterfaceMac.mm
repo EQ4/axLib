@@ -34,17 +34,60 @@
 #include "axLib.h"
 
 
+//AppDelegate * delegate = [[AppDelegate alloc] init];
+//[[NSApplication sharedApplication] setDelegate:delegate];
+//[NSApp run];
 void MainEntryPointCocoa(int argc, const char * argv[])
 {
-    NSApplicationMain(argc, argv);
+//    NSApplicationMain(argc, argv);
+    
+    axAppDelegate* delegate = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
+
+    //[[NSApplication sharedApplication] setDelegate:delegate];
+    [NSApp run];
 }
+//ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:(id<ZXingDelegate>)self showCancel:YES OneDMode:NO];
 
 void axCallNSApplicationMain()
 {
-    int argc = 0;
-    const char* argv[] = {""};
+    [NSApplication sharedApplication];
+    [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
+    [NSApp run];
     
-    NSApplicationMain(argc, argv);
+//    int argc = 0;
+//    const char* argv[] = {""};
+//    
+//    NSApplicationMain(argc, argv);
+    
+//    axAppDelegate* delegate = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
+//    [[NSApplication sharedApplication] setDelegate:delegate];
+//    [NSApp run];
+    
+//    [NSAutoreleasePool new];
+//    [NSApplication sharedApplication];
+//    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+//
+//    //id menubar = [[NSMenu new] autorelease];
+//    //id appMenuItem = [[NSMenuItem new] autorelease];
+//    //[menubar addItem:appMenuItem];
+//    //[NSApp setMainMenu:menubar];
+//    //id appMenu = [[NSMenu new] autorelease];
+//    id appName = [[NSProcessInfo processInfo] processName];
+//    //id quitTitle = [@"Quit " stringByAppendingString:appName];
+//    //id quitMenuItem = [[[NSMenuItem alloc] initWithTitle:quitTitle
+////                                                  action:@selector(terminate:) keyEquivalent:@"q"] autorelease];
+//    //[appMenu addItem:quitMenuItem];
+//    //[appMenuItem setSubmenu:appMenu];
+//    id window = [[[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 200, 200)
+//                                             styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO]
+//                 autorelease];
+//    
+//    //id window = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
+//    [window cascadeTopLeftFromPoint:NSMakePoint(20,20)];
+//    [window setTitle:appName];
+//    [window makeKeyAndOrderFront:nil];
+//    [NSApp activateIgnoringOtherApps:YES];
+//    [NSApp run];
 }
 
 std::string axOpenFileDialog()
