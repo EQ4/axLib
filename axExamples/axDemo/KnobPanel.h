@@ -15,9 +15,7 @@
 class KnobPanel : public axPanel
 {
 public:
-    KnobPanel(axWindow* parent,
-                const axRect& rect);
-    
+    KnobPanel(axWindow* parent, const axRect& rect);
     
 private:
     virtual void OnPaint();

@@ -118,7 +118,7 @@ void PaintPanel::OnPaint()
     font2.SetFontSize(25);
     gc->DrawString(font2, "Default 25", axPoint(350, 250));
     
-    gc->SeDefaultLine();
+    gc->SetDefaultLine();
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     
     gc->DrawRoundedRectangle(axRect(350, 350, 50, 20), 5);

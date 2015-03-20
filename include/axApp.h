@@ -117,6 +117,9 @@ public:
     void AddAfterGUILoadFunction(std::function<void()> fct);
     void CallAfterGUILoadFunction();
     
+    void CreateEditor();
+    
+    
 private:
     static axApp* MainInstance;
 	axCore* _core;
@@ -128,6 +131,8 @@ private:
     
     axEVENT_ACCESSOR(axMsg, OnDebugEditor);
     void OnDebugEditor(const axMsg& msg);
+    
+    
 };
 
 /// @}

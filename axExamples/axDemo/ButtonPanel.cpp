@@ -15,8 +15,8 @@ axPanel(parent, rect)
 {
     _selector = new axWidgetSelector(this);
     
-    _drawingBuffer = new axDrawingBuffer(rect.size);
-    _drawingBuffer->DrawRectangle();
+//    _drawingBuffer = new axDrawingBuffer(rect.size);
+//    _drawingBuffer->DrawRectangle();
     
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
     
@@ -188,6 +188,8 @@ void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
     //_selector->SetSelectedWidget(msg.GetSender());
 //    std::cout << "Button event." << std::endl;
 //    _timer->StartTimer(20, 800);
+    
+    axApp::GetInstance()->GetCore()->ResizeFrame(axSize(700, 500));
     Update();
 }
 
@@ -210,7 +212,7 @@ void ButtonPanel::OnPaint()
     gc->DrawRectangle(rect0);
     
 //    _drawingBuffer->DrawRectangle();
-    gc->DrawBuffer(_drawingBuffer);
+    //gc->DrawBuffer(_drawingBuffer);
     
 //    gc->SetColor(axColor::axRedColor);
 //    gc->DrawRoundedRectangle(axRect(40, 200, 50, 25), 12);

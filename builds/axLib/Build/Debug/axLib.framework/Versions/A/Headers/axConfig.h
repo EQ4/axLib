@@ -33,7 +33,7 @@
 /// @defgroup Core
 /// @{
 
-#define _axDebugEditor_ (0)
+#define _axDebugEditor_ (1)
 #define _axBackBufferWindow_ (1)
 #define _axWxWidgetsCore_ (1)
 

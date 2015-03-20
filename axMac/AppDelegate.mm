@@ -88,6 +88,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     app->CallMainEntryFunction();
     app->CallAfterGUILoadFunction();
+    app->CreateEditor();
 //    axMain::MainEntryPoint(app);
 
     
@@ -128,18 +129,22 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 //    std::cout << "Mouve. " << std::endl;
 }
 
-- (void) setFrameSize:(NSSize)newSize
-{
-
-}
+//- (void) setFrameSize:(NSSize)newSize
+//{
+//
+//}
 
 - (void) SetFrameSize:(NSSize)newSize
 {
-//    std::cout << "SetFrameSize : RESIZE. " << std::endl;
+    // Resize frame.
+    [[GlobalAppDelegate window] setContentSize : newSize];
+
+    // Resize openGL panel.
+    [GlobalAppDelegate setFrame:NSMakeRect(0.f, 0.f,
+                                           newSize.width, newSize.height)];
     
-    [[GlobalAppDelegate window] setFrame:NSMakeRect(0.f, 0.f, 800,
-                                                    newSize.height)
-                                 display:YES animate:YES];
+    [GlobalAppDelegate setBounds:NSMakeRect(0.f, 0.f,
+                                            newSize.width, newSize.height)];
 }
 
 
@@ -236,6 +241,9 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 {
     NSPoint locationInView = [self convertPoint:[MyMouseMouse locationInWindow]
                                        fromView:nil];
+
+//    NSPoint kkk = [MyMouseMouse locationInWindow];
+//    axPoint pos(kkk.x, kkk.y);
 
     axPoint pos(locationInView.x, locationInView.y);
     

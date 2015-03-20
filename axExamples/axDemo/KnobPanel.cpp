@@ -8,8 +8,8 @@
 
 #include "KnobPanel.h"
 
-KnobPanel::KnobPanel(axWindow* parent,
-                         const axRect& rect):
+KnobPanel::KnobPanel(axWindow* parent, const axRect& rect):
+                     
 // Parent.
 axPanel(parent, rect)
 {

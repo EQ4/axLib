@@ -34,7 +34,7 @@ private:
     axColor _colorTimer;
     axFont* _font;
     
-    axDrawingBuffer* _drawingBuffer;
+    //axDrawingBuffer* _drawingBuffer;
     axWidgetSelector* _selector;
 
 };

@@ -141,11 +141,11 @@ int main(int argc, char* argv[])
     
     axPrint("Main");
 	axEventManager::GetInstance();
-	axApp* app = axApp::CreateApp(axSize(500, 500));
+	axApp* app = axApp::CreateApp(axSize(550, 500));
 
     app->AddMainEntry([]()
     {
-        MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 500, 500));
+        MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 550, 500));
     });
 
 	app->MainLoop();

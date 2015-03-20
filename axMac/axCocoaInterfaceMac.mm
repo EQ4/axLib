@@ -175,10 +175,10 @@ void axCocoaResizeFrame(const axSize& size)
 {
 #ifdef _AX_VST_APP_
 #else
-    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
+    axAppDelegate* appDelegate =
+    (axAppDelegate*)[[NSApplication sharedApplication] delegate];
     
     NSSize nSize = {static_cast<CGFloat>(size.x), static_cast<CGFloat>(size.y)};
-    
     [appDelegate SetFrameSize:nSize];
 #endif
 
