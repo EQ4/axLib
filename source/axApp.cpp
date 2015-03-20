@@ -25,6 +25,7 @@
 #include "axPanel.h"
 #include "axToggle.h"
 #include "axConfig.h"
+#include "axDebugMenu.h"
 
 axApp* axApp::MainInstance = nullptr;
 
@@ -63,44 +64,7 @@ _debugEditorActive(false)
 #endif // _AX_VST_APP_
     
 #endif // __APPLE__
-    
-    
-//------------------------------------------------------------------------------
 
-#if _axDebugEditor_ == 1
-    // @todo Fix this.
-    MainInstance = this;
-
-    /// @todo Change debugPanel position.
-    axPanel* debugPanel = new axPanel(3, nullptr,
-                                      axRect(500 - 20, 500 - 20, 20, 20));
-    
-    axToggle::Info btn_info;
-    btn_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
-    btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
-    btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
-    
-    btn_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
-    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
-    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
-    
-    btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
-    btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
-    
-    btn_info.img = "settings.png";
-    btn_info.single_img = true;
-    
-    axToggle* tog = new axToggle(debugPanel,
-                                 axRect(axPoint(0, 0), axSize(20, 20)),
-                                 axToggle::Events(GetOnDebugEditor()),
-                                 btn_info,
-                                 "",
-                                 "",
-                                 axToggle::Flags::SINGLE_IMG);
-    tog->SetEditable(false);
-#endif // _axDebugEditor_
-//    std::cout << "Size : " << _core->GetGlobalSize().x << " " << _core->GetGlobalSize().y << std::endl;
-//------------------------------------------------------------------------------
 }
 
 axApp::axApp(const axSize& frame_size):
@@ -122,6 +86,7 @@ _debugEditorActive(false)
 	#endif //_axWxWidgetsCore_
 
 #endif // _MSC_VER
+    
     
 #ifdef __APPLE__
     
@@ -169,6 +134,13 @@ void axApp::CreateEditor()
                                  "",
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
+    
+    axSize size = _core->GetGlobalSize();
+//    axPanel* menuPanel = new axPanel(3, nullptr,
+//                                      axRect(500 - 20, 500 - 20, 20, 20));
+    _debugMenu = new axDebugMenu(axRect(size.x, 0, 220, size.y));
+    _debugMenu->Hide();
+    
 #endif // _axDebugEditor_
 }
 
@@ -188,17 +160,20 @@ void axApp::CallMainEntryFunction()
 //------------------------------------------------------------------------------
 void axApp::OnDebugEditor(const axMsg& msg)
 {
-//    std::cout << "Size : " << _core->GetGlobalSize().x << " " << _core->GetGlobalSize().y << std::endl;
-//
-//    editingToggle
-    
     if(_debugEditorActive)
     {
         _debugEditorActive = false;
+        axSize size = _core->GetGlobalSize();
+        _core->ResizeFrame(axSize(size.x - 220, size.y));
+        _debugMenu->Hide();
     }
     else
     {
         _debugEditorActive = true;
+        axSize size = _core->GetGlobalSize();
+        _core->ResizeFrame(axSize(size.x + 220, size.y));
+        _debugMenu->SetRect(axRect(axRect(size.x, 0, 220, size.y)));
+        _debugMenu->Show();
     }
 }
 //------------------------------------------------------------------------------

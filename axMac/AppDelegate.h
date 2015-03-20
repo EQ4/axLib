@@ -40,6 +40,8 @@
 
 - (void) setFrameSize:(NSSize)newSize;
 - (void) SetFrameSize:(NSSize)newSize;
+- (void) itemChanged:(NSMenuItem *)anObject;
+
 
 - (id) MemberTestFunc;
 

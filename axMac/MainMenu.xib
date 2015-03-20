@@ -34,9 +34,6 @@
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Debug Editor" id="Olw-nP-bQN" userLabel="Debug Editor">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                             <menuItem title="Hide ax" keyEquivalent="h" id="MiL-75-ZTb">
@@ -503,19 +500,19 @@
         <window title="ax" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="405" y="148" width="580" height="500"/>
+            <rect key="contentRect" x="405" y="148" width="550" height="500"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-            <value key="minSize" type="size" width="580" height="500"/>
+            <value key="minSize" type="size" width="550" height="500"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="580" height="500"/>
+                <rect key="frame" x="0.0" y="0.0" width="550" height="500"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <openGLView fixedFrame="YES" placeholderIntrinsicWidth="599" placeholderIntrinsicHeight="771" antiAliasingType="multisample" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4P-Mk-36u" customClass="axAppDelegate">
-                        <rect key="frame" x="0.0" y="0.0" width="580" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="500"/>
                     </openGLView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="217" y="406"/>
+            <point key="canvasLocation" x="149" y="376"/>
         </window>
     </objects>
 </document>

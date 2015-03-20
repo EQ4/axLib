@@ -343,6 +343,10 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     return YES;
 }
 
+- (void) itemChanged:(NSMenuItem *)anObject
+{
+    std::cout << "Menu item" << std::endl;
+}
 
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds

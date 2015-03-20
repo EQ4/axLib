@@ -53,6 +53,8 @@
 #include "axC++.h"
 #include "axResourceManager.h"
 
+class axDebugMenu;
+
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
 {
@@ -123,6 +125,8 @@ public:
 private:
     static axApp* MainInstance;
 	axCore* _core;
+    
+    axDebugMenu* _debugMenu;
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;
