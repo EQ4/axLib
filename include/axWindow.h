@@ -40,7 +40,8 @@ class axWindow : public axObject
 {
 public:
 	axWindow(axWindow* parent, const axRect& rect);
-
+    virtual ~axWindow();
+    
 	axWindow* GetParent() const;
 
 	axRect GetRect() const;

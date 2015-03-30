@@ -19,7 +19,7 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#include "axDebugButton.h"
+#include "axEditorButton.h"
 
 #include "axLabel.h"
 #include "axTextBox.h"
@@ -89,6 +89,9 @@ void axDebugButton::SetLabel(const std::string& label)
 void axDebugButton::OnMouseLeftDown(const axPoint& pos)
 {
     _currentColor = &_info.clicking;
+    
+    axWidget* widget = static_cast<axWidget*>(GetParent());
+    axApp::GetInstance()->SetEditingWidget(widget);
 
     GrabMouse();
     

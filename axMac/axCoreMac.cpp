@@ -36,11 +36,12 @@ void axCoreMac::MainLoop()
     axCallNSApplicationMain();
 }
 
-void axCoreMac::Init(const axPoint& frame_size)
+void axCoreMac::Init(const axSize& frame_size)
 {
     std::cout << "Init axCoreMac." << std::endl;
     InitManagers();
     InitGL();
+//    _size = frame_size;
 }
 
 axSize axCoreMac::GetScreenSize()

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/alexarse/Project/axLib/libs/lpng1610/png.h
+pnglibconf.h
+/Users/alexarse/Project/axLib/libs/lpng1610/pnglibconf.h
+pngconf.h
+/Users/alexarse/Project/axLib/libs/lpng1610/pngconf.h
+
+/Users/alexarse/Project/axLib/libs/lpng1610/pngconf.h
+limits.h
+-
+stddef.h
+-
+stdio.h
+-
+setjmp.h
+-
+time.h
+-
+
+/Users/alexarse/Project/axLib/libs/lpng1610/pnglibconf.h
+
+/Users/alexarse/Project/axLib/libs/lpng1610/pngtest.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+png.h
+/Users/alexarse/Project/axLib/libs/lpng1610/png.h
+zlib.h
+/Users/alexarse/Project/axLib/libs/lpng1610/zlib.h
+time.h
+-
+

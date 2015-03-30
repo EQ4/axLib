@@ -34,6 +34,8 @@ public:
 	axPanel(axWindow* parent, const axRect& rect);
 	axPanel(int f, axWindow* parent, const axRect& rect);
 
+    virtual ~axPanel();
+    
 	void UpdateAll();
 	virtual void Update();
 

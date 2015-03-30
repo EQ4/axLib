@@ -14,10 +14,25 @@
       event="OnGainChange">
   </axKnob>
   
-  <axLabel name="labelFreq" rect="55, 0, 46, 15" info="ressources/objects/Label.axObj" label="Freq"></axLabel>
-  <axLabel name="labelGain" rect="106, 0, 46, 15" info="ressources/objects/Label.axObj" label="Gain"></axLabel>
+  <axLabel
+      name="labelFreq"
+      rect="55, 0, 46, 15"
+      info="ressources/objects/Label.axObj"
+      label="Freq">
+  </axLabel>
+  
+  <axLabel
+      name="labelGain"
+      rect="106, 0, 46, 15"
+      info="ressources/objects/Label.axObj"
+      label="Gain">
+  </axLabel>
 
-  <axStaticImage name="img" pos="11, 5" path="ressources/images/oscWaveform.png"></axLabel>
+  <axStaticImage
+      name="img"
+      pos="11, 5"
+      path="ressources/images/oscWaveform.png">
+  </axLabel>
   
   
   <axToggle

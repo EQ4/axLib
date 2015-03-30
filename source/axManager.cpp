@@ -59,6 +59,11 @@ void axManager::OnUpdate()
 
 }
 
+axWindowTree* axManager::GetWindowTree()
+{
+    return &_windowTree;
+}
+
 void axManager::OnSize()
 {
 //    for (auto& x : _windows)

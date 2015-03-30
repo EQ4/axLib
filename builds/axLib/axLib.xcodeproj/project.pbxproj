@@ -33,7 +33,6 @@
 		7C1351A81A7FC77A00C97A99 /* axVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516E1A7FC77A00C97A99 /* axVar.cpp */; };
 		7C1351A91A7FC77A00C97A99 /* axWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516F1A7FC77A00C97A99 /* axWidget.cpp */; };
 		7C1351AA1A7FC77A00C97A99 /* axWidgetBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */; };
-		7C1351AB1A7FC77A00C97A99 /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351711A7FC77A00C97A99 /* axWindow.cpp */; };
 		7C1351AC1A7FC77A00C97A99 /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351721A7FC77A00C97A99 /* axWindowTree.cpp */; };
 		7C1351B61A7FC7A800C97A99 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351AF1A7FC7A800C97A99 /* AppDelegate.mm */; };
 		7C1351B81A7FC7A800C97A99 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351B11A7FC7A800C97A99 /* axCocoaInterfaceMac.mm */; };
@@ -51,7 +50,6 @@
 		7C15C7FA1AB670A4007B6868 /* axEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DA1AB670A4007B6868 /* axEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7FB1AB670A4007B6868 /* axEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DB1AB670A4007B6868 /* axEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7FC1AB670A4007B6868 /* axFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DC1AB670A4007B6868 /* axFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C15C7FD1AB670A4007B6868 /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DD1AB670A4007B6868 /* axFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7FE1AB670A4007B6868 /* axGC.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DE1AB670A4007B6868 /* axGC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7FF1AB670A4007B6868 /* axGraphicInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7DF1AB670A4007B6868 /* axGraphicInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C8001AB670A4007B6868 /* axImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7E01AB670A4007B6868 /* axImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,12 +73,15 @@
 		7C15C8131AB670A4007B6868 /* rapidxml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F31AB670A4007B6868 /* rapidxml.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C460E911A98211500E51D13 /* libcairo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C460E901A98211500E51D13 /* libcairo.dylib */; };
 		7C460E941A9827B400E51D13 /* axDrawingBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */; };
+		7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B751AC96C9A000B6364 /* axEditorButton.cpp */; };
+		7C841B7A1AC96C9A000B6364 /* axEditorButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C841B761AC96C9A000B6364 /* axEditorButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C841B7B1AC96C9A000B6364 /* axEditorMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B771AC96C9A000B6364 /* axEditorMenu.cpp */; };
+		7C841B7C1AC96C9A000B6364 /* axEditorMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C841B781AC96C9A000B6364 /* axEditorMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C841B801AC99A28000B6364 /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B7F1AC99A28000B6364 /* axWindow.cpp */; };
+		7C841B821AC99A40000B6364 /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C841B811AC99A40000B6364 /* axFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C8867371ABBB25D00F37306 /* axVar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8867361ABBB25D00F37306 /* axVar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C88673A1ABC4E1D00F37306 /* axDebugMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8867381ABC4E1D00F37306 /* axDebugMenu.cpp */; };
-		7C88673B1ABC4E1D00F37306 /* axDebugMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8867391ABC4E1D00F37306 /* axDebugMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C88F1D21A942EAC00374108 /* axAnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1AB1A942EAC00374108 /* axAnimatedButton.cpp */; };
 		7C88F1D41A942EAC00374108 /* axButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1AD1A942EAC00374108 /* axButton.cpp */; };
-		7C88F1D61A942EAC00374108 /* axDebugButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1AF1A942EAC00374108 /* axDebugButton.cpp */; };
 		7C88F1D81A942EAC00374108 /* axDropMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1B11A942EAC00374108 /* axDropMenu.cpp */; };
 		7C88F1DA1A942EAC00374108 /* axGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1B31A942EAC00374108 /* axGrid.cpp */; };
 		7C88F1DC1A942EAC00374108 /* axKnob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1B51A942EAC00374108 /* axKnob.cpp */; };
@@ -97,7 +98,6 @@
 		7C88F1F21A942EAD00374108 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88F1CB1A942EAC00374108 /* axToggle.cpp */; };
 		7C88F1F91A942F7600374108 /* axAnimatedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1AC1A942EAC00374108 /* axAnimatedButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C88F1FA1A942F7600374108 /* axButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1AE1A942EAC00374108 /* axButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C88F1FB1A942F7600374108 /* axDebugButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1B01A942EAC00374108 /* axDebugButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C88F1FC1A942F7600374108 /* axDropMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1B21A942EAC00374108 /* axDropMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C88F1FD1A942F7600374108 /* axGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1B41A942EAC00374108 /* axGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C88F1FE1A942F7600374108 /* axKnob.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C88F1B61A942EAC00374108 /* axKnob.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,7 +162,6 @@
 		7C13516E1A7FC77A00C97A99 /* axVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axVar.cpp; sourceTree = "<group>"; };
 		7C13516F1A7FC77A00C97A99 /* axWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidget.cpp; sourceTree = "<group>"; };
 		7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidgetBuilder.cpp; sourceTree = "<group>"; };
-		7C1351711A7FC77A00C97A99 /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindow.cpp; sourceTree = "<group>"; };
 		7C1351721A7FC77A00C97A99 /* axWindowTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindowTree.cpp; sourceTree = "<group>"; };
 		7C1351AE1A7FC7A800C97A99 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C1351AF1A7FC7A800C97A99 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -184,7 +183,6 @@
 		7C15C7DA1AB670A4007B6868 /* axEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEvent.h; sourceTree = "<group>"; };
 		7C15C7DB1AB670A4007B6868 /* axEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEventManager.h; sourceTree = "<group>"; };
 		7C15C7DC1AB670A4007B6868 /* axFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFont.h; sourceTree = "<group>"; };
-		7C15C7DD1AB670A4007B6868 /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
 		7C15C7DE1AB670A4007B6868 /* axGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGC.h; sourceTree = "<group>"; };
 		7C15C7DF1AB670A4007B6868 /* axGraphicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGraphicInterface.h; sourceTree = "<group>"; };
 		7C15C7E01AB670A4007B6868 /* axImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axImage.h; sourceTree = "<group>"; };
@@ -208,15 +206,17 @@
 		7C15C7F31AB670A4007B6868 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
 		7C460E901A98211500E51D13 /* libcairo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.dylib; path = ../../../../../../usr/local/lib/libcairo.dylib; sourceTree = "<group>"; };
 		7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axDrawingBuffer.cpp; path = ../include/axDrawingBuffer.cpp; sourceTree = "<group>"; };
+		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
+		7C841B761AC96C9A000B6364 /* axEditorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEditorButton.h; path = Editor/axEditorButton.h; sourceTree = "<group>"; };
+		7C841B771AC96C9A000B6364 /* axEditorMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorMenu.cpp; path = Editor/axEditorMenu.cpp; sourceTree = "<group>"; };
+		7C841B781AC96C9A000B6364 /* axEditorMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEditorMenu.h; path = Editor/axEditorMenu.h; sourceTree = "<group>"; };
+		7C841B7F1AC99A28000B6364 /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindow.cpp; sourceTree = "<group>"; };
+		7C841B811AC99A40000B6364 /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
 		7C8867361ABBB25D00F37306 /* axVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axVar.h; sourceTree = "<group>"; };
-		7C8867381ABC4E1D00F37306 /* axDebugMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDebugMenu.cpp; sourceTree = "<group>"; };
-		7C8867391ABC4E1D00F37306 /* axDebugMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDebugMenu.h; sourceTree = "<group>"; };
 		7C88F1AB1A942EAC00374108 /* axAnimatedButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAnimatedButton.cpp; sourceTree = "<group>"; };
 		7C88F1AC1A942EAC00374108 /* axAnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAnimatedButton.h; sourceTree = "<group>"; };
 		7C88F1AD1A942EAC00374108 /* axButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axButton.cpp; sourceTree = "<group>"; };
 		7C88F1AE1A942EAC00374108 /* axButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axButton.h; sourceTree = "<group>"; };
-		7C88F1AF1A942EAC00374108 /* axDebugButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDebugButton.cpp; sourceTree = "<group>"; };
-		7C88F1B01A942EAC00374108 /* axDebugButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDebugButton.h; sourceTree = "<group>"; };
 		7C88F1B11A942EAC00374108 /* axDropMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDropMenu.cpp; sourceTree = "<group>"; };
 		7C88F1B21A942EAC00374108 /* axDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDropMenu.h; sourceTree = "<group>"; };
 		7C88F1B31A942EAC00374108 /* axGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGrid.cpp; sourceTree = "<group>"; };
@@ -322,10 +322,10 @@
 				7C15C7D71AB670A4007B6868 /* axConfig.h */,
 				7C15C7D81AB670A4007B6868 /* axCore.h */,
 				7C15C7D91AB670A4007B6868 /* axDrawingBuffer.h */,
+				7C841B811AC99A40000B6364 /* axFrameBuffer.h */,
 				7C15C7DA1AB670A4007B6868 /* axEvent.h */,
 				7C15C7DB1AB670A4007B6868 /* axEventManager.h */,
 				7C15C7DC1AB670A4007B6868 /* axFont.h */,
-				7C15C7DD1AB670A4007B6868 /* axFrameBuffer.h */,
 				7C15C7DE1AB670A4007B6868 /* axGC.h */,
 				7C15C7DF1AB670A4007B6868 /* axGraphicInterface.h */,
 				7C15C7E01AB670A4007B6868 /* axImage.h */,
@@ -355,6 +355,7 @@
 		7C1351551A7FC77A00C97A99 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7C841B7F1AC99A28000B6364 /* axWindow.cpp */,
 				7C1351571A7FC77A00C97A99 /* axApp.cpp */,
 				7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */,
 				7C1351581A7FC77A00C97A99 /* axC++.cpp */,
@@ -384,7 +385,6 @@
 				7C13516E1A7FC77A00C97A99 /* axVar.cpp */,
 				7C13516F1A7FC77A00C97A99 /* axWidget.cpp */,
 				7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */,
-				7C1351711A7FC77A00C97A99 /* axWindow.cpp */,
 				7C1351721A7FC77A00C97A99 /* axWindowTree.cpp */,
 			);
 			name = source;
@@ -405,19 +405,27 @@
 			path = ../../../axMac;
 			sourceTree = "<group>";
 		};
+		7C841B741AC96C88000B6364 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				7C8EBC5F1A9A54E600A55EEB /* axWidgetSelector.cpp */,
+				7C8EBC601A9A54E600A55EEB /* axWidgetSelector.h */,
+				7C841B751AC96C9A000B6364 /* axEditorButton.cpp */,
+				7C841B761AC96C9A000B6364 /* axEditorButton.h */,
+				7C841B771AC96C9A000B6364 /* axEditorMenu.cpp */,
+				7C841B781AC96C9A000B6364 /* axEditorMenu.h */,
+			);
+			name = Editor;
+			sourceTree = "<group>";
+		};
 		7C88F1AA1A942EAC00374108 /* axWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				7C8867381ABC4E1D00F37306 /* axDebugMenu.cpp */,
-				7C8867391ABC4E1D00F37306 /* axDebugMenu.h */,
-				7C8EBC5F1A9A54E600A55EEB /* axWidgetSelector.cpp */,
-				7C8EBC601A9A54E600A55EEB /* axWidgetSelector.h */,
+				7C841B741AC96C88000B6364 /* Editor */,
 				7C88F1AB1A942EAC00374108 /* axAnimatedButton.cpp */,
 				7C88F1AC1A942EAC00374108 /* axAnimatedButton.h */,
 				7C88F1AD1A942EAC00374108 /* axButton.cpp */,
 				7C88F1AE1A942EAC00374108 /* axButton.h */,
-				7C88F1AF1A942EAC00374108 /* axDebugButton.cpp */,
-				7C88F1B01A942EAC00374108 /* axDebugButton.h */,
 				7C88F1B11A942EAC00374108 /* axDropMenu.cpp */,
 				7C88F1B21A942EAC00374108 /* axDropMenu.h */,
 				7C88F1B31A942EAC00374108 /* axGrid.cpp */,
@@ -460,7 +468,6 @@
 			files = (
 				7C88F1F91A942F7600374108 /* axAnimatedButton.h in Headers */,
 				7C88F1FA1A942F7600374108 /* axButton.h in Headers */,
-				7C88F1FB1A942F7600374108 /* axDebugButton.h in Headers */,
 				7C88F1FC1A942F7600374108 /* axDropMenu.h in Headers */,
 				7C88F1FD1A942F7600374108 /* axGrid.h in Headers */,
 				7C88F1FE1A942F7600374108 /* axKnob.h in Headers */,
@@ -493,7 +500,6 @@
 				7C15C7FA1AB670A4007B6868 /* axEvent.h in Headers */,
 				7C15C7FC1AB670A4007B6868 /* axFont.h in Headers */,
 				7C15C8001AB670A4007B6868 /* axImage.h in Headers */,
-				7C15C7FD1AB670A4007B6868 /* axFrameBuffer.h in Headers */,
 				7C15C8071AB670A4007B6868 /* axMsg.h in Headers */,
 				7C15C80A1AB670A4007B6868 /* axPanel.h in Headers */,
 				7C15C8091AB670A4007B6868 /* axObjectLoader.h in Headers */,
@@ -502,14 +508,16 @@
 				7C88F2031A942F7600374108 /* axPopupMenu.h in Headers */,
 				7C88F2041A942F7600374108 /* axScrollBar.h in Headers */,
 				7C88F2051A942F7600374108 /* axSlider.h in Headers */,
+				7C841B7A1AC96C9A000B6364 /* axEditorButton.h in Headers */,
+				7C841B7C1AC96C9A000B6364 /* axEditorMenu.h in Headers */,
 				7C88F2061A942F7600374108 /* axStaticImage.h in Headers */,
 				7C88F2071A942F7600374108 /* axTextBox.h in Headers */,
 				7C88F2081A942F7600374108 /* axTextControl.h in Headers */,
 				7C88F2091A942F7600374108 /* axToggle.h in Headers */,
 				7C88F2271A94303A00374108 /* axCocoaInterfaceMac.h in Headers */,
+				7C841B821AC99A40000B6364 /* axFrameBuffer.h in Headers */,
 				7C8867371ABBB25D00F37306 /* axVar.h in Headers */,
 				7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */,
-				7C88673B1ABC4E1D00F37306 /* axDebugMenu.h in Headers */,
 				7C88F2281A94303A00374108 /* axCoreMac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,13 +616,12 @@
 				7C88F1EC1A942EAD00374108 /* axStaticImage.cpp in Sources */,
 				7C88F1E21A942EAC00374108 /* axNumberBox.cpp in Sources */,
 				7C1351A51A7FC77A00C97A99 /* axResourceManager.cpp in Sources */,
-				7C88673A1ABC4E1D00F37306 /* axDebugMenu.cpp in Sources */,
+				7C841B7B1AC96C9A000B6364 /* axEditorMenu.cpp in Sources */,
 				7C88F1D81A942EAC00374108 /* axDropMenu.cpp in Sources */,
 				7C88F1F21A942EAD00374108 /* axToggle.cpp in Sources */,
 				7C1351931A7FC77A00C97A99 /* axColor.cpp in Sources */,
 				7CBB3AD11A95121700FFCBBB /* axGraphicInterface.cpp in Sources */,
 				7C1351A31A7FC77A00C97A99 /* axObjectLoader.cpp in Sources */,
-				7C1351AB1A7FC77A00C97A99 /* axWindow.cpp in Sources */,
 				7C88F1F01A942EAD00374108 /* axTextControl.cpp in Sources */,
 				7C1351A91A7FC77A00C97A99 /* axWidget.cpp in Sources */,
 				7C1351B61A7FC7A800C97A99 /* AppDelegate.mm in Sources */,
@@ -626,12 +633,12 @@
 				7C13519C1A7FC77A00C97A99 /* axKeyboardManager.cpp in Sources */,
 				7C1351A11A7FC77A00C97A99 /* axMsg.cpp in Sources */,
 				7C1351911A7FC77A00C97A99 /* axApp.cpp in Sources */,
+				7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */,
 				7C1351AA1A7FC77A00C97A99 /* axWidgetBuilder.cpp in Sources */,
 				7C13519B1A7FC77A00C97A99 /* axImage.cpp in Sources */,
 				7C88F1DE1A942EAC00374108 /* axLabel.cpp in Sources */,
 				7C88F1D41A942EAC00374108 /* axButton.cpp in Sources */,
 				7C1351941A7FC77A00C97A99 /* axConfig.cpp in Sources */,
-				7C88F1D61A942EAC00374108 /* axDebugButton.cpp in Sources */,
 				7C1351AC1A7FC77A00C97A99 /* axWindowTree.cpp in Sources */,
 				7C1351991A7FC77A00C97A99 /* axFont.cpp in Sources */,
 				7C1351921A7FC77A00C97A99 /* axC++.cpp in Sources */,
@@ -639,6 +646,7 @@
 				7C1351951A7FC77A00C97A99 /* axCore.cpp in Sources */,
 				7C13519D1A7FC77A00C97A99 /* axMain.cpp in Sources */,
 				7C1351B81A7FC7A800C97A99 /* axCocoaInterfaceMac.mm in Sources */,
+				7C841B801AC99A28000B6364 /* axWindow.cpp in Sources */,
 				7C1351B91A7FC7A800C97A99 /* axCoreMac.cpp in Sources */,
 				7C88F1E81A942EAD00374108 /* axScrollBar.cpp in Sources */,
 				7C1351A01A7FC77A00C97A99 /* axMouseManager.cpp in Sources */,

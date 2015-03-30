@@ -24,6 +24,7 @@
 #include "axMath.h"
 #include "axConfig.h"
 #include "axGraphicInterface.h"
+#include "axWindowTree.h"
 
 axWindow::axWindow(axWindow* parent, const axRect& rect):
 // Members.
@@ -51,6 +52,12 @@ _frameBufferObj(rect.size)
 	}
     
 	_gc = new axGC(this);
+}
+
+axWindow::~axWindow()
+{
+    axPrint("DELETE WINDOW : ", GetId());
+//    axApp::GetInstance()->GetCore()->GetWindowManager()->GetWindowTree()->DeleteWindow(this);
 }
 
 axWindow* axWindow::GetParent() const

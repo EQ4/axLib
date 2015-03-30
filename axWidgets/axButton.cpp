@@ -21,7 +21,7 @@
  ******************************************************************************/
 #include "axButton.h"
 #include "axObjectLoader.h"
-#include "axDebugButton.h"
+//#include "axDebugButton.h"
 #include "axMath.h"
 
 /*******************************************************************************

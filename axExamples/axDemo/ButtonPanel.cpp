@@ -15,7 +15,7 @@ axPanel(parent, rect)
 {
     _selector = new axWidgetSelector(this);
     
-//    _drawingBuffer = new axDrawingBuffer(rect.size);
+//    _drawingBuffer = new axDsrawingBuffer(rect.size);
 //    _drawingBuffer->DrawRectangle();
     
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
@@ -36,44 +36,7 @@ axPanel(parent, rect)
                                   btn1_evts,
                                   btn1_info,
                                   "", "Btn1");
-    
-    axSize size(axApp::GetInstance()->GetCore()->GetScreenSize());
-//    std::cout << "SIZE : " << size.x << " " << size.y << std::endl;
 
-    
-//    axButton* btn2 = new axButton(this,
-//                                  axRect(110, 40, 60, 25),
-//                                  axButton::Events(),
-//                                  axBUTTON_TRANSPARENT,
-//                                  app_path + std::string("GrayButton.png"),
-//                                  "Btn2",
-//                                  axButton::Flags::SINGLE_IMG);
-//    
-//    axButton* btn3 = new axButton(this,
-//                                  axRect(180, 40, 60, 25),
-//                                  axButton::Events(),
-//                                  axBUTTON_TRANSPARENT,
-//                                  app_path + std::string("btn2.png"),
-//                                  "Btn3");
-//    
-//    std::string img_path = app_path + std::string("button.png");
-//    axButton* btn4 = new axButton(this,
-//                                  axRect(250, 40, 60, 25),
-//                                  axButton::Events(),
-//                                  btn1_info,
-//                                  img_path,
-//                                  "Btn4",
-//								  axButton::Flags::SINGLE_IMG |
-//								  axButton::Flags::IMG_RESIZE);
-//    
-//    axButton* btn5 = new axButton(this,
-//                                  axRect(320, 40, 60, 25),
-//                                  axButton::Events(),
-//								  axButton::Info(app_path + std::string("axButtonBlue.axobj")),
-//                                  img_path,
-//                                  "Btn5",
-//								  axButton::Flags::SINGLE_IMG |
-//								  axButton::Flags::IMG_RESIZE);
     
     axButton::Info btn2_info;
     btn2_info.normal = axColor(1.0, 0.0, 0.0, 1.0);
@@ -103,18 +66,7 @@ axPanel(parent, rect)
     _timer->AddConnection(0, GetOnTimerEvent());
     
     _colorTimer = axColor(1.0, 1.0, 1.0);
-    
-//    axButton* btn7 = new axButton(this,
-//                                  axRect(200, 40, 12, 12),
-//                                  axButton::Events(),
-//                                  axBUTTON_TRANSPARENT,
-//                                  app_path + std::string("up.png"));
-//    
-//    axButton* btn8 = new axButton(this,
-//                                  axRect(btn7->GetNextPosDown(0), axSize(12, 12)),
-//                                  axButton::Events(),
-//                                  axBUTTON_TRANSPARENT,
-//                                  app_path + std::string("down.png"));
+
     
     axButton* btn9 = new axButton(this,
                                   axRect(240, 40, 12, 12),
@@ -185,11 +137,6 @@ axPanel(parent, rect)
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
 {
-    //_selector->SetSelectedWidget(msg.GetSender());
-//    std::cout << "Button event." << std::endl;
-//    _timer->StartTimer(20, 800);
-    
-    axApp::GetInstance()->GetCore()->ResizeFrame(axSize(700, 500));
     Update();
 }
 
@@ -206,44 +153,11 @@ void ButtonPanel::OnPaint()
     axGC* gc = GetGC();
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
-    
-//    gc->SetColor(_colorTimer, 1.0);
+
     gc->SetColor(axColor::axWhiteColor);
     gc->DrawRectangle(rect0);
     
-//    _drawingBuffer->DrawRectangle();
-    //gc->DrawBuffer(_drawingBuffer);
+//    gc->DrawTexture(_drawingBuffer->GetTexture(),
+//                    axRect(axPoint(0, 0), _drawingBuffer->GetSize()));
     
-//    gc->SetColor(axColor::axRedColor);
-//    gc->DrawRoundedRectangle(axRect(40, 200, 50, 25), 12);
-//
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(40, 200, 50, 25), 12);
-//    
-////    gc->SetColor(axColor::axRedColor);
-////    gc->DrawRoundedRectangle(axRect(200, 200, 50, 50), 5);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(200, 200, 50, 50), 5);
-//    
-////    gc->SetColor(axColor::axRedColor);
-////    gc->DrawRoundedRectangle(axRect(290, 200, 50, 50), 10);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContourSmooth(axRect(290, 200, 50, 50), 10);
-//    
-//    
-////    gc->SetColor(axColor::axRedColor);
-////    gc->DrawRoundedRectangle(axRect(370, 200, 50, 50), 4);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(370, 200, 50, 50), 4);
-//    
-//    gc->SetColor(axColor::axRedColor);
-//    gc->DrawLine(axPoint(150.0, 120.0), axPoint(200, 150.0));
-//    
-//    gc->DrawSmouthLine(axPoint(170.0, 120.0), axPoint(220, 150.0), 3);
-//
-//    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//    gc->DrawRectangleContour(rect0);
 }

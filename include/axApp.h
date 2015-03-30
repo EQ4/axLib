@@ -53,7 +53,8 @@
 #include "axC++.h"
 #include "axResourceManager.h"
 
-class axDebugMenu;
+class axEditorMenu;
+class axWidget;
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -121,12 +122,13 @@ public:
     
     void CreateEditor();
     
+    void SetEditingWidget(axWidget* widget);
     
 private:
     static axApp* MainInstance;
 	axCore* _core;
     
-    axDebugMenu* _debugMenu;
+    axEditorMenu* _debugMenu;
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;

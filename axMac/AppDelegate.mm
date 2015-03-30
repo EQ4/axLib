@@ -84,12 +84,12 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 #else
     //axEventManager::GetInstance();
     axApp* app = axApp::GetInstance();
+    
     app->GetCore()->Init(axSize(500, 500));
     
     app->CallMainEntryFunction();
     app->CallAfterGUILoadFunction();
     app->CreateEditor();
-//    axMain::MainEntryPoint(app);
 
     
     [GlobalAppDelegate setNeedsDisplay:YES];
@@ -273,31 +273,37 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     if(key == 51)
     {
         axApp::GetInstance()->GetWindowManager()->OnBackSpaceDown();
+        axApp::GetInstance()->GetPopupManager()->OnBackSpaceDown();
     }
     // Delete
     else if(key == 117)
     {
         axApp::GetInstance()->GetWindowManager()->OnKeyDeleteDown();
+        axApp::GetInstance()->GetPopupManager()->OnKeyDeleteDown();
     }
     // Enter.
     else if(key == 36)
     {
         axApp::GetInstance()->GetWindowManager()->OnEnterDown();
+        axApp::GetInstance()->GetPopupManager()->OnEnterDown();
     }
     // Left arrow.
     else if(key == 123)
     {
         axApp::GetInstance()->GetWindowManager()->OnLeftArrowDown();
+        axApp::GetInstance()->GetPopupManager()->OnLeftArrowDown();
     }
     // Right arrow.
     else if(key == 124)
     {
         axApp::GetInstance()->GetWindowManager()->OnRightArrowDown();
+        axApp::GetInstance()->GetPopupManager()->OnRightArrowDown();
     }
     else
     {
         std::string str = [[event characters] UTF8String];
         axApp::GetInstance()->GetWindowManager()->OnKeyDown(str[0]);
+        axApp::GetInstance()->GetPopupManager()->OnKeyDown(str[0]);
     }
 }
 

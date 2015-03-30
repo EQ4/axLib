@@ -29,7 +29,7 @@ axPanel(parent, rect)
     _tabBtnLabels.push_back("Toolbar");
     _tabBtnLabels.push_back("Paint");
     _tabBtnLabels.push_back("Anim");
-    _tabBtnLabels.push_back("Custom");
+    _tabBtnLabels.push_back("Test");
     
     axSize tabBtnSize(55, 25);
     

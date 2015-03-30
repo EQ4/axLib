@@ -68,6 +68,7 @@ void axKeyboardManager::OnBackSpaceDown()
 
 void axKeyboardManager::GrabKey(axWindow* win)
 {
+    axPrint("Grab key window :", win->GetId());
     if(_keyGrabbedWindow != win)
     {
         if(_keyGrabbedWindow != nullptr)

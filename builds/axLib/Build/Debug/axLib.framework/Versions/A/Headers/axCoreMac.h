@@ -35,7 +35,7 @@ public:
     
     virtual void MainLoop();
     
-    virtual void Init(const axPoint& frame_size);
+    virtual void Init(const axSize& frame_size);
 
     virtual string GetAppDirectory();
     

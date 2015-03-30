@@ -53,6 +53,7 @@ public:
 	void OnSize();
 
     std::string _managerName;
+    axWindowTree* GetWindowTree();
 
 private:
 //	axWindowMap _windows; // Map for drawing windows.

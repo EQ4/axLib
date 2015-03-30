@@ -72,6 +72,7 @@
 //
 //	virtual void OnPaint();
 //};
+class axWidget;
 
 class WidgetFolder : public axPanel
 {
@@ -82,24 +83,35 @@ public:
 	void Resize(const axSize& size);
     
 private:
-//	LessonFolderName* _folderName;
-//	std::vector<Lesson*> _lessons;
+
 	axFont _font;
 
 	virtual void OnPaint();
 };
 
-class axDebugMenu : public axPanel
+class axEditorMenu : public axPanel
 {
 public:
-	axDebugMenu(const axRect& rect);
+	axEditorMenu(const axRect& rect);
 
 	void Resize(const axSize& size);
+    
+    void SetEditingWidget(axWidget* widget);
+    
+    // axEvents.
+    axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
 
 private:
 	axFont _font;
 	std::vector<WidgetFolder*> _folders;
-	//Lesson* _lesson;
-
+    
+    
+    typedef std::tuple<std::string, axLabel*, axTextBox*> axEditorTuple;
+    std::vector<axEditorTuple> _infoEditor;
+    
+    void OnAttributeEdit(const axTextBox::Msg& msg);
+    
+    axWidget* _widget;
+    
 	virtual void OnPaint();
 };

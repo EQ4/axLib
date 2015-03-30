@@ -66,6 +66,17 @@ axWindow(parent, rect)
 	axApp::GetInstance()->AddPopWindow(this);
 }
 
+axPanel::~axPanel()
+{
+    axPrint("DELETE PANEL", GetId());
+    if(IsKeyGrab())
+    {
+        UnGrabKey();
+    }
+    
+    axWindow::~axWindow();
+}
+
 void axPanel::BlockDrawing()
 {
 	axRect absRect(GetAbsoluteRect());

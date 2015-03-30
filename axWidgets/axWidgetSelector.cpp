@@ -62,9 +62,6 @@ void axWidgetSelector::OnPaint()
 {
     axGC* gc = GetGC();
     axRect rect(GetDrawingRect());
-
-//    gc->SetColor(static_cast<Info*>(_info)->_color, 0.2);
-//    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(1, 1)));
     
     gc->SetColor(static_cast<Info*>(_info)->_color, 0.1);
     gc->DrawRectangleContour(rect);
@@ -77,10 +74,5 @@ void axWidgetSelector::OnPaint()
     
     gc->SetColor(static_cast<Info*>(_info)->_color, 0.5);
     gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(3, 3)));
-//
-//    gc->SetColor(static_cast<Info*>(_info)->_color, 0.6);
-//    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(3, 3)));
-//    
-//    gc->SetColor(static_cast<Info*>(_info)->_color, 1.0);
-//    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(4, 4)));
+
 }

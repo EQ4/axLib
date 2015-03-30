@@ -215,7 +215,7 @@ _font(nullptr)
     else
     {
 		_font = std::unique_ptr<axFont>(new_ axFont(0));
-        axPrint("axLabel :: Default font.");
+        //axPrint("axLabel :: Default font.");
     }
     
     _font->SetFontSize(static_cast<Info*>(_info)->font_size);

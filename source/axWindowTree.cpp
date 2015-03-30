@@ -37,19 +37,29 @@ axWindowNode::axWindowNode()
 
 axWindowNode::~axWindowNode()
 {
-    _childNodes.clear();
     for(axWindowNode* node : _childNodes)
     {
-        delete node;
+        if(node != nullptr)
+        {
+            delete node;
+            node = nullptr;
+        }
     }
+    _childNodes.clear();
     
-    delete window;
+    
+    if(window != nullptr)
+    {
+        axPrint("Delete node with win id", window->GetId());
+        delete window;
+        window = nullptr;
+    }
 }
 
 
 void axWindowNode::DeleteWindow(axWindow* win)
 {
-    
+
 }
 
 axWindow* axWindowNode::GetWindow()
@@ -147,9 +157,11 @@ void axWindowNode::DrawNode()
             DrawWindow(window);
             
             for(axWindowNode* it : _childNodes)
-{
+            {
                 if(it->window != nullptr)            
                 {
+                    //axPrint("axWindowNode::DrawNode  id : ", it->window->GetId());
+                    
                     if(it->window->IsShown())
                     {
                         if(it->window->IsEditingWidget() &&
@@ -289,30 +301,57 @@ void axWindowTree::AddWindow(axWindow* win)
 
 void axWindowTree::DeleteWindow(axWindow* win)
 {
-    
     axWindowNode* node = FindWinNode(win);
-    axWindowNode* parent = FindWinNode(node->window->GetParent());
     
-    if(parent != nullptr)
+    if(node != nullptr)
     {
-        std::vector<axWindowNode*> childs = parent->GetChild();
-
-        int child_index = -1;
-        for (int i = 0; i < (int)childs.size(); i++)
-        {
-            if(childs[i]->window == node->window)
-            {
-                child_index = i;
-            }
-        }
+//        axPrint("axWindowTree::DeleteWindow :: Node is  notnullptr");
+        axWindowNode* parent = FindWinNode(node->window->GetParent());
         
-        if(child_index != -1)
+        if(parent != nullptr)
         {
-            childs.erase(childs.begin() + child_index);
+            std::vector<axWindowNode*>& childs = parent->GetChild();
+            
+            axPrint("Before Childs size:", childs.size(), parent->window->GetId());
+            
+            int id_to_delete = node->window->GetId();
+            childs.erase(std::remove_if(childs.begin(), childs.end(),
+                                        [id_to_delete](axWindowNode* n)
+            {
+                return n->window->GetId() == id_to_delete;
+            }),
+                         childs.end());
+            
+            
+//            int child_index = -1;
+//            for (int i = 0; i < (int)childs.size(); i++)
+//            {
+//                axPrint("WIN :", childs[i]->window->GetId());
+//                if(childs[i]->window == node->window)
+//                {
+//                    child_index = i;
+//                }
+//            }
+//            
+//            if(child_index != -1)
+//            {
+//                axPrint("Remove from vector :", childs[child_index]->window->GetId());
+//                delete childs[child_index];
+//                //childs[child_index] = nullptr;
+//                childs.erase(childs.begin() + child_index);
+//            }
+            
+            axPrint("After Childs size:", childs.size(), parent->window->GetId());
         }
+
+        delete node;
+        node = nullptr;
+    }
+    else
+    {
+        axPrint("axWindowTree::DeleteWindow :: Node is nullptr");
     }
     
-    delete node;
 }
 
 vector<axWindowNode*> axWindowTree::GetMainNode()
@@ -353,7 +392,8 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 
 	axWindowNode* n = node;
     
-    axWindowNode* tmpNode = nullptr;
+//    axWindowNode* tmpNode = nullptr;
+    
 	if_not_null(n)
 	{
 		do

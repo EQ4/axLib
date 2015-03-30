@@ -1,0 +1,5 @@
+/Users/alexarse/Project/axLib/libs/lpng1610/CMakeFiles/pngvalid.dir
+/Users/alexarse/Project/axLib/libs/lpng1610/CMakeFiles/pngstest.dir
+/Users/alexarse/Project/axLib/libs/lpng1610/CMakeFiles/png16_static.dir
+/Users/alexarse/Project/axLib/libs/lpng1610/CMakeFiles/pngtest.dir
+/Users/alexarse/Project/axLib/libs/lpng1610/CMakeFiles/png16.dir

@@ -38,7 +38,7 @@ public:
 
 	virtual void MainLoop() = 0;
     
-	virtual void Init(const axPoint& frame_size) = 0;
+	virtual void Init(const axSize& frame_size) = 0;
 
 	virtual void ResizeGLScene(const axSize& size);
     

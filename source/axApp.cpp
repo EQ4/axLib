@@ -25,7 +25,8 @@
 #include "axPanel.h"
 #include "axToggle.h"
 #include "axConfig.h"
-#include "axDebugMenu.h"
+#include "axEditorMenu.h"
+#include "axWidget.h"
 
 axApp* axApp::MainInstance = nullptr;
 
@@ -95,6 +96,7 @@ _debugEditorActive(false)
     _core->Init(frame_size);
 #else
     _core = new axCoreMac();
+    _core->SetGlobalSize(frame_size);
     //_core->Init(frame_size);
 #endif // _AX_VST_APP_
     
@@ -107,23 +109,27 @@ void axApp::CreateEditor()
     // @todo Fix this.
     MainInstance = this;
     
+    axSize size = _core->GetGlobalSize();
+    
+    axPrint("Size : ", size.x, size.y);
+    
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
-                                      axRect(500 - 20, 500 - 20, 20, 20));
+                                      axRect(size.x - 20, size.y - 20, 20, 20));
     
     axToggle::Info btn_info;
-    btn_info.normal = axColor(1.0, 0.8, 0.8, 1.0);
-    btn_info.hover = axColor(0.9, 0.9, 0.9, 1.0);
-    btn_info.clicking = axColor(0.7, 0.7, 0.7, 1.0);
+    btn_info.normal = axColor(1.0, 0.8, 0.8, 0.0);
+    btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
+    btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
     
-    btn_info.selected = axColor(0.8, 0.4, 0.4, 1.0);
-    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 1.0);
-    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 1.0);
+    btn_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
+    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
+    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
     
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
     
-    //btn_info.img = "settings.png";
+    btn_info.img = "settings.png";
     btn_info.single_img = true;
     
     axToggle* tog = new axToggle(debugPanel,
@@ -135,10 +141,10 @@ void axApp::CreateEditor()
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
     
-    axSize size = _core->GetGlobalSize();
+    
 //    axPanel* menuPanel = new axPanel(3, nullptr,
 //                                      axRect(500 - 20, 500 - 20, 20, 20));
-    _debugMenu = new axDebugMenu(axRect(size.x, 0, 220, size.y));
+    _debugMenu = new axEditorMenu(axRect(size.x, 0, 220, size.y));
     _debugMenu->Hide();
     
 #endif // _axDebugEditor_
@@ -257,4 +263,9 @@ void axApp::CallAfterGUILoadFunction()
     {
         _afterGuiLoadFunction();
     }
+}
+
+void axApp::SetEditingWidget(axWidget* widget)
+{
+    _debugMenu->SetEditingWidget(widget);
 }

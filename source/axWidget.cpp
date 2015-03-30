@@ -22,7 +22,7 @@
 #include "axWidget.h"
 #include "axConfig.h"
 
-#include "axDebugButton.h"
+#include "axEditorButton.h"
 
 
 
