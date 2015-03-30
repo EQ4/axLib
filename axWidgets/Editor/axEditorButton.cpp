@@ -23,6 +23,7 @@
 
 #include "axLabel.h"
 #include "axTextBox.h"
+#include "axEditorMenu.h"
 
 axDebugButton::axDebugButton(axWindow* parent) :
 // Heritage.
@@ -48,6 +49,7 @@ _font(nullptr)
     _font = std::unique_ptr<axFont>(new_ axFont(0));
     
     SetEditingWidget(true);
+    SetEditable(false);
 }
 
 void axDebugButton::SetMsg(const string& msg)
@@ -91,18 +93,27 @@ void axDebugButton::OnMouseLeftDown(const axPoint& pos)
     _currentColor = &_info.clicking;
     
     axWidget* widget = static_cast<axWidget*>(GetParent());
-    axApp::GetInstance()->SetEditingWidget(widget);
-
-    GrabMouse();
     
-    PushEvent(axButton::Events::BUTTON_CLICK,
-              new_ axButton::Msg(nullptr, _msg));
+    // Prevent from click on the hidden edit button of editing widgets.
+    if(!widget->IsEditingWidget() && widget->axWindow::IsEditable())
+    {
+        axApp::GetInstance()->SetEditingWidget(widget);
+        
+        GrabMouse();
+        
+        PushEvent(axButton::Events::BUTTON_CLICK,
+                  new_ axButton::Msg(nullptr, _msg));
+        
+        Update();
+    }
     
-    Update();
 }
 
 void axDebugButton::OnMouseLeftDragging(const axPoint &pos)
 {
+    axApp::GetInstance()->GetEditor()->UpdateInfo();
+    
+    
     axWindow* panel = GetParent()->GetParent();
     axRect panelRect = panel->GetAbsoluteRect();
     

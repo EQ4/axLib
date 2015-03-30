@@ -287,3 +287,8 @@ void axApp::SetEditingWidget(axWidget* widget)
     _widgetSelector->SetSelectedWidget(widget);
     _debugMenu->SetEditingWidget(widget);
 }
+
+axEditorMenu* axApp::GetEditor()
+{
+    return _debugMenu;
+}

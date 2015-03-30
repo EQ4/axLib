@@ -199,7 +199,11 @@ void axPanel::Update()
     if(axApp::GetInstance()->_widgetSelector != nullptr &&
        axApp::GetInstance()->_widgetSelector->GetSelectedWidget() == this)
     {
-        axApp::GetInstance()->_widgetSelector->SetSelectedWidget(this);
+        if(axApp::GetInstance()->IsDebugEditorActive())
+        {
+            axApp::GetInstance()->_widgetSelector->SetSelectedWidget(this);
+        }
+        
     }
     SetNeedUpdate();
 	UpdateAll();

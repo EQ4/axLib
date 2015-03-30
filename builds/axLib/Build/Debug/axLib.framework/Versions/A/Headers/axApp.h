@@ -127,6 +127,8 @@ public:
     
     axWidgetSelector* _widgetSelector = nullptr;
     
+    axEditorMenu* GetEditor();
+    
 private:
     static axApp* MainInstance;
 	axCore* _core;

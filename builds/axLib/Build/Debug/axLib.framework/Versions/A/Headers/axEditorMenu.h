@@ -98,6 +98,9 @@ public:
     
     void SetEditingWidget(axWidget* widget);
     
+    void UpdateInfo();
+    void UpdateAttribute(const axStringPair& att);
+    
     // axEvents.
     axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
 
@@ -110,6 +113,14 @@ private:
     std::vector<axEditorTuple> _infoEditor;
     
     void OnAttributeEdit(const axTextBox::Msg& msg);
+    
+    void AddEditorAttribute(const axStringPair& att,
+                            const axLabel::Info& labelInfo,
+                            const axTextBox::Info& txtInfo,
+                            const axTextBox::Events& evt);
+    
+    void AddEditorLabel(const std::string& name,
+                            const axLabel::Info& labelInfo);
     
     axWidget* _widget;
     
