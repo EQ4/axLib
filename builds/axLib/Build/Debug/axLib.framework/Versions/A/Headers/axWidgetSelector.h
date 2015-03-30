@@ -33,11 +33,11 @@
 /*******************************************************************************
  * axLabel.
  ******************************************************************************/
-class axWidgetSelector: public axWidget
+class axWidgetSelector: public axPanel
 {
 public:
     /***************************************************************************
-     * axLabel::Info.
+     * axWidgetSelector::Info.
      **************************************************************************/
     class Info : public axInfo
     {
@@ -56,9 +56,11 @@ public:
     axWidgetSelector(axWindow* parent);
     
     void SetSelectedWidget(axWindow* win);
+    axWindow* GetSelectedWidget();
 
 private:
     axWindow* _selectedWidget;
+    Info _info;
     
     // Events.
     virtual void OnPaint();

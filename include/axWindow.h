@@ -103,6 +103,8 @@ public:
     
     void RenderWindow();
     
+    void SetHasBackBuffer(const bool& hasBackBuffer);
+    
     axRect GetDrawingRect() const;
     
     void SetNeedUpdate();
@@ -155,6 +157,7 @@ private:
     bool _isSelectable;
     bool _isEditingWidget;
     bool _isEditable;
+    bool _hasBackBuffer;
 };
 
 /// @}

@@ -31,7 +31,7 @@ axPanel(parent, rect),
 _info(info)
 {
     #ifdef _axDebugEditor_
-    axDebugButton* dbgBtn = new axDebugButton(this);
+    _editorBtn = new axDebugButton(this);
     #endif // _axDebugEditor_
 }
 
@@ -40,7 +40,7 @@ axPanel(f, parent, rect),
 _info(nullptr)
 {
     #ifdef _axDebugEditor_
-    axDebugButton* dbgBtn = new axDebugButton(this);
+    _editorBtn = new axDebugButton(this);
     #endif // _axDebugEditor_
 }
 

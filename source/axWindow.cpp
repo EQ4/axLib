@@ -40,7 +40,8 @@ _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
 _isEditingWidget(false),
 _isEditable(true),
-_frameBufferObj(rect.size)
+_frameBufferObj(rect.size),
+_hasBackBuffer(true)
 {
 	if (parent == nullptr)
 	{
@@ -200,7 +201,11 @@ void axWindow::SetSize(const axSize& size)
     _shownRect.size = size;
 
 //    InitGLWindowBackBufferDrawing();
-    _frameBufferObj.Resize(size);
+    if(_hasBackBuffer)
+    {
+        _frameBufferObj.Resize(size);
+    }
+    
     Update();
 }
 
@@ -211,7 +216,12 @@ void axWindow::SetRect(const axRect& rect)
 	_shownRect.size = rect.size;
 
 	//    InitGLWindowBackBufferDrawing();
-	_frameBufferObj.Resize(rect.size);
+    
+    if(_hasBackBuffer)
+    {
+        _frameBufferObj.Resize(rect.size);
+    }
+	
 	Update();
 }
 
@@ -307,6 +317,11 @@ void axWindow::SetBlockDrawing(const bool& block)
     _isBlockDrawing = block;
 }
 
+void axWindow::SetHasBackBuffer(const bool& hasBackBuffer)
+{
+    _hasBackBuffer = hasBackBuffer;
+}
+
 axResourceManager* axWindow::GetResourceManager()
 {
     return &_resourceManager;
@@ -328,15 +343,25 @@ void axWindow::OnPaint()
 void axWindow::RenderWindow()
 {
 #if _axBackBufferWindow_ == 1
-    if(_needUpdate)
+    
+    if(_hasBackBuffer)
     {
-        std::function<void()> draw([this](){ OnPaint(); });
-  
-        _frameBufferObj.DrawOnFrameBuffer(draw, GetRect().size);
-        _needUpdate = false;
+        if(_needUpdate)
+        {
+            std::function<void()> draw([this](){ OnPaint(); });
+            
+            _frameBufferObj.DrawOnFrameBuffer(draw, GetRect().size);
+            _needUpdate = false;
+        }
+        
+        _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
+    }
+    else
+    {
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        OnPaint();
     }
     
-    _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
 
 #else
     OnPaint();

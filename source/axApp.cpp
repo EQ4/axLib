@@ -113,6 +113,8 @@ void axApp::CreateEditor()
     
     axPrint("Size : ", size.x, size.y);
     
+    _widgetSelector = new axWidgetSelector(nullptr);
+    
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
                                       axRect(size.x - 20, size.y - 20, 20, 20));
@@ -144,7 +146,7 @@ void axApp::CreateEditor()
     
 //    axPanel* menuPanel = new axPanel(3, nullptr,
 //                                      axRect(500 - 20, 500 - 20, 20, 20));
-    _debugMenu = new axEditorMenu(axRect(size.x, 0, 220, size.y));
+    _debugMenu = new axEditorMenu(axRect(size.x, 0, 300, size.y));
     _debugMenu->Hide();
     
 #endif // _axDebugEditor_
@@ -170,16 +172,26 @@ void axApp::OnDebugEditor(const axMsg& msg)
     {
         _debugEditorActive = false;
         axSize size = _core->GetGlobalSize();
-        _core->ResizeFrame(axSize(size.x - 220, size.y));
+        _core->ResizeFrame(axSize(size.x - 300, size.y));
         _debugMenu->Hide();
+        
+        if(_widgetSelector != nullptr)
+        {
+            _widgetSelector->Hide();
+        }
     }
     else
     {
         _debugEditorActive = true;
         axSize size = _core->GetGlobalSize();
-        _core->ResizeFrame(axSize(size.x + 220, size.y));
-        _debugMenu->SetRect(axRect(axRect(size.x, 0, 220, size.y)));
+        _core->ResizeFrame(axSize(size.x + 300, size.y));
+        _debugMenu->SetRect(axRect(axRect(size.x, 0, 300, size.y)));
         _debugMenu->Show();
+        
+        if(_widgetSelector != nullptr)
+        {
+            _widgetSelector->Show();
+        }
     }
 }
 //------------------------------------------------------------------------------
@@ -207,6 +219,11 @@ void axApp::MainLoop()
 
 void axApp::UpdateAll()
 {
+//    if(_widgetSelector != nullptr)
+//    {
+//        _widgetSelector->SetNeedUpdate();
+//    }
+    
 	_core->UpdateAll();
 }
 
@@ -267,5 +284,6 @@ void axApp::CallAfterGUILoadFunction()
 
 void axApp::SetEditingWidget(axWidget* widget)
 {
+    _widgetSelector->SetSelectedWidget(widget);
     _debugMenu->SetEditingWidget(widget);
 }

@@ -39,18 +39,19 @@ _color(color)
  * axWidgetSelector.
  ******************************************************************************/
 axWidgetSelector::axWidgetSelector(axWindow* parent):
-axWidget(parent, axRect(0, 0, 20, 20),
-         new_ Info(axColor(1.0, 0.33, 0.0))),
+axPanel(3, parent, axRect(0, 0, 20, 20)),
+_info(axColor(1.0, 0.33, 0.0)),
 _selectedWidget(nullptr)
 {
     SetSelectable(false);
+    SetHasBackBuffer(false);
     Hide();
 }
 
 void axWidgetSelector::SetSelectedWidget(axWindow* win)
 {
     _selectedWidget = win;
-    axRect rect = win->GetRect();
+    axRect rect = win->GetAbsoluteRect();
     
     SetPosition(axPoint(rect.position.x - 3, rect.position.y - 3));
     SetSize(axSize(rect.size.x + 6, rect.size.y + 6));
@@ -58,21 +59,34 @@ void axWidgetSelector::SetSelectedWidget(axWindow* win)
     Show();
 }
 
+axWindow* axWidgetSelector::GetSelectedWidget()
+{
+    return _selectedWidget;
+}
+
 void axWidgetSelector::OnPaint()
 {
-    axGC* gc = GetGC();
-    axRect rect(GetDrawingRect());
-    
-    gc->SetColor(static_cast<Info*>(_info)->_color, 0.1);
-    gc->DrawRectangleContour(rect);
-    
-    gc->SetColor(static_cast<Info*>(_info)->_color, 0.2);
-    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(1, 1)));
-    
-    gc->SetColor(static_cast<Info*>(_info)->_color, 0.4);
-    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(2, 2)));
-    
-    gc->SetColor(static_cast<Info*>(_info)->_color, 0.5);
-    gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(3, 3)));
+    if(_selectedWidget != nullptr && _selectedWidget->IsShown())
+    {
+        axRect sel_rect = _selectedWidget->GetAbsoluteRect();
+        
+        SetPosition(axPoint(sel_rect.position.x - 3, sel_rect.position.y - 3));
+        SetSize(axSize(sel_rect.size.x + 6, sel_rect.size.y + 6));
+        
+        axGC* gc = GetGC();
+        axRect rect(GetDrawingRect());
+        
+        gc->SetColor(_info._color, 0.1);
+        gc->DrawRectangleContour(rect);
+        
+        gc->SetColor(_info._color, 0.2);
+        gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(0, 0)));
+        
+        gc->SetColor(_info._color, 0.4);
+        gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(1, 1)));
+        
+        gc->SetColor(_info._color, 0.5);
+        gc->DrawRectangleContour(rect.GetInteriorRect(axPoint(2, 2)));
+    }
 
 }

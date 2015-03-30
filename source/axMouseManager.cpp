@@ -89,19 +89,28 @@ void axMouseManager::OnMouseMotion(const axPoint& pos)
 	else
 	{
 		axWindow* win = _windowTree->FindMousePosition(pos);
-		_currentWindow = win;
-
-		if_not_null(_currentWindow)
-		{
-			_currentWindow->OnMouseMotion(pos);
-            _evtHasReachWindow = true;
-		}
+        
+        if(win != nullptr && win->IsSelectable())
+        {
+            _currentWindow = win;
+            
+            if_not_null(_currentWindow)
+            {
+                _currentWindow->OnMouseMotion(pos);
+                _evtHasReachWindow = true;
+            }
+            else
+            {
+                _evtHasReachWindow = false;
+            }
+            
+            VerifyAndProcessWindowChange();
+        }
         else
         {
             _evtHasReachWindow = false;
         }
-
-        VerifyAndProcessWindowChange();
+		
 	}
 }
 
@@ -137,6 +146,7 @@ void axMouseManager::OnMouseLeftDown(const axPoint& pos)
 {
 	_mousePosition = pos;
 
+    // If mouse is already grabbed.
 	if_not_null(_mouseCaptureWindow)
 	{
 		_mouseCaptureWindow->OnMouseLeftDown(pos);
@@ -145,21 +155,28 @@ void axMouseManager::OnMouseLeftDown(const axPoint& pos)
 	else
 	{
 		axWindow* win = _windowTree->FindMousePosition(pos);
-		_currentWindow = win;
-
-		if_not_null(win)
-		{
+        
+        if(win != nullptr && win->IsSelectable())
+        {
+            _currentWindow = win;
             
-            win->OnMouseLeftDown(pos);
-            _evtHasReachWindow = true;
-		}
+            if_not_null(win)
+            {
+                win->OnMouseLeftDown(pos);
+                _evtHasReachWindow = true;
+            }
+            else
+            {
+                _evtHasReachWindow = false;
+            }
+            
+            VerifyAndProcessWindowChange();
+        }
         else
         {
             _evtHasReachWindow = false;
         }
-
-        VerifyAndProcessWindowChange();
-
+		
 	}
 }
 

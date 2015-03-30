@@ -90,6 +90,8 @@ private:
     bool _isEditable;
 };
 
+class axDebugButton;
+class axWidgetSelector;
 
 class axWidget : public axPanel
 {
@@ -107,6 +109,7 @@ public:
 
 protected:
     axInfo* _info;
+    axDebugButton* _editorBtn;
     
 private:
     bool _isEditable, _isInfoEditable, _acceptChild;

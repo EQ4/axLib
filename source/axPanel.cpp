@@ -21,6 +21,7 @@
  ******************************************************************************/
 #include "axPanel.h"
 #include "axApp.h"
+#include "axWidgetSelector.h"
 
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 axWindow(parent, rect)
@@ -195,6 +196,11 @@ void axPanel::UpdateAll()
 
 void axPanel::Update()
 {
+    if(axApp::GetInstance()->_widgetSelector != nullptr &&
+       axApp::GetInstance()->_widgetSelector->GetSelectedWidget() == this)
+    {
+        axApp::GetInstance()->_widgetSelector->SetSelectedWidget(this);
+    }
     SetNeedUpdate();
 	UpdateAll();
 }

@@ -55,6 +55,7 @@
 
 class axEditorMenu;
 class axWidget;
+class axWidgetSelector;
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -124,11 +125,14 @@ public:
     
     void SetEditingWidget(axWidget* widget);
     
+    axWidgetSelector* _widgetSelector = nullptr;
+    
 private:
     static axApp* MainInstance;
 	axCore* _core;
     
     axEditorMenu* _debugMenu;
+    
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;

@@ -127,7 +127,7 @@ void axEditorMenu::SetEditingWidget(axWidget* widget)
         if(i == 0)
         {
             label = new_ axLabel(this, axRect(axPoint(0, 50),
-                                              axSize(140, 25)), labelInfo, n);
+                                              axSize(120, 25)), labelInfo, n);
             txtBox = new_ axTextBox(this,
                                     axRect(label->GetNextPosRight(0),
                                            axSize(180, 25)),
@@ -141,7 +141,7 @@ void axEditorMenu::SetEditingWidget(axWidget* widget)
         else
         {
             label = new_ axLabel(this, axRect(label->GetNextPosDown(0),
-                                              axSize(140, 25)),
+                                              axSize(120, 25)),
                                  labelInfo, n);
             
             txtBox = new_ axTextBox(this, axRect(label->GetNextPosRight(0),
