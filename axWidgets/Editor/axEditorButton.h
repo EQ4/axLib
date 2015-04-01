@@ -80,6 +80,8 @@ protected:
     
     virtual void OnMouseRightDown(const axPoint& pos);
     
+    virtual void OnKeyDown(const char& key);
+    
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
     

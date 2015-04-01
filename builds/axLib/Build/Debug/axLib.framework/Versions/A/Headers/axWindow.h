@@ -42,6 +42,18 @@ public:
 	axWindow(axWindow* parent, const axRect& rect);
     virtual ~axWindow();
     
+    enum axWindowType
+    {
+        axWINDOW_TYPE_WINDOW,
+        axWINDOW_TYPE_PANEL,
+        axWINDOW_TYPE_WIDGET
+    };
+    
+    virtual axWindowType GetWindowType()
+    {
+        return axWINDOW_TYPE_WINDOW;
+    }
+    
 	axWindow* GetParent() const;
 
 	axRect GetRect() const;
@@ -54,6 +66,7 @@ public:
 	void SetPosition(const axPoint& pos);
     
     void SetShownRect(const axRect& size);
+    void SetSizeNoShowRect(const axSize& size);
     axRect GetShownRect() const;
     
     axPoint GetBottomLeftPosition() const;

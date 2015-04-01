@@ -44,10 +44,25 @@ _info(nullptr)
     #endif // _axDebugEditor_
 }
 
+axWindow::axWindowType axWidget::GetWindowType()
+{
+    return axWindow::axWindowType::axWINDOW_TYPE_WIDGET;
+}
+
 void axWidget::SetInfo(const axVectorPairString& attributes)
 {
     _info->SetAttributes(attributes);
     Update();
+}
+
+void axWidget::SetBuilderAttributes(const axVectorPairString& attributes)
+{
+    _builderAttributes = attributes;
+}
+
+axVectorPairString axWidget::GetBuilderAttributes() const
+{
+    return _builderAttributes;
 }
 
 axInfo* axWidget::GetInfo()

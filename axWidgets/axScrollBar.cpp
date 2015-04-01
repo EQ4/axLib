@@ -178,7 +178,8 @@ void axScrollBar::OnMouseLeave()
 void axScrollBar::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect0(axPoint(0, 0), GetRect().size);
+//	axRect rect0(axPoint(0, 0), GetRect().size);
+    axRect rect0(GetDrawingRect());
 //
 	gc->SetColor(axColor(1.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangle(rect0);

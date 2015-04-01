@@ -28,6 +28,8 @@
 #include "axEditorMenu.h"
 #include "axWidget.h"
 
+#include "axScrollBar.h"
+
 axApp* axApp::MainInstance = nullptr;
 
 axResourceManager* axApp::_resourceManager = nullptr;
@@ -149,6 +151,24 @@ void axApp::CreateEditor()
     _debugMenu = new axEditorMenu(axRect(size.x, 0, 300, size.y));
     _debugMenu->Hide();
     
+//    axScrollBarEvents scrollEvents;
+//    axScrollBarInfo scroll_info;
+//    scroll_info.normal = axColor(0.8, 0.8, 0.8);
+//    scroll_info.hover = axColor(0.9, 0.9, 0.9);
+//    scroll_info.clicking = axColor(0.7, 0.7, 0.7);
+//    scroll_info.contour = axColor(0.0, 0.0, 0.0);
+//    //    scroll_info.selected = scroll_info.normal;
+//    
+//    axPoint pos(size.x - 20, 0);
+//    axScrollBar* _scrollBar = new axScrollBar(this,
+//                                              _debugMenu,
+//                                              axRect(pos, axSize(8, size.y)),
+//                                              scrollEvents,
+//                                              scroll_info);
+    
+    //_scrollBar->SetPanelSize(rect.size);
+
+    
 #endif // _axDebugEditor_
 }
 
@@ -185,7 +205,7 @@ void axApp::OnDebugEditor(const axMsg& msg)
         _debugEditorActive = true;
         axSize size = _core->GetGlobalSize();
         _core->ResizeFrame(axSize(size.x + 300, size.y));
-        _debugMenu->SetRect(axRect(axRect(size.x, 0, 300, size.y)));
+        _debugMenu->SetRect(axRect(axRect(size.x, 0, 310, size.y)));
         _debugMenu->Show();
         
         if(_widgetSelector != nullptr)

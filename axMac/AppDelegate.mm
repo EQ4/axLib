@@ -265,9 +265,23 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 //    NSLog(@"Mouse leave");
 }
 
+-(BOOL) canBecomeKeyWindow
+{
+    return true;
+}
+
+- (void) flagsChanged: (NSEvent *)evt
+{
+    unsigned int key = [evt keyCode];
+    
+    axPrint(key);
+}
+
 - (void)keyDown: (NSEvent *) event
 {
     unsigned short key = [event keyCode];
+
+    axPrint("key : ", key);
 
     // BackSpace.
     if(key == 51)

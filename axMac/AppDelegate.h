@@ -42,6 +42,10 @@
 - (void) SetFrameSize:(NSSize)newSize;
 - (void) itemChanged:(NSMenuItem *)anObject;
 
+-(BOOL) canBecomeKeyWindow;
+
+- (void) flagsChanged: (NSEvent *)theEvent;
+
 
 - (id) MemberTestFunc;
 

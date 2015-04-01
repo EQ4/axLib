@@ -149,17 +149,11 @@ private:
 
 	axButton* _btn[2];
 
-	//----------------------
 	int _imgHeight, _sliderHeight, _sliderMaxHeight, _sliderPos, _yClickDelta;
     axSize _panelSize;
     
     axColor* _currentScrollBarColor;
-////	int m_yClickDelta;
-//	
 	double _value;
-//    double _sliderPosition;//, m_sliderValue;
-//	int m_sliderPositionPixel;
-
 
 	virtual void OnPaint();
 	virtual void OnMouseLeftDragging(const axPoint& pos);

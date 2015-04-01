@@ -28,6 +28,8 @@
 #include "axApp.h"
 #include "axWindow.h"
 
+class axScrollBar;
+
 class axPanel : public axWindow
 {
 public:
@@ -38,6 +40,10 @@ public:
     
 	void UpdateAll();
 	virtual void Update();
+    
+    
+    
+    virtual axWindowType GetWindowType();
 
 	void GrabMouse();
 	void UnGrabMouse();
@@ -61,11 +67,16 @@ public:
 	void UnBlockDrawing();
     
     axRect GetWindowPixelData(unsigned char*& data) const;
+    
+    void SetScrollBar(axScrollBar* scrollbar);
+    axScrollBar* GetScrollBar();
 
 //    void SetPanelColor(const axColor& color);
 
 private:
 	bool _isInPopup;
+    axScrollBar* _scrollBar = nullptr;
+    axWindowType _windowType;
     
 //    axColor _panelColor;
 };

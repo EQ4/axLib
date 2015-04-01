@@ -41,6 +41,8 @@ public:
     
     void SetParent(axWindow* parent);
     
+    virtual axStringVector GetParamNameList() const;
+    
 private:
     axWindow* _parent;
 };

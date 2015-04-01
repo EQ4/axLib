@@ -20,13 +20,16 @@ axPanel(parent, rect)
     
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
     
+    axObjectLoader objLoader(this, "ButtonPanel.xml");
+    
     axButton::Info btn1_info;
-    btn1_info.normal = axColor(1.0, 0.0, 0.0, 0.3);
+    btn1_info.normal = axColor(0.7, 0.7, 0.7, 0.3);
     btn1_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
-    btn1_info.clicking = axColor(0.7, 0.7, 0.7, 0.3);
-    btn1_info.contour = axColor(0.0, 0.0, 1.0, 0.5);
+    btn1_info.clicking = axColor(0.8, 0.8, 0.8, 0.3);
+    btn1_info.contour = axColor(0.0, 0.0, 0.0, 1.0);
     btn1_info.selected = btn1_info.normal;
     btn1_info.round_corner_radius = 3;
+    
     
     axButton::Events btn1_evts;
     btn1_evts.button_click = GetOnButtonWithEvtManager();
@@ -97,6 +100,7 @@ axPanel(parent, rect)
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.img = "radio.png";
+    btn_info.single_img = false;
     
     axToggle* togg = new axToggle(this,
                                  axRect(axPoint(150, 200), axSize(15, 15)),

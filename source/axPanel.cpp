@@ -22,6 +22,7 @@
 #include "axPanel.h"
 #include "axApp.h"
 #include "axWidgetSelector.h"
+#include "axScrollBar.h"
 
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 axWindow(parent, rect)
@@ -76,6 +77,11 @@ axPanel::~axPanel()
     }
     
     axWindow::~axWindow();
+}
+
+axPanel::axWindowType axPanel::GetWindowType()
+{
+    return axWindowType::axWINDOW_TYPE_PANEL;
 }
 
 void axPanel::BlockDrawing()
@@ -261,4 +267,14 @@ axRect axPanel::GetWindowPixelData(unsigned char*& data) const
                  (void*)data);
     
     return rect;
+}
+
+void axPanel::SetScrollBar(axScrollBar* scrollbar)
+{
+    _scrollBar = scrollbar;
+}
+
+axScrollBar* axPanel::GetScrollBar()
+{
+    return _scrollBar;
 }

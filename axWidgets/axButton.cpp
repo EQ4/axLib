@@ -239,7 +239,20 @@ axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
                                  _info, _img, _label, _flags, _msg);
     
     parent->GetResourceManager()->Add(name, btn);
+    btn->SetBuilderAttributes(attributes);
     return btn;
+}
+
+axStringVector axButton::Builder::GetParamNameList() const
+{
+    return axStringVector{"name",
+        "rect",
+        "info",
+        "img",
+        "label",
+        "flags",
+        "event",
+        "msg"};
 }
 
 /*******************************************************************************

@@ -272,11 +272,9 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
             axStringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
-                          stoi(strVec[1]));
-            
-            _size = axSize(stoi(strVec[2]),
-                           stoi(strVec[3]));
+            pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));
+            _size = axSize(stoi(strVec[2]), stoi(strVec[3]));
+                           
         }
         else if(s.first == "info")
         {
@@ -304,9 +302,22 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
                                  evts,
                                  _info, _img, _label, _flags, msg);
     
+    tog->SetBuilderAttributes(attributes);
+    
     _parent->GetResourceManager()->Add(name, tog);
     return tog;
     
+}
+
+axStringVector axToggle::Builder::GetParamNameList() const
+{
+    return axStringVector{"name",
+        "rect",
+        "info",
+        "label",
+        "flags",
+        "event",
+        "msg"};
 }
 
 /*******************************************************************************

@@ -168,6 +168,8 @@ public:
         Builder(axWindow* win);
         
         axToggle* Create(axVectorPairString attributes);
+        
+        virtual axStringVector GetParamNameList() const;
     
     private:
         axWindow* _parent;

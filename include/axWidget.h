@@ -103,9 +103,14 @@ public:
     bool IsInfoEditable() const;
     bool AcceptChild() const;
     
+    virtual axWindow::axWindowType GetWindowType();
+    
     virtual void SetInfo(const axVectorPairString& attributes);
     
     axInfo* GetInfo();
+    
+    void SetBuilderAttributes(const axVectorPairString& attributes);
+    axVectorPairString GetBuilderAttributes() const;
 
 protected:
     axInfo* _info;
@@ -114,8 +119,7 @@ protected:
 private:
     bool _isEditable, _isInfoEditable, _acceptChild;
     std::string _name;
-    
-    
+    axVectorPairString _builderAttributes;
 };
 
 #endif //__AX_WIDGET__

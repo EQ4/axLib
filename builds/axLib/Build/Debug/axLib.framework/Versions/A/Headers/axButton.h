@@ -141,6 +141,8 @@ public:
         
         virtual axWidget* Create(const axVectorPairString& attributes);
         
+        axStringVector GetParamNameList() const;
+        
     private:
         axButton::Info _info;
         std::string _label, _img, _msg;
