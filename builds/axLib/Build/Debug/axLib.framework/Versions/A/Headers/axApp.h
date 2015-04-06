@@ -82,13 +82,15 @@ public:
     
     inline static std::string GetAppPath()
     {
-        return GetInstance()->GetCore()->GetAppDirectory();
+        return GetInstance()->GetCore()->GetAppPath();
     }
 
 	axApp(const axSize& frame_size);
 
 	void MainLoop();
 
+    
+    std::string GetResourceFile(const std::string& file_name);
     
     
 //	void CreatePopupWindow(const axSize& size);
@@ -109,6 +111,7 @@ public:
 	bool CreatePopupWindow(const char*, int, int);
 
     std::string GetAppDirectory();
+//    std::string GetAppPath();
     
     axResourceManager* GetResourceManager() const;
     

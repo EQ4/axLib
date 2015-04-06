@@ -220,6 +220,9 @@ public:
 
 	bool operator == (const axTemplate2DPoint& pt) 
 	{ return (x == pt.x && y == pt.y); }
+    
+    bool operator != (const axTemplate2DPoint& pt)
+    { return !(x == pt.x && y == pt.y); }
 
 	bool operator < (const axTemplate2DPoint& pt) 
 	{ return (x < pt.x && y < pt.y); }

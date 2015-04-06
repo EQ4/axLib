@@ -23,10 +23,10 @@ axPanel(parent, rect)
     axObjectLoader objLoader(this, "ButtonPanel.xml");
     
     axButton::Info btn1_info;
-    btn1_info.normal = axColor(0.7, 0.7, 0.7, 0.3);
-    btn1_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
-    btn1_info.clicking = axColor(0.8, 0.8, 0.8, 0.3);
-    btn1_info.contour = axColor(0.0, 0.0, 0.0, 1.0);
+    btn1_info.normal = axColor(0.7, 0.7, 0.7, 0.0);
+    btn1_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
+    btn1_info.clicking = axColor(0.8, 0.8, 0.8, 0.0);
+    btn1_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn1_info.selected = btn1_info.normal;
     btn1_info.round_corner_radius = 3;
     
@@ -38,7 +38,7 @@ axPanel(parent, rect)
                                   axRect(40, 40, 60, 25),
                                   btn1_evts,
                                   btn1_info,
-                                  "", "Btn1");
+                                  "axButtonImg.png", "Btn1", axButton::Flags::IMG_RESIZE);
 
     
     axButton::Info btn2_info;

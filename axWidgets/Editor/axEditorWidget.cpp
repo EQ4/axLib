@@ -27,7 +27,8 @@ _flags(axButton::Flags::SINGLE_IMG),
 _selected(false),
 _msg(""),
 //_isEditing(false),
-_font(0)
+_font(0),
+_fontBold("FreeSansBold.ttf")
 {
     _currentColor = &_info.normal;
     
@@ -210,11 +211,18 @@ void axEditorWidget::OnPaint()
     axGC* gc = GetGC();
     axRect rect(GetDrawingRect());
     
-    gc->SetColor(*_currentColor);
-    gc->DrawRectangle(rect);
+//    gc->SetColor(*_currentColor);
+//    gc->DrawRectangle(rect);
+    
+    gc->DrawRectangleColorFade(rect, axColor(0.95), axColor(0.9));
     
     gc->SetColor(0.0);
-    gc->DrawStringAlignedCenter(_font, _label, rect);
+    gc->DrawRectangleContour(axRect(5, 5, 40, 30));
+    
+    gc->DrawString(_fontBold, _label, axPoint(50, 12));
+    
+    gc->DrawString(_font, "Simple button (60x26)", axPoint(120, 12));
+
     
     gc->SetColor(_info.contour);
     gc->DrawRectangleContour(rect);

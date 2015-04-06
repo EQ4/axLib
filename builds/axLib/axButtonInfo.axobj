@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axButtonInfo 
+	normal="0.8, 0.8, 0.8, 1.0" 
+	hover="0.9, 0.9, 0.9, 1.0" 
+	clicking="0.85, 0.85, 0,85, 1.0"
+	selected="0.8, 0.8, 0.8, 1.0"
+	contour="0.0, 0.0, 0.0, 1.0"
+	font_color="0.0, 0.0, 0.0, 1.0">
+</axButtonInfo>

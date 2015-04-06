@@ -103,9 +103,29 @@ public:
     void DrawRectangleColorFade(const axRect& rect,
                                 const axColor& c1,
                                 const axColor& c2);
+    
+    void DrawPolygone(const std::vector<axPoint>& points);
+    
+    void DrawArrow(const axPoint& p1,
+                   const axPoint& p2,
+                   const double& arrow_length = 12,
+                   const double& base_length = 8,
+                   const double& width = 1);
+    
+    void DrawTriangleColorFade(const axPoint& p1,
+                          const axPoint& p2,
+                          const axPoint& p3,
+                          const axColor& c1,
+                          const axColor& c2,
+                          const axColor& c3);
 
     
 	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
+    
+    void DrawLineColorfade(const axPoint& pt1, const axPoint& pt2,
+                           const axColor& c1, const axColor& c2,
+                           float width = 1.0);
+    
     void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width = 2.0);
 	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
     

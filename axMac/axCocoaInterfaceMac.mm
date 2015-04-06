@@ -144,10 +144,17 @@ void TestFunctionInterface()
 #endif // _AX_VST_APP_
 }
 
+std::string CocoaGetAppPath()
+{
+    NSString *curDir = [[NSBundle mainBundle] executablePath];
+    return std::string([curDir UTF8String]);
+}
+
 std::string CocoaGetAppDirectory()
 {
 #ifdef DEBUG
     NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
+    //NSString *curDir = [[NSBundle mainBundle] executablePath];
     return std::string([curDir UTF8String]);
 #else // RELEASE.
     

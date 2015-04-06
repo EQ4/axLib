@@ -24,6 +24,7 @@
 
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
+#include "axCocoaInterfaceMac.h"
 
 #include <iostream>
 #include "axLib.h"

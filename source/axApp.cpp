@@ -55,7 +55,6 @@ _debugEditorActive(false)
 
 #endif //_MSC_VER
     
-    
 #ifdef __APPLE__
     
 #ifdef _AX_VST_APP_
@@ -133,7 +132,7 @@ void axApp::CreateEditor()
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
     
-    btn_info.img = "settings.png";
+    btn_info.img = GetResourceFile("settings.png");
     btn_info.single_img = true;
     
     axToggle* tog = new axToggle(debugPanel,
@@ -145,30 +144,9 @@ void axApp::CreateEditor()
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
     
-    
-//    axPanel* menuPanel = new axPanel(3, nullptr,
-//                                      axRect(500 - 20, 500 - 20, 20, 20));
     _debugMenu = new axEditorMenu(axRect(size.x, 0, 300, size.y));
     _debugMenu->Hide();
-    
-//    axScrollBarEvents scrollEvents;
-//    axScrollBarInfo scroll_info;
-//    scroll_info.normal = axColor(0.8, 0.8, 0.8);
-//    scroll_info.hover = axColor(0.9, 0.9, 0.9);
-//    scroll_info.clicking = axColor(0.7, 0.7, 0.7);
-//    scroll_info.contour = axColor(0.0, 0.0, 0.0);
-//    //    scroll_info.selected = scroll_info.normal;
-//    
-//    axPoint pos(size.x - 20, 0);
-//    axScrollBar* _scrollBar = new axScrollBar(this,
-//                                              _debugMenu,
-//                                              axRect(pos, axSize(8, size.y)),
-//                                              scrollEvents,
-//                                              scroll_info);
-    
-    //_scrollBar->SetPanelSize(rect.size);
 
-    
 #endif // _axDebugEditor_
 }
 
@@ -221,15 +199,38 @@ string axApp::OpenFileDialog()
 	return _core->OpenFileDialog();
 }
 
-//bool axApp::CreatePopupWindow(const char* title, int x, int y)
-//{
-//	return _core->CreatePopupWindow("Popup", x, y);
-//}
-
 string axApp::GetAppDirectory()
 {
 	return _core->GetAppDirectory();
 }
+
+std::string axApp::GetResourceFile(const std::string& file_name)
+{
+    std::string app_path = GetCore()->GetAppPath();
+    axPrint("core ressource folder : ", app_path);
+    app_path = app_path.substr(0, app_path.find_last_of("/"));
+    app_path = app_path.substr(0, app_path.find_last_of("/"));
+    app_path = app_path.substr(0, app_path.find_last_of("/"));
+    
+    std::string last_folder = app_path.substr(app_path.find_last_of("/"),
+                                              app_path.size());
+    
+    if(last_folder == "/MacOS")
+    {
+        app_path = app_path.substr(0, app_path.find_last_of("/"));
+    }
+    
+    app_path += std::string("/Frameworks/axLib.framework/Resources/");
+    
+    axPrint("axLib ressource folder : ", app_path);
+    return app_path + file_name;
+}
+
+//std::string GetAppPath()
+//{
+//    return _core->GetAppPath();
+//}
+
 
 void axApp::MainLoop()
 {

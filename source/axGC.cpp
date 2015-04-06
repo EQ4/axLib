@@ -945,6 +945,23 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 //    glDisable(GL_LINE_SMOOTH);
 }
 
+void axGC::DrawLineColorfade(const axPoint& pt1, const axPoint& pt2,
+                             const axColor& c1, const axColor& c2,
+                             float width)
+{
+    axPoint p1 = pt1;
+    axPoint p2 = pt2;
+
+    glLineWidth(width);
+    
+    glBegin(GL_LINES);
+    SetColor(c1);
+    glVertex2f(p1.x, p1.y);
+    SetColor(c2);
+    glVertex2f(p2.x, p2.y);
+    glEnd();
+}
+
 void axGC::DrawPoint(const axPoint& pt, const int& size)
 {
     glEnable(GL_POINT_SMOOTH);
@@ -1177,4 +1194,85 @@ void axGC::DrawBigImageResize(axBigImage* img,
 	//	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 	glDeleteTextures(1, &texture);
+}
+
+void axGC::DrawPolygone(const std::vector<axPoint>& points)
+{
+    glBegin(GL_POLYGON);
+    
+    for(auto& n : points)
+    {
+        glVertex2d(n.x, n.y);
+    }
+    
+    glEnd();
+}
+
+void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
+                     const double& arrow_length, const double& base_length,
+                     const double& width)
+{
+    glLineWidth(width);
+//    double arrow_length = 12;
+//    double base_length = 8;
+    
+    axPoint arrow_vec = p2 - p1;
+    axPoint normal_vec = axPoint(-arrow_vec.y, arrow_vec.x);
+    double normal_norm = sqrt(normal_vec.x * normal_vec.x +
+                              normal_vec.y * normal_vec.y);
+    
+    normal_vec.x = (normal_vec.x / normal_norm) * base_length;
+    normal_vec.y = (normal_vec.y / normal_norm) * base_length;
+    
+    
+    axPoint arrow_base = arrow_vec;
+    double norm = sqrt(arrow_base.x * arrow_base.x +
+                       arrow_base.y * arrow_base.y);
+    arrow_base.x = (arrow_base.x / norm) * arrow_length;
+    arrow_base.y = (arrow_base.y / norm) * arrow_length;
+    arrow_base = p2 - arrow_base;
+
+    
+    axPoint pt_vec1 = arrow_base + normal_vec;
+    axPoint pt_vec2 = arrow_base - normal_vec;
+    
+    glBegin(GL_LINES);
+    glVertex2f(p1.x, p1.y);
+    glVertex2f(p2.x, p2.y);
+    glEnd();
+    
+    
+    glBegin(GL_POLYGON);
+    glVertex2f(pt_vec1.x, pt_vec1.y);
+    glVertex2f(pt_vec2.x, pt_vec2.y);
+    glVertex2f(p2.x, p2.y);
+    glEnd();
+
+    
+//    glBegin(GL_LINES);
+//    glVertex2f(arrow_base.x, arrow_base.y);
+//    glVertex2f(pt_vec1.x, pt_vec1.y);
+//    
+//    glVertex2f(arrow_base.x, arrow_base.y);
+//    glVertex2f(pt_vec2.x, pt_vec2.y);
+//    glEnd();
+}
+
+void axGC::DrawTriangleColorFade(const axPoint& p1,
+                                 const axPoint& p2,
+                                 const axPoint& p3,
+                                 const axColor& c1,
+                                 const axColor& c2,
+                                 const axColor& c3)
+{
+    glBegin(GL_POLYGON);
+    
+    SetColor(c1);
+    glVertex2d(p1.x, p1.y);
+    SetColor(c2);
+    glVertex2d(p2.x, p2.y);
+    SetColor(c3);
+    glVertex2d(p3.x, p3.y);
+    
+    glEnd();
 }

@@ -30,6 +30,8 @@ void TestFunctionInterface();
 
 std::string CocoaGetAppDirectory();
 
+std::string CocoaGetAppPath();
+
 void AddEventToDispatchQueue();
 
 void axCocoaResizeFrame(const axSize& size);

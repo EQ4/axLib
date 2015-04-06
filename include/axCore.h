@@ -48,6 +48,8 @@ public:
 
     virtual std::string GetAppDirectory() = 0;
     
+    virtual std::string GetAppPath(){return "";}
+    
     virtual axRect GetScreenRect() = 0;
     
     virtual axSize GetScreenSize() = 0;

@@ -54,6 +54,11 @@ string axCoreMac::GetAppDirectory()
     return std::string(CocoaGetAppDirectory() + std::string("/"));
 }
 
+std::string axCoreMac::GetAppPath()
+{
+    return std::string(CocoaGetAppPath() + std::string("/"));
+}
+
 //bool axCoreMac::CreatePopupWindow(const char* title, int width, int height)
 //{
 //    return false;

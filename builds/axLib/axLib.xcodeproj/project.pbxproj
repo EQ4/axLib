@@ -71,6 +71,12 @@
 		7C15C8111AB670A4007B6868 /* axWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F11AB670A4007B6868 /* axWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C8121AB670A4007B6868 /* axWindowTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F21AB670A4007B6868 /* axWindowTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C8131AB670A4007B6868 /* rapidxml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F31AB670A4007B6868 /* rapidxml.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C1605011AD1821500D728A8 /* sliderPlain.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605001AD1821400D728A8 /* sliderPlain.png */; };
+		7C1605061AD18D1C00D728A8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605051AD18D1C00D728A8 /* settings.png */; };
+		7C16052B1AD2BD2900D728A8 /* axButtonInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */; };
+		7C16052C1AD2BD2900D728A8 /* axToggleInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */; };
+		7C16052E1AD2C53400D728A8 /* libpng16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CE57F661A7FF40F00E912F5 /* libpng16.dylib */; };
+		7C1605301AD2C5AB00D728A8 /* libcairo.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C460E901A98211500E51D13 /* libcairo.dylib */; };
 		7C460E911A98211500E51D13 /* libcairo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C460E901A98211500E51D13 /* libcairo.dylib */; };
 		7C460E941A9827B400E51D13 /* axDrawingBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */; };
 		7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B751AC96C9A000B6364 /* axEditorButton.cpp */; };
@@ -130,14 +136,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7C13530D1A7FD50900C97A99 /* CopyFiles */ = {
+		7C16052D1AD2C52400D728A8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 11;
 			files = (
+				7C16052E1AD2C53400D728A8 /* libpng16.dylib in CopyFiles */,
+				7C1605301AD2C5AB00D728A8 /* libcairo.dylib in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -212,6 +220,10 @@
 		7C15C7F11AB670A4007B6868 /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
 		7C15C7F21AB670A4007B6868 /* axWindowTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindowTree.h; sourceTree = "<group>"; };
 		7C15C7F31AB670A4007B6868 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		7C1605001AD1821400D728A8 /* sliderPlain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderPlain.png; sourceTree = "<group>"; };
+		7C1605051AD18D1C00D728A8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = axButtonInfo.axobj; sourceTree = "<group>"; };
+		7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = axToggleInfo.axobj; sourceTree = "<group>"; };
 		7C460E901A98211500E51D13 /* libcairo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.dylib; path = ../../../../../../usr/local/lib/libcairo.dylib; sourceTree = "<group>"; };
 		7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axDrawingBuffer.cpp; path = ../include/axDrawingBuffer.cpp; sourceTree = "<group>"; };
 		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
@@ -288,6 +300,10 @@
 		7C1351111A7FC72800C97A99 = {
 			isa = PBXGroup;
 			children = (
+				7C1605051AD18D1C00D728A8 /* settings.png */,
+				7C1605001AD1821400D728A8 /* sliderPlain.png */,
+				7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */,
+				7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */,
 				7CE57F661A7FF40F00E912F5 /* libpng16.dylib */,
 				7C460E901A98211500E51D13 /* libcairo.dylib */,
 				7C13521D1A7FC8ED00C97A99 /* Foundation.framework */,
@@ -569,8 +585,8 @@
 				7C1351171A7FC72800C97A99 /* Frameworks */,
 				7C1351181A7FC72800C97A99 /* Headers */,
 				7C1351191A7FC72800C97A99 /* Resources */,
-				7C13530D1A7FD50900C97A99 /* CopyFiles */,
 				7C13532A1A7FD7C500C97A99 /* ShellScript */,
+				7C16052D1AD2C52400D728A8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -617,6 +633,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1605061AD18D1C00D728A8 /* settings.png in Resources */,
+				7C16052B1AD2BD2900D728A8 /* axButtonInfo.axobj in Resources */,
+				7C1605011AD1821500D728A8 /* sliderPlain.png in Resources */,
+				7C16052C1AD2BD2900D728A8 /* axToggleInfo.axobj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,8 @@ public:
 
     virtual string GetAppDirectory();
     
+    virtual std::string GetAppPath();
+    
 //    virtual bool CreatePopupWindow(const char* title, int width, int height);
 
     virtual axRect GetScreenRect();

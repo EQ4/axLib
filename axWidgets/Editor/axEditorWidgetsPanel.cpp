@@ -12,25 +12,25 @@
 axEditorWidgetsPanel::axEditorWidgetsPanel(axWindow* parent, const axRect& rect):
 axPanel(parent, rect)
 {
-    axSize btnSize(50, 50);
+    axSize btnSize(rect.size.x, 40);
     axEditorWidget* btn1 = new axEditorWidget(this,
-                                              axRect(axPoint(8, 7), btnSize),
+                                              axRect(axPoint(0, 0), btnSize),
                                               "Button");
     
     axEditorWidget* btn2 = new axEditorWidget(this,
-                                  axRect(btn1->GetNextPosRight(6), btnSize),
+                                  axRect(btn1->GetNextPosDown(0), btnSize),
                                               "Toggle");
     
     axEditorWidget* btn3 = new axEditorWidget(this,
-                                  axRect(btn2->GetNextPosRight(6), btnSize),
+                                  axRect(btn2->GetNextPosDown(0), btnSize),
                                               "Number");
     
     axEditorWidget* btn4 = new axEditorWidget(this,
-                                  axRect(btn3->GetNextPosRight(6), btnSize),
+                                  axRect(btn3->GetNextPosDown(0), btnSize),
                                               "Knob");
     
     axEditorWidget* btn5 = new axEditorWidget(this,
-                                  axRect(btn4->GetNextPosRight(6), btnSize),
+                                  axRect(btn4->GetNextPosDown(0), btnSize),
                                               "Slider");
 
     btn1->SetEditingWidget(true);
@@ -57,6 +57,8 @@ void axEditorWidgetsPanel::OnPaint()
     gc.DrawRectangleColorFade(rect, axColor(0.8), axColor(0.7));
     
     gc.SetColor(axColor(0.0));
+    
+
     gc.DrawRectangleContour(rect);
     //    gc.DrawRectangleColorFade(axRect(0, 0, rect.size.x, 40),
     //                              axColor(0.6), axColor(0.9));
