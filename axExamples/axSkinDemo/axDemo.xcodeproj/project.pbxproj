@@ -10,9 +10,8 @@
 		7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FA91A366F9E00544ACE /* Images.xcassets */; };
 		7C26300E1A36705F00544ACE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FC91A36705F00544ACE /* MainMenu.xib */; };
 		7C26303D1A3670BB00544ACE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630311A3670BB00544ACE /* main.cpp */; };
-		7C460E971A982EA100E51D13 /* libcairo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C460E961A982EA100E51D13 /* libcairo.dylib */; };
-		7C8867351ABBB03000F37306 /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C88F1A81A942D6200374108 /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7C88F1A91A942D6200374108 /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C88F1A81A942D6200374108 /* axLib.framework */; };
+		7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; };
+		7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7C8867351ABBB03000F37306 /* axLib.framework in CopyFiles */,
+				7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +35,7 @@
 		7C262FC91A36705F00544ACE /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = ../../axMac/MainMenu.xib; sourceTree = "<group>"; };
 		7C2630311A3670BB00544ACE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		7C2630321A3670BB00544ACE /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = SOURCE_ROOT; };
-		7C460E961A982EA100E51D13 /* libcairo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.dylib; path = ../../../../../../usr/local/lib/libcairo.dylib; sourceTree = "<group>"; };
-		7C88F1A81A942D6200374108 /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
+		7C8A7C291AE168A70094E9EF /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
 		7CA3C1901A75D8F400564F21 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = "../../libs/rtmidi-2.1.0/RtMidi.cpp"; sourceTree = "<group>"; };
 		7CA3C1911A75D8F400564F21 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = "../../libs/rtmidi-2.1.0/RtMidi.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,8 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C88F1A91A942D6200374108 /* axLib.framework in Frameworks */,
-				7C460E971A982EA100E51D13 /* libcairo.dylib in Frameworks */,
+				7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +55,7 @@
 		7C262F961A366F9D00544ACE = {
 			isa = PBXGroup;
 			children = (
-				7C460E961A982EA100E51D13 /* libcairo.dylib */,
-				7C88F1A81A942D6200374108 /* axLib.framework */,
+				7C8A7C291AE168A70094E9EF /* axLib.framework */,
 				7CA3C1901A75D8F400564F21 /* RtMidi.cpp */,
 				7CA3C1911A75D8F400564F21 /* RtMidi.h */,
 				7C262FC91A36705F00544ACE /* MainMenu.xib */,
@@ -224,10 +220,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-lpng16",
-					"-lfreetype",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -276,10 +269,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"-lpng16",
-					"-lfreetype",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;

@@ -75,7 +75,6 @@
 		7C1605061AD18D1C00D728A8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605051AD18D1C00D728A8 /* settings.png */; };
 		7C16052B1AD2BD2900D728A8 /* axButtonInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */; };
 		7C16052C1AD2BD2900D728A8 /* axToggleInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */; };
-		7C460E911A98211500E51D13 /* libcairo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C460E901A98211500E51D13 /* libcairo.dylib */; };
 		7C460E941A9827B400E51D13 /* axDrawingBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */; };
 		7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B751AC96C9A000B6364 /* axEditorButton.cpp */; };
 		7C841B7A1AC96C9A000B6364 /* axEditorButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C841B761AC96C9A000B6364 /* axEditorButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -128,13 +127,24 @@
 		7C8A7C0A1AE008AC0094E9EF /* axButtonBlueInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C8A7C091AE008AC0094E9EF /* axButtonBlueInfo.axobj */; };
 		7C8A7C0D1AE0259F0094E9EF /* axRadio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A7C0B1AE0259F0094E9EF /* axRadio.cpp */; };
 		7C8A7C0E1AE0259F0094E9EF /* axRadio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8A7C0C1AE0259F0094E9EF /* axRadio.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C8A7C101AE057730094E9EF /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8A7C0F1AE057730094E9EF /* axFrameBuffer.h */; };
+		7C8A7C141AE162B90094E9EF /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8A7C131AE162B90094E9EF /* axFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C8EBC611A9A54E600A55EEB /* axWidgetSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8EBC5F1A9A54E600A55EEB /* axWidgetSelector.cpp */; };
 		7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C8EBC601A9A54E600A55EEB /* axWidgetSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CBB3AD11A95121700FFCBBB /* axGraphicInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB3AD01A95121700FFCBBB /* axGraphicInterface.cpp */; };
 		7CBB3AD71A95670000FFCBBB /* axFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */; };
-		7CE57F671A7FF40F00E912F5 /* libpng16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE57F661A7FF40F00E912F5 /* libpng16.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C8A7C1C1AE165410094E9EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7C13511B1A7FC72800C97A99 /* axLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,7 +221,6 @@
 		7C1605051AD18D1C00D728A8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = axButtonInfo.axobj; sourceTree = "<group>"; };
 		7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = axToggleInfo.axobj; sourceTree = "<group>"; };
-		7C460E901A98211500E51D13 /* libcairo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.dylib; path = ../../../../../../usr/local/lib/libcairo.dylib; sourceTree = "<group>"; };
 		7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axDrawingBuffer.cpp; path = ../include/axDrawingBuffer.cpp; sourceTree = "<group>"; };
 		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
 		7C841B761AC96C9A000B6364 /* axEditorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEditorButton.h; path = Editor/axEditorButton.h; sourceTree = "<group>"; };
@@ -262,12 +271,14 @@
 		7C8A7C091AE008AC0094E9EF /* axButtonBlueInfo.axobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = axButtonBlueInfo.axobj; sourceTree = "<group>"; };
 		7C8A7C0B1AE0259F0094E9EF /* axRadio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axRadio.cpp; sourceTree = "<group>"; };
 		7C8A7C0C1AE0259F0094E9EF /* axRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axRadio.h; sourceTree = "<group>"; };
-		7C8A7C0F1AE057730094E9EF /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
+		7C8A7C131AE162B90094E9EF /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
+		7C8A7C231AE1681D0094E9EF /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../../../usr/local/lib/libpng16.a; sourceTree = "<group>"; };
+		7C8A7C251AE168330094E9EF /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../../../../../usr/local/lib/libfreetype.a; sourceTree = "<group>"; };
+		7C8A7C2C1AE16C9E0094E9EF /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = ../../../../../../opt/local/lib/libz.a; sourceTree = "<group>"; };
 		7C8EBC5F1A9A54E600A55EEB /* axWidgetSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidgetSelector.cpp; sourceTree = "<group>"; };
 		7C8EBC601A9A54E600A55EEB /* axWidgetSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidgetSelector.h; sourceTree = "<group>"; };
 		7CBB3AD01A95121700FFCBBB /* axGraphicInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGraphicInterface.cpp; sourceTree = "<group>"; };
 		7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axFrameBuffer.cpp; path = ../../source/axFrameBuffer.cpp; sourceTree = SOURCE_ROOT; };
-		7CE57F661A7FF40F00E912F5 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = /usr/local/lib/libpng16.dylib; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,10 +286,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE57F671A7FF40F00E912F5 /* libpng16.dylib in Frameworks */,
 				7C13521E1A7FC8ED00C97A99 /* Foundation.framework in Frameworks */,
 				7C13521A1A7FC8CB00C97A99 /* Cocoa.framework in Frameworks */,
-				7C460E911A98211500E51D13 /* libcairo.dylib in Frameworks */,
 				7C1352171A7FC8A600C97A99 /* GLKit.framework in Frameworks */,
 				7C1352181A7FC8A600C97A99 /* OpenGL.framework in Frameworks */,
 			);
@@ -295,8 +304,9 @@
 				7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */,
 				7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */,
 				7C8A7C091AE008AC0094E9EF /* axButtonBlueInfo.axobj */,
-				7CE57F661A7FF40F00E912F5 /* libpng16.dylib */,
-				7C460E901A98211500E51D13 /* libcairo.dylib */,
+				7C8A7C231AE1681D0094E9EF /* libpng16.a */,
+				7C8A7C251AE168330094E9EF /* libfreetype.a */,
+				7C8A7C2C1AE16C9E0094E9EF /* libz.a */,
 				7C13521D1A7FC8ED00C97A99 /* Foundation.framework */,
 				7C13521B1A7FC8D900C97A99 /* CoreFoundation.framework */,
 				7C1352191A7FC8CB00C97A99 /* Cocoa.framework */,
@@ -343,8 +353,8 @@
 				7C15C7D51AB670A4007B6868 /* axC++.h */,
 				7C15C7D61AB670A4007B6868 /* axColor.h */,
 				7C15C7D71AB670A4007B6868 /* axConfig.h */,
+				7C8A7C131AE162B90094E9EF /* axFrameBuffer.h */,
 				7C15C7D81AB670A4007B6868 /* axCore.h */,
-				7C8A7C0F1AE057730094E9EF /* axFrameBuffer.h */,
 				7C15C7D91AB670A4007B6868 /* axDrawingBuffer.h */,
 				7C15C7DA1AB670A4007B6868 /* axEvent.h */,
 				7C15C7DB1AB670A4007B6868 /* axEventManager.h */,
@@ -532,7 +542,6 @@
 				7C15C7F41AB670A4007B6868 /* axApp.h in Headers */,
 				7C15C7F71AB670A4007B6868 /* axConfig.h in Headers */,
 				7C15C7FF1AB670A4007B6868 /* axGraphicInterface.h in Headers */,
-				7C8A7C101AE057730094E9EF /* axFrameBuffer.h in Headers */,
 				7C15C7F81AB670A4007B6868 /* axCore.h in Headers */,
 				7C15C80D1AB670A4007B6868 /* axUtils.h in Headers */,
 				7C15C80B1AB670A4007B6868 /* axResourceManager.h in Headers */,
@@ -562,6 +571,7 @@
 				7C841B911ACC7AD4000B6364 /* axEditorWidgetsPanel.h in Headers */,
 				7C841B951ACC959B000B6364 /* axEditorWidget.h in Headers */,
 				7C8A7C0E1AE0259F0094E9EF /* axRadio.h in Headers */,
+				7C8A7C141AE162B90094E9EF /* axFrameBuffer.h in Headers */,
 				7C8867371ABBB25D00F37306 /* axVar.h in Headers */,
 				7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */,
 				7C88F2281A94303A00374108 /* axCoreMac.h in Headers */,
@@ -580,6 +590,7 @@
 				7C1351181A7FC72800C97A99 /* Headers */,
 				7C1351191A7FC72800C97A99 /* Resources */,
 				7C13532A1A7FD7C500C97A99 /* ShellScript */,
+				7C8A7C1C1AE165410094E9EF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -761,15 +772,12 @@
 					/usr/local/include/,
 					/usr/local/include/freetype2/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-lpng",
-					"-lz",
-					"-lfreetype",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -811,14 +819,11 @@
 					/usr/local/include/,
 					/usr/local/include/freetype2/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"-lpng",
-					"-lz",
-					"-lfreetype",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -832,18 +837,30 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Build/Debug",
 				);
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = axLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks/ @executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng16.a,
+					/usr/local/lib/libfreetype.a,
+					/usr/local/lib/libcairo.a,
+					/opt/local/lib/libz.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -857,18 +874,30 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Build/Debug",
 				);
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = axLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks/ @executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng16.a,
+					/usr/local/lib/libfreetype.a,
+					/usr/local/lib/libcairo.a,
+					/opt/local/lib/libz.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
