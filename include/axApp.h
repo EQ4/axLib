@@ -29,19 +29,19 @@
 
 #ifdef __linux__
 #include "axCoreX11.h"
-#endif //__linux__
+//#endif //__linux__
 
-#ifdef _MSC_VER
+#elif _MSC_VER
 	#if _axWxWidgetsCore_ == 1
 		#include "axCoreWxWidgets.h"
 		
 	#else
 		#include "axCoreWin32.h"
 	#endif // _axWxWidgetsCore_.
-#endif //_MSC_VER
+//#endif //_MSC_VER
 
 
-#ifdef __APPLE__
+#else// __APPLE__
     #ifdef _AX_VST_APP_
         #include "axVstCoreMac.h"
     #else

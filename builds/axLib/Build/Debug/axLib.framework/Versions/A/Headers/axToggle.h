@@ -210,7 +210,7 @@ protected:
 	};
 
 	int _nCurrentImg;
-private:
+
     axToggle::Events _events;
 	axColor* _currentColor;
 	axImage* _bgImg;
@@ -222,8 +222,6 @@ private:
 	axFlag _flags;
 	axColor test;
 	axFloat _bgAlpha;
-
-
 
     // Events.
 	virtual void OnPaint();

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+    <axToggle
+        name="toggle1"
+        rect="120, 15, 50, 50"
+        info="toggleInfo.axobj"
+        event="" 
+        msg=""
+        label="Test">
+    </axToggle>
+</axObjects>

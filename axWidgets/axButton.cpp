@@ -112,7 +112,8 @@ axStringVector axButton::Info::GetParamNameList() const
                           "clicking",
                           "selected",
                           "contour",
-                          "font_color"};
+                          "font_color",
+                          "corner_radius"};
 }
 
 std::string axButton::Info::GetAttributeValue(const std::string& name)
@@ -140,6 +141,10 @@ std::string axButton::Info::GetAttributeValue(const std::string& name)
     else if(name == "font_color")
     {
         return font_color.ToString();
+    }
+    else if(name == "corner_radius")
+    {
+        return std::to_string(round_corner_radius);
     }
     
     return "";
@@ -170,6 +175,10 @@ void axButton::Info::SetAttribute(const axStringPair& attribute)
     else if(attribute.first == "font_color")
     {
         font_color.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "corner_radius")
+    {
+        round_corner_radius = std::stoi(attribute.second);
     }
 }
 

@@ -144,18 +144,38 @@ void axColor::SerializeInput(fstream& in)
 
 void axColor::LoadFromString(const std::string& str)
 {
-    axStringVector strVec = GetVectorFromStringDelimiter(str, ",");
-    _r = stof(strVec[0]);
-    _g = stof(strVec[1]);
-    _b = stof(strVec[2]);
-    if(strVec.size() == 4)
+    
+    if(str.find_first_of("#") != std::string::npos)
     {
-        _a = stof(strVec[3]);
+        string c = str;
+        
+        unsigned int r_i, g_i, b_i;
+        
+        sscanf(c.substr(1, 2).c_str(), "%x", &r_i);
+        sscanf(c.substr(3, 2).c_str(), "%x", &g_i);
+        sscanf(c.substr(5, 2).c_str(), "%x", &b_i);
+        
+        _r = axDouble(r_i / 255.0);
+        _g = axDouble(g_i / 255.0);
+        _b = axDouble(b_i / 255.0);
+        _a = 1.0;
     }
     else
     {
-        _a = 1.0;
+        axStringVector strVec = GetVectorFromStringDelimiter(str, ",");
+        _r = stof(strVec[0]);
+        _g = stof(strVec[1]);
+        _b = stof(strVec[2]);
+        if(strVec.size() == 4)
+        {
+            _a = stof(strVec[3]);
+        }
+        else
+        {
+            _a = 1.0;
+        }
     }
+    
 }
 
 std::string axColor::ToString() const

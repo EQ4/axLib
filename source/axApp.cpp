@@ -40,10 +40,10 @@ _debugEditorActive(false)
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(axSize(0, 0));
-#endif //__linux__
+//#endif //__linux__
 
 
-#ifdef _MSC_VER
+#elsif _MSC_VER
 	#if _axWxWidgetsCore_ == 1
 	_core = new axCoreWxWidgets();
 	_core->Init(axSize(0, 0));
@@ -53,9 +53,9 @@ _debugEditorActive(false)
 		_core->Init(axSize(0, 0));
 	#endif //_axWxWidgetsCore_
 
-#endif //_MSC_VER
+//#endif //_MSC_VER
     
-#ifdef __APPLE__
+#else// __APPLE__
     
 #ifdef _AX_VST_APP_
     _core = new axVstCoreMac();
@@ -75,9 +75,9 @@ _debugEditorActive(false)
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(frame_size);
-#endif //__linux__
+//#endif //__linux__
 
-#ifdef _MSC_VER
+#elsif _MSC_VER
 	#if _axWxWidgetsCore_ == 1
 		_core = new axCoreWxWidgets();
 		_core->Init(frame_size);
@@ -87,10 +87,10 @@ _debugEditorActive(false)
 		_core->Init(frame_size);
 	#endif //_axWxWidgetsCore_
 
-#endif // _MSC_VER
+//#endif // _MSC_VER
     
     
-#ifdef __APPLE__
+#else// __APPLE__
     
 #ifdef _AX_VST_APP_
     _core = new axVstCoreMac();

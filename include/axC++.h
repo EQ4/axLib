@@ -31,9 +31,9 @@
 #include <GL/glx.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-#endif //__linux__
+//#endif //__linux__
 
-#ifdef _MSC_VER
+#elif _MSC_VER
 #include <windows.h>
 #include "GL/glew.h"
 //#include <gl\gl.h>
@@ -43,11 +43,11 @@
 #pragma warning( disable : 4244 )
 #pragma warning( disable : 4305 )
 
-#endif //_MSC_VER
+//#endif //_MSC_VER
 
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#include <OpenGL/glu.h>
+#else //__APPLE__
+    #include <OpenGL/OpenGL.h>
+    #include <OpenGL/glu.h>
 #endif // __APPLE__
 
 #include <stdint.h>

@@ -60,6 +60,7 @@
 #include "axButton.h"
 #include "axDropMenu.h"
 #include "axToggle.h"
+#include "axRadio.h"
 #include "axNumberBox.h"
 #include "axPopupMenu.h"
 #include "axSlider.h"
