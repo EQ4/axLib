@@ -219,7 +219,6 @@ void axMouseManager::OnMouseLeftUp(const axPoint& pos)
 		_currentWindow = _windowTree->FindMousePosition(pos);
 		_mouseCaptureWindow->OnMouseLeftUp(pos);
         _evtHasReachWindow = true;
-        //return true;
 	}
 	else
 	{
@@ -238,8 +237,6 @@ void axMouseManager::OnMouseLeftUp(const axPoint& pos)
 
         VerifyAndProcessWindowChange();
 	}
-    
-    //return false;
 }
 
 void axMouseManager::OnMouseRightUp()
@@ -247,6 +244,12 @@ void axMouseManager::OnMouseRightUp()
 	//DEBUG
 //    return false;
     _evtHasReachWindow = false;
+}
+
+void axMouseManager::ReleaseMouseHover()
+{
+    _currentWindow = nullptr;
+    _pastWindow = nullptr;
 }
 
 void axMouseManager::GrabMouse(axWindow* win)

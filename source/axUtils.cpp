@@ -43,5 +43,51 @@ axStringVector GetVectorFromStringDelimiter(const std::string& str,
 
 string axGetExtension(const string& path)
 {
-    return string(path.substr(path.find_last_of(".") + 1));
+//    std::size_t last_slash_pos = path.find_last_of("/");
+//    std::size_t last_dot_pos = path.find_last_of(".");
+//    
+    std::size_t last_dot = path.find_last_of(".");
+    
+    
+    if(last_dot == std::string::npos)
+    {
+        return "";
+    }
+
+    return string(path.substr(last_dot + 1));
+
+//    return string(path.substr(path.find_last_of(".") + 1));
+//    std::string file_path = path;
+//    
+//    // Determine the file extension.
+//    std::size_t last_slash_pos = file_path.find_last_of("/");
+//    std::size_t last_dot_pos = file_path.find_last_of(".");
+//    
+//    std::string extension;
+//
+//    if (last_dot_pos != std::string::npos &&
+//        last_dot_pos > last_slash_pos)
+//    {
+//        extension = file_path.substr(last_dot_pos + 1);
+//    }
+//    
+//    return extension;
 }
+
+//std::string request_handler::GetFileExtension(const std::string& path)
+//{
+//    std::string file_path = path;
+//    
+//    // Determine the file extension.
+//    std::size_t last_slash_pos = file_path.find_last_of("/");
+//    std::size_t last_dot_pos = file_path.find_last_of(".");
+//    std::string extension;
+//    
+//    if (last_dot_pos != std::string::npos &&
+//        last_dot_pos > last_slash_pos)
+//    {
+//        extension = file_path.substr(last_dot_pos + 1);
+//    }
+//    
+//    return extension;
+//}

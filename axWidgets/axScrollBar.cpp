@@ -86,6 +86,12 @@ void axScrollBar::SetPanelSize(const axSize& size)
     double ratio = double(_panelSize.y - framSize.y) / double(_panelSize.y);
 
     _sliderHeight = _sliderMaxHeight * (1.0 - ratio);
+    
+    
+    if(size.y <= framSize.y)
+    {
+        _sliderPos = 0;
+    }
     Update();
 }
 

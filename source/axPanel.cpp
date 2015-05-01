@@ -26,13 +26,11 @@
 
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 axWindow(parent, rect)
-//_panelColor(0.0, 0.0, 0.0, 0.0)
 {
 	if (parent != nullptr)
 	{
 		if (parent->GetIsPopup())
 		{
-//            GetIsPopup() = true;
             SetPopupWindow(true);
 			axApp::GetInstance()->AddPopWindow(this);
 		}
@@ -53,24 +51,36 @@ axWindow(parent, rect)
         }
 		
 	}
-
-	//_app = app;
-	//_isInPopup = false;
 }
 
 axPanel::axPanel(int f, axWindow* parent, const axRect& rect) :
 axWindow(parent, rect)
-//_panelColor(0.0, 0.0, 0.0, 0.0)
 {
-    //std::cout << "axPanel : Add popup window" << std::endl;
-//    GetIsPopup() = true;
     SetPopupWindow(true);
 	axApp::GetInstance()->AddPopWindow(this);
 }
 
 axPanel::~axPanel()
 {
-    axPrint("DELETE PANEL", GetId());
+    if(IsGrabbed())
+    {
+        UnGrabMouse();
+    }
+    
+    if(IsMouseHoverWindow())
+    {
+        if(GetIsPopup())
+        {
+            axApp::GetInstance()->GetPopupManager()->ReleaseMouseHover();
+        }
+        else
+        {
+            axApp::GetInstance()->GetWindowManager()->ReleaseMouseHover();
+        }
+        
+    }
+    
+    
     if(IsKeyGrab())
     {
         UnGrabKey();
@@ -243,7 +253,7 @@ bool axPanel::IsMouseHoverWindow()
 
 void axPanel::DeleteWindow(axWindow* win)
 {
-	//_app->GetWindowManager()->
+
 }
 
 axRect axPanel::GetWindowPixelData(unsigned char*& data) const

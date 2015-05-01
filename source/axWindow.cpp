@@ -57,7 +57,7 @@ _hasBackBuffer(true)
 
 axWindow::~axWindow()
 {
-    axPrint("DELETE WINDOW : ", GetId());
+//    axPrint("DELETE WINDOW : ", GetId());
 //    axApp::GetInstance()->GetCore()->GetWindowManager()->GetWindowTree()->DeleteWindow(this);
 }
 

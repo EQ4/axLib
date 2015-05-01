@@ -51,9 +51,12 @@ public:
     bool IsGrab();
     bool IsMouseHoverWindow(axWindow* win);
     bool IsEventReachWindow() const;
+    
+    void ReleaseMouseHover();
 
 private:
 	axWindowTree* _windowTree;
+    
 
 	// Mouse.
 	axWindow* _mouseCaptureWindow;

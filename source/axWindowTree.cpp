@@ -50,7 +50,7 @@ axWindowNode::~axWindowNode()
     
     if(window != nullptr)
     {
-        axPrint("Delete node with win id", window->GetId());
+//        axPrint("Delete node with win id", window->GetId());
         delete window;
         window = nullptr;
     }
@@ -112,10 +112,10 @@ void BeforeDrawing(axWindow* win)
         double sumY = (abs_rect.position.y + shown_rect.position.y +
                        abs_rect.size.y + delta_size_y);
         
-		glScissor(GLint(abs_rect.position.x + shown_rect.position.x - 1),
+		glScissor(GLint(abs_rect.position.x + shown_rect.position.x),
 			GLint(globalY - sumY),
 			GLint(shown_rect.size.x + 1),
-			GLint(shown_rect.size.y + 1));
+			GLint(shown_rect.size.y));
 
         glEnable(GL_SCISSOR_TEST);
     }
@@ -301,47 +301,28 @@ void axWindowTree::AddWindow(axWindow* win)
 
 void axWindowTree::DeleteWindow(axWindow* win)
 {
+    // Node to delete.
     axWindowNode* node = FindWinNode(win);
     
     if(node != nullptr)
     {
-//        axPrint("axWindowTree::DeleteWindow :: Node is  notnullptr");
+        // Find parent node.
         axWindowNode* parent = FindWinNode(node->window->GetParent());
         
         if(parent != nullptr)
         {
+            // Vector of childs containing node to delete.
             std::vector<axWindowNode*>& childs = parent->GetChild();
             
-            axPrint("Before Childs size:", childs.size(), parent->window->GetId());
-            
             int id_to_delete = node->window->GetId();
+        
+            // Remove node from parent vector.
             childs.erase(std::remove_if(childs.begin(), childs.end(),
                                         [id_to_delete](axWindowNode* n)
             {
                 return n->window->GetId() == id_to_delete;
             }),
                          childs.end());
-            
-            
-//            int child_index = -1;
-//            for (int i = 0; i < (int)childs.size(); i++)
-//            {
-//                axPrint("WIN :", childs[i]->window->GetId());
-//                if(childs[i]->window == node->window)
-//                {
-//                    child_index = i;
-//                }
-//            }
-//            
-//            if(child_index != -1)
-//            {
-//                axPrint("Remove from vector :", childs[child_index]->window->GetId());
-//                delete childs[child_index];
-//                //childs[child_index] = nullptr;
-//                childs.erase(childs.begin() + child_index);
-//            }
-            
-            axPrint("After Childs size:", childs.size(), parent->window->GetId());
         }
 
         delete node;

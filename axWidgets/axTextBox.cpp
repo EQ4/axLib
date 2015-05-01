@@ -28,7 +28,7 @@
 const axFlag axTextBox::Flags::FLASHING_CURSOR = axFLAG_1;
 const axFlag axTextBox::Flags::CONTOUR_HIGHLIGHT = axFLAG_2;
 const axFlag axTextBox::Flags::CONTOUR_NO_FADE = axFLAG_3;
-
+const axFlag axTextBox::Flags::HIDDEN_TEXT = axFLAG_4;
 /*******************************************************************************
  * axTextBox::Msg.
  ******************************************************************************/
@@ -578,49 +578,66 @@ void axTextBox::OnPaint()
     
     if_not_empty(_label)
     {
-        _cursorBarXPosition = 5;
         
-        gc->SetColor(static_cast<Info*>(_info)->font_color);
-        
-        // Start drawing label.
-        for(int i = 0; i < _label.size(); i++)
+        if(IsFlag(Flags::HIDDEN_TEXT, _flags))
         {
-            int x_past_pos = next_pos.x;
-            next_pos = gc->DrawChar(*_font, _label[i], next_pos);
-            
-            if(_isHightlight) // hightlight on.
+            // Start drawing label.
+            int x_pos = 10;
+            for(int i = 0; i < _label.size(); i++)
             {
-                gc->SetColor(static_cast<Info*>(_info)->highlight);
-                gc->DrawRectangle(axRect(x_past_pos, 5,
-                                         next_pos.x - x_past_pos, rect0.size.y - 10));
+                gc->SetColor(static_cast<Info*>(_info)->font_color);
+                gc->DrawPoint(axPoint(x_pos, 14), 6);
+                
+                x_pos += 9;
+                _cursorBarXPosition = x_pos;
+            }
+        }
+        else
+        {
+            _cursorBarXPosition = 5;
+            
+            gc->SetColor(static_cast<Info*>(_info)->font_color);
+            
+            // Start drawing label.
+            for(int i = 0; i < _label.size(); i++)
+            {
+                int x_past_pos = next_pos.x;
+                next_pos = gc->DrawChar(*_font, _label[i], next_pos);
+                
+                if(_isHightlight) // hightlight on.
+                {
+                    gc->SetColor(static_cast<Info*>(_info)->highlight);
+                    gc->DrawRectangle(axRect(x_past_pos, 5,
+                                             next_pos.x - x_past_pos, rect0.size.y - 10));
+                }
+                
+                if(_findClickCursorIndex)
+                {
+                    if(_clickPosition.x >= x_past_pos &&
+                       _clickPosition.x < next_pos.x)
+                    {
+                        _cursorIndex = i;
+                        _cursorBarXPosition = x_past_pos;
+                    }
+                    else if(i == _label.size() - 1 && _clickPosition.x > next_pos.x)
+                    {
+                        _cursorIndex = i + 1;
+                        _cursorBarXPosition = next_pos.x;
+                    }
+                }
+                else if(_cursorIndex - 1 == i)
+                {
+                    _cursorBarXPosition = next_pos.x;
+                }
             }
             
             if(_findClickCursorIndex)
             {
-                if(_clickPosition.x >= x_past_pos &&
-                   _clickPosition.x < next_pos.x)
-                {
-                    _cursorIndex = i;
-                    _cursorBarXPosition = x_past_pos;
-                }
-                else if(i == _label.size() - 1 && _clickPosition.x > next_pos.x)
-                {
-                    _cursorIndex = i + 1;
-                    _cursorBarXPosition = next_pos.x;
-                }
+                _findClickCursorIndex = false;
             }
-            else if(_cursorIndex - 1 == i)
-            {
-                _cursorBarXPosition = next_pos.x;
-            }
+            
+            _lastCharXPosition = next_pos.x;
         }
-        
-        if(_findClickCursorIndex)
-        {
-            _findClickCursorIndex = false;
-        }
-        
-        _lastCharXPosition = next_pos.x;
     }
     else
     {

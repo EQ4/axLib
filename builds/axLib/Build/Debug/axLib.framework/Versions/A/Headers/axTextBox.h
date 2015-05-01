@@ -58,6 +58,7 @@ public:
         static const axFlag FLASHING_CURSOR;
         static const axFlag CONTOUR_HIGHLIGHT;
         static const axFlag CONTOUR_NO_FADE;
+        static const axFlag HIDDEN_TEXT;
     };
     
     /***************************************************************************
