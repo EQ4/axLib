@@ -23,6 +23,7 @@
 #include "axApp.h"
 #include "axWidgetSelector.h"
 #include "axScrollBar.h"
+//#include "NSOpenGLView+axPopupWindowCocoaView.h"
 
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 axWindow(parent, rect)
@@ -56,6 +57,13 @@ axWindow(parent, rect)
 axPanel::axPanel(int f, axWindow* parent, const axRect& rect) :
 axWindow(parent, rect)
 {
+    if(f == 86)
+    {
+        axManager* man = axApp::GetInstance()->GetCore()->GetRealPopWindowManager();
+        man->Add(this);
+        return;
+    }
+    
     SetPopupWindow(true);
 	axApp::GetInstance()->AddPopWindow(this);
 }

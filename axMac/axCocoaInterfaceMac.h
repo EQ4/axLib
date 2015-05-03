@@ -53,4 +53,10 @@ void MainEntryPointCocoa(int argc, const char * argv[]);
 
 void axCallNSApplicationMain();
 
+
+
+void CreateNewPopupWindow();
+
+void SetCurrentOpenGLContext();
+
 #endif

@@ -10,6 +10,7 @@
 		7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FA91A366F9E00544ACE /* Images.xcassets */; };
 		7C26300E1A36705F00544ACE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FC91A36705F00544ACE /* MainMenu.xib */; };
 		7C26303D1A3670BB00544ACE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630311A3670BB00544ACE /* main.cpp */; };
+		7C3E4D941AF3CE5C005075E8 /* axPopupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3E4D931AF3CE5C005075E8 /* axPopupWindow.xib */; };
 		7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; };
 		7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
@@ -35,6 +36,7 @@
 		7C262FC91A36705F00544ACE /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = ../../axMac/MainMenu.xib; sourceTree = "<group>"; };
 		7C2630311A3670BB00544ACE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		7C2630321A3670BB00544ACE /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = SOURCE_ROOT; };
+		7C3E4D931AF3CE5C005075E8 /* axPopupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = axPopupWindow.xib; sourceTree = "<group>"; };
 		7C8A7C291AE168A70094E9EF /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
 		7CA3C1901A75D8F400564F21 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = "../../libs/rtmidi-2.1.0/RtMidi.cpp"; sourceTree = "<group>"; };
 		7CA3C1911A75D8F400564F21 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = "../../libs/rtmidi-2.1.0/RtMidi.h"; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				7CA3C1901A75D8F400564F21 /* RtMidi.cpp */,
 				7CA3C1911A75D8F400564F21 /* RtMidi.h */,
 				7C262FC91A36705F00544ACE /* MainMenu.xib */,
+				7C3E4D931AF3CE5C005075E8 /* axPopupWindow.xib */,
 				7C262FA11A366F9E00544ACE /* axDemo */,
 				7C262FA01A366F9D00544ACE /* Products */,
 			);
@@ -149,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3E4D941AF3CE5C005075E8 /* axPopupWindow.xib in Resources */,
 				7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */,
 				7C26300E1A36705F00544ACE /* MainMenu.xib in Resources */,
 			);

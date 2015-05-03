@@ -70,6 +70,8 @@ public:
     
 	virtual axManager* GetPopupManager();
     
+    virtual axManager* GetRealPopWindowManager();
+    
 	axSize GetGlobalSize() const;
     
     void SetGlobalSize(const axSize& size);
@@ -85,6 +87,8 @@ public:
 protected:
 	std::unique_ptr<axManager> _windowManager;
 	std::unique_ptr<axManager> _popupManager;
+    
+    std::unique_ptr<axManager> _realPopWindowManager;
 
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;

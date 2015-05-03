@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C3E4D6F1AF3BB98005075E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C3E4D6E1AF3BB98005075E8 /* Images.xcassets */; };
+		7C3E4D881AF3BBF9005075E8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3E4D871AF3BBF9005075E8 /* MainMenu.xib */; };
+		7C3E4D8A1AF3BC07005075E8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E4D891AF3BC07005075E8 /* main.cpp */; };
+		7C3E4D8C1AF3BC19005075E8 /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3E4D8B1AF3BC19005075E8 /* axLib.framework */; };
+		7C3E4D8E1AF3BC31005075E8 /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C3E4D8B1AF3BC19005075E8 /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C3E4D8D1AF3BC27005075E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C3E4D8E1AF3BC31005075E8 /* axLib.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7C3E4D641AF3BB98005075E8 /* axCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = axCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C3E4D681AF3BB98005075E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C3E4D6E1AF3BB98005075E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7C3E4D871AF3BBF9005075E8 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		7C3E4D891AF3BC07005075E8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7C3E4D8B1AF3BC19005075E8 /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C3E4D611AF3BB98005075E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C3E4D8C1AF3BC19005075E8 /* axLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C3E4D5B1AF3BB98005075E8 = {
+			isa = PBXGroup;
+			children = (
+				7C3E4D8B1AF3BC19005075E8 /* axLib.framework */,
+				7C3E4D661AF3BB98005075E8 /* axCalculator */,
+				7C3E4D651AF3BB98005075E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C3E4D651AF3BB98005075E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C3E4D641AF3BB98005075E8 /* axCalculator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C3E4D661AF3BB98005075E8 /* axCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				7C3E4D871AF3BBF9005075E8 /* MainMenu.xib */,
+				7C3E4D6E1AF3BB98005075E8 /* Images.xcassets */,
+				7C3E4D891AF3BC07005075E8 /* main.cpp */,
+				7C3E4D671AF3BB98005075E8 /* Supporting Files */,
+			);
+			path = axCalculator;
+			sourceTree = "<group>";
+		};
+		7C3E4D671AF3BB98005075E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C3E4D681AF3BB98005075E8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C3E4D631AF3BB98005075E8 /* axCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C3E4D811AF3BB99005075E8 /* Build configuration list for PBXNativeTarget "axCalculator" */;
+			buildPhases = (
+				7C3E4D601AF3BB98005075E8 /* Sources */,
+				7C3E4D611AF3BB98005075E8 /* Frameworks */,
+				7C3E4D621AF3BB98005075E8 /* Resources */,
+				7C3E4D8D1AF3BC27005075E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = axCalculator;
+			productName = axCalculator;
+			productReference = 7C3E4D641AF3BB98005075E8 /* axCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C3E4D5C1AF3BB98005075E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexandre Arsenault";
+				TargetAttributes = {
+					7C3E4D631AF3BB98005075E8 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7C3E4D5F1AF3BB98005075E8 /* Build configuration list for PBXProject "axCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7C3E4D5B1AF3BB98005075E8;
+			productRefGroup = 7C3E4D651AF3BB98005075E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C3E4D631AF3BB98005075E8 /* axCalculator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C3E4D621AF3BB98005075E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C3E4D6F1AF3BB98005075E8 /* Images.xcassets in Resources */,
+				7C3E4D881AF3BBF9005075E8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C3E4D601AF3BB98005075E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C3E4D8A1AF3BC07005075E8 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7C3E4D7F1AF3BB99005075E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+					/usr/local/include/freetype2/,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7C3E4D801AF3BB99005075E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+					/usr/local/include/freetype2/,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7C3E4D821AF3BB99005075E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug,
+				);
+				INFOPLIST_FILE = axCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C3E4D831AF3BB99005075E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug,
+				);
+				INFOPLIST_FILE = axCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C3E4D5F1AF3BB98005075E8 /* Build configuration list for PBXProject "axCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C3E4D7F1AF3BB99005075E8 /* Debug */,
+				7C3E4D801AF3BB99005075E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C3E4D811AF3BB99005075E8 /* Build configuration list for PBXNativeTarget "axCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C3E4D821AF3BB99005075E8 /* Debug */,
+				7C3E4D831AF3BB99005075E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C3E4D5C1AF3BB98005075E8 /* Project object */;
+}

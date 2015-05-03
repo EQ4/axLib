@@ -7,6 +7,7 @@
 //
 
 #include "main.h"
+#include <axlib/axCocoaInterfaceMac.h>
 
 
 MainPanel::MainPanel(axWindow* parent, const axRect& rect):
@@ -60,12 +61,48 @@ axPanel(parent, rect)
     std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
     
     axButton* btn = new axButton(this, axRect(150, 150, 60, 25),
-                                 axButton::Events(),
+                                 GetOnButtonClick(),
                                  axButton::Info(btnInfoPath),
                                  "",
                                  "Button");
+    
+    
+//    axButton* btn_pop = new axButton(this, axRect(150, 150, 60, 25),
+//                                 GetOnButtonClick(),
+//                                 axButton::Info(btnInfoPath),
+//                                 "",
+//                                 "Button");
+    
+    axPanel* panel2 = new axPanel(this, axRect(10, 10, 60, 25));
+    panel2->SetWindowColor(axColor(1.0, 0.0, 0.0));
+                                 
 }
 
+void MainPanel::OnButtonClick(const axButton::Msg& msg)
+{
+    axPrint("Btn click.");
+    
+    std::function<void()> popup_fct = []()
+    {
+        std::cout << "popup fct." << std::endl;
+        SetCurrentOpenGLContext();
+        
+        axPanel* panel = new axPanel(86, nullptr, axRect(0, 0, 200, 270));
+        panel->SetWindowColor(axColor(1.0, 0.0, 0.0));
+        
+        SetCurrentOpenGLContext();
+    };
+    
+    axApp::GetInstance()->AddPopupEntryFunction(popup_fct);
+    
+    CreateNewPopupWindow();
+    
+    
+    
+    
+//    NewWindowController *controllerWindow = [[NewWindowController alloc] initWithWindowNibName:@"You Window XIB Name"];
+//    [controllerWindow showWindow:self];
+}
 
 void MainPanel::OnPaint()
 {

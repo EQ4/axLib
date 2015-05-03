@@ -17,9 +17,12 @@ class MainPanel : public axPanel
 public:
     MainPanel(axWindow* parent, const axRect& rect);
     
-
+    axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
+    
 private:
     virtual void OnPaint();
+    
+    void OnButtonClick(const axButton::Msg& msg);
     
 };
 

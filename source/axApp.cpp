@@ -303,6 +303,19 @@ void axApp::CallAfterGUILoadFunction()
     }
 }
 
+void axApp::AddPopupEntryFunction(std::function<void()> fct)
+{
+    _popupEntryFunction = fct;
+}
+
+void axApp::CallPopupEntryFunction()
+{
+    if(_popupEntryFunction)
+    {
+        _popupEntryFunction();
+    }
+}
+
 void axApp::SetEditingWidget(axWidget* widget)
 {
     _widgetSelector->SetSelectedWidget(widget);

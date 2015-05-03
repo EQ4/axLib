@@ -119,6 +119,9 @@ public:
     void AddAfterGUILoadFunction(std::function<void()> fct);
     void CallAfterGUILoadFunction();
     
+    void AddPopupEntryFunction(std::function<void()> fct);
+    void CallPopupEntryFunction();
+    
     void CreateEditor();
     
     void SetEditingWidget(axWidget* widget);
@@ -135,6 +138,7 @@ private:
     
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
+    std::function<void()> _popupEntryFunction;
     static axResourceManager* _resourceManager;
     
     bool _debugEditorActive;

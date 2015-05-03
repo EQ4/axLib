@@ -33,6 +33,8 @@
 
 #include "axLib.h"
 
+#include "NSOpenGLView+axPopupWindowCocoaView.h"
+
 
 //AppDelegate * delegate = [[AppDelegate alloc] init];
 //[[NSApplication sharedApplication] setDelegate:delegate];
@@ -301,4 +303,39 @@ axSize axCocoaGetScreenSize()
     }
     
     return axSize(screenRect.size.width, screenRect.size.height);
+}
+
+
+
+
+
+
+
+void CreateNewPopupWindow()
+{
+//    initWithFrame:(NSRect)frame
+    
+    //axPopupWindowCocoaView* ggg = [[axPopupWindowCocoaView alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
+
+    //axPopupWindowCocoaView* ggg = [[axPopupWindowCocoaView alloc] initWithNibName: @"axPopupWindow"];
+
+    
+    // Working.
+    NSWindowController* ctrlWindow = [[NSWindowController alloc] initWithWindowNibName:@"axPopupWindow"];
+    [ctrlWindow showWindow:ctrlWindow];
+    
+
+}
+
+void SetCurrentOpenGLContext()
+{
+    //axPopupWindowCocoaView* global_popup_view
+    axPopupWindowCocoaView* delegate = (__bridge axPopupWindowCocoaView*)
+    global_popup_view;
+    
+    //        std::cout << "(void)ReInit currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
+    
+    [[delegate openGLContext] makeCurrentContext];
+    [delegate setNeedsDisplay:YES];
+    [[delegate window] update];
 }

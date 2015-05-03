@@ -38,6 +38,9 @@ void axCore::InitManagers()
     
 	_popupManager = std::unique_ptr<axManager>(new axManager());
     _popupManager->_managerName = "PopupManager";
+    
+    _realPopWindowManager = std::unique_ptr<axManager>(new axManager());
+    _realPopWindowManager->_managerName = "RealPopWindowManager";
 }
 
 int axCore::InitGL()
@@ -54,6 +57,11 @@ axManager* axCore::GetWindowManager()
 axManager* axCore::GetPopupManager()
 {
 	 return _popupManager.get();
+}
+
+axManager* axCore::GetRealPopWindowManager()
+{
+    return _realPopWindowManager.get();
 }
 
 void axCore::ResizeGLScene(const axSize& size)

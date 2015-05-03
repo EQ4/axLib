@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axButtonInfo 
+	normal="#35A6EE"
+	hover="#28B0EE"
+	clicking="#139AE9"
+	selected="#35A6EE"
+	contour="0.0, 0.0, 0.0, 0.0"
+	font_color="1.0, 1.0, 1.0, 1.0"
+    corner_radius="3">
+</axButtonInfo>
