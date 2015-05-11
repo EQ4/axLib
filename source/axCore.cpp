@@ -74,7 +74,7 @@ void axCore::ResizeGLScene(const axSize& size)
 	_needToDraw = true;
 	_popupNeedToDraw = true;
     
-    GetWindowManager()->OnSize();
+    GetWindowManager()->OnSize(size);
 }
 
 axSize axCore::GetGlobalSize() const

@@ -23,6 +23,8 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+//#import <AppKit/AppKit.h>
+
 #include <iostream>
 
 #ifdef _AX_VST_APP_
@@ -39,28 +41,53 @@
 //AppDelegate * delegate = [[AppDelegate alloc] init];
 //[[NSApplication sharedApplication] setDelegate:delegate];
 //[NSApp run];
-void MainEntryPointCocoa(int argc, const char * argv[])
-{
-//    NSApplicationMain(argc, argv);
-    
-    axAppDelegate* delegate = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
-
-    //[[NSApplication sharedApplication] setDelegate:delegate];
-    [NSApp run];
-}
-//ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:(id<ZXingDelegate>)self showCancel:YES OneDMode:NO];
+//void MainEntryPointCocoa(int argc, const char * argv[])
+//{
+////    NSApplicationMain(argc, argv);
+//    
+//    axAppDelegate* delegate = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
+//
+//    //[[NSApplication sharedApplication] setDelegate:delegate];
+//    [NSApp run];
+//}
 
 void axCallNSApplicationMain()
 {
+    std::cout << "axCallNSApplicationMain" << std::endl;
     [NSApplication sharedApplication];
     [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
     [NSApp run];
+    
+    
+//    [NSApplication sharedApplication];
+//    [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
+//    NSArray** topLevelObjects;
+//    [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
+    
+    
+//    int argc = 1;
+//    const char** argv;
+//    
+//    NSApplicationMain(argc, argv);
+//    NSApplicationMain(argc, argv, @"UIApplication", @"MyAppDelegate");
+//topLevelObjects:(NSArray **)topLevelObjects
+//    NSWindowController* ctrlWindow = [[NSWindowController alloc] initWithWindowNibName:@"MainMenu"];
+//    [NSApp run];
+    
+
+
+//    NSWindowController* ctrlWindow = [[NSWindowController alloc] initWithWindowNibName:@"MainMenu"];
+//    [ctrlWindow showWindow:ctrlWindow];
     
 //    int argc = 0;
 //    const char* argv[] = {""};
 //    
 //    NSApplicationMain(argc, argv);
     
+//    [NSApplication sharedApplication];
+//    NSWindowController* ctrlWindow = [[NSWindowController alloc] initWithWindowNibName:@"MainMenu"];
+//    [ctrlWindow showWindow:ctrlWindow];
+
 //    axAppDelegate* delegate = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 300, 300)];
 //    [[NSApplication sharedApplication] setDelegate:delegate];
 //    [NSApp run];
@@ -143,6 +170,7 @@ void TestFunctionInterface()
 #else
     
     [GlobalAppDelegate MemberTestFunc];
+    [global_popup_view MemberTestFunc];
 #endif // _AX_VST_APP_
 }
 

@@ -148,6 +148,9 @@ void axPrint(T t, P ...p)
     }
 }
 
+
+#define axDebug(x) axPrint(x)
+
 // Since variadic templates are recursive, must have a base case.
 void axError();
 

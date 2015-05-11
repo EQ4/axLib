@@ -40,6 +40,7 @@ class axWindow : public axObject
 {
 public:
 	axWindow(axWindow* parent, const axRect& rect);
+    axWindow(axApp* app, const axRect& rect);
     virtual ~axWindow();
     
     enum axWindowType
@@ -92,6 +93,11 @@ public:
     
     void SetPopupWindow(const bool& popup);
     
+    bool GetIsRealPopup();
+    
+    void SetRealPopupWindow(const bool& popup);
+    
+    
     void SetSelectable(const bool& selectable);
     
     bool IsSelectable() const;
@@ -126,7 +132,7 @@ public:
     virtual void OnPaint();
     virtual void OnPaintStatic(){}
     virtual void Update() = 0;
-    virtual void OnResize(){}
+    virtual void OnResize(const axSize& size){}
     
     // Mouse events.
     virtual void OnLeftDragging(){}
@@ -151,8 +157,11 @@ public:
     virtual void OnRightArrowDown(){}
     virtual void OnWasKeyUnGrabbed(){}
     virtual void OnWasKeyGrabbed(){}
+    
+    
 
 private:
+//    axApp* _app;
 	axWindow* _parent;
 	axRect _rect, _shownRect;
 	axPoint _absolutePosition, _scrollDecay;
@@ -163,7 +172,7 @@ private:
     /// @todo Remove this.
 	axGC* _gc;
 
-    bool _isPopup;
+    bool _isPopup, _isRealPopup;
     bool _needUpdate;
     bool _isHidden;
     bool _isBlockDrawing;

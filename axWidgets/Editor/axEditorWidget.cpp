@@ -121,7 +121,7 @@ void axEditorWidget::OnMouseLeftUp(const axPoint& pos)
         
         // Find panel under mouse.
         
-        axManager* manager = axApp::GetInstance()->GetCore()->GetWindowManager();
+        axManager* manager = GetApp()->GetCore()->GetWindowManager();
         axWindow* win = manager->GetWindowTree()->FindMousePosition(pos);
         
         

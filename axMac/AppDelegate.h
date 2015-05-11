@@ -23,9 +23,11 @@
 
 //NSOpenGLView,
 //NSOpenGLView,
+class axApp;
+
 @interface axAppDelegate : NSOpenGLView
 {
-  
+    axApp* _axApp;
 }
 
 
@@ -33,12 +35,12 @@
 - (void) drawRect: (NSRect)bounds;
 
 // Mouse mouve event.
-- (void) mouseMoved:(NSEvent *)MyMouseMouse;
+- (void) mouseMoved:(NSEvent *) evt;
 
-- (void) windowDidResize:(NSEvent *)event;
+- (void) windowDidResize:(NSNotification *)notification;
 - (void) windowDidMove:(NSNotification *)notification;
 
-- (void) setFrameSize:(NSSize)newSize;
+//- (void) setFrameSize:(NSSize)newSize;
 - (void) SetFrameSize:(NSSize)newSize;
 - (void) itemChanged:(NSMenuItem *)anObject;
 
@@ -48,6 +50,8 @@
 
 
 - (id) MemberTestFunc;
+
+
 
 @property(assign) id< NSApplicationDelegate > delegate;
 @end

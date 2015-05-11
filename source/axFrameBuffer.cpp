@@ -88,7 +88,8 @@ void axFrameBuffer::Resize(const axSize& size)
 }
 
 void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
-                                      const axSize& size)
+                                      const axSize& size,
+                                      const axSize& globalSize)
 {
 #if _axBackBufferWindow_ == 1
     bool need_to_reactive_clip_test = false;
@@ -135,7 +136,7 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
     
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     
-    axSize gSize(axApp::GetInstance()->GetCore()->GetGlobalSize());
+    axSize gSize(globalSize);
     glViewport(0, 0, gSize.x, gSize.y);
     axOrtho2D(proj.Identity().GetData(), gSize);
     

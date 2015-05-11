@@ -378,6 +378,8 @@ void axButton::OnMouseLeftUp(const axPoint& pos)
 
 void axButton::OnMouseEnter()
 {
+    axDebug("axButton::OnMouseEnter()");
+    
     if (!IsGrabbed())
     {
         _currentColor = &static_cast<axButton::Info*>(_info)->hover;
@@ -438,7 +440,7 @@ void axButton::OnPaint()
         }
     }
     
-    if_not_empty(_label)
+    if(!_label.empty())
     {
         gc.SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
         gc.DrawStringAlignedCenter(*_font, _label, rect0);

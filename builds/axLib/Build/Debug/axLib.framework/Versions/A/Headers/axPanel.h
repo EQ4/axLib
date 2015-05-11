@@ -33,6 +33,7 @@ class axScrollBar;
 class axPanel : public axWindow
 {
 public:
+    axPanel(axApp* app, const axRect& rect);
 	axPanel(axWindow* parent, const axRect& rect);
 	axPanel(int f, axWindow* parent, const axRect& rect);
 
@@ -59,7 +60,7 @@ public:
     
     bool IsKeyGrab();
     
-	axApp* GetApp();
+//	axApp* GetApp();
 
 	void BlockDrawing();
 	void BlockDrawing(const axRect& rect);

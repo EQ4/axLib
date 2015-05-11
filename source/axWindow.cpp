@@ -26,12 +26,14 @@
 #include "axGraphicInterface.h"
 #include "axWindowTree.h"
 
-axWindow::axWindow(axWindow* parent, const axRect& rect):
-// Members.
-_parent(parent),
+axWindow::axWindow(axApp* app, const axRect& rect):
+// Heritage.
+axObject(app),
+_parent(nullptr),
 _rect(rect),
 _isHidden(false),
 _isPopup(false),
+_isRealPopup(false),
 _isBlockDrawing(false),
 _shownRect(axPoint(0, 0), rect.size),
 _isSelectable(true),
@@ -43,12 +45,41 @@ _isEditable(true),
 _frameBufferObj(rect.size),
 _hasBackBuffer(true)
 {
+    
+}
+
+axWindow::axWindow(axWindow* parent, const axRect& rect):
+// Heritage.
+axObject(parent->GetApp()),
+// Members.
+_parent(parent),
+_rect(rect),
+_isHidden(false),
+_isPopup(false),
+_isRealPopup(false),
+_isBlockDrawing(false),
+_shownRect(axPoint(0, 0), rect.size),
+_isSelectable(true),
+_windowColor(0.0, 0.0, 0.0, 0.0),
+_contourColor(0.0, 0.0, 0.0, 0.0),
+_needUpdate(true),
+_isEditingWidget(false),
+_isEditable(true),
+_frameBufferObj(rect.size),
+_hasBackBuffer(true)
+//_app(nullptr)
+{
 	if (parent == nullptr)
 	{
+        // Should now never happen with new axApp.
+//        std::cerr << "SHOULD NEVER HAPPEN." << std::endl;
+//        assert(true);
+        
 		_absolutePosition = rect.position;
 	}
 	else
 	{
+//        _app = parent->GetApp();
 		_absolutePosition = parent->_absolutePosition + rect.position;
 	}
     
@@ -256,8 +287,7 @@ void axWindow::SetPosition(const axPoint& pos)
 
 bool axWindow::IsSelectable() const
 {
-    if(IsEditingWidget() &&
-       axApp::GetInstance()->IsDebugEditorActive() == false)
+    if(IsEditingWidget() && GetApp()->IsDebugEditorActive() == false)
     {
         return false;
     }
@@ -288,6 +318,17 @@ bool axWindow::IsEditable() const
 void axWindow::SetPopupWindow(const bool& popup)
 {
     _isPopup = popup;
+}
+
+
+bool axWindow::GetIsRealPopup()
+{
+    return _isRealPopup;
+}
+
+void axWindow::SetRealPopupWindow(const bool& popup)
+{
+    _isRealPopup = popup;
 }
 
 void axWindow::SetWindowColor(const axColor& color)
@@ -361,9 +402,11 @@ void axWindow::RenderWindow()
     {
         if(_needUpdate)
         {
-            std::function<void()> draw([this](){ OnPaint(); });
+//            std::function<void()> draw([this](){ OnPaint(); });
             
-            _frameBufferObj.DrawOnFrameBuffer(draw, GetRect().size);
+            _frameBufferObj.DrawOnFrameBuffer([this](){ OnPaint(); },
+                                              GetRect().size,
+                                              GetApp()->GetCore()->GetGlobalSize());
             _needUpdate = false;
         }
         

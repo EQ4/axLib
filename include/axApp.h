@@ -56,6 +56,7 @@
 class axEditorMenu;
 class axWidget;
 class axWidgetSelector;
+class axEventManager;
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -63,26 +64,31 @@ class axApp
 public:
 	axApp();
 
-	inline static axApp* GetInstance()
-	{
-		return MainInstance;
-	}
+//	inline static axApp* GetInstance()
+//	{
+//		return MainInstance;
+//	}
 
-	inline static axApp* CreateApp()
-	{
-		return MainInstance == nullptr ?
-               MainInstance = new axApp() : MainInstance;
-	}
-
-	inline static axApp* CreateApp(const axSize& frame_size)
-	{
-		return MainInstance == nullptr ?
-               MainInstance = new axApp(frame_size) : MainInstance;
-	}
+//	inline static axApp* CreateApp()
+//	{
+//		return MainInstance == nullptr ?
+//               MainInstance = new axApp() : MainInstance;
+//	}
+//
+//	inline static axApp* CreateApp(const axSize& frame_size)
+//	{
+//		return MainInstance == nullptr ?
+//               MainInstance = new axApp(frame_size) : MainInstance;
+//	}
     
-    inline static std::string GetAppPath()
+//    inline static std::string GetAppPath()
+//    {
+//        return GetInstance()->GetCore()->GetAppPath();
+//    }
+
+    inline std::string GetAppPath()
     {
-        return GetInstance()->GetCore()->GetAppPath();
+        return _core->GetAppPath();
     }
 
 	axApp(const axSize& frame_size);
@@ -108,7 +114,7 @@ public:
 
     std::string GetAppDirectory();
     
-    axResourceManager* GetResourceManager() const;
+    axResourceManager* GetResourceManager();
     
     void ActivateDebugEditor(const bool& active);
     bool IsDebugEditorActive() const;
@@ -130,23 +136,33 @@ public:
     
     axEditorMenu* GetEditor();
     
+    inline axEventManager* GetEventManager()
+    {
+        return _evtManager;
+    }
+    
+    static inline axApp* GetMainApp()
+    {
+        return _mainApp;
+    }
+    
 private:
-    static axApp* MainInstance;
+//    static axApp* MainInstance;
 	axCore* _core;
+    static axApp* _mainApp;
+    
+    axEventManager* _evtManager;
     
     axEditorMenu* _debugMenu;
-    
-    
+
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     std::function<void()> _popupEntryFunction;
-    static axResourceManager* _resourceManager;
+    axResourceManager* _resourceManager;
     
     bool _debugEditorActive;
     
     axEVENT_ACCESSOR(axMsg, OnDebugEditor);
     void OnDebugEditor(const axMsg& msg);
-    
-    
 };
 
 /// @}

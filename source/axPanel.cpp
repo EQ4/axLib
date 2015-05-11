@@ -25,6 +25,63 @@
 #include "axScrollBar.h"
 //#include "NSOpenGLView+axPopupWindowCocoaView.h"
 
+axPanel::axPanel(axApp* app, const axRect& rect) :
+axWindow(app, rect)
+{
+    if(GetIsPopup())
+    {
+        app->AddPopWindow(this);
+    }
+    else if(GetIsRealPopup())
+    {
+        SetRealPopupWindow(true);
+        axManager* man = app->GetCore()->GetRealPopWindowManager();
+        man->Add(this);
+    }
+    else
+    {
+        app->AddWindow(this);
+    }
+//    if (parent != nullptr)
+//    {
+//        if (parent->GetIsPopup())
+//        {
+//            SetPopupWindow(true);
+//            GetApp()->AddPopWindow(this);
+//        }
+//        else if(parent->GetIsRealPopup())
+//        {
+//            SetRealPopupWindow(true);
+//            axManager* man = GetApp()->GetCore()->GetRealPopWindowManager();
+//            man->Add(this);
+//        }
+//        else
+//        {
+//            GetApp()->AddWindow(this);
+//        }
+//    }
+//    else
+//    {
+//        if(GetIsPopup())
+//        {
+//            GetApp()->AddPopWindow(this);
+//        }
+//        else if(GetIsRealPopup())
+//        {
+//            SetRealPopupWindow(true);
+//            axManager* man = GetApp()->GetCore()->GetRealPopWindowManager();
+//            man->Add(this);
+//        }
+//        else
+//        {
+//            GetApp()->AddWindow(this);
+//        }
+//        
+//    }
+}
+
+
+
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 axWindow(parent, rect)
 {
@@ -33,22 +90,34 @@ axWindow(parent, rect)
 		if (parent->GetIsPopup())
 		{
             SetPopupWindow(true);
-			axApp::GetInstance()->AddPopWindow(this);
+			GetApp()->AddPopWindow(this);
 		}
+        else if(parent->GetIsRealPopup())
+        {
+            SetRealPopupWindow(true);
+            axManager* man = GetApp()->GetCore()->GetRealPopWindowManager();
+            man->Add(this);
+        }
 		else
 		{
-			axApp::GetInstance()->AddWindow(this);
+			GetApp()->AddWindow(this);
 		}
 	}
 	else
 	{
         if(GetIsPopup())
         {
-            axApp::GetInstance()->AddPopWindow(this);
+            GetApp()->AddPopWindow(this);
+        }
+        else if(GetIsRealPopup())
+        {
+            SetRealPopupWindow(true);
+            axManager* man = GetApp()->GetCore()->GetRealPopWindowManager();
+            man->Add(this);
         }
         else
         {
-            axApp::GetInstance()->AddWindow(this);
+            GetApp()->AddWindow(this);
         }
 		
 	}
@@ -59,13 +128,13 @@ axWindow(parent, rect)
 {
     if(f == 86)
     {
-        axManager* man = axApp::GetInstance()->GetCore()->GetRealPopWindowManager();
+        axManager* man = GetApp()->GetCore()->GetRealPopWindowManager();
         man->Add(this);
         return;
     }
     
     SetPopupWindow(true);
-	axApp::GetInstance()->AddPopWindow(this);
+	GetApp()->AddPopWindow(this);
 }
 
 axPanel::~axPanel()
@@ -79,11 +148,11 @@ axPanel::~axPanel()
     {
         if(GetIsPopup())
         {
-            axApp::GetInstance()->GetPopupManager()->ReleaseMouseHover();
+            GetApp()->GetPopupManager()->ReleaseMouseHover();
         }
         else
         {
-            axApp::GetInstance()->GetWindowManager()->ReleaseMouseHover();
+            GetApp()->GetWindowManager()->ReleaseMouseHover();
         }
         
     }
@@ -133,32 +202,32 @@ void axPanel::UnBlockDrawing()
 	glDisable(GL_SCISSOR_TEST);
 }
 
-axApp* axPanel::GetApp()
-{
-	//return _app;
-	return axApp::GetInstance();
-
-}
+//axApp* axPanel::GetApp()
+//{
+//	//return _app;
+//	return axApp::GetInstance();
+//
+//}
 
 void axPanel::ShowMouse()
 {
-    axApp::GetInstance()->GetCore()->ShowMouse();
+    GetApp()->GetCore()->ShowMouse();
 }
 
 void axPanel::HideMouse()
 {
-    axApp::GetInstance()->GetCore()->HideMouse();
+    GetApp()->GetCore()->HideMouse();
 }
 
 void axPanel::GrabMouse()
 {
     if(GetIsPopup())
     {
-        axApp::GetInstance()->GetPopupManager()->GrabMouse(this);
+        GetApp()->GetPopupManager()->GrabMouse(this);
     }
     else
     {
-        axApp::GetInstance()->GetWindowManager()->GrabMouse(this);
+        GetApp()->GetWindowManager()->GrabMouse(this);
     }
 	
 }
@@ -167,11 +236,11 @@ void axPanel::UnGrabMouse()
 {
     if(GetIsPopup())
     {
-        axApp::GetInstance()->GetPopupManager()->UnGrabMouse();
+        GetApp()->GetPopupManager()->UnGrabMouse();
     }
     else
     {
-        axApp::GetInstance()->GetWindowManager()->UnGrabMouse();
+        GetApp()->GetWindowManager()->UnGrabMouse();
     }
 	
 }
@@ -180,11 +249,11 @@ void axPanel::GrabKey()
 {
     if(GetIsPopup())
     {
-        axApp::GetInstance()->GetPopupManager()->GrabKey(this);
+        GetApp()->GetPopupManager()->GrabKey(this);
     }
     else
     {
-        axApp::GetInstance()->GetWindowManager()->GrabKey(this);
+        GetApp()->GetWindowManager()->GrabKey(this);
     }
 }
 
@@ -192,11 +261,11 @@ void axPanel::UnGrabKey()
 {
     if(GetIsPopup())
     {
-        axApp::GetInstance()->GetPopupManager()->UnGrabKey();
+        GetApp()->GetPopupManager()->UnGrabKey();
     }
     else
     {
-        axApp::GetInstance()->GetWindowManager()->UnGrabKey();
+        GetApp()->GetWindowManager()->UnGrabKey();
     }
 }
 
@@ -204,28 +273,28 @@ bool axPanel::IsKeyGrab()
 {
     if(GetIsPopup())
     {
-        return axApp::GetInstance()->GetPopupManager()->IsKeyGrab(this);
+        return GetApp()->GetPopupManager()->IsKeyGrab(this);
     }
     else
     {
-        return axApp::GetInstance()->GetWindowManager()->IsKeyGrab(this);
+        return GetApp()->GetWindowManager()->IsKeyGrab(this);
     }
     
 }
 
 void axPanel::UpdateAll()
 {
-	axApp::GetInstance()->UpdateAll();
+	GetApp()->UpdateAll();
 }
 
 void axPanel::Update()
 {
-    if(axApp::GetInstance()->_widgetSelector != nullptr &&
-       axApp::GetInstance()->_widgetSelector->GetSelectedWidget() == this)
+    if(GetApp()->_widgetSelector != nullptr &&
+       GetApp()->_widgetSelector->GetSelectedWidget() == this)
     {
-        if(axApp::GetInstance()->IsDebugEditorActive())
+        if(GetApp()->IsDebugEditorActive())
         {
-            axApp::GetInstance()->_widgetSelector->SetSelectedWidget(this);
+            GetApp()->_widgetSelector->SetSelectedWidget(this);
         }
         
     }
@@ -237,11 +306,11 @@ bool axPanel::IsGrabbed()
 {
     if(GetIsPopup())
     {
-        return axApp::GetInstance()->GetPopupManager()->IsGrab();
+        return GetApp()->GetPopupManager()->IsGrab();
     }
     else
     {
-        return axApp::GetInstance()->GetWindowManager()->IsGrab();
+        return GetApp()->GetWindowManager()->IsGrab();
     }
 	
 }
@@ -250,11 +319,11 @@ bool axPanel::IsMouseHoverWindow()
 {
     if(GetIsPopup())
     {
-        return axApp::GetInstance()->GetPopupManager()->IsMouseHoverWindow(this);
+        return GetApp()->GetPopupManager()->IsMouseHoverWindow(this);
     }
     else
     {
-        return axApp::GetInstance()->GetWindowManager()->IsMouseHoverWindow(this);
+        return GetApp()->GetWindowManager()->IsMouseHoverWindow(this);
     }
 	
 }
@@ -274,7 +343,7 @@ axRect axPanel::GetWindowPixelData(unsigned char*& data) const
     
     data = new unsigned char[rect.size.x * rect.size.y * 4];
     
-    axSize globalSize(axApp::GetInstance()->GetCore()->GetGlobalSize());
+    axSize globalSize(GetApp()->GetCore()->GetGlobalSize());
 
     glReadPixels(rect.position.x,
                  globalSize.y - rect.position.y - rect.size.y,

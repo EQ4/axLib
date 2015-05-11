@@ -301,7 +301,7 @@ _maxNumChar(10000000)
     
     if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new_ axTimer();
+        _flashingCursor = new_ axTimer(GetApp());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     

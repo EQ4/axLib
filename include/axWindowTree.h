@@ -57,6 +57,8 @@ public:
 	axWindow* window;
     
     void DrawNode();
+    
+    void ResizeNode(const axSize& size);
 
 private:
 	vector<axWindowNode*> _childNodes;
