@@ -37,13 +37,15 @@
 #include <map>
 #include <iostream>
 
+class axApp;
+
 typedef unsigned int axID;
 
 /// Id from axObject are used has unique identifier in axEventManager.
 class axObject
 {
 public:
-    axObject();
+    axObject(axApp* app);
     
     /// Add a function to the EventManager.
     void AddConnection(const axEventId& evtId, axEventFunction fct) const;
@@ -62,7 +64,19 @@ public:
     /// Get a function from the object map.
     axEventFunction GetEventFunction(const std::string& name);
     
+    inline axApp* GetApp()
+    {
+        return _app;
+    }
+    
+    inline axApp* GetApp() const
+    {
+        return _app;
+    }
+    
 private:
+    axApp* _app;
+    
     /// Unique identifier.
     axID _id;
     

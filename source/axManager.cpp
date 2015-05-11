@@ -64,11 +64,27 @@ axWindowTree* axManager::GetWindowTree()
     return &_windowTree;
 }
 
-void axManager::OnSize()
+void axManager::OnSize(const axSize& size)
 {
-//    for (auto& x : _windows)
+    
+//    for(auto& n : _windowTree.GetMainNode())
 //    {
-//        axWindow* win = x.second;
-//        win->OnResize();
+//        n->window->OnResize(size);
+//    }
+//    _windowTree.GetMainNode()[0]->window->OnResize(size);
+    
+    for (axWindowNode* it : _windowTree.GetMainNode())
+    {
+        if(it != nullptr)
+        {
+            it->ResizeNode(size);
+        }
+    }
+
+//    for (auto& x :  _windowTree.GetMainNode())
+//    {
+//        
+////        axWindow* win = x->second;
+////        win->OnResize(size);
 //    }
 }

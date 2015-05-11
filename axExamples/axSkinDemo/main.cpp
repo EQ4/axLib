@@ -10,9 +10,9 @@
 #include <axlib/axCocoaInterfaceMac.h>
 
 
-MainPanel::MainPanel(axWindow* parent, const axRect& rect):
+MainPanel::MainPanel(axApp* app, const axRect& rect):
 // Parent.
-axPanel(parent, rect)
+axPanel(app, rect)
 {
     
     axToggle::Events toggle_events;
@@ -57,7 +57,7 @@ axPanel(parent, rect)
                                    tog_info,
                                    "");
     
-    axApp* app = GetApp();
+//    axApp* app = GetApp();
     std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
     
     axButton* btn = new axButton(this, axRect(150, 150, 60, 25),
@@ -81,21 +81,32 @@ axPanel(parent, rect)
 void MainPanel::OnButtonClick(const axButton::Msg& msg)
 {
     axPrint("Btn click.");
-    
-    std::function<void()> popup_fct = []()
-    {
-        std::cout << "popup fct." << std::endl;
-        SetCurrentOpenGLContext();
-        
-        axPanel* panel = new axPanel(86, nullptr, axRect(0, 0, 200, 270));
-        panel->SetWindowColor(axColor(1.0, 0.0, 0.0));
-        
-        SetCurrentOpenGLContext();
-    };
-    
-    axApp::GetInstance()->AddPopupEntryFunction(popup_fct);
-    
-    CreateNewPopupWindow();
+//
+//    std::function<void()> popup_fct = [&]()
+//    {
+//        std::cout << "popup fct." << std::endl;
+//        SetCurrentOpenGLContext();
+//        
+//        axPanel* panel = new axPanel(86, nullptr, axRect(0, 0, 200, 270));
+//        panel->SetWindowColor(axColor(1.0, 0.0, 0.0));
+//        panel->SetRealPopupWindow(true);
+//        
+//        axApp* app = GetApp();
+//        std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
+//        axButton* btn = new axButton(panel, axRect(10, 10, 60, 25),
+//                                     axButton::Events(),
+//                                     axButton::Info(btnInfoPath),
+//                                     "",
+//                                     "Button");
+//
+//        
+//        
+//    };
+//    
+//    SetCurrentOpenGLContext();
+//    axApp::GetInstance()->AddPopupEntryFunction(popup_fct);
+//    
+//    CreateNewPopupWindow();
     
     
     
@@ -104,33 +115,43 @@ void MainPanel::OnButtonClick(const axButton::Msg& msg)
 //    [controllerWindow showWindow:self];
 }
 
+void MainPanel::OnResize(const axSize& size)
+{
+    axPrint("MainPanel::OnResize : size : ", size.x, size.y);
+    SetSize(size);
+}
+
 void MainPanel::OnPaint()
 {
-    axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    axGC gc(this);
+    axRect rect(GetDrawingRect());
     
-    gc->SetColor(axColor(0.95));
-    gc->DrawRectangle(rect0);
+    gc.SetColor(axColor(0.95));
+    gc.DrawRectangle(rect);
     
-//    
-//    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//    gc->DrawRectangleContour(rect0);
+    gc.SetColor(axColor(0.75));
+    gc.DrawRectangle(axRect(0, 0, rect.size.x , 40));
+    
+    gc.SetColor(axColor(0.55));
+    gc.DrawRectangle(axRect(0, 40, 200 , rect.size.y - 40));
+    
+    gc.SetColor(axColor(0.45));
+    gc.DrawRectangleContour(rect);
     
 }
 
 int main(int argc, char* argv[])
 {
-    
-    axPrint("Main");
-	axEventManager::GetInstance();
-	axApp* app = axApp::CreateApp(axSize(550, 500));
+//	axEventManager::GetInstance();
+    axApp app(axSize(550, 500));
+//	axApp* app = axApp::CreateApp(axSize(550, 500));
 
-    app->AddMainEntry([]()
+    app.AddMainEntry([&app]()
     {
-        MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 550, 500));
+        MainPanel* mainPanel = new MainPanel(&app, axRect(0, 0, 550, 500));
     });
 
-	app->MainLoop();
+	app.MainLoop();
+    
 	return 0;
 }

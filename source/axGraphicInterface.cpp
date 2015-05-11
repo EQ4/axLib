@@ -66,7 +66,7 @@ namespace axGraphicInterface
         glLoadIdentity();
         
         // Draw black rectangle.
-        glColor4d(0.0, 0.0, 0.0, 1.0);
+        glColor4d(0.4, 0.0, 0.0, 1.0);
         
         // Draw black rectangle.
         axFloatRect rect(-1.0, -1.0, size.x * 2.0, size.y * 2.0);

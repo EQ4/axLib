@@ -99,7 +99,7 @@ void axDebugButton::OnMouseLeftDown(const axPoint& pos)
     {
         
         //axPrint("Ctrl :", );
-        axApp::GetInstance()->SetEditingWidget(widget);
+        GetApp()->SetEditingWidget(widget);
         
         GrabMouse();
         
@@ -113,7 +113,7 @@ void axDebugButton::OnMouseLeftDown(const axPoint& pos)
 
 void axDebugButton::OnMouseLeftDragging(const axPoint &pos)
 {
-    axApp::GetInstance()->GetEditor()->UpdateInfo();
+    GetApp()->GetEditor()->UpdateInfo();
     
     
     axWindow* panel = GetParent()->GetParent();

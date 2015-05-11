@@ -33,6 +33,7 @@ axCoreMac::axCoreMac()
 
 void axCoreMac::MainLoop()
 {
+    std::cout << "MainLoop" << std::endl;
     axCallNSApplicationMain();
 }
 

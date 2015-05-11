@@ -25,22 +25,23 @@
 
 std::mutex manager_mutex;
 
-axEventManager* axEventManager::_instance = nullptr;
+//axEventManager* axEventManager::_instance = nullptr;
 
-axEventManager::axEventManager()
+axEventManager::axEventManager(axApp* app):
+_app(app)
 {
     
 }
 
-axEventManager* axEventManager::GetInstance()
-{
-    if (_instance == nullptr)
-    {
-        _instance = new axEventManager();
-    }
-    
-    return _instance;
-}
+//axEventManager* axEventManager::GetInstance()
+//{
+//    if (_instance == nullptr)
+//    {
+//        _instance = new axEventManager();
+//    }
+//    
+//    return _instance;
+//}
 
 void axEventManager::AddFunction(axBindedEvent fct)
 {
@@ -91,15 +92,15 @@ void axEventManager::PushEvent(const axID& id,
         // Pair of the first and last element of this id.
         auto range(it->second.equal_range(evtId));
         
-        axCore* core = axApp::GetInstance()->GetCore();
+        axCore* core = _app->GetCore();
         
         // Add every connected functions from this id to the event queue.
         for (axEventMultimapIterator i = range.first; i != range.second; ++i)
         {
-            // Create a Copy of child params.
+            // Create a Copy of child params (this will create a new pointer).
             axMsg* msg_copy = msg->GetCopy();
 
-            // Add binded function to event queue.bn
+            // Add binded function to event queue.
             AddFunction(axBindedEvent(i->second, msg_copy));
             
             core->PushEventOnSystemQueue();

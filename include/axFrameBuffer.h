@@ -45,7 +45,8 @@ public:
     void Resize(const axSize& size);
     
     void DrawOnFrameBuffer(const std::function<void()>& fct,
-                           const axSize& size);
+                           const axSize& size,
+                           const axSize& globalSize);
     
     void DrawFrameBuffer(const axSize& shownSize);
     

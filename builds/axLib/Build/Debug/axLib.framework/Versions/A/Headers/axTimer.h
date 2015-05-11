@@ -62,8 +62,8 @@ private:
 class axTimer : public axObject
 {
 public:
-    axTimer(axEventFunction fct, int ms);
-    axTimer();
+    axTimer(axApp* app, axEventFunction fct, int ms);
+    axTimer(axApp* app);
     
     static void timer_thread(axTimer& timer, int interval_ms, int length_ms);
     static void timer_thread_no_end(axTimer& timer, int interval_ms);

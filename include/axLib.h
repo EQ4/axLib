@@ -28,7 +28,7 @@
 #include "axApp.h"
 #include "axPanel.h"
 #include "axWidget.h"
-#include "axMain.h"
+//#include "axMain.h"
 
 /*******************************************************************************
  * Graphic.

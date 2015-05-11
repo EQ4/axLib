@@ -42,13 +42,16 @@
 
 extern std::mutex manager_mutex;
 
+class axApp;
+
 /*******************************************************************************
  * axEventManager.
  ******************************************************************************/
 class axEventManager
 {
 public:
-    static axEventManager* GetInstance();
+    axEventManager(axApp* app);
+    //static axEventManager* GetInstance();
     
     void AddConnection(const axID& id,
                        const axEventId& evtId,
@@ -63,7 +66,7 @@ public:
     int GetEventQueueSize() const;
     
 private:
-    axEventManager();
+    axApp* _app;
     void AddFunction(axBindedEvent fct);
     
     static axEventManager* _instance;

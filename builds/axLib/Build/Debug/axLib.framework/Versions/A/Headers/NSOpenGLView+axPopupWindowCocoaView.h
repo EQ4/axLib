@@ -10,13 +10,10 @@
 
 @interface axPopupWindowCocoaView : NSOpenGLView
 
-
-
 // Windows paint callback.
 - (void) drawRect: (NSRect)bounds;
 
-
-
+- (id) MemberTestFunc;
 
 @end
 

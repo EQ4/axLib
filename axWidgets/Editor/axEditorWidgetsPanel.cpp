@@ -12,6 +12,8 @@
 axEditorWidgetsPanel::axEditorWidgetsPanel(axWindow* parent, const axRect& rect):
 axPanel(parent, rect)
 {
+//    SetBlockDrawing(true);
+    
     axSize btnSize(rect.size.x, 40);
     axEditorWidget* btn1 = new axEditorWidget(this,
                                               axRect(axPoint(0, 0), btnSize),
@@ -57,8 +59,6 @@ void axEditorWidgetsPanel::OnPaint()
     gc.DrawRectangleColorFade(rect, axColor(0.8), axColor(0.7));
     
     gc.SetColor(axColor(0.0));
-    
-
     gc.DrawRectangleContour(rect);
     //    gc.DrawRectangleColorFade(axRect(0, 0, rect.size.x, 40),
     //                              axColor(0.6), axColor(0.9));

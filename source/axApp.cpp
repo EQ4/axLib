@@ -29,14 +29,19 @@
 #include "axWidget.h"
 
 #include "axScrollBar.h"
+#include "axEventManager.h"
 
-axApp* axApp::MainInstance = nullptr;
+axApp* axApp::_mainApp = nullptr;
 
-axResourceManager* axApp::_resourceManager = nullptr;
+//axApp* axApp::MainInstance = nullptr;
+//axResourceManager* axApp::_resourceManager = nullptr;
 
 axApp::axApp():
 _debugEditorActive(false)
 {
+    _mainApp = this;
+    _evtManager = new axEventManager(this);
+    
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(axSize(0, 0));
@@ -45,6 +50,7 @@ _debugEditorActive(false)
 
 #elsif _MSC_VER
 	#if _axWxWidgetsCore_ == 1
+    
 	_core = new axCoreWxWidgets();
 	_core->Init(axSize(0, 0));
 	#else
@@ -72,6 +78,9 @@ _debugEditorActive(false)
 axApp::axApp(const axSize& frame_size):
 _debugEditorActive(false)
 {
+    _mainApp = this;
+    _evtManager = new axEventManager(this);
+    
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(frame_size);
@@ -108,7 +117,7 @@ void axApp::CreateEditor()
 {
 #if _axDebugEditor_ == 1
     // @todo Fix this.
-    MainInstance = this;
+//    MainInstance = this;
     
     axSize size = _core->GetGlobalSize();
     
@@ -284,10 +293,10 @@ axCore* axApp::GetCore()
 	return _core;
 }
 
-axResourceManager* axApp::GetResourceManager() const
+axResourceManager* axApp::GetResourceManager()
 {
-    return _resourceManager == nullptr ?
-           _resourceManager = new axResourceManager() : _resourceManager;
+    axResourceManager*& rm = _resourceManager;
+    return rm == nullptr ? rm = new axResourceManager() : rm;
 }
 
 void axApp::AddAfterGUILoadFunction(std::function<void()> fct)

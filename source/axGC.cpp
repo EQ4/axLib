@@ -731,7 +731,7 @@ void axGC::BlockDrawing(const axRect& rect)
     axPoint abso(_win->GetAbsoluteRect().position);
     
     glScissor(abso.x + rect.position.x,
-              axApp::GetInstance()->GetCore()->GetGlobalSize().y -
+              _win->GetApp()->GetCore()->GetGlobalSize().y -
               (abso.y + rect.position.y + rect.size.y),
               rect.size.x,
               rect.size.y);

@@ -7,7 +7,6 @@ _font(0)
 {
 	_font.SetFontSize(14);
     
-    
     _toolbar = new axEditorToolbar(this, axRect(0, 0, rect.size.x, 40),
                                    axButton::Events(GetOnEditorToolbar()));
     
@@ -40,6 +39,9 @@ _font(0)
     
     _editorWidgetPanel = new axEditorWidgetsPanel(this, attPanelRect);
     _editorWidgetPanel->Hide();
+    
+//    _editorWidgetPanel->SetEditingWidget(true);
+//    _editorWidgetPanel->SetEditable(false);
 }
 
 void axEditorMenu::SetEditingWidget(axWidget* widget)
@@ -70,6 +72,8 @@ void axEditorMenu::OnEditorToolbar(const axButton::Msg& msg)
         _editorAttributesPanel->Show();
         _editorWidgetPanel->Hide();
     }
+    
+    Update();
 }
 
 void axEditorMenu::OnPaint()

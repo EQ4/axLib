@@ -46,12 +46,12 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     
     for(int i = 0; i < _infoEditor.size(); i++)
     {
-        axApp::GetInstance()->GetCore()->GetPopupManager()->GetWindowTree()->
+        GetApp()->GetCore()->GetPopupManager()->GetWindowTree()->
         DeleteWindow( std::get<1>(_infoEditor[i]) );
         
         if(std::get<2>(_infoEditor[i]) != nullptr)
         {
-            axApp::GetInstance()->GetCore()->GetPopupManager()->GetWindowTree()->
+            GetApp()->GetCore()->GetPopupManager()->GetWindowTree()->
             DeleteWindow( std::get<2>(_infoEditor[i]) );
         }
     }

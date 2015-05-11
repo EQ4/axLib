@@ -62,8 +62,6 @@ public:
     
     virtual void KillGLWindow() = 0;
     
-
-    
     int InitGL();
     
 	virtual axManager* GetWindowManager();
