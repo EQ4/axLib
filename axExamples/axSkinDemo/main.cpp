@@ -8,12 +8,15 @@
 
 #include "main.h"
 #include <axlib/axCocoaInterfaceMac.h>
-
+#include "axFileBrowser.h"
 
 MainPanel::MainPanel(axApp* app, const axRect& rect):
 // Parent.
 axPanel(app, rect)
 {
+    
+    _fileBrowser = new ax::FileBrowser(this,
+                                       axRect(0, 40, 200, rect.size.y - 40));
     
     axToggle::Events toggle_events;
     
@@ -119,6 +122,8 @@ void MainPanel::OnResize(const axSize& size)
 {
     axPrint("MainPanel::OnResize : size : ", size.x, size.y);
     SetSize(size);
+    
+    _fileBrowser->SetSize(axSize(200, size.y - 40));
 }
 
 void MainPanel::OnPaint()
@@ -132,8 +137,8 @@ void MainPanel::OnPaint()
     gc.SetColor(axColor(0.75));
     gc.DrawRectangle(axRect(0, 0, rect.size.x , 40));
     
-    gc.SetColor(axColor(0.55));
-    gc.DrawRectangle(axRect(0, 40, 200 , rect.size.y - 40));
+//    gc.SetColor(axColor(0.55));
+//    gc.DrawRectangle(axRect(0, 40, 200 , rect.size.y - 40));
     
     gc.SetColor(axColor(0.45));
     gc.DrawRectangleContour(rect);

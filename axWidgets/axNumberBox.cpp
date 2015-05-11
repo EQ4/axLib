@@ -82,20 +82,26 @@ axNumberBox::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axNumberBox::Info::Info(const axVectorPairString& attributes)
+axNumberBox::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-axStringVector axNumberBox::Info::GetParamNameList() const
+ax::StringVector axNumberBox::Info::GetParamNameList() const
 {
-    return axStringVector{"normal", "hover", "clicking",
-        "selected", "contour", "font_color", "img", "single_img"};
+    return ax::StringVector{"normal",
+                            "hover",
+                            "clicking",
+                            "selected",
+                            "contour",
+                            "font_color",
+                            "img",
+                            "single_img"};
 }
 
 std::string axNumberBox::Info::GetAttributeValue(const std::string& name)
@@ -136,7 +142,7 @@ std::string axNumberBox::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axNumberBox::Info::SetAttribute(const axStringPair& attribute)
+void axNumberBox::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -182,7 +188,7 @@ _past(nullptr)
     
 }
 
-axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
+axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
     axPoint pos;
@@ -197,7 +203,7 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]),
@@ -221,7 +227,7 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "range")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             range = axFloatRange(stod(strVec[0]),
@@ -296,7 +302,7 @@ _font(nullptr)
     }
 }
 
-void axNumberBox::SetInfo(const axVectorPairString& attributes)
+void axNumberBox::SetInfo(const ax::StringPairVector& attributes)
 {
     _info->SetAttributes(attributes);
     

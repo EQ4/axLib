@@ -117,19 +117,19 @@ axKnob::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axKnob::Info::Info(const axVectorPairString& attributes)
+axKnob::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-axStringVector axKnob::Info::GetParamNameList() const
+ax::StringVector axKnob::Info::GetParamNameList() const
 {
-    return axStringVector{"normal", "hover", "clicking",
+    return ax::StringVector{"normal", "hover", "clicking",
         "knob_size", "nknob", "img", "selected_img"};
 }
 
@@ -167,7 +167,7 @@ std::string axKnob::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axKnob::Info::SetAttribute(const axStringPair& attribute)
+void axKnob::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -187,7 +187,7 @@ void axKnob::Info::SetAttribute(const axStringPair& attribute)
     }
     else if(attribute.first == "knob_size")
     {
-        axStringVector strVec;
+        ax::StringVector strVec;
         strVec = GetVectorFromStringDelimiter(attribute.second, ",");
         knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
     }
@@ -288,7 +288,7 @@ axKnob* axKnob::Builder::Create()
     return nullptr;
 }
 
-axKnob* axKnob::Builder::Create(axVectorPairString attributes)
+axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
     axPoint pos;
@@ -301,7 +301,7 @@ axKnob* axKnob::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]),
@@ -367,7 +367,7 @@ _msg(msg)
     SetValue(_range.GetValueFromZeroToOne(m_knobValue), false);
 }
 
-void axKnob::SetInfo(const axVectorPairString& attributes)
+void axKnob::SetInfo(const ax::StringPairVector& attributes)
 {
     _info->SetAttributes(attributes);
 

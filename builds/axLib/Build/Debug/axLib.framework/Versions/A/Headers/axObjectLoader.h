@@ -34,7 +34,7 @@ class axWidgetLoader
 public:
     axWidgetLoader();
     
-    axVectorPairString GetAttributes(const std::string& path);
+    ax::StringPairVector GetAttributes(const std::string& path);
     
 };
 

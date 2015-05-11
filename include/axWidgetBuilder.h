@@ -35,13 +35,13 @@ public:
     
 //    virtual axWidget* Create(const std::string& path) = 0;
     
-    virtual axWidget* Create(const axVectorPairString& attributes) = 0;
+    virtual axWidget* Create(const ax::StringPairVector& attributes) = 0;
     
     axWindow* GetParent();
     
     void SetParent(axWindow* parent);
     
-    virtual axStringVector GetParamNameList() const;
+    virtual ax::StringVector GetParamNameList() const;
     
 private:
     axWindow* _parent;

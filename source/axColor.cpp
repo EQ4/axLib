@@ -162,7 +162,7 @@ void axColor::LoadFromString(const std::string& str)
     }
     else
     {
-        axStringVector strVec = GetVectorFromStringDelimiter(str, ",");
+        ax::StringVector strVec = GetVectorFromStringDelimiter(str, ",");
         _r = stof(strVec[0]);
         _g = stof(strVec[1]);
         _b = stof(strVec[2]);

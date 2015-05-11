@@ -19,7 +19,7 @@ public:
     void SetEditingWidget(axWidget* widget);
     
     void UpdateInfo();
-    void UpdateAttribute(const axStringPair& att);
+    void UpdateAttribute(const ax::StringPair& att);
     
     // axEvents.
     axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
@@ -33,7 +33,7 @@ private:
     
     void OnAttributeEdit(const axTextBox::Msg& msg);
     
-    void AddEditorAttribute(const axStringPair& att,
+    void AddEditorAttribute(const ax::StringPair& att,
                             const axLabel::Info& labelInfo,
                             const axTextBox::Info& txtInfo,
                             const axTextBox::Events& evt);

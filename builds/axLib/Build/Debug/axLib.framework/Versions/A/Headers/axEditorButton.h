@@ -60,7 +60,7 @@ protected:
     bool _selected;
 //    int _nCurrentImg;
     
-    axStringVector _infoVector;
+    ax::StringVector _infoVector;
     
     typedef std::tuple<std::string, axLabel*, axTextBox*> axEditorTuple;
     std::vector<axEditorTuple> _infoEditor;

@@ -56,7 +56,7 @@ public:
     public:
         axStaticImageBuilder(axWindow* win);
         
-        axStaticImage* Create(axVectorPairString attributes);
+        axStaticImage* Create(ax::StringPairVector attributes);
         
     private:
         axWindow* _parent;

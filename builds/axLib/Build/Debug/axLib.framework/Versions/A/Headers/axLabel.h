@@ -51,7 +51,7 @@ public:
         /// @param path Path of the xml file.
         Info(const std::string& path);
         
-        Info(const axVectorPairString& attributes);
+        Info(const ax::StringPairVector& attributes);
         
         Info(const axColor& normal_color,
              const axColor& contour_color,
@@ -68,9 +68,9 @@ public:
              const axColor& font_color);
         
         // Info needed for debug editor. Derived from axInfo.
-        virtual axStringVector GetParamNameList() const;
+        virtual ax::StringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
-        virtual void SetAttribute(const axStringPair& attribute);
+        virtual void SetAttribute(const ax::StringPair& attribute);
         
         axColor normal;
         axColor contour;
@@ -89,7 +89,7 @@ public:
     public:
         Builder(axWindow* win);
         
-        axLabel* Create(axVectorPairString attributes);
+        axLabel* Create(ax::StringPairVector attributes);
         
     private:
         axWindow* _parent;

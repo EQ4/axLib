@@ -113,7 +113,7 @@ public:
         
         Info(const std::string& path);
         
-        Info(const axVectorPairString& attributes);
+        Info(const ax::StringPairVector& attributes);
         
         Info(const axColor& normal_color,
              const axColor& hover_color,
@@ -127,9 +127,9 @@ public:
              const bool& singleImg = false);
         
         // Info needed for debug editor. Derived from axInfo.
-        virtual axStringVector GetParamNameList() const;
+        virtual ax::StringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
-        virtual void SetAttribute(const axStringPair& attribute);
+        virtual void SetAttribute(const ax::StringPair& attribute);
         
         axColor normal;
         axColor hover;
@@ -167,9 +167,9 @@ public:
         
         Builder(axWindow* win);
         
-        axToggle* Create(axVectorPairString attributes);
+        axToggle* Create(const ax::StringPairVector& attributes);
         
-        virtual axStringVector GetParamNameList() const;
+        virtual ax::StringVector GetParamNameList() const;
     
     private:
         axWindow* _parent;

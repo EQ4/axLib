@@ -87,7 +87,7 @@ public:
         
         Info(const std::string& path);
         
-        Info(const axVectorPairString& attributes);
+        Info(const ax::StringPairVector& attributes);
         
         Info(const axColor& bg_normalColor,
              const axColor& bg_hoverColor,
@@ -98,9 +98,9 @@ public:
              const string& sImgPath);
         
         // Info needed for debug editor. Derived from axInfo.
-        virtual axStringVector GetParamNameList() const;
+        virtual ax::StringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
-        virtual void SetAttribute(const axStringPair& attribute);
+        virtual void SetAttribute(const ax::StringPair& attribute);
         
         std::string img_path, selected_img_path;
         axSize knob_size;
@@ -134,7 +134,7 @@ public:
         
         axKnob* Create();
         
-        axKnob* Create(axVectorPairString attributes);
+        axKnob* Create(ax::StringPairVector attributes);
         
     private:
         axWindow* _parent;
@@ -167,7 +167,7 @@ public:
 		Update();
 	}
     
-    virtual void SetInfo(const axVectorPairString& attributes);
+    virtual void SetInfo(const ax::StringPairVector& attributes);
 
 private:
     axKnob::Events _events;

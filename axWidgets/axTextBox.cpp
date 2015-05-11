@@ -95,19 +95,19 @@ axTextBox::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axTextBox::Info::Info(const axVectorPairString& attributes)
+axTextBox::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-axStringVector axTextBox::Info::GetParamNameList() const
+ax::StringVector axTextBox::Info::GetParamNameList() const
 {
-    return axStringVector
+    return ax::StringVector
     {
         "normal",
         "hover",
@@ -158,7 +158,7 @@ std::string axTextBox::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axTextBox::Info::SetAttribute(const axStringPair& attribute)
+void axTextBox::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -204,7 +204,7 @@ _flags(0)
     
 }
 
-axWidget* axTextBox::Builder::Create(const axVectorPairString& attributes)
+axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
     axPoint pos;
@@ -219,7 +219,7 @@ axWidget* axTextBox::Builder::Create(const axVectorPairString& attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));

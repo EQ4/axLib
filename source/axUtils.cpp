@@ -21,10 +21,10 @@
  ******************************************************************************/
 #include "axUtils.h"
 
-axStringVector GetVectorFromStringDelimiter(const std::string& str,
-                                            const std::string& delimiter)
+ax::StringVector GetVectorFromStringDelimiter(const std::string& str,
+                                              const std::string& delimiter)
 {
-    axStringVector vec;
+    ax::StringVector vec;
     
     std::string r = str;
     size_t pos = 0;

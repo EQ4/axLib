@@ -12,6 +12,11 @@
 #include <axLib/axLib.h>
 //#include "axLib.h"
 
+namespace ax
+{
+    class FileBrowser;
+}
+
 class MainPanel : public axPanel
 {
 public:
@@ -20,6 +25,7 @@ public:
     axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
     
 private:
+    ax::FileBrowser* _fileBrowser;
     virtual void OnPaint();
     
     void OnButtonClick(const axButton::Msg& msg);

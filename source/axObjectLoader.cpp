@@ -41,7 +41,7 @@ axWidgetLoader::axWidgetLoader()
     
 }
 
-axVectorPairString axWidgetLoader::GetAttributes(const std::string& path)
+ax::StringPairVector axWidgetLoader::GetAttributes(const std::string& path)
 {
     std::ifstream t(path);
     std::string xml_str((std::istreambuf_iterator<char>(t)),
@@ -58,7 +58,7 @@ axVectorPairString axWidgetLoader::GetAttributes(const std::string& path)
     
 //    xml_node<>* objNode = node->first_node();
     
-    axVectorPairString objData;
+    ax::StringPairVector objData;
     
     for (xml_attribute<>* attr = objNode->first_attribute();
          attr; attr = attr->next_attribute())
@@ -88,7 +88,7 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
  
     while(objNode)
     {
-        axVectorPairString objData;
+        ax::StringPairVector objData;
         
         for (xml_attribute<>* attr = objNode->first_attribute();
              attr; attr = attr->next_attribute())

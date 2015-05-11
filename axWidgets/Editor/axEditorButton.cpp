@@ -171,13 +171,13 @@ void axDebugButton::OnAttributeEdit(const axTextBox::Msg& msg)
 {
     axWidget* widget = static_cast<axWidget*>(GetParent());
     
-    axVectorPairString attributes;
+    ax::StringPairVector attributes;
     
     for(auto& n : _infoEditor)
     {
         std::string name = std::get<0>(n);
         std::string value = std::get<2>(n)->GetLabel();
-        attributes.push_back(axStringPair(name, value));
+        attributes.push_back(ax::StringPair(name, value));
     }
     
     widget->SetInfo(attributes);

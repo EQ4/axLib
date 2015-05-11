@@ -50,19 +50,19 @@ axLabel::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axLabel::Info::Info(const axVectorPairString& attributes)
+axLabel::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-axStringVector axLabel::Info::GetParamNameList() const
+ax::StringVector axLabel::Info::GetParamNameList() const
 {
-    return axStringVector{"normal",
+    return ax::StringVector{"normal",
         "contour", "font_color", "font_name", "font_size", "align"};
 }
 
@@ -107,7 +107,7 @@ std::string axLabel::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axLabel::Info::SetAttribute(const axStringPair& attribute)
+void axLabel::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -155,7 +155,7 @@ _parent(win)
     
 }
 
-axLabel* axLabel::Builder::Create(axVectorPairString attributes)
+axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
     axPoint pos;
@@ -167,7 +167,7 @@ axLabel* axLabel::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]),

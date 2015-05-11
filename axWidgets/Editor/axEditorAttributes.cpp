@@ -40,7 +40,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     labelInfoWindow.font_size = 12;
     labelInfoWindow._alignement = axAlignement::axALIGN_CENTER;
     
-    axStringVector attributes = widget->GetInfo()->GetParamNameList();
+    ax::StringVector attributes = widget->GetInfo()->GetParamNameList();
     axInfo* info = widget->GetInfo();
     
     
@@ -58,7 +58,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     _infoEditor.clear();
     
     AddEditorLabel("Runtime Info", labelInfoWindow);
-    AddEditorAttribute(axStringPair("object id",
+    AddEditorAttribute(ax::StringPair("object id",
                                     std::to_string(_widget->GetId())),
                        labelInfo, txtInfo, axTextBox::Events());
     
@@ -68,7 +68,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     std::to_string(rel_rect.size.x) + ", " +
     std::to_string(rel_rect.size.y);
     
-    AddEditorAttribute(axStringPair("relative rectangle", relative_rect),
+    AddEditorAttribute(ax::StringPair("relative rectangle", relative_rect),
                        labelInfo, txtInfo, axTextBox::Events());
     
     axRect abs_rect(_widget->GetAbsoluteRect());
@@ -77,12 +77,12 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     std::to_string(abs_rect.size.x) + ", " +
     std::to_string(abs_rect.size.y);
     
-    AddEditorAttribute(axStringPair("absolute rectangle", absolute_rect),
+    AddEditorAttribute(ax::StringPair("absolute rectangle", absolute_rect),
                        labelInfo, txtInfo, axTextBox::Events());
     
     AddEditorLabel("Builder Info", labelInfoWindow);
     //    axStringVector builder_list = widget->GetParamNameList();
-    axVectorPairString builder_attributes = widget->GetBuilderAttributes();
+    ax::StringPairVector builder_attributes = widget->GetBuilderAttributes();
     
     for(auto& n : builder_attributes)
     {
@@ -95,12 +95,12 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     
     AddEditorLabel("Widget Info", labelInfoWindow);
     
-    AddEditorAttribute(axStringPair("info path", info->GetPath()),
+    AddEditorAttribute(ax::StringPair("info path", info->GetPath()),
                        labelInfo, txtInfo, axTextBox::Events());
     
     for(auto& n : attributes)
     {
-        AddEditorAttribute(axStringPair(n, info->GetAttributeValue(n)),
+        AddEditorAttribute(ax::StringPair(n, info->GetAttributeValue(n)),
                            labelInfo, txtInfo, txtEvents);
     }
     
@@ -117,7 +117,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     Update();
 }
 
-void axEditorAttributes::AddEditorAttribute(const axStringPair& att,
+void axEditorAttributes::AddEditorAttribute(const ax::StringPair& att,
                                       const axLabel::Info& labelInfo,
                                       const axTextBox::Info& txtInfo,
                                       const axTextBox::Events& evt)
@@ -168,7 +168,7 @@ void axEditorAttributes::OnAttributeEdit(const axTextBox::Msg& msg)
 {    
     if(_widget != nullptr)
     {
-        axVectorPairString attributes;
+        ax::StringPairVector attributes;
         
         for(auto& n : _infoEditor)
         {
@@ -176,7 +176,7 @@ void axEditorAttributes::OnAttributeEdit(const axTextBox::Msg& msg)
             {
                 std::string name = std::get<0>(n);
                 std::string value = std::get<2>(n)->GetLabel();
-                attributes.push_back(axStringPair(name, value));
+                attributes.push_back(ax::StringPair(name, value));
             }
         }
         
@@ -184,7 +184,7 @@ void axEditorAttributes::OnAttributeEdit(const axTextBox::Msg& msg)
     }
 }
 
-void axEditorAttributes::UpdateAttribute(const axStringPair& att)
+void axEditorAttributes::UpdateAttribute(const ax::StringPair& att)
 {
     for(auto& n : _infoEditor)
     {
@@ -199,10 +199,10 @@ void axEditorAttributes::UpdateAttribute(const axStringPair& att)
 
 void axEditorAttributes::UpdateInfo()
 {
-    axStringVector attributes = _widget->GetInfo()->GetParamNameList();
+    ax::StringVector attributes = _widget->GetInfo()->GetParamNameList();
     axInfo* info = _widget->GetInfo();
     
-    UpdateAttribute(axStringPair("object id", std::to_string(_widget->GetId())));
+    UpdateAttribute(ax::StringPair("object id", std::to_string(_widget->GetId())));
     
     axRect rel_rect(_widget->GetRect());
     std::string relative_rect = std::to_string(rel_rect.position.x) + ", " +
@@ -210,7 +210,7 @@ void axEditorAttributes::UpdateInfo()
     std::to_string(rel_rect.size.x) + ", " +
     std::to_string(rel_rect.size.y);
     
-    UpdateAttribute(axStringPair("relative rectangle", relative_rect));
+    UpdateAttribute(ax::StringPair("relative rectangle", relative_rect));
     
     
     axRect abs_rect(_widget->GetAbsoluteRect());
@@ -219,12 +219,12 @@ void axEditorAttributes::UpdateInfo()
     std::to_string(abs_rect.size.x) + ", " +
     std::to_string(abs_rect.size.y);
     
-    UpdateAttribute(axStringPair("absolute rectangle", absolute_rect));
+    UpdateAttribute(ax::StringPair("absolute rectangle", absolute_rect));
     
     
     for(auto& n : attributes)
     {
-        UpdateAttribute(axStringPair(n, info->GetAttributeValue(n)));
+        UpdateAttribute(ax::StringPair(n, info->GetAttributeValue(n)));
     }
 }
 

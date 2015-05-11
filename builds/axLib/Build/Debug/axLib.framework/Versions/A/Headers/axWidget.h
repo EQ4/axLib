@@ -55,9 +55,9 @@ public:
     
     bool IsEditable() const;
     
-    virtual axStringVector GetParamNameList() const
+    virtual ax::StringVector GetParamNameList() const
     {
-        return axStringVector{};
+        return ax::StringVector{};
     }
     
     virtual std::vector<axParameterType> GetParamTypeList() const
@@ -65,13 +65,13 @@ public:
         return std::vector<axParameterType>{};
     }
     
-    virtual void SetAttribute(const axStringPair& attribute)
+    virtual void SetAttribute(const ax::StringPair& attribute)
     {
 		(attribute);
     }
    
     
-    virtual void SetAttributes(const axVectorPairString& attributes)
+    virtual void SetAttributes(const ax::StringPairVector& attributes)
     {
         for(auto& n : attributes)
         {
@@ -105,12 +105,12 @@ public:
     
     virtual axWindow::axWindowType GetWindowType();
     
-    virtual void SetInfo(const axVectorPairString& attributes);
+    virtual void SetInfo(const ax::StringPairVector& attributes);
     
     axInfo* GetInfo();
     
-    void SetBuilderAttributes(const axVectorPairString& attributes);
-    axVectorPairString GetBuilderAttributes() const;
+    void SetBuilderAttributes(const ax::StringPairVector& attributes);
+    ax::StringPairVector GetBuilderAttributes() const;
 
 protected:
     axInfo* _info;
@@ -119,7 +119,7 @@ protected:
 private:
     bool _isEditable, _isInfoEditable, _acceptChild;
     std::string _name;
-    axVectorPairString _builderAttributes;
+    ax::StringPairVector _builderAttributes;
 };
 
 #endif //__AX_WIDGET__

@@ -115,22 +115,29 @@ axToggle::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axToggle::Info::Info(const axVectorPairString& attributes):
+axToggle::Info::Info(const ax::StringPairVector& attributes):
 axInfo()
 {
     SetAttributes(attributes);
 }
 
-axStringVector axToggle::Info::GetParamNameList() const
+ax::StringVector axToggle::Info::GetParamNameList() const
 {
-    return axStringVector{"normal", "hover", "clicking",
-                          "selected", "selected_hover", "selected_clicking",
-                          "contour", "font_color", "img", "single_img"};
+    return ax::StringVector{"normal",
+                            "hover",
+                            "clicking",
+                            "selected",
+                            "selected_hover",
+                            "selected_clicking",
+                            "contour",
+                            "font_color",
+                            "img",
+                            "single_img"};
 }
 
 std::string axToggle::Info::GetAttributeValue(const std::string& name)
@@ -179,7 +186,7 @@ std::string axToggle::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axToggle::Info::SetAttribute(const axStringPair& attribute)
+void axToggle::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -254,7 +261,7 @@ _past(nullptr)
     
 }
 
-axToggle* axToggle::Builder::Create(axVectorPairString attributes)
+axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
     axPoint pos;
@@ -269,7 +276,7 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));
@@ -309,15 +316,15 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
     
 }
 
-axStringVector axToggle::Builder::GetParamNameList() const
+ax::StringVector axToggle::Builder::GetParamNameList() const
 {
-    return axStringVector{"name",
-        "rect",
-        "info",
-        "label",
-        "flags",
-        "event",
-        "msg"};
+    return ax::StringVector{"name",
+                            "rect",
+                            "info",
+                            "label",
+                            "flags",
+                            "event",
+                            "msg"};
 }
 
 /*******************************************************************************

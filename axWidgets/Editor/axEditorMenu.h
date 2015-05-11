@@ -13,7 +13,7 @@ public:
     void SetEditingWidget(axWidget* widget);
     
     void UpdateInfo();
-    void UpdateAttribute(const axStringPair& att);
+    void UpdateAttribute(const ax::StringPair& att);
     
     axEVENT_ACCESSOR(axButton::Msg, OnEditorToolbar);
     

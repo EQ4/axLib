@@ -14,6 +14,7 @@
 		7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; };
 		7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
+		7CC6B83A1B01299B0059D822 /* axFileBrowser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,8 @@
 		7C8A7C291AE168A70094E9EF /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
 		7CA3C1901A75D8F400564F21 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = "../../libs/rtmidi-2.1.0/RtMidi.cpp"; sourceTree = "<group>"; };
 		7CA3C1911A75D8F400564F21 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = "../../libs/rtmidi-2.1.0/RtMidi.h"; sourceTree = "<group>"; };
+		7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFileBrowser.cpp; sourceTree = "<group>"; };
+		7CC6B8391B01299B0059D822 /* axFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFileBrowser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				7C2630321A3670BB00544ACE /* main.h */,
 				7C262FA91A366F9E00544ACE /* Images.xcassets */,
 				7C262FA21A366F9E00544ACE /* Supporting Files */,
+				7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */,
+				7CC6B8391B01299B0059D822 /* axFileBrowser.h */,
 			);
 			path = axDemo;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			files = (
 				7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */,
 				7C26303D1A3670BB00544ACE /* main.cpp in Sources */,
+				7CC6B83A1B01299B0059D822 /* axFileBrowser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

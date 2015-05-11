@@ -50,7 +50,7 @@ void axEditorMenu::SetEditingWidget(axWidget* widget)
 
 }
 
-void axEditorMenu::UpdateAttribute(const axStringPair& att)
+void axEditorMenu::UpdateAttribute(const ax::StringPair& att)
 {
     _editorAttributesPanel->UpdateAttribute(att);
 }

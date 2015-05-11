@@ -114,14 +114,19 @@ enum axControlInterpolation
  ******************************************************************************/
 std::string axGetExtension(const std::string& path);
 
-typedef std::pair<std::string, std::string> axStringPair;
-typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
-typedef std::vector<std::string> axStringVector;
+
+namespace ax
+{
+    typedef std::pair<std::string, std::string> StringPair;
+    typedef std::vector<StringPair> StringPairVector;
+    typedef std::vector<std::string> StringVector;
+}
+
 
 typedef std::vector<bool> axBoolVector;
 
-axStringVector GetVectorFromStringDelimiter(const std::string& str,
-                                            const std::string& delimiter);
+ax::StringVector GetVectorFromStringDelimiter(const std::string& str,
+                                              const std::string& delimiter);
 
 /*******************************************************************************
  * axLineairInterpole.

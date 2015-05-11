@@ -37,7 +37,7 @@ void axWidgetBuilder::SetParent(axWindow* parent)
     _parent = parent;
 }
 
-axStringVector axWidgetBuilder::GetParamNameList() const
+ax::StringVector axWidgetBuilder::GetParamNameList() const
 {
-    return axStringVector();
+    return ax::StringVector();
 }

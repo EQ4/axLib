@@ -95,25 +95,25 @@ axButton::Info::Info(const std::string& path):
 axInfo(path)
 {
     axWidgetLoader loader;
-    axVectorPairString att = loader.GetAttributes(path);
+    ax::StringPairVector att = loader.GetAttributes(path);
     
     SetAttributes(att);
 }
 
-axButton::Info::Info(const axVectorPairString& attributes)
+axButton::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-axStringVector axButton::Info::GetParamNameList() const
+ax::StringVector axButton::Info::GetParamNameList() const
 {
-    return axStringVector{"normal",
-                          "hover",
-                          "clicking",
-                          "selected",
-                          "contour",
-                          "font_color",
-                          "corner_radius"};
+    return ax::StringVector{"normal",
+                            "hover",
+                            "clicking",
+                            "selected",
+                            "contour",
+                            "font_color",
+                            "corner_radius"};
 }
 
 std::string axButton::Info::GetAttributeValue(const std::string& name)
@@ -150,7 +150,7 @@ std::string axButton::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axButton::Info::SetAttribute(const axStringPair& attribute)
+void axButton::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -194,7 +194,7 @@ _flags(0)
     
 }
 
-axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
+axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
     axPoint pos;
@@ -209,7 +209,7 @@ axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
         }
         else if(s.first == "rect")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = axPoint(stoi(strVec[0]),
@@ -252,16 +252,16 @@ axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
     return btn;
 }
 
-axStringVector axButton::Builder::GetParamNameList() const
+ax::StringVector axButton::Builder::GetParamNameList() const
 {
-    return axStringVector{"name",
-        "rect",
-        "info",
-        "img",
-        "label",
-        "flags",
-        "event",
-        "msg"};
+    return ax::StringVector{"name",
+                            "rect",
+                            "info",
+                            "img",
+                            "label",
+                            "flags",
+                            "event",
+                            "msg"};
 }
 
 /*******************************************************************************

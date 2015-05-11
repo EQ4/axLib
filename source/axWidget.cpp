@@ -49,18 +49,18 @@ axWindow::axWindowType axWidget::GetWindowType()
     return axWindow::axWindowType::axWINDOW_TYPE_WIDGET;
 }
 
-void axWidget::SetInfo(const axVectorPairString& attributes)
+void axWidget::SetInfo(const ax::StringPairVector& attributes)
 {
     _info->SetAttributes(attributes);
     Update();
 }
 
-void axWidget::SetBuilderAttributes(const axVectorPairString& attributes)
+void axWidget::SetBuilderAttributes(const ax::StringPairVector& attributes)
 {
     _builderAttributes = attributes;
 }
 
-axVectorPairString axWidget::GetBuilderAttributes() const
+ax::StringPairVector axWidget::GetBuilderAttributes() const
 {
     return _builderAttributes;
 }
