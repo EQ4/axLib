@@ -293,7 +293,7 @@ _font(nullptr)
 {
     _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
     
-    _value = ax::Utils::axClamp<double>(value, _range.left, _range.right);
+    _value = ax::Utils::Clamp<double>(value, _range.left, _range.right);
     
     _font = new_ axFont(0);
     _font->SetFontSize(10);
@@ -388,7 +388,7 @@ void axNumberBox::OnMouseLeftDragging(const ax::Point& pos)
     double v = -delta / 100.0;
     _zeroToOneValue += v;
     
-    _zeroToOneValue = ax::Utils::axClamp<double>(_zeroToOneValue, 0.0, 1.0);
+    _zeroToOneValue = ax::Utils::Clamp<double>(_zeroToOneValue, 0.0, 1.0);
     _value = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
     PushEvent(Events::VALUE_CHANGE, new_ Msg(_value));
