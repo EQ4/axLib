@@ -29,63 +29,71 @@
 #include <thread>
 #include <mutex>
 #include <string>
+#include <chrono>
 
 #include <axEvent/axEventManager.h>
-#include "axObject.h"
+#include <axEvent/axObject.h>
 
 namespace ax
 {
-    class App;
+    namespace Event
+    {
+        class Timer : public Object
+        {
+        public:
+            typedef std::chrono::milliseconds TimeMs;
+            
+            enum : Id
+            {
+                TIMER_ID
+            };
+            
+            //******************************************************************
+            // ax::Event::Timer::Msg
+            //******************************************************************
+            class Msg : public ax::Event::Msg
+            {
+            public:
+                Msg(const TimeMs& t);
+                
+                TimeMs GetTime() const;
+                
+                virtual ax::Event::Msg* GetCopy();
+                
+            private:
+                TimeMs _time;
+            };
+            
+            //******************************************************************
+            // ax::Event::Timer
+            //******************************************************************
+            Timer(Manager* evtManager, const Function& fct);
+                
+            Timer(Manager* evtManager);
+            
+            static void timer_thread(Timer& timer,
+                                     const TimeMs& interval_ms,
+                                     const TimeMs& length_ms);
+            
+            static void timer_thread_no_end(Timer& timer,
+                                            const TimeMs& interval_ms);
+            
+            void StartTimer(const TimeMs& interval_ms,
+                            const TimeMs& length_ms);
+            
+            void StartTimer(const TimeMs& interval_ms);
+            
+            bool IsRunning() const;
+            
+            void StopTimer();
+            
+        private:
+            std::thread _timerThread;
+            std::mutex timer_mutex;
+            bool _isRunning;
+        };
+    }
 }
-
-class axTimerMsg : public ax::Event::Msg
-{
-public:
-    
-    axTimerMsg(unsigned int t) :
-    _time(t)
-    {
-    }
-    
-    unsigned int GetTime() const
-    {
-        return _time;
-    }
-    
-    virtual ax::Event::Msg* GetCopy()
-    {
-        return new axTimerMsg(*this);
-    }
-    
-    
-    
-private:
-    unsigned int _time;
-};
-
-
-class axTimer : public ax::Event::Object
-{
-public:
-    axTimer(ax::App* app, ax::Event::Function fct, int ms);
-    axTimer(ax::App* app);
-    
-    static void timer_thread(axTimer& timer, int interval_ms, int length_ms);
-    static void timer_thread_no_end(axTimer& timer, int interval_ms);
-    void StartTimer(const int& interval_ms, const int& length_ms);
-    void StartTimer(const int& interval_ms);
-    
-    bool IsRunning() const;
-    
-    void StopTimer();
-    
-private:
-    std::thread _timerThread;
-    std::mutex timer_mutex;
-    bool _isRunning;
-    
-    void InitTimer(int ms);
-};
 
 /// @}
 #endif //_AX_TIMER_

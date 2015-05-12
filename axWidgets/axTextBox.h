@@ -41,7 +41,7 @@
 //#include "ax::Event::Msg.h"
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
-#include "axTimer.h"
+#include <axEvent/axTimer.h>
 
 /*******************************************************************************
  * axTextBox.
@@ -190,7 +190,7 @@ protected:
         axBTN_SELECTED
     };
     
-    axTimer* _flashingCursor;
+    ax::Event::Timer* _flashingCursor;
     
 	virtual void OnPaint();
 	virtual void OnMouseLeftDown(const ax::Point& pos);
@@ -211,8 +211,8 @@ protected:
     
     virtual void DrawContourRectangle(axGC* gc);
     
-    axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
-    void OnFlashingCursorTimer(const axTimerMsg& msg);
+    axEVENT_ACCESSOR(ax::Event::Timer::Msg, OnFlashingCursorTimer);
+    void OnFlashingCursorTimer(const ax::Event::Timer::Msg& msg);
 };
 
 /// @}

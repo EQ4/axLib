@@ -54,7 +54,7 @@ _findClickCursorIndex(false)
     
     if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new_ axTimer(ax::App::GetMainApp());
+        _flashingCursor = new_ ax::Event::Timer(ax::App::GetMainApp()->GetEventManager());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
@@ -89,7 +89,7 @@ void axTextControl::OnMouseLeftDown(const ax::Point& pos)
     Update();
 }
 
-void axTextControl::OnFlashingCursorTimer(const axTimerMsg& msg)
+void axTextControl::OnFlashingCursorTimer(const ax::Event::Timer::Msg& msg)
 {
     _cursorFlashActive = !_cursorFlashActive;
     Update();
@@ -144,7 +144,7 @@ void axTextControl::OnWasKeyGrabbed()
     
     if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
-        _flashingCursor->StartTimer(500);
+        _flashingCursor->StartTimer(ax::Event::Timer::TimeMs(500));
     }
     
     Update();

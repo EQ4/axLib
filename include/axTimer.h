@@ -31,8 +31,8 @@
 #include <string>
 #include <chrono>
 
-#include "axEventManager.h"
-#include "axObject.h"
+#include <axEvent/axEventManager.h>
+#include <axEvent/axObject.h>
 
 namespace ax
 {

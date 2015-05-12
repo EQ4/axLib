@@ -57,11 +57,8 @@ class axEditorMenu;
 class axWidget;
 class axWidgetSelector;
 
-
-
 namespace ax
 {
-    
     namespace Event
     {
         class Manager;
@@ -94,7 +91,7 @@ namespace ax
         
         axCore* GetCore();
         
-        string OpenFileDialog();
+        std::string OpenFileDialog();
         
         bool CreatePopupWindow(const char*, int, int);
         

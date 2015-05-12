@@ -179,7 +179,7 @@ public:
     void SetLabel(const std::string& label);
 
     
-    axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
+    axEVENT_ACCESSOR(ax::Event::Timer::Msg, OnFlashingCursorTimer);
     
 protected:
     axTextControlEvents _events;
@@ -206,7 +206,7 @@ protected:
         axBTN_SELECTED
     };
     
-    axTimer* _flashingCursor;
+    ax::Event::Timer* _flashingCursor;
     
 	virtual void OnPaint();
 	virtual void OnMouseLeftDown(const ax::Point& pos);
@@ -227,7 +227,7 @@ protected:
     //
     virtual void DrawContourRectangle(axGC* gc);
     
-    void OnFlashingCursorTimer(const axTimerMsg& msg);
+    void OnFlashingCursorTimer(const ax::Event::Timer::Msg& msg);
     
     bool _cursorFlashActive;
 };

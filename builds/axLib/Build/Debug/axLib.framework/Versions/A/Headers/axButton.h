@@ -68,7 +68,7 @@ namespace ax
         /***********************************************************************
          * axButton::Msg.
          **********************************************************************/
-        class Msg : public ax::Event::Msg
+        class Msg : public Event::Msg
         {
         public:
             Msg();
@@ -79,7 +79,7 @@ namespace ax
             
             std::string GetMsg() const;
             
-            ax::Event::Msg* GetCopy();
+            Event::Msg* GetCopy();
             
         private:
             Button* _sender;

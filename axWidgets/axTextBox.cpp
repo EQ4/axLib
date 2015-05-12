@@ -301,7 +301,7 @@ _maxNumChar(10000000)
     
     if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new_ axTimer(GetApp());
+        _flashingCursor = new_ ax::Event::Timer(GetApp()->GetEventManager());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
@@ -352,7 +352,7 @@ void axTextBox::OnMouseLeftDown(const ax::Point& pos)
     Update();
 }
 
-void axTextBox::OnFlashingCursorTimer(const axTimerMsg& msg)
+void axTextBox::OnFlashingCursorTimer(const ax::Event::Timer::Msg& msg)
 {
     _cursorFlashActive = !_cursorFlashActive;
     Update();
@@ -407,7 +407,7 @@ void axTextBox::OnWasKeyGrabbed()
     
     if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
-        _flashingCursor->StartTimer(500);
+        _flashingCursor->StartTimer(ax::Event::Timer::TimeMs(500));
     }
     
     Update();
