@@ -37,7 +37,11 @@
 #include <map>
 #include <iostream>
 
-class axApp;
+namespace ax
+{
+    class App;
+}
+
 
 typedef unsigned int axID;
 
@@ -45,7 +49,7 @@ typedef unsigned int axID;
 class axObject
 {
 public:
-    axObject(axApp* app);
+    axObject(ax::App* app);
     
     /// Add a function to the EventManager.
     void AddConnection(const axEventId& evtId, axEventFunction fct) const;
@@ -64,18 +68,18 @@ public:
     /// Get a function from the object map.
     axEventFunction GetEventFunction(const std::string& name);
     
-    inline axApp* GetApp()
+    inline ax::App* GetApp()
     {
         return _app;
     }
     
-    inline axApp* GetApp() const
+    inline ax::App* GetApp() const
     {
         return _app;
     }
     
 private:
-    axApp* _app;
+    ax::App* _app;
     
     /// Unique identifier.
     axID _id;

@@ -27,7 +27,7 @@ std::mutex manager_mutex;
 
 //axEventManager* axEventManager::_instance = nullptr;
 
-axEventManager::axEventManager(axApp* app):
+axEventManager::axEventManager(ax::App* app):
 _app(app)
 {
     

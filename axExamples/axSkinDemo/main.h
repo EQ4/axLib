@@ -20,7 +20,7 @@ namespace ax
 class MainPanel : public axPanel
 {
 public:
-    MainPanel(axApp* app, const ax::Rect& rect);
+    MainPanel(ax::App* app, const ax::Rect& rect);
     
     axEVENT_ACCESSOR(ax::Button::Msg, OnButtonClick);
     

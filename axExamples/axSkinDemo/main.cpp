@@ -10,7 +10,7 @@
 #include <axlib/axCocoaInterfaceMac.h>
 #include "axFileBrowser.h"
 
-MainPanel::MainPanel(axApp* app, const ax::Rect& rect):
+MainPanel::MainPanel(ax::App* app, const ax::Rect& rect):
 // Parent.
 axPanel(app, rect)
 {
@@ -142,14 +142,11 @@ void MainPanel::OnPaint()
     
     gc.SetColor(axColor(0.45));
     gc.DrawRectangleContour(rect);
-    
 }
 
 int main(int argc, char* argv[])
 {
-//	axEventManager::GetInstance();
-    axApp app(ax::Size(550, 500));
-//	axApp* app = axApp::CreateApp(axSize(550, 500));
+    ax::App app(ax::Size(550, 500));
 
     app.AddMainEntry([&app]()
     {

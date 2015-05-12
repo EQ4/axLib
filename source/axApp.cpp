@@ -31,12 +31,12 @@
 #include "axScrollBar.h"
 #include "axEventManager.h"
 
-axApp* axApp::_mainApp = nullptr;
+ax::App* ax::App::_mainApp = nullptr;
 
 //axApp* axApp::MainInstance = nullptr;
 //axResourceManager* axApp::_resourceManager = nullptr;
 
-axApp::axApp():
+ax::App::App():
 _debugEditorActive(false)
 {
     _mainApp = this;
@@ -75,7 +75,7 @@ _debugEditorActive(false)
 
 }
 
-axApp::axApp(const ax::Size& frame_size):
+ax::App::App(const ax::Size& frame_size):
 _debugEditorActive(false)
 {
     _mainApp = this;
@@ -113,7 +113,7 @@ _debugEditorActive(false)
 #endif // __APPLE__
 }
 
-void axApp::CreateEditor()
+void ax::App::CreateEditor()
 {
 #if _axDebugEditor_ == 1
     // @todo Fix this.
@@ -159,12 +159,12 @@ void axApp::CreateEditor()
 #endif // _axDebugEditor_
 }
 
-void axApp::AddMainEntry(std::function<void()> fct)
+void ax::App::AddMainEntry(std::function<void()> fct)
 {
     _mainEntryFunction = fct;
 }
 
-void axApp::CallMainEntryFunction()
+void ax::App::CallMainEntryFunction()
 {
     if(_mainEntryFunction)
     {
@@ -173,7 +173,7 @@ void axApp::CallMainEntryFunction()
 }
 
 //------------------------------------------------------------------------------
-void axApp::OnDebugEditor(const axMsg& msg)
+void ax::App::OnDebugEditor(const axMsg& msg)
 {
     if(_debugEditorActive)
     {
@@ -203,17 +203,17 @@ void axApp::OnDebugEditor(const axMsg& msg)
 }
 //------------------------------------------------------------------------------
 
-string axApp::OpenFileDialog()
+string ax::App::OpenFileDialog()
 {
 	return _core->OpenFileDialog();
 }
 
-string axApp::GetAppDirectory()
+string ax::App::GetAppDirectory()
 {
 	return _core->GetAppDirectory();
 }
 
-std::string axApp::GetResourceFile(const std::string& file_name)
+std::string ax::App::GetResourceFile(const std::string& file_name)
 {
     std::string app_path = GetCore()->GetAppPath();
     axPrint("core ressource folder : ", app_path);
@@ -241,13 +241,13 @@ std::string axApp::GetResourceFile(const std::string& file_name)
 //}
 
 
-void axApp::MainLoop()
+void ax::App::MainLoop()
 {
 	//CallMainEntryFunction();
 	_core->MainLoop();
 }
 
-void axApp::UpdateAll()
+void ax::App::UpdateAll()
 {
 //    if(_widgetSelector != nullptr)
 //    {
@@ -257,54 +257,54 @@ void axApp::UpdateAll()
 	_core->UpdateAll();
 }
 
-axManager* axApp::GetWindowManager()
+axManager* ax::App::GetWindowManager()
 {
 	return _core->GetWindowManager();
 }
 
-axManager* axApp::GetPopupManager()
+axManager* ax::App::GetPopupManager()
 {
     return _core->GetPopupManager();
 }
 
-void axApp::AddWindow(axWindow* win)
+void ax::App::AddWindow(axWindow* win)
 {
 	GetWindowManager()->Add(win);
 }
 
-void axApp::AddPopWindow(axWindow* win)
+void ax::App::AddPopWindow(axWindow* win)
 {
 	_core->GetPopupManager()->Add(win);
 }
 
-void axApp::ActivateDebugEditor(const bool& active)
+void ax::App::ActivateDebugEditor(const bool& active)
 {
     _debugEditorActive = active;
     UpdateAll();
 }
 
-bool axApp::IsDebugEditorActive() const
+bool ax::App::IsDebugEditorActive() const
 {
     return _debugEditorActive;
 }
 
-axCore* axApp::GetCore()
+axCore* ax::App::GetCore()
 {
 	return _core;
 }
 
-axResourceManager* axApp::GetResourceManager()
+axResourceManager* ax::App::GetResourceManager()
 {
     axResourceManager*& rm = _resourceManager;
     return rm == nullptr ? rm = new axResourceManager() : rm;
 }
 
-void axApp::AddAfterGUILoadFunction(std::function<void()> fct)
+void ax::App::AddAfterGUILoadFunction(std::function<void()> fct)
 {
     _afterGuiLoadFunction = fct;
 }
 
-void axApp::CallAfterGUILoadFunction()
+void ax::App::CallAfterGUILoadFunction()
 {
     if(_afterGuiLoadFunction)
     {
@@ -312,12 +312,12 @@ void axApp::CallAfterGUILoadFunction()
     }
 }
 
-void axApp::AddPopupEntryFunction(std::function<void()> fct)
+void ax::App::AddPopupEntryFunction(std::function<void()> fct)
 {
     _popupEntryFunction = fct;
 }
 
-void axApp::CallPopupEntryFunction()
+void ax::App::CallPopupEntryFunction()
 {
     if(_popupEntryFunction)
     {
@@ -325,13 +325,13 @@ void axApp::CallPopupEntryFunction()
     }
 }
 
-void axApp::SetEditingWidget(axWidget* widget)
+void ax::App::SetEditingWidget(axWidget* widget)
 {
     _widgetSelector->SetSelectedWidget(widget);
     _debugMenu->SetEditingWidget(widget);
 }
 
-axEditorMenu* axApp::GetEditor()
+axEditorMenu* ax::App::GetEditor()
 {
     return _debugMenu;
 }

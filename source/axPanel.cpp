@@ -25,7 +25,7 @@
 #include "axScrollBar.h"
 //#include "NSOpenGLView+axPopupWindowCocoaView.h"
 
-axPanel::axPanel(axApp* app, const ax::Rect& rect) :
+axPanel::axPanel(ax::App* app, const ax::Rect& rect) :
 axWindow(app, rect)
 {
     if(GetIsPopup())

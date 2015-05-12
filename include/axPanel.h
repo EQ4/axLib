@@ -33,7 +33,7 @@ class axScrollBar;
 class axPanel : public axWindow
 {
 public:
-    axPanel(axApp* app, const ax::Rect& rect);
+    axPanel(ax::App* app, const ax::Rect& rect);
 	axPanel(axWindow* parent, const ax::Rect& rect);
 	axPanel(int f, axWindow* parent, const ax::Rect& rect);
 
@@ -41,8 +41,6 @@ public:
     
 	void UpdateAll();
 	virtual void Update();
-    
-    
     
     virtual axWindowType GetWindowType();
 

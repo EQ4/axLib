@@ -21,14 +21,14 @@
  ******************************************************************************/
 #include "axTimer.h"
 
-axTimer::axTimer(axApp* app, axEventFunction fct, int ms):
+axTimer::axTimer(ax::App* app, axEventFunction fct, int ms):
 axObject(app)
 {
 //    AddConnection(0, fct);
 //    InitTimer(ms);
 }
 
-axTimer::axTimer(axApp* app):
+axTimer::axTimer(ax::App* app):
 axObject(app),
 _isRunning(false)
 {

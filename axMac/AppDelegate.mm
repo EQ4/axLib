@@ -126,7 +126,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 //    
 #else
     
-    _axApp = axApp::GetMainApp();
+    _axApp = ax::App::GetMainApp();
     _axApp->GetCore()->Init(ax::Size(500, 500));
     
     _axApp->CallMainEntryFunction();
@@ -195,7 +195,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
 //    ax::Size size(frameSize.width, frameSize.height);
     
-    axApp::GetMainApp()->GetCore()->ResizeGLScene(size3);
+    ax::App::GetMainApp()->GetCore()->ResizeGLScene(size3);
     
     // Resize openGL panel.
     [GlobalAppDelegate setFrame:NSMakeRect(0.f, 0.f, size3.x, size3.y)];
@@ -447,7 +447,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
                        void* info)
 {
         //**************************************************************************
-    axApp::GetMainApp()->GetEventManager()->CallNext();
+    ax::App::GetMainApp()->GetEventManager()->CallNext();
 //    axEventManager::GetInstance()->CallNext();
 }
 

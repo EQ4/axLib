@@ -30,7 +30,7 @@ axID axObject::IncrementGlobalIdCount()
     return ++_global_id_count;
 }
 
-axObject::axObject(axApp* app) :
+axObject::axObject(ax::App* app) :
 _id(IncrementGlobalIdCount()),
 _app(app)
 {

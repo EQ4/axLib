@@ -58,112 +58,91 @@ class axWidget;
 class axWidgetSelector;
 class axEventManager;
 
-// Is use as an adapter to global axCore class (axCORE).
-class axApp
+namespace ax
 {
-public:
-	axApp();
-
-//	inline static axApp* GetInstance()
-//	{
-//		return MainInstance;
-//	}
-
-//	inline static axApp* CreateApp()
-//	{
-//		return MainInstance == nullptr ?
-//               MainInstance = new axApp() : MainInstance;
-//	}
-//
-//	inline static axApp* CreateApp(const ax::Size& frame_size)
-//	{
-//		return MainInstance == nullptr ?
-//               MainInstance = new axApp(frame_size) : MainInstance;
-//	}
-    
-//    inline static std::string GetAppPath()
-//    {
-//        return GetInstance()->GetCore()->GetAppPath();
-//    }
-
-    inline std::string GetAppPath()
+    class App
     {
-        return _core->GetAppPath();
-    }
-
-	axApp(const ax::Size& frame_size);
-
-	void MainLoop();
-
-    std::string GetResourceFile(const std::string& file_name);
-
-	axManager* GetWindowManager();
-    axManager* GetPopupManager();
-
-	void AddWindow(axWindow* win);
-    
-	void AddPopWindow(axWindow* win);
-
-	void UpdateAll();
-
-	axCore* GetCore();
-
-	string OpenFileDialog();
-
-	bool CreatePopupWindow(const char*, int, int);
-
-    std::string GetAppDirectory();
-    
-    axResourceManager* GetResourceManager();
-    
-    void ActivateDebugEditor(const bool& active);
-    bool IsDebugEditorActive() const;
-    
-    void CallMainEntryFunction();
-    void AddMainEntry(std::function<void()> fct);
-    
-    void AddAfterGUILoadFunction(std::function<void()> fct);
-    void CallAfterGUILoadFunction();
-    
-    void AddPopupEntryFunction(std::function<void()> fct);
-    void CallPopupEntryFunction();
-    
-    void CreateEditor();
-    
-    void SetEditingWidget(axWidget* widget);
-    
-    axWidgetSelector* _widgetSelector = nullptr;
-    
-    axEditorMenu* GetEditor();
-    
-    inline axEventManager* GetEventManager()
-    {
-        return _evtManager;
-    }
-    
-    static inline axApp* GetMainApp()
-    {
-        return _mainApp;
-    }
-    
-private:
-//    static axApp* MainInstance;
-	axCore* _core;
-    static axApp* _mainApp;
-    
-    axEventManager* _evtManager;
-    
-    axEditorMenu* _debugMenu;
-
-    std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
-    std::function<void()> _popupEntryFunction;
-    axResourceManager* _resourceManager;
-    
-    bool _debugEditorActive;
-    
-    axEVENT_ACCESSOR(axMsg, OnDebugEditor);
-    void OnDebugEditor(const axMsg& msg);
-};
+    public:
+        App();
+        
+        inline std::string GetAppPath()
+        {
+            return _core->GetAppPath();
+        }
+        
+        App(const ax::Size& frame_size);
+        
+        void MainLoop();
+        
+        std::string GetResourceFile(const std::string& file_name);
+        
+        axManager* GetWindowManager();
+        axManager* GetPopupManager();
+        
+        void AddWindow(axWindow* win);
+        
+        void AddPopWindow(axWindow* win);
+        
+        void UpdateAll();
+        
+        axCore* GetCore();
+        
+        string OpenFileDialog();
+        
+        bool CreatePopupWindow(const char*, int, int);
+        
+        std::string GetAppDirectory();
+        
+        axResourceManager* GetResourceManager();
+        
+        void ActivateDebugEditor(const bool& active);
+        bool IsDebugEditorActive() const;
+        
+        void CallMainEntryFunction();
+        void AddMainEntry(std::function<void()> fct);
+        
+        void AddAfterGUILoadFunction(std::function<void()> fct);
+        void CallAfterGUILoadFunction();
+        
+        void AddPopupEntryFunction(std::function<void()> fct);
+        void CallPopupEntryFunction();
+        
+        void CreateEditor();
+        
+        void SetEditingWidget(axWidget* widget);
+        
+        axWidgetSelector* _widgetSelector = nullptr;
+        
+        axEditorMenu* GetEditor();
+        
+        inline axEventManager* GetEventManager()
+        {
+            return _evtManager;
+        }
+        
+        static inline App* GetMainApp()
+        {
+            return _mainApp;
+        }
+        
+    private:
+        axCore* _core;
+        static App* _mainApp;
+        
+        axEventManager* _evtManager;
+        
+        axEditorMenu* _debugMenu;
+        
+        std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
+        std::function<void()> _popupEntryFunction;
+        axResourceManager* _resourceManager;
+        
+        bool _debugEditorActive;
+        
+        axEVENT_ACCESSOR(axMsg, OnDebugEditor);
+        void OnDebugEditor(const axMsg& msg);
+    };
+}
 
 /// @}
 #endif //__AX_APP__

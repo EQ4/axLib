@@ -23,11 +23,14 @@
 
 //NSOpenGLView,
 //NSOpenGLView,
-class axApp;
+namespace ax
+{
+    class App;
+}
 
 @interface axAppDelegate : NSOpenGLView
 {
-    axApp* _axApp;
+    ax::App* _axApp;
 }
 
 

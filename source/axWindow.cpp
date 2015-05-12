@@ -26,7 +26,7 @@
 #include "axGraphicInterface.h"
 #include "axWindowTree.h"
 
-axWindow::axWindow(axApp* app, const ax::Rect& rect):
+axWindow::axWindow(ax::App* app, const ax::Rect& rect):
 // Heritage.
 axObject(app),
 _parent(nullptr),

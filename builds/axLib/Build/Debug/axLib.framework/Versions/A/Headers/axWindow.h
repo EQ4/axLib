@@ -40,7 +40,7 @@ class axWindow : public axObject
 {
 public:
 	axWindow(axWindow* parent, const ax::Rect& rect);
-    axWindow(axApp* app, const ax::Rect& rect);
+    axWindow(ax::App* app, const ax::Rect& rect);
     virtual ~axWindow();
     
     enum axWindowType
