@@ -28,12 +28,12 @@
 /// @defgroup TextControl
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 #include "axTimer.h"
 
 /**************************************************************************//**
@@ -45,7 +45,7 @@
 
 class axTextControl;
 
-class axTextControlMsg : public axMsg
+class axTextControlMsg : public ax::Event::Msg
 {
 public:
     axTextControlMsg()
@@ -64,12 +64,12 @@ public:
         return _sender;
     }
     
-    string GetMsg() const
+    std::string GetMsg() const
     {
         return _msg;
     }
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axTextControlMsg(*this);
     }
@@ -81,12 +81,12 @@ private:
 
 struct axTextControlEvents
 {
-    enum : axEventId { BUTTON_CLICK };
+    enum : ax::Event::Id { BUTTON_CLICK };
     
 	axTextControlEvents(){}
-    axTextControlEvents(axEventFunction& fct){ button_click = fct; }
+    axTextControlEvents(ax::Event::Function& fct){ button_click = fct; }
     
-    axEventFunction button_click;
+    ax::Event::Function button_click;
 };
 
 struct axTextControlInfo

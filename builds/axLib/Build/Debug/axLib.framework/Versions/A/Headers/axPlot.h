@@ -36,12 +36,12 @@
 /// @defgroup Plot
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 
 /*******************************************************************************
  * axPlotFlags.
@@ -50,7 +50,7 @@
 /*******************************************************************************
  * axPlotMsg.
  ******************************************************************************/
-class axPlotMsg : public axMsg
+class axPlotMsg : public ax::Event::Msg
 {
 public:
     axPlotMsg(const double& value):
@@ -63,7 +63,7 @@ public:
         return _value;
     }
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axPlotMsg(*this);
     }
@@ -77,12 +77,12 @@ private:
 ******************************************************************************/
 struct axPlotEvents
 {
-    enum : axEventId { VALUE_CHANGE };
+    enum : ax::Event::Id { VALUE_CHANGE };
     
     axPlotEvents(){}
-    axPlotEvents(axEventFunction& fct){ value_change = fct; }
+    axPlotEvents(ax::Event::Function& fct){ value_change = fct; }
     
-    axEventFunction value_change;
+    ax::Event::Function value_change;
 };
 
 /**************************************************************************//**

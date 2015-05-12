@@ -36,12 +36,12 @@
 /// @defgroup DropMenu
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 #include "axPopupMenu.h"
 
 /*******************************************************************************
@@ -55,7 +55,7 @@ class axDropMenu;
 /*******************************************************************************
  * axDropMenuMsg.
  ******************************************************************************/
-class axDropMenuMsg : public axMsg
+class axDropMenuMsg : public ax::Event::Msg
 {
 public:
     axDropMenuMsg()
@@ -63,7 +63,7 @@ public:
         _sender = nullptr;
     }
     
-    axDropMenuMsg(axDropMenu* sender, const string& msg)
+    axDropMenuMsg(axDropMenu* sender, const std::string& msg)
     {
         _sender = sender;
         _msg = msg;
@@ -79,7 +79,7 @@ public:
         return _msg;
     }
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axDropMenuMsg(*this);
     }
@@ -94,12 +94,12 @@ private:
  ******************************************************************************/
 struct axDropMenuEvents
 {
-    enum : axEventId { SELECTION_CHANGE };
+    enum : ax::Event::Id { SELECTION_CHANGE };
     
     axDropMenuEvents(){}
-    axDropMenuEvents(const axEventFunction& fct){ selection_change = fct; }
+    axDropMenuEvents(const ax::Event::Function& fct){ selection_change = fct; }
     
-    axEventFunction selection_change;
+    ax::Event::Function selection_change;
 };
 
 /*******************************************************************************

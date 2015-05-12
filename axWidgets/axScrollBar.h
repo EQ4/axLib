@@ -29,7 +29,7 @@
 /// @defgroup ScrollBar
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
@@ -46,7 +46,7 @@
 
 class axScrollBar;
 
-class axScrollBarMsg : public axMsg
+class axScrollBarMsg : public ax::Event::Msg
 {
 public:
 	axScrollBarMsg()
@@ -70,7 +70,7 @@ public:
 		return _msg;
 	}
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axScrollBarMsg(*this);
     }
@@ -82,12 +82,12 @@ private:
 
 struct axScrollBarEvents
 {
-	enum : axEventId { VALUE_CHANGE };
+    enum : ax::Event::Id { VALUE_CHANGE };
 	
 	axScrollBarEvents(){}
-	axScrollBarEvents(axEventFunction& fct){ value_change = fct; }
+    axScrollBarEvents(ax::Event::Function& fct){ value_change = fct; }
     
-    axEventFunction value_change;
+    ax::Event::Function value_change;
 };
 
 struct axScrollBarInfo

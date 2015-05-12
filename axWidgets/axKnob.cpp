@@ -40,7 +40,7 @@ std::string axKnob::Msg::GetMsg() const
     return _msg;
 }
 
-axMsg* axKnob::Msg::GetCopy()
+ax::Event::Msg* axKnob::Msg::GetCopy()
 {
     return new_ Msg(*this);
 }
@@ -241,7 +241,7 @@ _pastKnob(nullptr)
     
 }
 
-axKnob* axKnob::Builder::Create(const ax::Point& pos, const axEventFunction& evt)
+axKnob* axKnob::Builder::Create(const ax::Point& pos, const ax::Event::Function& evt)
 {
     return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evt,
                                   _info, _flags);
@@ -254,7 +254,7 @@ axKnob* axKnob::Builder::Create(const ax::Point& pos)
                                   _info, _flags);
 }
 
-axKnob* axKnob::Builder::Create(const axEventFunction& evt)
+axKnob* axKnob::Builder::Create(const ax::Event::Function& evt)
 {
     if(_pastKnob != nullptr)
     {

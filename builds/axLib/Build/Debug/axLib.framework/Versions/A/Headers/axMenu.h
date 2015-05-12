@@ -29,7 +29,7 @@
 /// @defgroup Menu
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"

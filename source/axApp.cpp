@@ -29,7 +29,7 @@
 #include "axWidget.h"
 
 #include "axScrollBar.h"
-#include "axEventManager.h"
+#include <axEvent/axEventManager.h>
 
 ax::App* ax::App::_mainApp = nullptr;
 
@@ -40,7 +40,10 @@ ax::App::App():
 _debugEditorActive(false)
 {
     _mainApp = this;
-    _evtManager = new axEventManager(this);
+    _evtManager = new ax::Event::Manager([&]
+    {
+        this->GetCore()->PushEventOnSystemQueue();
+    });
     
 #ifdef __linux__
 	_core = new axCoreX11(this);
@@ -79,7 +82,7 @@ ax::App::App(const ax::Size& frame_size):
 _debugEditorActive(false)
 {
     _mainApp = this;
-    _evtManager = new axEventManager(this);
+    _evtManager = new ax::Event::Manager();
     
 #ifdef __linux__
 	_core = new axCoreX11(this);
@@ -173,7 +176,7 @@ void ax::App::CallMainEntryFunction()
 }
 
 //------------------------------------------------------------------------------
-void ax::App::OnDebugEditor(const axMsg& msg)
+void ax::App::OnDebugEditor(const ax::Event::Msg& msg)
 {
     if(_debugEditorActive)
     {

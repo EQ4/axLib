@@ -55,7 +55,7 @@ string ax::Button::Msg::GetMsg() const
     return _msg;
 }
 
-axMsg* ax::Button::Msg::GetCopy()
+ax::Event::Msg* ax::Button::Msg::GetCopy()
 {
     return new_ ax::Button::Msg(*this);
 }

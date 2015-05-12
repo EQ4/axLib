@@ -44,7 +44,7 @@ double axNumberBox::Msg::GetValue() const
     return _value;
 }
 
-axMsg* axNumberBox::Msg::GetCopy()
+ax::Event::Msg* axNumberBox::Msg::GetCopy()
 {
     return new_ Msg(*this);
 }

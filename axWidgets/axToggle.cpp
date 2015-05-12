@@ -69,7 +69,7 @@ string axToggle::Msg::GetMsg() const
     return _msg;
 }
 
-axMsg* axToggle::Msg::GetCopy()
+ax::Event::Msg* axToggle::Msg::GetCopy()
 {
     return new_ Msg(*this);
 }

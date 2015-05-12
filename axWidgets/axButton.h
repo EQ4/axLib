@@ -36,12 +36,12 @@
 /// @defgroup Button
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
 
@@ -68,7 +68,7 @@ namespace ax
         /***********************************************************************
          * axButton::Msg.
          **********************************************************************/
-        class Msg : public axMsg
+        class Msg : public Event::Msg
         {
         public:
             Msg();
@@ -79,7 +79,7 @@ namespace ax
             
             std::string GetMsg() const;
             
-            axMsg* GetCopy();
+            Event::Msg* GetCopy();
             
         private:
             Button* _sender;
@@ -92,12 +92,12 @@ namespace ax
         class Events
         {
         public:
-            enum : axEventId { BUTTON_CLICK };
+            enum : ax::Event::Id { BUTTON_CLICK };
             
             Events(){}
-            Events(const axEventFunction& fct){ button_click = fct; }
+            Events(const ax::Event::Function& fct){ button_click = fct; }
             
-            axEventFunction button_click;
+            ax::Event::Function button_click;
         };
         
         /***********************************************************************

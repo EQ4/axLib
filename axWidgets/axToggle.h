@@ -36,13 +36,14 @@
 /// @defgroup Toggle
 /// @{
 
+#include <axEvent/axEvent.h>
+
 #include "axWidget.h"
-#include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include <axEvent"ax::Event::Msg.h"
 #include <fstream>
 
 /*******************************************************************************
@@ -66,7 +67,7 @@ public:
     /***************************************************************************
      * axToggle::Msg.
      **************************************************************************/
-    class Msg : public axMsg
+    class Msg : public ax::Event::Msg
     {
     public:
         Msg();
@@ -81,7 +82,7 @@ public:
         
         string GetMsg() const;
         
-        axMsg* GetCopy();
+        ax::Event::Msg* GetCopy();
         
     private:
         axToggle* _sender;
@@ -95,12 +96,12 @@ public:
     class Events
     {
     public:
-        enum : axEventId { BUTTON_CLICK };
+        enum : ax::Event::Id { BUTTON_CLICK };
         
-        axEventFunction button_click;
+        ax::Event::Function button_click;
         
         Events(){}
-        Events(const axEventFunction& fct){ button_click = fct; }
+        Events(const ax::Event::Function& fct){ button_click = fct; }
     };
     
     /***************************************************************************
@@ -159,8 +160,8 @@ public:
         Builder(axPanel* parent,
                 const ax::Size& size,
                 const axToggle::Info& info,
-                string img_path = "",
-                string label = "",
+                std::string img_path = "",
+                std::string label = "",
                 axFlag flags = 0,
                 int nextPositionDelta = 5,
                 axDirection direction = axDIRECTION_RIGHT);
@@ -190,10 +191,10 @@ public:
              const ax::Rect& rect,
              const axToggle::Events& events,
              const axToggle::Info& info,
-             string img_path = "",
-             string label = "",
+             std::string img_path = "",
+             std::string label = "",
              axFlag flags = 0,
-             string msg = "");
+             std::string msg = "");
         
     void SetMsg(const string& msg);
     void SetSelected(const bool& selected);

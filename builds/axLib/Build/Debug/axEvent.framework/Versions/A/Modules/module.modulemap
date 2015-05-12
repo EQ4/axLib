@@ -1,0 +1,6 @@
+framework module axEvent {
+  umbrella header "axEvent.h"
+
+  export *
+  module * { export * }
+}

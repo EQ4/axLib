@@ -53,7 +53,7 @@ std::string axTextBox::Msg::GetMsg() const
     return _msg;
 }
 
-axMsg* axTextBox::Msg::GetCopy()
+ax::Event::Msg* axTextBox::Msg::GetCopy()
 {
     return new_ axTextBox::Msg(*this);
 }

@@ -54,7 +54,7 @@ _findClickCursorIndex(false)
     
     if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new_ axTimer(GetApp());
+        _flashingCursor = new_ axTimer(ax::App::GetMainApp());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     

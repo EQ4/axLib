@@ -30,10 +30,15 @@
 #include <mutex>
 #include <string>
 
-#include "axEventManager.h"
+#include <axEvent/axEventManager.h>
 #include "axObject.h"
 
-class axTimerMsg : public axMsg
+namespace ax
+{
+    class App;
+}
+
+class axTimerMsg : public ax::Event::Msg
 {
 public:
     
@@ -47,7 +52,7 @@ public:
         return _time;
     }
     
-    virtual axMsg* GetCopy()
+    virtual ax::Event::Msg* GetCopy()
     {
         return new axTimerMsg(*this);
     }
@@ -59,10 +64,10 @@ private:
 };
 
 
-class axTimer : public axObject
+class axTimer : public ax::Event::Object
 {
 public:
-    axTimer(ax::App* app, axEventFunction fct, int ms);
+    axTimer(ax::App* app, ax::Event::Function fct, int ms);
     axTimer(ax::App* app);
     
     static void timer_thread(axTimer& timer, int interval_ms, int length_ms);

@@ -19,52 +19,60 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#include "axObject.h"
-#include "axEventManager.h"
-#include "axApp.h"
+#include <axEvent/axObject.h>
+#include <axEvent/axEventManager.h>
+//#include "axApp.h"
 
-axID axObject::_global_id_count = 0;
-
-axID axObject::IncrementGlobalIdCount()
+namespace ax
 {
-    return ++_global_id_count;
-}
-
-axObject::axObject(ax::App* app) :
-_id(IncrementGlobalIdCount()),
-_app(app)
-{
-    
-}
-
-void axObject::AddConnection(const axEventId& evtId, axEventFunction fct) const
-{
-    _app->GetEventManager()->AddConnection(_id, evtId, fct);
-}
-
-void axObject::PushEvent(const axEventId& evtId, axMsg* msg)
-{
-    _app->GetEventManager()->PushEvent(_id, evtId, msg);
-}
-
-void axObject::ChangeId(const axID& id)
-{
-	_id = id;
-}
-
-void axObject::AddEventFunction(const std::string& name, axEventFunction fct)
-{
-    _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
-}
-
-axEventFunction axObject::GetEventFunction(const std::string& name)
-{
-    std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
-    
-    if(it != _evtMap.end())
+    namespace Event
     {
-        return it->second;
+        ID Object::_global_id_count = 0;
+        
+        ID Object::IncrementGlobalIdCount()
+        {
+            return ++_global_id_count;
+        }
+        
+        Object::Object(Manager* evtManager) :
+        _id(IncrementGlobalIdCount()),
+        _evtManager(evtManager)
+        {
+            
+        }
+        
+        void Object::AddConnection(const Id& evtId, Function fct) const
+        {
+            _evtManager->AddConnection(_id, evtId, fct);
+        }
+        
+        void Object::PushEvent(const Id& evtId, Msg* msg)
+        {
+            _evtManager->PushEvent(_id, evtId, msg);
+        }
+        
+        void Object::ChangeId(const ID& id)
+        {
+            _id = id;
+        }
+        
+        void Object::AddEventFunction(const std::string& name, Function fct)
+        {
+            _evtMap.insert(std::pair<std::string, Function>(name, fct));
+        }
+        
+        Function Object::GetEventFunction(const std::string& name)
+        {
+            std::map<std::string, Function>::iterator it = _evtMap.find(name);
+            
+            if(it != _evtMap.end())
+            {
+                return it->second;
+            }
+            
+            return nullptr;
+        }
     }
-    
-    return nullptr;
 }
+
+

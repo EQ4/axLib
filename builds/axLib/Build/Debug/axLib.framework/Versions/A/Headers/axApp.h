@@ -56,10 +56,17 @@
 class axEditorMenu;
 class axWidget;
 class axWidgetSelector;
-class axEventManager;
+
+
 
 namespace ax
 {
+    
+    namespace Event
+    {
+        class Manager;
+    }
+    
     class App
     {
     public:
@@ -115,7 +122,7 @@ namespace ax
         
         axEditorMenu* GetEditor();
         
-        inline axEventManager* GetEventManager()
+        inline ax::Event::Manager* GetEventManager()
         {
             return _evtManager;
         }
@@ -129,7 +136,7 @@ namespace ax
         axCore* _core;
         static App* _mainApp;
         
-        axEventManager* _evtManager;
+        ax::Event::Manager* _evtManager;
         
         axEditorMenu* _debugMenu;
         
@@ -139,8 +146,8 @@ namespace ax
         
         bool _debugEditorActive;
         
-        axEVENT_ACCESSOR(axMsg, OnDebugEditor);
-        void OnDebugEditor(const axMsg& msg);
+        axEVENT_ACCESSOR(ax::Event::Msg, OnDebugEditor);
+        void OnDebugEditor(const ax::Event::Msg& msg);
     };
 }
 

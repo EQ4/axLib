@@ -41,7 +41,7 @@ _lastSelected(nullptr)
     ax::Size tog_size(rect.size.x, LABEL_HEIGHT);
 
     axToggle::Events tog_event;
-    tog_event.button_click = GetOnButtonClick();
+//    tog_event.button_click = GetOnButtonClick();
     
     axToggle::Info tog_info;
     tog_info.normal = axColor(0.8, 0.8, 0.8, 0.6);

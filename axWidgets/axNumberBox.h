@@ -36,12 +36,12 @@
 /// @defgroup NumberBox
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 
 /***************************************************************************
  * axNumberBox.
@@ -65,14 +65,14 @@ public:
     /***************************************************************************
      * axNumberBox::Msg.
      **************************************************************************/
-    class Msg : public axMsg
+    class Msg : public ax::Event::Msg
     {
     public:
         Msg(const double& value);
         
         double GetValue() const;
         
-        axMsg* GetCopy();
+        ax::Event::Msg* GetCopy();
         
     private:
         double _value;
@@ -84,12 +84,12 @@ public:
     class Events
     {
     public:
-        enum : axEventId { VALUE_CHANGE };
+        enum : ax::Event::Id { VALUE_CHANGE };
         
         Events(){}
-        Events(axEventFunction& fct){ value_change = fct; }
+        Events(ax::Event::Function& fct){ value_change = fct; }
         
-        axEventFunction value_change;
+        ax::Event::Function value_change;
     };
     
     /***************************************************************************

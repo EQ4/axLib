@@ -43,15 +43,16 @@
  * Event.
  ******************************************************************************/
 
-#include "axEvent.h"
-#include "axEventManager.h"
+#include <axEvent/axEvent.h>
+#include <axEvent/axObject.h>
+//#include "axEventManager.h"
 #include "axKeyboardManager.h"
 #include "axMouseManager.h"
 
 #include "axTimer.h"
-#include "axMsg.h"
+//#include "axMsg.h"
 #include "axObjectLoader.h"
-#include "axObject.h"
+//#include "axObject.h"
 
 /*******************************************************************************
  * Widgets.

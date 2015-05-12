@@ -28,18 +28,19 @@
 /// @defgroup PopupMenu
 /// @{
 
-#include "axEvent.h"
+//#include "axEvent.h"
+#include <axEvent/axEvent.h>
+//#include <axEvent/ax::Event::Msg.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
 #include "axToggle.h"
 
 /**************************************************************************//**
 * axPopupMenuMsg
 ******************************************************************************/
-class axPopupMenuMsg : public axMsg
+class axPopupMenuMsg : public ax::Event::Msg
 {
 public:
 	axPopupMenuMsg(const string& msg) :
@@ -52,7 +53,7 @@ public:
 		return _msg;
 	}
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axPopupMenuMsg(*this);
     }
@@ -66,12 +67,12 @@ private:
 ******************************************************************************/
 struct axPopupMenuEvents
 {
-    enum : axEventId { SELECTION_CHANGE };
+    enum : ax::Event::Id { SELECTION_CHANGE };
 
 	axPopupMenuEvents(){}
-	axPopupMenuEvents(axEventFunction& fct){ selection_change = fct; }
+    axPopupMenuEvents(ax::Event::Function& fct){ selection_change = fct; }
     
-    axEventFunction selection_change;
+    ax::Event::Function selection_change;
 };
 
 /**************************************************************************//**
@@ -132,7 +133,7 @@ private:
 	int _index;
 	axToggle* _lastSelected;
 
-    axEVENT_ACCESSOR(axToggle::Msg, OnButtonClick);
+    //axEVENT_ACCESSOR(axToggle::Msg, OnButtonClick);
     void OnButtonClick(const axToggle::Msg& msg);
 
 	virtual void OnPaint();

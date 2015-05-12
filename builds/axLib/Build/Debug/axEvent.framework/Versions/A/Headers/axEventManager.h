@@ -22,7 +22,7 @@
 #ifndef __AX_EVENT_MANAGER__
 #define __AX_EVENT_MANAGER__
 
-/// @defgroup Core
+/// @defgroup Event
 /// @{
 
 /*******************************************************************************
@@ -34,9 +34,7 @@
 
 #include <deque>
 #include <map>
-#include <thread>
 #include <mutex>
-#include <vector>
 #include "axEvent.h"
 #include "axObject.h"
 
@@ -45,49 +43,43 @@ extern std::mutex manager_mutex;
 namespace ax
 {
     class App;
+    
+    namespace Event
+    {
+        /***********************************************************************
+         * axEventManager.
+         **********************************************************************/
+        class Manager
+        {
+        public:
+            Manager();
+            Manager(const std::function<void()>& unblock_main_thread_fct);
+            
+            void AddConnection(const ID& id, const Id& evtId, Function fct);
+            
+            void PushEvent(const ID& id, const Id& evtId, Msg* msg);
+            
+            void CallNext();
+            
+            int GetEventQueueSize() const;
+            
+        private:
+            void AddFunction(axBindedEvent fct);
+                        
+            typedef std::multimap<Id, Function> Multimap;
+            typedef std::pair<const Id, Function> MultimapPair;
+            
+            typedef std::map<ID, Multimap> Map;
+            typedef std::pair<ID, Multimap> MapPair;
+            
+            typedef std::deque<axBindedEvent> Queue;
+            
+            Queue _evtQueue;
+            Map _event_fct_map;
+            std::function<void()> _unblockMainThreadFct;
+        };
+    }
 }
-
-
-/*******************************************************************************
- * axEventManager.
- ******************************************************************************/
-class axEventManager
-{
-public:
-    axEventManager(ax::App* app);
-    //static axEventManager* GetInstance();
-    
-    void AddConnection(const axID& id,
-                       const axEventId& evtId,
-                       axEventFunction fct);
-    
-    void PushEvent(const axID& id,
-                   const axEventId& evtId,
-                   axMsg* msg);
-    
-    void CallNext();
-    
-    int GetEventQueueSize() const;
-    
-private:
-    ax::App* _app;
-    void AddFunction(axBindedEvent fct);
-    
-    static axEventManager* _instance;
-    
-    typedef std::multimap<axEventId, axEventFunction> axEventMultimap;
-    typedef std::pair<const axEventId, axEventFunction> axEventMultimapPair;
-    typedef axEventMultimap::iterator axEventMultimapIterator;
-    
-    typedef std::map<axID, axEventMultimap> axEventMap;
-    typedef std::pair<axID, axEventMultimap> axEventMapPair;
-    typedef axEventMap::iterator axEventMapIterator;
-    
-    typedef std::deque<axBindedEvent> axEventQueue;
-    
-    axEventQueue _evtQueue;
-    axEventMap _event_fct_map;
-};
 
 /// @}
 #endif // __AX_EVENT_MANAGER__

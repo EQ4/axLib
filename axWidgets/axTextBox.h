@@ -33,12 +33,12 @@
 /// @defgroup Widgets
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
 #include "axTimer.h"
@@ -64,7 +64,7 @@ public:
     /***************************************************************************
      * axTextBox::Msg.
      **************************************************************************/
-    class Msg : public axMsg
+    class Msg : public ax::Event::Msg
     {
     public:
         Msg();
@@ -75,7 +75,7 @@ public:
         
         std::string GetMsg() const;
         
-        axMsg* GetCopy();
+        ax::Event::Msg* GetCopy();
         
     private:
         axTextBox* _sender;
@@ -88,13 +88,13 @@ public:
     class Events
     {
     public:
-        enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
+        enum : ax::Event::Id { BUTTON_CLICK, ENTER_CLICK };
         
         Events(){}
-        Events(axEventFunction& fct){ button_click = fct; }
+        Events(ax::Event::Function& fct){ button_click = fct; }
         
-        axEventFunction button_click;
-        axEventFunction enter_click;
+        ax::Event::Function button_click;
+        ax::Event::Function enter_click;
     };
     
     /***************************************************************************

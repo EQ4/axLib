@@ -32,11 +32,12 @@
 #include "axConfig.h"
 #include "axFrameBuffer.h"
 
-class axApp;
+namespace ax
+{
+    class App;
+}
 
-
-
-class axWindow : public axObject
+class axWindow : public ax::Event::Object
 {
 public:
 	axWindow(axWindow* parent, const ax::Rect& rect);
@@ -159,9 +160,18 @@ public:
     virtual void OnWasKeyGrabbed(){}
     
     
+    inline ax::App* GetApp() const
+    {
+        return _app;
+    }
+    
+    inline ax::App* GetApp()
+    {
+        return _app;
+    }
 
 private:
-//    axApp* _app;
+    ax::App* _app;
 	axWindow* _parent;
 	ax::Rect _rect, _shownRect;
 	ax::Point _absolutePosition, _scrollDecay;

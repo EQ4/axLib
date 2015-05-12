@@ -29,12 +29,12 @@
 /// @defgroup Slider
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axMsg.h"
+//#include "ax::Event::Msg.h"
 
 /**************************************************************************//**
  * axSliderFlags.
@@ -51,7 +51,7 @@
 /**************************************************************************//**
  * axSliderMsg
 ******************************************************************************/
-class axSliderMsg : public axMsg
+class axSliderMsg : public ax::Event::Msg
 {
 public:
 	axSliderMsg(const double& value):
@@ -64,7 +64,7 @@ public:
 		return _value;
 	}
     
-    axMsg* GetCopy()
+    ax::Event::Msg* GetCopy()
     {
         return new axSliderMsg(*this);
     }
@@ -78,12 +78,12 @@ private:
 ******************************************************************************/
 struct axSliderEvents
 {
-    enum : axEventId { VALUE_CHANGE };
+    enum : ax::Event::Id { VALUE_CHANGE };
     
     axSliderEvents(){}
-    axSliderEvents(const axEventFunction& fct){ slider_value_change = fct; }
+    axSliderEvents(const ax::Event::Function& fct){ slider_value_change = fct; }
     
-    axEventFunction slider_value_change;
+    ax::Event::Function slider_value_change;
 };
 
 /**************************************************************************//**

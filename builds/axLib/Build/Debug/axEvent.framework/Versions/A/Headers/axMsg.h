@@ -19,53 +19,27 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#ifndef __axManager__axMsg__
-#define __axManager__axMsg__
+#ifndef __AX_EVENT_MSG__
+#define __AX_EVENT_MSG__
 
-/// @defgroup Core
+/// @defgroup Event
 /// @{
 
-//#include "axWindow.h"
-
-class axMsg
+namespace ax
 {
-public:
-    axMsg();
-    
-    virtual ~axMsg();
-    
-    virtual axMsg* GetCopy() = 0;
-    
-};
-
-//template<typename T>
-//class axSenderMsg : public axMsg
-//{
-//public:
-//    axSenderMsg(T* sender)
-//    {
-//        _sender = sender;
-//    }
-//    
-//    virtual ~axSenderMsg()
-//    {
-//        
-//    }
-//    
-//    T* GetSender() const
-//    {
-//        return _sender;
-//    }
-//    
-//    virtual axMsg* GetCopy()
-//    {
-//         return new axSenderMsg(*this);
-//    };
-//    
-//private:
-//    T* _sender;
-//    
-//};
+    namespace Event
+    {
+        class Msg
+        {
+        public:
+            Msg();
+            
+            virtual ~Msg();
+            
+            virtual Msg* GetCopy() = 0;
+        };
+    }
+}
 
 /// @}
-#endif /* defined(__axManager__axMsg__) */
+#endif // __AX_EVENT_MSG__

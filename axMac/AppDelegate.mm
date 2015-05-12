@@ -22,6 +22,8 @@
  ******************************************************************************/
 #import "AppDelegate.h"
 
+
+#include <axEvent/axEventManager.h>
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
 #include "axCocoaInterfaceMac.h"

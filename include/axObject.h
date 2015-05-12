@@ -32,64 +32,61 @@
 /// @defgroup Core
 /// @{
 
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 #include <string>
 #include <map>
 #include <iostream>
 
 namespace ax
 {
-    class App;
+    namespace Event
+    {
+        class Manager;
+        
+        typedef unsigned int ID;
+        
+        /// Id from axObject are used has unique identifier in axEventManager.
+        class Object
+        {
+        public:
+            Object() = delete;
+            
+            Object(Manager* evtManager);
+            
+            /// Add a function to the EventManager.
+            void AddConnection(const Id& evtId, Function fct) const;
+                               
+            /// Add the function to the EventManager queue.
+            void PushEvent(const Id& evtId, Msg* msg);
+            
+            /// Indefine behavior if two axObject has the same id.
+            void ChangeId(const ID& id);
+            
+            inline ID GetId() const { return _id; }
+            
+            /// Add a function to the object map without adding it
+            /// to the event manager.
+            void AddEventFunction(const std::string& name, Function fct);
+            
+            /// Get a function from the object map.
+            Function GetEventFunction(const std::string& name);
+
+        private:
+            /// Event manager.
+            ax::Event::Manager* _evtManager;
+            
+            /// Unique identifier.
+            ID _id;
+            
+            /// Map of lamda functions.
+            std::map<std::string, Function> _evtMap;
+            
+            /// Global increment count variable.
+            static ID _global_id_count;
+            static ID IncrementGlobalIdCount();
+        };
+    }
 }
-
-
-typedef unsigned int axID;
-
-/// Id from axObject are used has unique identifier in axEventManager.
-class axObject
-{
-public:
-    axObject(ax::App* app);
-    
-    /// Add a function to the EventManager.
-    void AddConnection(const axEventId& evtId, axEventFunction fct) const;
-    
-    /// Add the function to the EventManager queue.
-    void PushEvent(const axEventId& evtId, axMsg* msg);
-    
-    /// Indefine behavior if two axObject has the same id.
-    void ChangeId(const axID& id);
-    
-    inline axID GetId() const { return _id; }
-    
-    /// Add a function to the object map without adding it to the event manager.
-    void AddEventFunction(const std::string& name, axEventFunction fct);
-    
-    /// Get a function from the object map.
-    axEventFunction GetEventFunction(const std::string& name);
-    
-    inline ax::App* GetApp()
-    {
-        return _app;
-    }
-    
-    inline ax::App* GetApp() const
-    {
-        return _app;
-    }
-    
-private:
-    ax::App* _app;
-    
-    /// Unique identifier.
-    axID _id;
-    
-    /// Map of lamda functions.
-    std::map<std::string, axEventFunction> _evtMap;
-    
-    static axID _global_id_count;
-    static axID IncrementGlobalIdCount();
-};
 
 /// @}
 #endif // _AX_OBJECT_ 

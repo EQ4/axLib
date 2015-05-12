@@ -49,7 +49,7 @@ public:
     /***************************************************************************
      * axKnob::Msg.
      **************************************************************************/
-    class Msg : public axMsg
+    class Msg : public ax::Event::Msg
     {
     public:
         Msg(const double& value, const std::string& msg);
@@ -58,7 +58,7 @@ public:
         
         std::string GetMsg() const;
         
-        axMsg* GetCopy();
+        ax::Event::Msg* GetCopy();
         
     private:
         double _value;
@@ -71,10 +71,10 @@ public:
     class Events
     {
     public:
-        axEventFunction value_change;
+        ax::Event::Function value_change;
         
         Events(){}
-        Events(const axEventFunction& fct){ value_change = fct; }
+        Events(const ax::Event::Function& fct){ value_change = fct; }
     };
     
     /***************************************************************************
@@ -126,11 +126,11 @@ public:
                 int nextPositionDelta = 5,
                 axDirection direction = axDIRECTION_RIGHT);
         
-        axKnob* Create(const ax::Point& pos, const axEventFunction& evt);
+        axKnob* Create(const ax::Point& pos, const ax::Event::Function& evt);
         
         axKnob* Create(const ax::Point& pos);
         
-        axKnob* Create(const axEventFunction& evt);
+        axKnob* Create(const ax::Event::Function& evt);
         
         axKnob* Create();
         

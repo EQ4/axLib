@@ -20,16 +20,17 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axTimer.h"
+#include "axApp.h"
 
-axTimer::axTimer(ax::App* app, axEventFunction fct, int ms):
-axObject(app)
+axTimer::axTimer(ax::App* app, ax::Event::Function fct, int ms):
+ax::Event::Object(app->GetEventManager())
 {
 //    AddConnection(0, fct);
 //    InitTimer(ms);
 }
 
 axTimer::axTimer(ax::App* app):
-axObject(app),
+ax::Event::Object(app->GetEventManager()),
 _isRunning(false)
 {
     //InitTimer(ms);

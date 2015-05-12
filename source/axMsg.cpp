@@ -21,12 +21,12 @@
  ******************************************************************************/
 #include "axMsg.h"
 
-axMsg::axMsg()
+ax::Event::Msg::Msg()
 {
     
 }
 
-axMsg::~axMsg()
+ax::Event::Msg::~Msg()
 {
     
 }

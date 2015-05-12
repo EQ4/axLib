@@ -19,7 +19,7 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#include "axEvent.h"
+#include <axEvent/axEvent.h>
 
-unsigned long axID_COUNT = 1;
+//unsigned long axID_COUNT = 1;
 

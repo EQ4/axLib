@@ -20,112 +20,112 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axEventManager.h"
-#include "axApp.h"
 #include <iostream>
 
 std::mutex manager_mutex;
 
-//axEventManager* axEventManager::_instance = nullptr;
-
-axEventManager::axEventManager(ax::App* app):
-_app(app)
+namespace ax
 {
-    
-}
-
-//axEventManager* axEventManager::GetInstance()
-//{
-//    if (_instance == nullptr)
-//    {
-//        _instance = new axEventManager();
-//    }
-//    
-//    return _instance;
-//}
-
-void axEventManager::AddFunction(axBindedEvent fct)
-{
-    //manager_mutex.lock();
-    
-    _evtQueue.push_back(fct);
-    
-    //manager_mutex.unlock();
-}
-
-int axEventManager::GetEventQueueSize() const
-{
-    return (int)_evtQueue.size();
-}
-
-void axEventManager::AddConnection(const axID& id,
-                                   const axEventId& evtId,
-                                   axEventFunction fct)
-{
-    manager_mutex.lock();
-    
-    auto it = _event_fct_map.find(id);
-        
-    if(it != _event_fct_map.end())
+    namespace Event
     {
-        it->second.insert(axEventMultimapPair(evtId, fct));
-    }
-    else
-    {
-        axEventMultimap evt_map;
-        evt_map.insert(axEventMultimapPair(evtId, fct));
-        _event_fct_map.insert(axEventMapPair(id, evt_map));
-    }
-
-    manager_mutex.unlock();
-}
-
-void axEventManager::PushEvent(const axID& id,
-                               const axEventId& evtId,
-                               axMsg* msg)
-{
-    manager_mutex.lock();
-    
-    auto it = _event_fct_map.find(id);
-    
-    if(it != _event_fct_map.end())
-    {
-        // Pair of the first and last element of this id.
-        auto range(it->second.equal_range(evtId));
-        
-        axCore* core = _app->GetCore();
-        
-        // Add every connected functions from this id to the event queue.
-        for (axEventMultimapIterator i = range.first; i != range.second; ++i)
+        Manager::Manager()
         {
-            // Create a Copy of child params (this will create a new pointer).
-            axMsg* msg_copy = msg->GetCopy();
-
-            // Add binded function to event queue.
-            AddFunction(axBindedEvent(i->second, msg_copy));
             
-            core->PushEventOnSystemQueue();
+        }
+        
+        Manager::Manager(const std::function<void()>& unblock_main_thread_fct):
+        _unblockMainThreadFct(unblock_main_thread_fct)
+        {
+            
+        }
+        
+        void Manager::AddFunction(axBindedEvent fct)
+        {
+            //manager_mutex.lock();
+            
+            _evtQueue.push_back(fct);
+            
+            //manager_mutex.unlock();
+        }
+        
+        int Manager::GetEventQueueSize() const
+        {
+            return (int)_evtQueue.size();
+        }
+        
+        void Manager::AddConnection(const ID& id, const Id& evtId, Function fct)
+        {
+            manager_mutex.lock();
+            
+            auto it = _event_fct_map.find(id);
+            
+            if(it != _event_fct_map.end())
+            {
+                it->second.insert(MultimapPair(evtId, fct));
+            }
+            else
+            {
+                Multimap evt_map;
+                evt_map.insert(MultimapPair(evtId, fct));
+                _event_fct_map.insert(MapPair(id, evt_map));
+            }
+            
+            manager_mutex.unlock();
+        }
+        
+        void Manager::PushEvent(const ID& id, const Id& evtId, Msg* msg)
+        {
+            manager_mutex.lock();
+            
+            auto it = _event_fct_map.find(id);
+            
+            if(it != _event_fct_map.end())
+            {
+                // Pair of the first and last element of this id.
+                auto range(it->second.equal_range(evtId));
+                
+                // Add every connected functions from this id to the event queue.
+                for (Multimap::iterator i = range.first; i != range.second; ++i)
+                {
+                    // Create a Copy of child params
+                    // (this will create a new pointer with his own memory).
+                    Msg* msg_copy = msg->GetCopy();
+                    
+                    // Add binded function to event queue.
+                    AddFunction(axBindedEvent(i->second, msg_copy));
+                    
+                    if(_unblockMainThreadFct)
+                    {
+                        _unblockMainThreadFct();
+                    }
+                }
+            }
+            
+            manager_mutex.unlock();
+            
+            delete msg;
+        }
+        
+        void Manager::CallNext()
+        {
+            manager_mutex.lock();
+            
+            if (_evtQueue.size() != 0)
+            {
+                manager_mutex.unlock();
+                
+                // Call function.
+                _evtQueue[0]();
+                
+                manager_mutex.lock();
+                
+                // Remove function from queue.
+                _evtQueue.pop_front();
+            }
+            
+            manager_mutex.unlock();
         }
     }
-    
-    manager_mutex.unlock();
-    
-    delete msg;
 }
 
-void axEventManager::CallNext()
-{
-    manager_mutex.lock();
-    
-    if (_evtQueue.size() != 0)
-    {
-        manager_mutex.unlock();
-        // Call function.
-        _evtQueue[0]();
-        
-        manager_mutex.lock();
-        // Remove fct from queue.
-        _evtQueue.pop_front();
-    }
-    
-    manager_mutex.unlock();
-}
+

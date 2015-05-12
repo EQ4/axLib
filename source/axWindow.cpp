@@ -28,7 +28,8 @@
 
 axWindow::axWindow(ax::App* app, const ax::Rect& rect):
 // Heritage.
-axObject(app),
+ax::Event::Object(app->GetEventManager()),
+// Members.
 _parent(nullptr),
 _rect(rect),
 _isHidden(false),
@@ -43,14 +44,15 @@ _needUpdate(true),
 _isEditingWidget(false),
 _isEditable(true),
 _frameBufferObj(rect.size),
-_hasBackBuffer(true)
+_hasBackBuffer(true),
+_app(app)
 {
     
 }
 
 axWindow::axWindow(axWindow* parent, const ax::Rect& rect):
 // Heritage.
-axObject(parent->GetApp()),
+ax::Event::Object(parent->GetApp()->GetEventManager()),
 // Members.
 _parent(parent),
 _rect(rect),
@@ -66,8 +68,8 @@ _needUpdate(true),
 _isEditingWidget(false),
 _isEditable(true),
 _frameBufferObj(rect.size),
-_hasBackBuffer(true)
-//_app(nullptr)
+_hasBackBuffer(true),
+_app(parent->GetApp())
 {
 	if (parent == nullptr)
 	{
@@ -147,7 +149,7 @@ void axWindow::Reparent(axWindow* parent, const ax::Point& position)
 	_parent = parent;
 	SetPosition(position);
 
-	axID temp = _parent->GetId();
+    ax::Event::ID temp = _parent->GetId();
 	_parent->ChangeId(GetId());
 	ChangeId(temp);
 
