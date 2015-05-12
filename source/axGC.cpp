@@ -74,7 +74,7 @@ void axGC::DrawRectangle(const ax::Rect& rect)
 //    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
     
     ax::FloatRect frect = RectToFloatRect(rect);
-    axRectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    ax::Utils::RectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
     
     // For scroll bar.
     //	frect.position.x  -= floor(_win->GetScrollDecay().x);
@@ -401,7 +401,7 @@ void axGC::DrawRectangleContour(const ax::Rect& rect, float linewidth)
 
 	glLineWidth((GLfloat)linewidth);
     
-    axRectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    ax::Utils::RectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
     GLubyte indices[] = {1,2, 2,3, 3,0, 0,1};
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(2, GL_DOUBLE, 0, &points); // The value of z defaults is 0.
@@ -476,7 +476,7 @@ void axGC::DrawTexture(GLuint texture, const ax::Rect& rect, axColor color)
 struct axRectPointsOrder
 {
     axRectPointsOrder(){}
-    axRectPointsOrder(const axRectPoints<ax::FloatPoint>& points):
+    axRectPointsOrder(const ax::Utils::RectPoints<ax::FloatPoint>& points):
     top_left(points.top_left),
     top_right(points.top_right),
     bottom_left(points.bottom_left),
@@ -746,7 +746,7 @@ void axGC::UnBlockDrawing()
 }
 
 void axGC::DrawStringAlignedCenter(axFont& font,
-                                   const string& text,
+                                   const std::string& text,
 								   //const ax::Point& pos,
 								   const ax::Rect& rect)
 {
@@ -831,7 +831,7 @@ void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
     glEnd();
 }
 
-void axGC::DrawLines(const vector<ax::Point>& pts, float width)
+void axGC::DrawLines(const std::vector<ax::Point>& pts, float width)
 {
 //	ax::Point real_pos = _win->GetAbsoluteRect().position;
 //    ax::Point real_pos = _win->GetRect().position;
@@ -881,11 +881,11 @@ void axGC::DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float widt
     
     if(m <= 0.5)
     {
-        wx = axClamp<double>(0.5 + m, 0.0, 1.0);
+        wx = ax::Utils::Clamp<double>(0.5 + m, 0.0, 1.0);
     }
     else
     {
-        wy = axClamp<double>(0.5 + m, 0.0, 1.0);
+        wy = ax::Utils::Clamp<double>(0.5 + m, 0.0, 1.0);
 
     }
     

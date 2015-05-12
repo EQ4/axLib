@@ -45,7 +45,8 @@ Create(ax::StringPairVector attributes)
         else if(s.first == "pos")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
+//            strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));

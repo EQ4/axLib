@@ -155,7 +155,7 @@ void axScrollBar::OnMouseLeftDragging(const ax::Point& position)
 			
 		// Slider position ratio.
 		_value = (_sliderPos - _imgHeight) / double(_sliderMaxHeight - _sliderHeight - 1);
-        _value = axClamp<double>(_value, 0.0, 1.0);
+        _value = ax::Utils::Clamp<double>(_value, 0.0, 1.0);
 
         
         PushEvent(axScrollBarEvents::VALUE_CHANGE,

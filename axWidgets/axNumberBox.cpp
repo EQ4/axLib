@@ -139,7 +139,7 @@ std::string axNumberBox::Info::GetAttributeValue(const std::string& name)
     }
     else if(name == "single_img")
     {
-        return to_string(single_img);
+        return std::to_string(single_img);
     }
     
     return "";
@@ -197,7 +197,7 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
     ax::Point pos;
     axNumberBox::Events evts;
     ax::FloatRange range(0.0, 1.0);
-    axControlType ctrltype = axControlType::axCTRL_FLOAT;
+    ax::Utils::Control::Type ctrltype = ax::Utils::Control::Type::axCTRL_FLOAT;
     for(auto& s : attributes)
     {
         if(s.first == "name")
@@ -207,7 +207,8 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
+//            strVec = GetVectorFromStringDelimiter(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
@@ -231,7 +232,7 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
         else if(s.first == "range")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             range = ax::FloatRange(stod(strVec[0]),
                                    stod(strVec[1]));
@@ -240,11 +241,11 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
         {
             if(s.second == "float")
             {
-                ctrltype = axControlType::axCTRL_FLOAT;
+                ctrltype = ax::Utils::Control::Type::axCTRL_FLOAT;
             }
             else if(s.second == "int")
             {
-                ctrltype = axControlType::axCTRL_INT;
+                ctrltype = ax::Utils::Control::Type::axCTRL_INT;
             }
         }
         else if(s.first == std::string("event"))
@@ -272,9 +273,9 @@ axNumberBox::axNumberBox(axWindow* parent,
                          axFlag flags,
                          double value,
                          ax::FloatRange range,
-                         axControlType type,
-                         axControlUnit unit,
-                         axControlInterpolation interpolation,
+                         ax::Utils::Control::Type type,
+                         ax::Utils::Control::Unit unit,
+                         ax::Utils::Control::Interpolation interpolation,
                          std::string label):
 
 axWidget(parent, rect, new_ axNumberBox::Info(info)),
@@ -292,7 +293,7 @@ _font(nullptr)
 {
     _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
     
-    _value = axClamp<double>(value, _range.left, _range.right);
+    _value = ax::Utils::axClamp<double>(value, _range.left, _range.right);
     
     _font = new_ axFont(0);
     _font->SetFontSize(10);
@@ -387,7 +388,7 @@ void axNumberBox::OnMouseLeftDragging(const ax::Point& pos)
     double v = -delta / 100.0;
     _zeroToOneValue += v;
     
-    _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
+    _zeroToOneValue = ax::Utils::axClamp<double>(_zeroToOneValue, 0.0, 1.0);
     _value = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
     PushEvent(Events::VALUE_CHANGE, new_ Msg(_value));
@@ -428,9 +429,9 @@ void axNumberBox::OnPaint()
 
     gc->SetColor(static_cast<Info*>(_info)->font_color);
 
-    if(_type == axControlType::axCTRL_FLOAT)
+    if(_type == ax::Utils::Control::Type::axCTRL_FLOAT)
     {
-        std::string v = to_string(_value);
+        std::string v = std::to_string(_value);
         if(_value < 0)
         {
             v.resize(5);
@@ -442,9 +443,9 @@ void axNumberBox::OnPaint()
         
         gc->DrawStringAlignedCenter(*_font, v, rect0);
     }
-    else if(_type == axControlType::axCTRL_INT)
+    else if(_type == ax::Utils::Control::Type::axCTRL_INT)
     {
-        std::string v = to_string((int)_value);
+        std::string v = std::to_string((int)_value);
         gc->DrawStringAlignedCenter(*_font, v, rect0);
     }
 

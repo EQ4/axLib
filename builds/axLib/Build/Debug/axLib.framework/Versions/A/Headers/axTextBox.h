@@ -159,8 +159,8 @@ public:
               const ax::Rect& rect,
               const axTextBox::Events& events,
               const axTextBox::Info& info,
-              string img_path = "",
-              string label = "",
+              std::string img_path = "",
+              std::string label = "",
               axFlag flags = 0);
 
     void SetLabel(const std::string& label);

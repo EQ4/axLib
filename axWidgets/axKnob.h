@@ -94,8 +94,8 @@ public:
              const axColor& bg_clickingColor,
              const unsigned int& numberKnob,
              const ax::Size& size,
-             const string& imgPath,
-             const string& sImgPath);
+             const std::string& imgPath,
+             const std::string& sImgPath);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual ax::StringVector GetParamNameList() const;
@@ -119,12 +119,12 @@ public:
                 const axKnob::Info& info,
                 axFlag flags = 0,
                 int nextPositionDelta = 5,
-                axDirection direction = axDIRECTION_RIGHT);
+                ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
         Builder(axWindow* parent,
                 axFlag flags = 0,
                 int nextPositionDelta = 5,
-                axDirection direction = axDIRECTION_RIGHT);
+                ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
         axKnob* Create(const ax::Point& pos, const ax::Event::Function& evt);
         
@@ -143,7 +143,7 @@ public:
         ax::Size _size;
         int _nextPositionDelta;
         axKnob* _pastKnob;
-        axDirection _direction;
+        ax::Utils::Direction _direction;
     };
     
     /***************************************************************************

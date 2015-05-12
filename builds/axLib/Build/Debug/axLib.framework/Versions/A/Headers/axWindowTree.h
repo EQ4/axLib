@@ -52,7 +52,7 @@ public:
 
 	axWindowNode* Get(axWindow* win);
 
-	vector<axWindowNode*>& GetChild();
+	std::vector<axWindowNode*>& GetChild();
 
 	axWindow* window;
     
@@ -61,7 +61,7 @@ public:
     void ResizeNode(const ax::Size& size);
 
 private:
-	vector<axWindowNode*> _childNodes;
+	std::vector<axWindowNode*> _childNodes;
 };
 
 

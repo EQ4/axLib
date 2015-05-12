@@ -55,12 +55,12 @@ public:
             const ax::Rect& rect,
             const axRadio::Events& events,
             const axRadio::Info& info,
-            string img_path = "",
-            string label = "",
+            std::string img_path = "",
+            std::string label = "",
             axFlag flags = 0,
-            string msg = "");
+            std::string msg = "");
     
-    void SetMsg(const string& msg);
+    void SetMsg(const std::string& msg);
     void SetSelected(const bool& selected);
 
 private:

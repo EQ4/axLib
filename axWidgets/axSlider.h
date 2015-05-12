@@ -91,7 +91,7 @@ struct axSliderEvents
 ******************************************************************************/
 struct axSliderInfo
 {
-	string img_path;
+	std::string img_path;
 	ax::Size btn_size;
 	unsigned int slider_width;
     int contour_round_radius = 0;
@@ -108,7 +108,7 @@ struct axSliderInfo
 			backSliderContourColor;
 
     axSliderInfo(){}
-	axSliderInfo(const string& imgPath,
+    axSliderInfo(const std::string& imgPath,
 				 const ax::Size& size,
 				 const axColor& bg_normal,
 				 const axColor& bg_hover,
@@ -138,7 +138,7 @@ struct axSliderInfo
 				 slider_width(width),
                  contour_round_radius(contourRadius){}
 
-	axSliderInfo(const string& info_path)
+    axSliderInfo(const std::string& info_path)
 	{
 		(info_path);
 	// 	ifstream file;

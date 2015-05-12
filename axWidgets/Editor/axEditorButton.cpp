@@ -52,7 +52,7 @@ _font(nullptr)
     SetEditable(false);
 }
 
-void axDebugButton::SetMsg(const string& msg)
+void axDebugButton::SetMsg(const std::string& msg)
 {
     _msg = msg;
 }
@@ -125,10 +125,10 @@ void axDebugButton::OnMouseLeftDragging(const ax::Point &pos)
     position.y = position.y - GetParent()->GetSize().y + 5;
 
 
-    position.x = axClamp<int>(position.x, 0,
+    position.x = ax::Utils::Clamp<int>(position.x, 0,
                               panelRect.size.x - GetParent()->GetSize().x);
     
-    position.y = axClamp<int>(position.y, 0,
+    position.y = ax::Utils::Clamp<int>(position.y, 0,
                               panelRect.size.y - GetParent()->GetSize().y);
     
     

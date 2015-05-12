@@ -37,7 +37,7 @@ axTextBox::Msg::Msg()
     _sender = nullptr;
 }
 
-axTextBox::Msg::Msg(axTextBox* sender, const string& msg)
+axTextBox::Msg::Msg(axTextBox* sender, const std::string& msg)
 {
     _sender = sender;
     _msg = msg;
@@ -220,7 +220,7 @@ axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]), stoi(strVec[1]));
             _size = ax::Size(stoi(strVec[2]), stoi(strVec[3]));

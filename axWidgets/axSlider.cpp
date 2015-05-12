@@ -145,10 +145,10 @@ void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 	else
 	{
 
-		cout << "ELSE" << endl;
+		std::cout << "ELSE" << std::endl;
 		if (sliderBtnRect.IsPointInside(pos) && _nCurrentImg != axBTN_DOWN)
 		{
-			cout << "ELSE IN" << endl;
+			std::cout << "ELSE IN" << std::endl;
 			_nCurrentImg = axBTN_DOWN;
 			_currentSliderColor = _info.sliderColorClicked;
 
@@ -161,10 +161,10 @@ void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 				_delta_click = sliderBtnRect.position.x - pos.x;
 			}
 
-			cout << "MOUSE GRAB before" << endl;
+			std::cout << "MOUSE GRAB before" << std::endl;
 			GrabMouse();
 
-			cout << "MOUSE GRAB" << endl;
+			std::cout << "MOUSE GRAB" << std::endl;
 
 			// Send value change event.
 //			if (_events.slider_value_change)
@@ -196,7 +196,7 @@ void axSlider::OnMouseLeftUp(const ax::Point& p)
 
 void axSlider::OnMouseLeftDragging(const ax::Point& p)
 {
-	cout << "Drag" << endl;
+	std::cout << "Drag" << std::endl;
 	//DSTREAM << "DRAG" << endl;
 	ax::Point pos = p - GetAbsoluteRect().position;
 
@@ -221,7 +221,7 @@ void axSlider::blockSliderPosition(const ax::Point& pos)
 	{
 		int pos_y = pos.y + _delta_click;
 
-        pos_y = axClamp<double>(pos_y, 1, GetSize().y - _info.btn_size.y - 1);
+        pos_y = ax::Utils::Clamp<double>(pos_y, 1, GetSize().y - _info.btn_size.y - 1);
 		//axCLIP(pos_y, 1, GetSize().y - _info.btn_size.y - 1);
 
 		_sliderPosition = pos_y;
@@ -231,7 +231,7 @@ void axSlider::blockSliderPosition(const ax::Point& pos)
 		int pos_x = pos.x + _delta_click;
 
 //		axCLIP(pos_x, 1, GetSize().x - _info.btn_size.x - 1);
-        pos_x = axClamp<double>(pos_x, 1, GetSize().x - _info.btn_size.x - 1);
+        pos_x = ax::Utils::Clamp<double>(pos_x, 1, GetSize().x - _info.btn_size.x - 1);
 
 		_sliderPosition = pos_x;
 	}

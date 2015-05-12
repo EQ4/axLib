@@ -11,7 +11,8 @@
 #include "axInterpole.h"
 #include "axClamp.h"
 #include "axString.h"
-#include "axControl.h
+#include "axControl.h"
+#include "axDirection.h"
 
 namespace ax
 {

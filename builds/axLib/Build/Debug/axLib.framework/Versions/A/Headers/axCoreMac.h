@@ -37,7 +37,7 @@ public:
     
     virtual void Init(const ax::Size& frame_size);
 
-    virtual string GetAppDirectory();
+    virtual std::string GetAppDirectory();
     
     virtual std::string GetAppPath();
     
@@ -47,7 +47,7 @@ public:
     
     virtual ax::Size GetScreenSize();
     
-    virtual string OpenFileDialog();
+    virtual std::string OpenFileDialog();
     
     virtual void PushEventOnSystemQueue();
 

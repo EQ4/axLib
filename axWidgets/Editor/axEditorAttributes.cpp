@@ -30,7 +30,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     labelInfo.contour = axColor(0.0, 0.0, 0.0, 1.0);
     labelInfo.font_color = axColor(0.0, 0.0, 0.0, 1.0);
     labelInfo.font_size = 12;
-    labelInfo._alignement = axAlignement::axALIGN_CENTER;
+    labelInfo._alignement = ax::Utils::Alignement::axALIGN_CENTER;
     
     
     axLabel::Info labelInfoWindow;
@@ -38,7 +38,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     labelInfoWindow.contour = axColor(0.0, 0.0, 0.0, 1.0);
     labelInfoWindow.font_color = axColor(0.8, 0.8, 0.8, 1.0);
     labelInfoWindow.font_size = 12;
-    labelInfoWindow._alignement = axAlignement::axALIGN_CENTER;
+    labelInfoWindow._alignement = ax::Utils::Alignement::axALIGN_CENTER;
     
     ax::StringVector attributes = widget->GetInfo()->GetParamNameList();
     axInfo* info = widget->GetInfo();

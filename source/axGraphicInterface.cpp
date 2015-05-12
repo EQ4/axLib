@@ -70,7 +70,7 @@ namespace axGraphicInterface
         
         // Draw black rectangle.
         ax::FloatRect rect(-1.0, -1.0, size.x * 2.0, size.y * 2.0);
-        axRectPoints<ax::FloatPoint> points = rect.GetPoints();
+        ax::Utils::RectPoints<ax::FloatPoint> points = rect.GetPoints();
 //        auto points = rect.GetPoints();
         GLubyte indices[] = {0, 1,2, 2,3};
         glEnableClientState(GL_VERTEX_ARRAY);

@@ -87,11 +87,11 @@ public:
                      const ax::Point& pos);
     
 	void DrawString(axFont& font,
-                    const string& text,
+                    const std::string& text,
                     const ax::Point& pos);
 
 	void DrawStringAlignedCenter(axFont& font,
-                                 const string& text,
+                                 const std::string& text,
                                  const ax::Rect& rect);
 
 	void DrawRectangleColorFade(const ax::Rect& rect,
@@ -127,7 +127,7 @@ public:
                            float width = 1.0);
     
     void DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float width = 2.0);
-	void DrawLines(const vector<ax::Point>& pts, float width = 1.0);
+    void DrawLines(const std::vector<ax::Point>& pts, float width = 1.0);
     
     void DrawPoint(const ax::Point& pt, const int& size);
     

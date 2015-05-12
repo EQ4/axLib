@@ -153,7 +153,7 @@ namespace ax
             ax::Size _size;
             int _nextPositionDelta;
             Button* _past;
-            axDirection _direction;
+            ax::Utils::Direction _direction;
         };
         
         /***********************************************************************

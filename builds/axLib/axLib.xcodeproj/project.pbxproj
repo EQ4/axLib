@@ -24,7 +24,6 @@
 		7C1351A31A7FC77A00C97A99 /* axObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351691A7FC77A00C97A99 /* axObjectLoader.cpp */; };
 		7C1351A41A7FC77A00C97A99 /* axPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516A1A7FC77A00C97A99 /* axPanel.cpp */; };
 		7C1351A51A7FC77A00C97A99 /* axResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516B1A7FC77A00C97A99 /* axResourceManager.cpp */; };
-		7C1351A71A7FC77A00C97A99 /* axUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516D1A7FC77A00C97A99 /* axUtils.cpp */; };
 		7C1351A81A7FC77A00C97A99 /* axVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516E1A7FC77A00C97A99 /* axVar.cpp */; };
 		7C1351A91A7FC77A00C97A99 /* axWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13516F1A7FC77A00C97A99 /* axWidget.cpp */; };
 		7C1351AA1A7FC77A00C97A99 /* axWidgetBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */; };
@@ -55,7 +54,6 @@
 		7C15C8091AB670A4007B6868 /* axObjectLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7E91AB670A4007B6868 /* axObjectLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C80A1AB670A4007B6868 /* axPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7EA1AB670A4007B6868 /* axPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C80B1AB670A4007B6868 /* axResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7EB1AB670A4007B6868 /* axResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C15C80D1AB670A4007B6868 /* axUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7ED1AB670A4007B6868 /* axUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C80F1AB670A4007B6868 /* axWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7EF1AB670A4007B6868 /* axWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C8101AB670A4007B6868 /* axWidgetBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F01AB670A4007B6868 /* axWidgetBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C8111AB670A4007B6868 /* axWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7F11AB670A4007B6868 /* axWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +64,7 @@
 		7C16052B1AD2BD2900D728A8 /* axButtonInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C1605291AD2BD2900D728A8 /* axButtonInfo.axobj */; };
 		7C16052C1AD2BD2900D728A8 /* axToggleInfo.axobj in Resources */ = {isa = PBXBuildFile; fileRef = 7C16052A1AD2BD2900D728A8 /* axToggleInfo.axobj */; };
 		7C18C36B1B026CC400885929 /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C36A1B026CC400885929 /* axFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3BD1B02809F00885929 /* axUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C3981B02709600885929 /* axUtils.framework */; };
 		7C3E4D971AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3E4D951AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C3E4D981AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E4D961AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm */; };
 		7C460E941A9827B400E51D13 /* axDrawingBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */; };
@@ -142,13 +141,6 @@
 			remoteGlobalIDString = 7C18C3761B02709500885929;
 			remoteInfo = axUtils;
 		};
-		7C18C3991B02709600885929 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7C18C3921B02709500885929 /* axUtils.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7C18C3811B02709500885929;
-			remoteInfo = axUtilsTests;
-		};
 		7CC6B8661B0193FE0059D822 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CC6B8611B0193FD0059D822 /* axEvent.xcodeproj */;
@@ -190,7 +182,6 @@
 		7C1351691A7FC77A00C97A99 /* axObjectLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObjectLoader.cpp; sourceTree = "<group>"; };
 		7C13516A1A7FC77A00C97A99 /* axPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPanel.cpp; sourceTree = "<group>"; };
 		7C13516B1A7FC77A00C97A99 /* axResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axResourceManager.cpp; sourceTree = "<group>"; };
-		7C13516D1A7FC77A00C97A99 /* axUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axUtils.cpp; sourceTree = "<group>"; };
 		7C13516E1A7FC77A00C97A99 /* axVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axVar.cpp; sourceTree = "<group>"; };
 		7C13516F1A7FC77A00C97A99 /* axWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidget.cpp; sourceTree = "<group>"; };
 		7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidgetBuilder.cpp; sourceTree = "<group>"; };
@@ -225,7 +216,6 @@
 		7C15C7E91AB670A4007B6868 /* axObjectLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObjectLoader.h; sourceTree = "<group>"; };
 		7C15C7EA1AB670A4007B6868 /* axPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPanel.h; sourceTree = "<group>"; };
 		7C15C7EB1AB670A4007B6868 /* axResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axResourceManager.h; sourceTree = "<group>"; };
-		7C15C7ED1AB670A4007B6868 /* axUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axUtils.h; sourceTree = "<group>"; };
 		7C15C7EF1AB670A4007B6868 /* axWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidget.h; sourceTree = "<group>"; };
 		7C15C7F01AB670A4007B6868 /* axWidgetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidgetBuilder.h; sourceTree = "<group>"; };
 		7C15C7F11AB670A4007B6868 /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
@@ -304,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C18C3BD1B02809F00885929 /* axUtils.framework in Frameworks */,
 				7C13521E1A7FC8ED00C97A99 /* Foundation.framework in Frameworks */,
 				7C13521A1A7FC8CB00C97A99 /* Cocoa.framework in Frameworks */,
 				7C1352171A7FC8A600C97A99 /* GLKit.framework in Frameworks */,
@@ -417,7 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				7C18C3981B02709600885929 /* axUtils.framework */,
-				7C18C39A1B02709600885929 /* axUtilsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,7 +507,6 @@
 			children = (
 				7C1351581A7FC77A00C97A99 /* axC++.cpp */,
 				7C1351651A7FC77A00C97A99 /* axMath.cpp */,
-				7C13516D1A7FC77A00C97A99 /* axUtils.cpp */,
 				7C13516E1A7FC77A00C97A99 /* axVar.cpp */,
 				7C13516B1A7FC77A00C97A99 /* axResourceManager.cpp */,
 			);
@@ -568,7 +557,6 @@
 				7C15C7D51AB670A4007B6868 /* axC++.h */,
 				7C15C7E51AB670A4007B6868 /* axMath.h */,
 				7C15C7EB1AB670A4007B6868 /* axResourceManager.h */,
-				7C15C7ED1AB670A4007B6868 /* axUtils.h */,
 				7C15C7F31AB670A4007B6868 /* rapidxml.hpp */,
 			);
 			name = Utils;
@@ -628,7 +616,6 @@
 				7C15C7F71AB670A4007B6868 /* axConfig.h in Headers */,
 				7C15C7FF1AB670A4007B6868 /* axGraphicInterface.h in Headers */,
 				7C15C7F81AB670A4007B6868 /* axCore.h in Headers */,
-				7C15C80D1AB670A4007B6868 /* axUtils.h in Headers */,
 				7C15C80B1AB670A4007B6868 /* axResourceManager.h in Headers */,
 				7C15C7FE1AB670A4007B6868 /* axGC.h in Headers */,
 				7C15C8121AB670A4007B6868 /* axWindowTree.h in Headers */,
@@ -740,13 +727,6 @@
 			remoteRef = 7C18C3971B02709600885929 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7C18C39A1B02709600885929 /* axUtilsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = axUtilsTests.xctest;
-			remoteRef = 7C18C3991B02709600885929 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		7CC6B8671B0193FE0059D822 /* axEvent.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -813,7 +793,6 @@
 				7C88F1F01A942EAD00374108 /* axTextControl.cpp in Sources */,
 				7C1351A91A7FC77A00C97A99 /* axWidget.cpp in Sources */,
 				7C1351B61A7FC7A800C97A99 /* AppDelegate.mm in Sources */,
-				7C1351A71A7FC77A00C97A99 /* axUtils.cpp in Sources */,
 				7C1351A21A7FC77A00C97A99 /* axObject.cpp in Sources */,
 				7C88F1E41A942EAC00374108 /* axPlot.cpp in Sources */,
 				7C13519C1A7FC77A00C97A99 /* axKeyboardManager.cpp in Sources */,

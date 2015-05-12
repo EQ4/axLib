@@ -146,7 +146,7 @@ public:
         ax::Size _size;
         int _nextPositionDelta;
         axNumberBox* _past;
-        axDirection _direction;
+        ax::Utils::Direction _direction;
     };
     
     /***************************************************************************
@@ -159,9 +159,9 @@ public:
                 axFlag flags = 0,
                 double value = 0.0,
                 ax::FloatRange range = ax::FloatRange(0.0, 1.0),
-                axControlType type = axCTRL_FLOAT,
-                axControlUnit m_unit = axCTRL_NO_UNIT,
-                axControlInterpolation interpolation = axCTRL_LINEAR,
+                ax::Utils::Control::Type type = ax::Utils::Control::axCTRL_FLOAT,
+                ax::Utils::Control::Unit m_unit = ax::Utils::Control::axCTRL_NO_UNIT,
+                ax::Utils::Control::Interpolation interpolation = ax::Utils::Control::axCTRL_LINEAR,
                 std::string label = "");
 
     double GetValue();
@@ -180,10 +180,10 @@ private:
     axImage* _bgImg;
     axFont* _font;
 
-    axControlType _type;
-    axControlUnit _unit;
+    ax::Utils::Control::Type _type;
+    ax::Utils::Control::Unit _unit;
     ax::FloatRange _range;
-    axControlInterpolation _interpolation;
+    ax::Utils::Control::Interpolation _interpolation;
 
     axColor* _currentColor;
     int _nCurrentImg;

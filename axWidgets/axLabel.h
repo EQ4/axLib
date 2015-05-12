@@ -58,7 +58,7 @@ public:
              const axColor& fontColor,
              const int fontSize,
              const std::string& font_name,
-             const axAlignement& alignement);
+             const ax::Utils::Alignement& alignement);
         
         Info(const axColor& normal_color,
              const axColor& hover_color,
@@ -77,7 +77,7 @@ public:
         axColor font_color;
         int font_size;
         std::string font_name;
-        axAlignement _alignement;
+        ax::Utils::Alignement _alignement;
         
     };
     

@@ -34,7 +34,7 @@ axLabel::Info::Info(const axColor& normal_color,
                     const axColor& fontColor,
                     const int fontSize,
                     const std::string& fontName,
-                    const axAlignement& alignement):
+                    const ax::Utils::Alignement& alignement):
 normal(normal_color),
 contour(contour_color),
 font_color(fontColor),
@@ -93,19 +93,19 @@ std::string axLabel::Info::GetAttributeValue(const std::string& name)
     }
     else if(name == "font_size")
     {
-        return to_string(font_size);
+        return std::to_string(font_size);
     }
     else if(name == "align")
     {
-        if(_alignement == axALIGN_LEFT)
+        if(_alignement == ax::Utils::axALIGN_LEFT)
         {
             return "left";
         }
-        else if(_alignement == axALIGN_CENTER)
+        else if(_alignement == ax::Utils::axALIGN_CENTER)
         {
             return "center";
         }
-        else if(_alignement == axALIGN_RIGHT)
+        else if(_alignement == ax::Utils::axALIGN_RIGHT)
         {
             return "right";
         }
@@ -140,15 +140,15 @@ void axLabel::Info::SetAttribute(const ax::StringPair& attribute)
     {
         if(attribute.second == "left")
         {
-            _alignement = axALIGN_LEFT;
+            _alignement = ax::Utils::axALIGN_LEFT;
         }
         else if(attribute.second == "center")
         {
-            _alignement = axALIGN_CENTER;
+            _alignement = ax::Utils::axALIGN_CENTER;
         }
         else if(attribute.second == "right")
         {
-            _alignement = axALIGN_RIGHT;
+            _alignement = ax::Utils::axALIGN_RIGHT;
         }
     }
 }
@@ -175,7 +175,7 @@ axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
@@ -245,11 +245,11 @@ void axLabel::OnPaint()
     
     gc->SetColor(static_cast<Info*>(_info)->font_color);
     
-    if(static_cast<Info*>(_info)->_alignement == axALIGN_CENTER)
+    if(static_cast<Info*>(_info)->_alignement == ax::Utils::axALIGN_CENTER)
     {
         gc->DrawStringAlignedCenter(*_font, _label, rect);
     }
-    else if(static_cast<Info*>(_info)->_alignement == axALIGN_LEFT)
+    else if(static_cast<Info*>(_info)->_alignement == ax::Utils::axALIGN_LEFT)
     {
         gc->DrawString(*_font, _label, ax::Point(5, 2));
     }
