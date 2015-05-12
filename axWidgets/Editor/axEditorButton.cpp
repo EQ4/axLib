@@ -39,7 +39,7 @@ _info(axColor(0.9, 0.0, 0.0, 0.6),
       axColor(0.0, 0.0, 0.0, 0.6),
       axColor(0.0, 0.0, 0.0, 0.6)),
 _label(""),
-_flags(axButton::Flags::SINGLE_IMG),
+_flags(ax::Button::Flags::SINGLE_IMG),
 _selected(false),
 _msg(""),
 //_isEditing(false),
@@ -103,8 +103,8 @@ void axDebugButton::OnMouseLeftDown(const ax::Point& pos)
         
         GrabMouse();
         
-        PushEvent(axButton::Events::BUTTON_CLICK,
-                  new_ axButton::Msg(nullptr, _msg));
+        PushEvent(ax::Button::Events::BUTTON_CLICK,
+                  new_ ax::Button::Msg(nullptr, _msg));
         
         Update();
     }

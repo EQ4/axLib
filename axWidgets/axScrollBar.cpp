@@ -37,13 +37,12 @@ _flags(flags),
 _yClickDelta(0),
 _value(0.0)
 {
-
-    axButton::Info btn_info(axColor(0.8, 0.0, 0.0),
-                            axColor(0.9, 0.0, 0.0),
-                            axColor(0.8, 0.0, 0.0),
-                            axColor(0.8, 0.0, 0.0),
-                            axColor(0.0, 0.0, 0.0),
-                            axColor(0.0, 0.0, 0.0));
+    ax::Button::Info btn_info(axColor(0.8, 0.0, 0.0),
+                              axColor(0.9, 0.0, 0.0),
+                              axColor(0.8, 0.0, 0.0),
+                              axColor(0.8, 0.0, 0.0),
+                              axColor(0.0, 0.0, 0.0),
+                              axColor(0.0, 0.0, 0.0));
 
 	//function<void (axButtonMsg)> btnFct();
 

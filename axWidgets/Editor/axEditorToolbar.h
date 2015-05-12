@@ -15,7 +15,7 @@ class axEditorToolbar : public axPanel
 {
 public:
     axEditorToolbar(axWindow* parent, const ax::Rect& rect,
-                    const axButton::Events& evt);
+                    const ax::Button::Events& evt);
     
     
     

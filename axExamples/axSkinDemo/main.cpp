@@ -63,11 +63,11 @@ axPanel(app, rect)
 //    axApp* app = GetApp();
     std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
     
-    axButton* btn = new axButton(this, ax::Rect(150, 150, 60, 25),
-                                 GetOnButtonClick(),
-                                 axButton::Info(btnInfoPath),
-                                 "",
-                                 "Button");
+    ax::Button* btn = new ax::Button(this, ax::Rect(150, 150, 60, 25),
+                                     GetOnButtonClick(),
+                                     ax::Button::Info(btnInfoPath),
+                                     "",
+                                     "Button");
     
     
 //    axButton* btn_pop = new axButton(this, axRect(150, 150, 60, 25),
@@ -81,7 +81,7 @@ axPanel(app, rect)
                                  
 }
 
-void MainPanel::OnButtonClick(const axButton::Msg& msg)
+void MainPanel::OnButtonClick(const ax::Button::Msg& msg)
 {
     axPrint("Btn click.");
 //

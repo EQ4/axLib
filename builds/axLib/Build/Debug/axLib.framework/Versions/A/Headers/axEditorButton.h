@@ -49,8 +49,8 @@ public:
     axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
     
 protected:
-    axButton::Events _events;
-    axButton::Info _info;
+    ax::Button::Events _events;
+    ax::Button::Info _info;
     std::string _label, _msg;
 //    axImage* _btnImg;
     axFlag _flags;

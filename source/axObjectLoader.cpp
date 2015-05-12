@@ -106,7 +106,7 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
         }
         else if(objNode->name() == std::string("axButton"))
         {
-            axButton::Builder builder(win);
+            ax::Button::Builder builder(win);
             builder.Create(objData);
         }
         else if(objNode->name() == std::string("axNumberBox"))

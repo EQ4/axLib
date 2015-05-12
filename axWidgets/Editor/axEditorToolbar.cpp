@@ -9,10 +9,10 @@
 #include "axEditorToolbar.h"
 
 axEditorToolbar::axEditorToolbar(axWindow* parent, const ax::Rect& rect,
-                                 const axButton::Events& evt):
+                                 const ax::Button::Events& evt):
 axPanel(parent, rect)
 {
-    axButton::Info btn_info;
+    ax::Button::Info btn_info;
     btn_info.normal = axColor(0.7, 0.7, 0.7, 0.3);
     btn_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
     btn_info.clicking = axColor(0.8, 0.8, 0.8, 0.3);
@@ -20,7 +20,7 @@ axPanel(parent, rect)
     btn_info.selected = btn_info.normal;
     btn_info.round_corner_radius = 3;
     
-    axButton* btn1 = new axButton(this,
+    ax::Button* btn1 = new ax::Button(this,
                                   ax::Rect(10, 7, 60, 26),
                                   evt,
                                   btn_info,
@@ -29,7 +29,7 @@ axPanel(parent, rect)
     btn1->SetEditingWidget(true);
     btn1->SetEditable(false);
     
-    axButton* btn2 = new axButton(this,
+    ax::Button* btn2 = new ax::Button(this,
                                   ax::Rect(btn1->GetNextPosRight(10), ax::Size(60, 26)),
                                   evt,
                                   btn_info,

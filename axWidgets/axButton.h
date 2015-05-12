@@ -45,157 +45,161 @@
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
 
-/*******************************************************************************
- * axButon.
- ******************************************************************************/
-class axButton : public axWidget
+
+namespace ax
 {
-public:
     /***************************************************************************
-     * axButton::Flags.
+     * axButon.
      **************************************************************************/
-    class Flags
+    class Button : public axWidget
     {
     public:
-        static const axFlag SINGLE_IMG;
-        static const axFlag IMG_RESIZE;
-        static const axFlag CAN_SELECTED;
-    };
-    
-    /***************************************************************************
-     * axButton::Msg.
-     **************************************************************************/
-    class Msg : public axMsg
-    {
-    public:
-        Msg();
+        /***********************************************************************
+         * axButton::Flags.
+         **********************************************************************/
+        class Flags
+        {
+        public:
+            static const axFlag SINGLE_IMG;
+            static const axFlag IMG_RESIZE;
+            static const axFlag CAN_SELECTED;
+        };
         
-        Msg(axButton* sender, const std::string& msg);
+        /***********************************************************************
+         * axButton::Msg.
+         **********************************************************************/
+        class Msg : public axMsg
+        {
+        public:
+            Msg();
+            
+            Msg(Button* sender, const std::string& msg);
+            
+            Button* GetSender() const;
+            
+            std::string GetMsg() const;
+            
+            axMsg* GetCopy();
+            
+        private:
+            Button* _sender;
+            std::string _msg;
+        };
         
-        axButton* GetSender() const;
+        /***********************************************************************
+         * axButton::Events.
+         **********************************************************************/
+        class Events
+        {
+        public:
+            enum : axEventId { BUTTON_CLICK };
+            
+            Events(){}
+            Events(const axEventFunction& fct){ button_click = fct; }
+            
+            axEventFunction button_click;
+        };
         
-        std::string GetMsg() const;
+        /***********************************************************************
+         * axButton::Info.
+         **********************************************************************/
+        class Info : public axInfo
+        {
+        public:
+            Info();
+            
+            Info(const std::string& path);
+            
+            Info(const ax::StringPairVector& attributes);
+            
+            Info(const axColor& normal_color,
+                 const axColor& hover_color,
+                 const axColor& clicked_color,
+                 const axColor& selected_color,
+                 const axColor& contour_color,
+                 const axColor& font_color,
+                 const int& roundCornerRadius = 0);
+            
+            // Info needed for debug editor. Derived from axInfo.
+            virtual ax::StringVector GetParamNameList() const;
+            virtual std::string GetAttributeValue(const std::string& name);
+            virtual void SetAttribute(const ax::StringPair& attribute);
+            
+            axColor normal;
+            axColor hover;
+            axColor clicking;
+            axColor selected;
+            axColor contour;
+            axColor font_color;
+            int round_corner_radius = 0;
+        };
         
-        axMsg* GetCopy();
+        /***********************************************************************
+         * axButton::Builder.
+         **********************************************************************/
+        class Builder : public axWidgetBuilder
+        {
+        public:
+            Builder(axWindow* parent);
+            
+            virtual axWidget* Create(const ax::StringPairVector& attributes);
+            
+            ax::StringVector GetParamNameList() const;
+            
+        private:
+            Button::Info _info;
+            std::string _label, _img, _msg;
+            axFlag _flags;
+            ax::Size _size;
+            int _nextPositionDelta;
+            Button* _past;
+            axDirection _direction;
+        };
         
-    private:
-        axButton* _sender;
-        std::string _msg;
-    };
-    
-    /***************************************************************************
-     * axButton::Events.
-     **************************************************************************/
-    class Events
-    {
-    public:
-        enum : axEventId { BUTTON_CLICK };
+        /***********************************************************************
+         * axButton::axButton.
+         **********************************************************************/
+        Button(axWindow* parent,
+                 const ax::Rect& rect,
+                 const Button::Events& events,
+                 const Button::Info& info,
+                 std::string img_path = "",
+                 std::string label = "",
+                 axFlag flags = 0,
+                 std::string msg = "");
         
-        Events(){}
-        Events(const axEventFunction& fct){ button_click = fct; }
+        void SetMsg(const std::string& msg);
         
-        axEventFunction button_click;
-    };
-    
-    /***************************************************************************
-     * axButton::Info.
-     **************************************************************************/
-    class Info : public axInfo
-    {
-    public:
-        Info();
+        void SetSelected(const bool& selected);
         
-        Info(const std::string& path);
+        void SetLabel(const std::string& label);
         
-        Info(const ax::StringPairVector& attributes);
-        
-        Info(const axColor& normal_color,
-             const axColor& hover_color,
-             const axColor& clicked_color,
-             const axColor& selected_color,
-             const axColor& contour_color,
-             const axColor& font_color,
-             const int& roundCornerRadius = 0);
-        
-        // Info needed for debug editor. Derived from axInfo.
-        virtual ax::StringVector GetParamNameList() const;
-        virtual std::string GetAttributeValue(const std::string& name);
-        virtual void SetAttribute(const ax::StringPair& attribute);
-        
-        axColor normal;
-        axColor hover;
-        axColor clicking;
-        axColor selected;
-        axColor contour;
-        axColor font_color;
-        int round_corner_radius = 0;
-    };
-    
-    /***************************************************************************
-     * axButton::Builder.
-     **************************************************************************/
-    class Builder : public axWidgetBuilder
-    {
-    public:
-        Builder(axWindow* parent);
-        
-        virtual axWidget* Create(const ax::StringPairVector& attributes);
-        
-        ax::StringVector GetParamNameList() const;
-        
-    private:
-        axButton::Info _info;
-        std::string _label, _img, _msg;
+    protected:
+        Button::Events _events;
+        axImage* _btnImg;
         axFlag _flags;
-        ax::Size _size;
-        int _nextPositionDelta;
-        axButton* _past;
-        axDirection _direction;
+        std::string _label, _msg;
+        std::unique_ptr<axFont> _font;
+        
+        axColor* _currentColor;
+        bool _selected;
+        int _nCurrentImg;
+        
+        enum axButtonState
+        {
+            axBTN_NORMAL,
+            axBTN_HOVER,
+            axBTN_DOWN,
+            axBTN_SELECTED
+        };
+        
+        virtual void OnPaint();
+        virtual void OnMouseLeftDown(const ax::Point& pos);
+        virtual void OnMouseLeftUp(const ax::Point& pos);
+        virtual void OnMouseEnter();
+        virtual void OnMouseLeave();
     };
-    
-    /***************************************************************************
-     * axButton::axButton.
-     **************************************************************************/
-	axButton(axWindow* parent,
-             const ax::Rect& rect,
-             const axButton::Events& events,
-             const axButton::Info& info,
-             std::string img_path = "",
-             std::string label = "",
-             axFlag flags = 0,
-             std::string msg = "");
-    
-	void SetMsg(const std::string& msg);
-    
-	void SetSelected(const bool& selected);
-    
-    void SetLabel(const std::string& label);
-    
-protected:
-    axButton::Events _events;
-    axImage* _btnImg;
-    axFlag _flags;
-    std::string _label, _msg;
-    std::unique_ptr<axFont> _font;
-    
-    axColor* _currentColor;
-    bool _selected;
-    int _nCurrentImg;
-    
-    enum axButtonState
-    {
-        axBTN_NORMAL,
-        axBTN_HOVER,
-        axBTN_DOWN,
-        axBTN_SELECTED
-    };
-    
-	virtual void OnPaint();
-	virtual void OnMouseLeftDown(const ax::Point& pos);
-	virtual void OnMouseLeftUp(const ax::Point& pos);
-	virtual void OnMouseEnter();
-	virtual void OnMouseLeave();
-};
+}
 
 /*******************************************************************************
  * axButonInfo template.

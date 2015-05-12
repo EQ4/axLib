@@ -8,7 +8,7 @@ _font(0)
 	_font.SetFontSize(14);
     
     _toolbar = new axEditorToolbar(this, ax::Rect(0, 0, rect.size.x, 40),
-                                   axButton::Events(GetOnEditorToolbar()));
+                                   ax::Button::Events(GetOnEditorToolbar()));
     
     
     axScrollBarEvents scrollEvents;
@@ -60,7 +60,7 @@ void axEditorMenu::UpdateInfo()
     _editorAttributesPanel->UpdateInfo();
 }
 
-void axEditorMenu::OnEditorToolbar(const axButton::Msg& msg)
+void axEditorMenu::OnEditorToolbar(const ax::Button::Msg& msg)
 {
     if(msg.GetMsg() == "Widgets")
     {

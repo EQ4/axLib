@@ -22,13 +22,13 @@ class MainPanel : public axPanel
 public:
     MainPanel(axApp* app, const ax::Rect& rect);
     
-    axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
+    axEVENT_ACCESSOR(ax::Button::Msg, OnButtonClick);
     
 private:
     ax::FileBrowser* _fileBrowser;
     virtual void OnPaint();
     
-    void OnButtonClick(const axButton::Msg& msg);
+    void OnButtonClick(const ax::Button::Msg& msg);
     
     virtual void OnResize(const ax::Size& size);
     

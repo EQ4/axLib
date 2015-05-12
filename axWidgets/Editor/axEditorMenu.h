@@ -15,7 +15,7 @@ public:
     void UpdateInfo();
     void UpdateAttribute(const ax::StringPair& att);
     
-    axEVENT_ACCESSOR(axButton::Msg, OnEditorToolbar);
+    axEVENT_ACCESSOR(ax::Button::Msg, OnEditorToolbar);
     
 private:
 	axFont _font;
@@ -23,7 +23,7 @@ private:
     axEditorWidgetsPanel* _editorWidgetPanel;
     axEditorToolbar* _toolbar;
     
-    void OnEditorToolbar(const axButton::Msg& msg);
+    void OnEditorToolbar(const ax::Button::Msg& msg);
     
 	virtual void OnPaint();
 };

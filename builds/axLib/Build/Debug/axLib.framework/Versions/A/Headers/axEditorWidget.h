@@ -28,8 +28,8 @@ public:
     void SetLabel(const std::string& label);
     
 protected:
-    axButton::Events _events;
-    axButton::Info _info;
+    ax::Button::Events _events;
+    ax::Button::Info _info;
     std::string _label, _msg;
     axFlag _flags;
     axFont _fontBold, _font;

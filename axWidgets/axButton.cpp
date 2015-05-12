@@ -27,49 +27,49 @@
 /*******************************************************************************
  * axButon::Flags.
  ******************************************************************************/
-const axFlag axButton::Flags::SINGLE_IMG = axFLAG_1;
-const axFlag axButton::Flags::IMG_RESIZE = axFLAG_2;
-const axFlag axButton::Flags::CAN_SELECTED = axFLAG_3;
+const axFlag ax::Button::Flags::SINGLE_IMG = axFLAG_1;
+const axFlag ax::Button::Flags::IMG_RESIZE = axFLAG_2;
+const axFlag ax::Button::Flags::CAN_SELECTED = axFLAG_3;
 
 /*******************************************************************************
  * axButon::Msg.
  ******************************************************************************/
-axButton::Msg::Msg()
+ax::Button::Msg::Msg()
 {
     _sender = nullptr;
 }
 
-axButton::Msg::Msg(axButton* sender, const string& msg)
+ax::Button::Msg::Msg(ax::Button* sender, const string& msg)
 {
     _sender = sender;
     _msg = msg;
 }
 
-axButton* axButton::Msg::GetSender() const
+ax::Button* ax::Button::Msg::GetSender() const
 {
     return _sender;
 }
 
-string axButton::Msg::GetMsg() const
+string ax::Button::Msg::GetMsg() const
 {
     return _msg;
 }
 
-axMsg* axButton::Msg::GetCopy()
+axMsg* ax::Button::Msg::GetCopy()
 {
-    return new_ axButton::Msg(*this);
+    return new_ ax::Button::Msg(*this);
 }
 
 /*******************************************************************************
  * axButon::Info.
  ******************************************************************************/
-axButton::Info::Info() :
+ax::Button::Info::Info() :
 axInfo()
 {
     
 }
 
-axButton::Info::Info(const axColor& normal_color,
+ax::Button::Info::Info(const axColor& normal_color,
                      const axColor& hover_color,
                      const axColor& clicked_color,
                      const axColor& selected_color,
@@ -90,7 +90,7 @@ round_corner_radius(roundCornerRadius)
     
 }
 
-axButton::Info::Info(const std::string& path):
+ax::Button::Info::Info(const std::string& path):
 // Heritage.
 axInfo(path)
 {
@@ -100,12 +100,12 @@ axInfo(path)
     SetAttributes(att);
 }
 
-axButton::Info::Info(const ax::StringPairVector& attributes)
+ax::Button::Info::Info(const ax::StringPairVector& attributes)
 {
     SetAttributes(attributes);
 }
 
-ax::StringVector axButton::Info::GetParamNameList() const
+ax::StringVector ax::Button::Info::GetParamNameList() const
 {
     return ax::StringVector{"normal",
                             "hover",
@@ -116,7 +116,7 @@ ax::StringVector axButton::Info::GetParamNameList() const
                             "corner_radius"};
 }
 
-std::string axButton::Info::GetAttributeValue(const std::string& name)
+std::string ax::Button::Info::GetAttributeValue(const std::string& name)
 {
     if(name == "normal")
     {
@@ -150,7 +150,7 @@ std::string axButton::Info::GetAttributeValue(const std::string& name)
     return "";
 }
 
-void axButton::Info::SetAttribute(const ax::StringPair& attribute)
+void ax::Button::Info::SetAttribute(const ax::StringPair& attribute)
 {
     if(attribute.first == "normal")
     {
@@ -183,9 +183,9 @@ void axButton::Info::SetAttribute(const ax::StringPair& attribute)
 }
 
 /*******************************************************************************
- * axButton::Builder.
+ * ax::Button::Builder.
  ******************************************************************************/
-axButton::Builder::Builder(axWindow* parent):
+ax::Button::Builder::Builder(axWindow* parent):
 axWidgetBuilder(parent),
 //_parent(win),
 _past(nullptr),
@@ -194,11 +194,11 @@ _flags(0)
     
 }
 
-axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
+axWidget* ax::Button::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
     ax::Point pos;
-    axButton::Events evts;
+    ax::Button::Events evts;
     axWindow* parent = GetParent();
     
     for(auto& s : attributes)
@@ -220,7 +220,7 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
         }
         else if(s.first == "info")
         {
-            _info = axButton::Info(s.second);
+            _info = ax::Button::Info(s.second);
         }
         else if(s.first == "img")
         {
@@ -244,7 +244,7 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
         }
     }
     
-    axButton* btn = new_ axButton(parent, ax::Rect(pos, _size), evts,
+    ax::Button* btn = new_ ax::Button(parent, ax::Rect(pos, _size), evts,
                                  _info, _img, _label, _flags, _msg);
     
     parent->GetResourceManager()->Add(name, btn);
@@ -252,7 +252,7 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
     return btn;
 }
 
-ax::StringVector axButton::Builder::GetParamNameList() const
+ax::StringVector ax::Button::Builder::GetParamNameList() const
 {
     return ax::StringVector
     {
@@ -268,18 +268,18 @@ ax::StringVector axButton::Builder::GetParamNameList() const
 }
 
 /*******************************************************************************
- * axButon::axButton.
+ * axButon::ax::Button.
  ******************************************************************************/
-axButton::axButton(axWindow* parent,
+ax::Button::Button(axWindow* parent,
                    const ax::Rect& rect,
-                   const axButton::Events& events,
-                   const axButton::Info& info,
+                   const ax::Button::Events& events,
+                   const ax::Button::Info& info,
                    std::string img_path,
                    std::string label,
                    axFlag flags,
                    std::string msg):
 // Heritage.
-axWidget(parent, rect, new_ axButton::Info(info)),
+axWidget(parent, rect, new_ ax::Button::Info(info)),
 // Members.
 _events(events),
 _label(label),
@@ -289,7 +289,7 @@ _selected(false),
 _msg(msg),
 _font(nullptr)
 {
-    _currentColor = &static_cast<axButton::Info*>(_info)->normal;
+    _currentColor = &static_cast<ax::Button::Info*>(_info)->normal;
     
     _btnImg = new_ axImage(img_path);
     
@@ -301,12 +301,12 @@ _font(nullptr)
     }
 }
 
-void axButton::SetMsg(const string& msg)
+void ax::Button::SetMsg(const string& msg)
 {
     _msg = msg;
 }
 
-void axButton::SetSelected(const bool& selected)
+void ax::Button::SetSelected(const bool& selected)
 {
     if (_selected != selected)
     {
@@ -314,32 +314,32 @@ void axButton::SetSelected(const bool& selected)
         
         if (_selected)
         {
-            if (_currentColor == &static_cast<axButton::Info*>(_info)->normal)
+            if (_currentColor == &static_cast<ax::Button::Info*>(_info)->normal)
             {
-                _currentColor = &static_cast<axButton::Info*>(_info)->selected;
+                _currentColor = &static_cast<ax::Button::Info*>(_info)->selected;
                 Update();
             }
         }
         else
         {
-            if (_currentColor == &static_cast<axButton::Info*>(_info)->selected)
+            if (_currentColor == &static_cast<ax::Button::Info*>(_info)->selected)
             {
-                _currentColor = &static_cast<axButton::Info*>(_info)->normal;
+                _currentColor = &static_cast<ax::Button::Info*>(_info)->normal;
                 Update();
             }
         }
     }
 }
 
-void axButton::SetLabel(const std::string& label)
+void ax::Button::SetLabel(const std::string& label)
 {
     _label = label;
     Update();
 }
 
-void axButton::OnMouseLeftDown(const ax::Point& pos)
+void ax::Button::OnMouseLeftDown(const ax::Point& pos)
 {
-    _currentColor = &static_cast<axButton::Info*>(_info)->clicking;
+    _currentColor = &static_cast<ax::Button::Info*>(_info)->clicking;
     _nCurrentImg = axBTN_DOWN;
     
     GrabMouse();
@@ -349,7 +349,7 @@ void axButton::OnMouseLeftDown(const ax::Point& pos)
     Update();
 }
 
-void axButton::OnMouseLeftUp(const ax::Point& pos)
+void ax::Button::OnMouseLeftUp(const ax::Point& pos)
 {
     if (IsGrabbed())
     {
@@ -357,7 +357,7 @@ void axButton::OnMouseLeftUp(const ax::Point& pos)
         
         if (IsMouseHoverWindow())
         {
-            _currentColor = &static_cast<axButton::Info*>(_info)->hover;
+            _currentColor = &static_cast<ax::Button::Info*>(_info)->hover;
             _nCurrentImg = axBTN_HOVER;
             _selected = true;
         }
@@ -365,12 +365,12 @@ void axButton::OnMouseLeftUp(const ax::Point& pos)
         {
             if (_selected)
             {
-                _currentColor = &static_cast<axButton::Info*>(_info)->selected;
+                _currentColor = &static_cast<ax::Button::Info*>(_info)->selected;
                 _nCurrentImg = axBTN_SELECTED;
             }
             else
             {
-                _currentColor = &static_cast<axButton::Info*>(_info)->normal;
+                _currentColor = &static_cast<ax::Button::Info*>(_info)->normal;
                 _nCurrentImg = axBTN_NORMAL;
             }
         }
@@ -379,30 +379,30 @@ void axButton::OnMouseLeftUp(const ax::Point& pos)
     }
 }
 
-void axButton::OnMouseEnter()
+void ax::Button::OnMouseEnter()
 {
-    axDebug("axButton::OnMouseEnter()");
+    axDebug("ax::Button::OnMouseEnter()");
     
     if (!IsGrabbed())
     {
-        _currentColor = &static_cast<axButton::Info*>(_info)->hover;
+        _currentColor = &static_cast<ax::Button::Info*>(_info)->hover;
         _nCurrentImg = axBTN_HOVER;
         Update();
     }
 }
 
-void axButton::OnMouseLeave()
+void ax::Button::OnMouseLeave()
 {
     if (!IsGrabbed())
     {
         if (_selected)
         {
-            _currentColor = &static_cast<axButton::Info*>(_info)->selected;
+            _currentColor = &static_cast<ax::Button::Info*>(_info)->selected;
             _nCurrentImg = axBTN_SELECTED;
         }
         else
         {
-            _currentColor = &static_cast<axButton::Info*>(_info)->normal;
+            _currentColor = &static_cast<ax::Button::Info*>(_info)->normal;
             _nCurrentImg = axBTN_NORMAL;
         }
     }
@@ -410,7 +410,7 @@ void axButton::OnMouseLeave()
     Update();
 }
 
-void axButton::OnPaint()
+void ax::Button::OnPaint()
 {
     axGC gc = axGC(this);
     
@@ -419,7 +419,7 @@ void axButton::OnPaint()
     
     gc.SetColor(*_currentColor);
     
-    int radius = static_cast<axButton::Info*>(_info)->round_corner_radius;
+    int radius = static_cast<ax::Button::Info*>(_info)->round_corner_radius;
     if(radius > 1)
     {
         gc.DrawRoundedRectangle(rect0, radius);
@@ -445,11 +445,11 @@ void axButton::OnPaint()
     
     if(!_label.empty())
     {
-        gc.SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
+        gc.SetColor(static_cast<ax::Button::Info*>(_info)->font_color, 1.0);
         gc.DrawStringAlignedCenter(*_font, _label, rect0);
     }
     
-    gc.SetColor(static_cast<axButton::Info*>(_info)->contour);
+    gc.SetColor(static_cast<ax::Button::Info*>(_info)->contour);
     
     
     if(radius > 1)

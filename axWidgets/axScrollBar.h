@@ -147,7 +147,7 @@ private:
 	axFlag _flags;
     axWindow* _handle;
 
-	axButton* _btn[2];
+    ax::Button* _btn[2];
 
 	int _imgHeight, _sliderHeight, _sliderMaxHeight, _sliderPos, _yClickDelta;
     ax::Size _panelSize;

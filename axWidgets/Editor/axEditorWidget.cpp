@@ -23,7 +23,7 @@ _info(axColor(0.7),
       axColor(0.0),
       axColor(0.0)),
 _label(label),
-_flags(axButton::Flags::SINGLE_IMG),
+_flags(ax::Button::Flags::SINGLE_IMG),
 _selected(false),
 _msg(""),
 //_isEditing(false),
@@ -133,7 +133,7 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
             
             if(win->GetWindowType() == axWindowType::axWINDOW_TYPE_PANEL)
             {
-                axButton::Info btn_info;
+                ax::Button::Info btn_info;
                 btn_info.normal = axColor(0.7, 0.7, 0.7, 0.3);
                 btn_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
                 btn_info.clicking = axColor(0.8, 0.8, 0.8, 0.3);
@@ -143,12 +143,12 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
                 
                 ax::Point rel_pos = pos - win->GetAbsoluteRect().position;
                 
-                axButton* btn1 = new axButton(win,
-                                              ax::Rect(rel_pos, ax::Size(60, 26)),
-                                              axButton::Events(),
-                                              btn_info,
-                                              "", "Widgets",
-                                              axNO_FLAG, "Widgets");
+                ax::Button* btn1 = new ax::Button(win,
+                                                  ax::Rect(rel_pos, ax::Size(60, 26)),
+                                                  ax::Button::Events(),
+                                                  btn_info,
+                                                  "", "Widgets",
+                                                  axNO_FLAG, "Widgets");
             }
         }
         
