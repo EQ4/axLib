@@ -25,8 +25,8 @@ axTextControl::axTextControl(axWindow* parent,
                              const ax::Rect& rect,
                              const axTextControlEvents& events,
                              const axTextControlInfo& info,
-                             string img_path,
-                             string label,
+                             std::string img_path,
+                             std::string label,
                              axFlag flags) :
 // Heritage.
 axPanel(parent, rect),

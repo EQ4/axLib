@@ -64,7 +64,7 @@ bool axToggle::Msg::GetSelected() const
     return _selected;
 }
 
-string axToggle::Msg::GetMsg() const
+std::string axToggle::Msg::GetMsg() const
 {
     return _msg;
 }
@@ -236,11 +236,11 @@ void axToggle::Info::SetAttribute(const ax::StringPair& attribute)
 axToggle::Builder::Builder(axPanel* parent,
                            const ax::Size& size,
                            const axToggle::Info& info,
-                           string img_path,
-                           string label,
+                           std::string img_path,
+                           std::string label,
                            axFlag flags,
                            int nextPositionDelta,
-                           axDirection direction):
+                           ax::Utils::Direction direction):
 _parent(parent),
 _size(size),
 _info(info),
@@ -277,7 +277,7 @@ axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]), stoi(strVec[1]));
             _size = ax::Size(stoi(strVec[2]), stoi(strVec[3]));
@@ -366,7 +366,7 @@ _font(nullptr)
     }
 }
 
-void axToggle::SetMsg(const string& msg)
+void axToggle::SetMsg(const std::string& msg)
 {
 	_msg = msg;
 }

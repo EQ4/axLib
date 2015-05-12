@@ -36,7 +36,8 @@
 
 #include <fstream>
 
-typedef axTemplate2DPoint<int> axArrayIndex;
+typedef ax::Utils::Point2D<int> axArrayIndex;
+//typedef axTemplate2DPoint<int> axArrayIndex;
 
 class axGrid;
 
@@ -48,7 +49,7 @@ public:
 		_sender = nullptr;
 	}
 
-	axGridMsg(axGridMsg* sender, const string& msg)
+    axGridMsg(axGridMsg* sender, const std::string& msg)
 	{
 		_sender = sender;
 		_msg = msg;
@@ -59,14 +60,14 @@ public:
 		return _sender;
 	}
 
-	string GetMsg() const
+    std::string GetMsg() const
 	{
 		return _msg;
 	}
 
 private:
 	axGridMsg* _sender;
-	string _msg;
+    std::string _msg;
 };
 
 struct axGridEvents
@@ -107,18 +108,18 @@ struct axGridInfo
 		contour(contour_color),
 		font_color(font_color_){}
 
-	axGridInfo(const string& info_path)
+	axGridInfo(const std::string& info_path)
 	{
-		ifstream file;
+        std::ifstream file;
 		file.open(info_path);
 
 		if (file.fail())
 		{
-			cerr << "Problem opening file " << info_path << endl;
+			std::cerr << "Problem opening file " << info_path << std::endl;
 		}
 		else
 		{
-			string line;
+			std::string line;
 
 			axColor* ptr = &normal;
 			while (file.good())
@@ -140,18 +141,18 @@ public:
 		ax::Size grid_dimension,
 		//string label = "",
 		axFlag flags = 0,
-		string msg = "");
+		std::string msg = "");
 
 	void SetBackgroundAlpha(const float& alpha);
 	void SetElementColor(const axColor& color);
-	void SetMsg(const string& msg);
+	void SetMsg(const std::string& msg);
 	void SetSelected(const bool& selected);
 
 private:
 	axGridEvents _events;
 	axGridInfo _info;
 	//string _label;
-	string _msg;
+	std::string _msg;
 	
 	axFlag _flags;
 	ax::Size _dimension;
@@ -168,7 +169,7 @@ private:
 	};
 
 	axColor _currentElementColor;
-	vector<vector<axGridElement>> _gridElements;
+	std::vector<std::vector<axGridElement>> _gridElements;
 	
 	void AddElement(const int& row, const int& col);
 	axArrayIndex GetElementIndexFromMouse(const ax::Point& pos);

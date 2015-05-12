@@ -41,7 +41,7 @@ public:
     
 	axColor();
 	axColor(const axColor& col);
-    axColor(const string& color);
+    axColor(const std::string& color);
 
 	axDouble GetRed() const;
 	axDouble GetGreen() const;
@@ -53,8 +53,8 @@ public:
     void SetBlue(const double& blue);
     void SetAlpha(const double& alpha);
     
-    void SerializeOutput(fstream& out);
-    void SerializeInput(fstream& in);
+    void SerializeOutput(std::fstream& out);
+    void SerializeInput(std::fstream& in);
     
     void LoadFromString(const std::string& str);
     

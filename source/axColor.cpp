@@ -67,9 +67,9 @@ _r(all), _g(all), _b(all), _a(alpha)
     
 }
 
-axColor::axColor(const string& color)
+axColor::axColor(const std::string& color)
 {
-	string c = color;
+    std::string c = color;
 
 	unsigned int r_i, g_i, b_i;
 
@@ -105,26 +105,26 @@ axDouble axColor::GetAlpha() const
 
 void axColor::SetRed(const double& red)
 {
-    _r = axClamp<double>(red, 0.0, 1.0);
+    _r = ax::Utils::Clamp<double>(red, 0.0, 1.0);
 }
 
 void axColor::SetGreen(const double& green)
 {
-    _g = axClamp<double>(green, 0.0, 1.0);
+    _g = ax::Utils::Clamp<double>(green, 0.0, 1.0);
 }
 
 void axColor::SetBlue(const double& blue)
 {
-    _b = axClamp<double>(blue, 0.0, 1.0);
+    _b = ax::Utils::Clamp<double>(blue, 0.0, 1.0);
 }
 
 void axColor::SetAlpha(const double& alpha)
 {
-    _a = axClamp<double>(alpha, 0.0, 1.0);
+    _a = ax::Utils::Clamp<double>(alpha, 0.0, 1.0);
 }
 
 // Serialization.
-void axColor::SerializeOutput(fstream& out)
+void axColor::SerializeOutput(std::fstream& out)
 {
     out.write(reinterpret_cast<char*>(this), sizeof(axColor));
 //    out.write(reinterpret_cast<char*>(&_r), sizeof(double));
@@ -133,7 +133,7 @@ void axColor::SerializeOutput(fstream& out)
 //    out.write(reinterpret_cast<char*>(&_a), sizeof(double));
 }
 
-void axColor::SerializeInput(fstream& in)
+void axColor::SerializeInput(std::fstream& in)
 {
     in.read(reinterpret_cast<char*>(this), sizeof(axColor));
 //    in.read(reinterpret_cast<char*>(&_r), sizeof(double));
@@ -147,7 +147,7 @@ void axColor::LoadFromString(const std::string& str)
     
     if(str.find_first_of("#") != std::string::npos)
     {
-        string c = str;
+        std::string c = str;
         
         unsigned int r_i, g_i, b_i;
         
@@ -162,7 +162,7 @@ void axColor::LoadFromString(const std::string& str)
     }
     else
     {
-        ax::StringVector strVec = GetVectorFromStringDelimiter(str, ",");
+        ax::StringVector strVec = ax::Utils::String::Split(str, ",");
         _r = stof(strVec[0]);
         _g = stof(strVec[1]);
         _b = stof(strVec[2]);

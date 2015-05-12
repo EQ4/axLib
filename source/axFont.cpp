@@ -143,7 +143,7 @@ int axFont::GetNextPosition() const
     return _next;
 }
 
-bool axFont::LoadFont(const string& path, FT_Face& face)
+bool axFont::LoadFont(const std::string& path, FT_Face& face)
 {
     // Zero mean succes.
     if_error_in(FT_New_Face(_freeType, path.c_str(), 0, &_face))
@@ -204,7 +204,7 @@ void axFont::SetChar(const char& letter)
     }
 }
 
-void axFont::SetFontType(const string& font_type)
+void axFont::SetFontType(const std::string& font_type)
 {
     axError("SetFontType not implemented yet.");
 }

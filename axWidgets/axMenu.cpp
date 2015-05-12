@@ -47,8 +47,8 @@ axMenuNode::axMenuNode( axWindow* parent,
 }
 
 axMenuNode::axMenuNode(axMenuNode* parent,
-                       const string& label,
-                       string img_path,
+                       const std::string& label,
+                       std::string img_path,
                        axMenuNodeSelectionMode mode ):
 // Heritage.
 axPanel(parent, ax::Rect(0, 0, 20, 20)),
@@ -110,7 +110,7 @@ void axMenuNode::ResizeNode()
 
         for(auto n : _nodes)
         {
-            cout << n->GetLabel() << endl;
+            std::cout << n->GetLabel() << std::endl;
             n->Show();
         }
     }

@@ -39,7 +39,7 @@ ax::Button::Msg::Msg()
     _sender = nullptr;
 }
 
-ax::Button::Msg::Msg(ax::Button* sender, const string& msg)
+ax::Button::Msg::Msg(ax::Button* sender, const std::string& msg)
 {
     _sender = sender;
     _msg = msg;
@@ -50,7 +50,7 @@ ax::Button* ax::Button::Msg::GetSender() const
     return _sender;
 }
 
-string ax::Button::Msg::GetMsg() const
+std::string ax::Button::Msg::GetMsg() const
 {
     return _msg;
 }
@@ -210,7 +210,7 @@ axWidget* ax::Button::Builder::Create(const ax::StringPairVector& attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
@@ -301,7 +301,7 @@ _font(nullptr)
     }
 }
 
-void ax::Button::SetMsg(const string& msg)
+void ax::Button::SetMsg(const std::string& msg)
 {
     _msg = msg;
 }

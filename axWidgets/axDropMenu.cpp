@@ -82,7 +82,7 @@ _msg(msg)
     _label = menu_str[0];
 }
 
-void axDropMenu::SetMsg(const string& msg)
+void axDropMenu::SetMsg(const std::string& msg)
 {
     _msg = msg;
 }

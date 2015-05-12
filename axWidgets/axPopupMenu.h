@@ -43,12 +43,12 @@
 class axPopupMenuMsg : public ax::Event::Msg
 {
 public:
-	axPopupMenuMsg(const string& msg) :
+	axPopupMenuMsg(const std::string& msg) :
 		_msg(msg)
 	{
 	}
 
-	string GetMsg() const
+    std::string GetMsg() const
 	{
 		return _msg;
 	}
@@ -59,7 +59,7 @@ public:
     }
 
 private:
-	string _msg;
+    std::string _msg;
 };
 
 /**************************************************************************//**
@@ -128,8 +128,8 @@ private:
 	axPopupMenuEvents _events;
 	axPopupMenuInfo _info;
 	axFlag _flag;
-	vector<string> _labels;
-	vector<axToggle*> _btns;
+    std::vector<std::string> _labels;
+    std::vector<axToggle*> _btns;
 	int _index;
 	axToggle* _lastSelected;
 

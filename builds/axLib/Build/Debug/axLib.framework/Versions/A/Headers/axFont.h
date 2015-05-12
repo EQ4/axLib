@@ -47,7 +47,7 @@ public:
     axFont();
     
     // Create font from font path.
-	axFont(const string& font);
+	axFont(const std::string& font);
     
     // Create default font. Only 0 and 1 supported for now.
     axFont(const int& data_index);
@@ -82,7 +82,7 @@ public:
     
     int GetNextPosition() const;
     
-	void SetFontType(const string& font_type);
+	void SetFontType(const std::string& font_type);
     
     int GetFontSize() const;
 
@@ -95,7 +95,7 @@ private:
 	int _next, _font_size;
     bool _isReady;
     
-    bool LoadFont(const string& path, FT_Face& face);
+    bool LoadFont(const std::string& path, FT_Face& face);
 };
 
 /// @}

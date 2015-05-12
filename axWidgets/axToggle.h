@@ -37,6 +37,7 @@
 /// @{
 
 #include <axEvent/axEvent.h>
+#include <axUtils/axUtils.h>
 
 #include "axWidget.h"
 #include "axPanel.h"
@@ -80,7 +81,7 @@ public:
         
         bool GetSelected() const;
         
-        string GetMsg() const;
+        std::string GetMsg() const;
         
         ax::Event::Msg* GetCopy();
         
@@ -164,7 +165,7 @@ public:
                 std::string label = "",
                 axFlag flags = 0,
                 int nextPositionDelta = 5,
-                axDirection direction = axDIRECTION_RIGHT);
+                ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
         Builder(axWindow* win);
         
@@ -181,7 +182,7 @@ public:
         ax::Size _size;
         int _nextPositionDelta;
         axToggle* _past;
-        axDirection _direction;
+        ax::Utils::Direction _direction;
     };
     
     /***************************************************************************
@@ -196,7 +197,7 @@ public:
              axFlag flags = 0,
              std::string msg = "");
         
-    void SetMsg(const string& msg);
+    void SetMsg(const std::string& msg);
     void SetSelected(const bool& selected);
 
 protected:

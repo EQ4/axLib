@@ -53,8 +53,8 @@ axKnob::Info::Info( const axColor& bg_normalColor,
                    const axColor& bg_clickingColor,
                    const unsigned int& numberKnob,
                    const ax::Size& size,
-                   const string& imgPath,
-                   const string& sImgPath ):
+                   const std::string& imgPath,
+                   const std::string& sImgPath ):
 // Members.
 img_path( imgPath ),
 selected_img_path( sImgPath ),
@@ -157,11 +157,11 @@ std::string axKnob::Info::GetAttributeValue(const std::string& name)
     }
     else if(name == "nknob")
     {
-        return to_string(n_knob);
+        return std::to_string(n_knob);
     }
     else if(name == "knob_size")
     {
-        return to_string(knob_size.x) + "," + to_string(knob_size.y);
+        return std::to_string(knob_size.x) + "," + std::to_string(knob_size.y);
     }
     else if(name == "img")
     {
@@ -196,7 +196,7 @@ void axKnob::Info::SetAttribute(const ax::StringPair& attribute)
     else if(attribute.first == "knob_size")
     {
         ax::StringVector strVec;
-        strVec = GetVectorFromStringDelimiter(attribute.second, ",");
+        strVec = ax::Utils::String::Split(attribute.second, ",");
         knob_size = ax::Size(stoi(strVec[0]), stoi(strVec[1]));
     }
     else if(attribute.first == "img")
@@ -217,7 +217,7 @@ axKnob::Builder::Builder(axWindow* parent,
                          const axKnob::Info& info,
                          axFlag flags,
                          int nextPositionDelta,
-                         axDirection direction):
+                         ax::Utils::Direction direction):
 _parent(parent),
 _size(size),
 _info(info),
@@ -233,7 +233,7 @@ _pastKnob(nullptr)
 axKnob::Builder::Builder(axWindow* parent,
                          axFlag flags,
                          int nextPositionDelta,
-                         axDirection direction):
+                         ax::Utils::Direction direction):
 _parent(parent),
 _pastKnob(nullptr)
 
@@ -258,17 +258,17 @@ axKnob* axKnob::Builder::Create(const ax::Event::Function& evt)
 {
     if(_pastKnob != nullptr)
     {
-        if(_direction == axDIRECTION_RIGHT)
+        if(_direction == ax::Utils::axDIRECTION_RIGHT)
         {
             ax::Point pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
             return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evt,
                                           _info, _flags);
         }
-        else if(_direction == axDIRECTION_DOWN)
+        else if(_direction == ax::Utils::axDIRECTION_DOWN)
         {
             
         }
-        else if(_direction == axDIRECTION_LEFT)
+        else if(_direction == ax::Utils::axDIRECTION_LEFT)
         {
             
         }
@@ -310,7 +310,7 @@ axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
         else if(s.first == "rect")
         {
             ax::StringVector strVec;
-            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            strVec = ax::Utils::String::Split(s.second, ",");
             
             pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
@@ -426,7 +426,7 @@ void  axKnob::OnMouseLeftDragging(const ax::Point& position)
     double v = -delta / 100.0;
     _zeroToOneValue += v;
     
-    _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
+    _zeroToOneValue = ax::Utils::Clamp<double>(_zeroToOneValue, 0.0, 1.0);
     m_knobValue = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
     m_nCurrentImg = m_knobValue * ( static_cast<Info*>(_info)->n_knob - 1 ) ;
@@ -442,7 +442,7 @@ void  axKnob::OnMouseLeftDragging(const ax::Point& position)
 void axKnob::SetValue(const axFloat& value, bool callValueChangeEvent)
 {
 	int cur_img = m_nCurrentImg;
-	_zeroToOneValue = axClamp<double>(value, 0.0, 1.0);
+	_zeroToOneValue = ax::Utils::Clamp<double>(value, 0.0, 1.0);
     m_knobValue = _zeroToOneValue;
 	m_nCurrentImg = m_knobValue * (static_cast<Info*>(_info)->n_knob - 1);
 
@@ -512,7 +512,7 @@ void axKnobControl::SetValue(const double& value)
 
 void axKnobControl::OnKnobValueChange(const axKnob::Msg& msg)
 {
-    std::string v = to_string(msg.GetValue());
+    std::string v = std::to_string(msg.GetValue());
     v.resize(4);
     _value = v;
     Update();

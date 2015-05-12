@@ -34,7 +34,7 @@ namespace ax
             
             Point2D operator - (const Point2D& pt) const
             {
-                return axTemplate2DPoint(x - pt.x, y - pt.y);
+                return Point2D(x - pt.x, y - pt.y);
             }
             
             Point2D& operator += (const Point2D& pt)

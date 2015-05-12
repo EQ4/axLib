@@ -37,6 +37,7 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <map>
 
 class axImage;
 
@@ -61,7 +62,7 @@ public:
 private:
 	std::map<std::string, axImageStruct> _imageMap;
 
-	bool InitImage(const string& path, 
+	bool InitImage(const std::string& path,
 				   GLuint& _texture, 
 				   ax::Size& _size);
 };
@@ -69,7 +70,7 @@ private:
 class axImage
 {
 public:
-	axImage(const string& path);
+    axImage(const std::string& path);
     
     axImage(void* data, const ax::Size& size);
 
@@ -101,14 +102,14 @@ private:
 class axBigImage
 {
 public:
-	axBigImage(const string& path);
+	axBigImage(const std::string& path);
 
 	~axBigImage()
 	{
 		delete[] _imgData;
 	}
 
-	bool InitImage(const string& path);
+	bool InitImage(const std::string& path);
 
 	enum ColorType
 	{

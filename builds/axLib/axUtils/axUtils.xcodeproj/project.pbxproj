@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		7C18C37C1B02709500885929 /* axUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C37B1B02709500885929 /* axUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C39D1B02713F00885929 /* axPoint2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C39B1B02713F00885929 /* axPoint2D.cpp */; };
-		7C18C39E1B02713F00885929 /* axPoint2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C39C1B02713F00885929 /* axPoint2D.h */; };
+		7C18C39E1B02713F00885929 /* axPoint2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C39C1B02713F00885929 /* axPoint2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A11B02726D00885929 /* axRect2D.cpp */; };
-		7C18C3A41B02726D00885929 /* axRect2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A21B02726D00885929 /* axRect2D.h */; };
+		7C18C3A41B02726D00885929 /* axRect2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A21B02726D00885929 /* axRect2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3A71B02747400885929 /* axRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A51B02747400885929 /* axRange.cpp */; };
-		7C18C3A81B02747400885929 /* axRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A61B02747400885929 /* axRange.h */; };
+		7C18C3A81B02747400885929 /* axRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A61B02747400885929 /* axRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A91B02774500885929 /* axInterpole.cpp */; };
-		7C18C3AC1B02774500885929 /* axInterpole.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AA1B02774500885929 /* axInterpole.h */; };
+		7C18C3AC1B02774500885929 /* axInterpole.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AA1B02774500885929 /* axInterpole.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3AF1B02788200885929 /* axClamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3AD1B02788200885929 /* axClamp.cpp */; };
-		7C18C3B01B02788200885929 /* axClamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AE1B02788200885929 /* axClamp.h */; };
+		7C18C3B01B02788200885929 /* axClamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AE1B02788200885929 /* axClamp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3B31B02790300885929 /* axString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B11B02790300885929 /* axString.cpp */; };
-		7C18C3B41B02790300885929 /* axString.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B21B02790300885929 /* axString.h */; };
+		7C18C3B41B02790300885929 /* axString.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B21B02790300885929 /* axString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3B71B027C7F00885929 /* axControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B51B027C7F00885929 /* axControl.cpp */; };
-		7C18C3B81B027C7F00885929 /* axControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B61B027C7F00885929 /* axControl.h */; };
+		7C18C3B81B027C7F00885929 /* axControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B61B027C7F00885929 /* axControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3BB1B027FF900885929 /* axDirection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B91B027FF900885929 /* axDirection.cpp */; };
+		7C18C3BC1B027FF900885929 /* axDirection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3BA1B027FF900885929 /* axDirection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		7C18C3B21B02790300885929 /* axString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axString.h; sourceTree = "<group>"; };
 		7C18C3B51B027C7F00885929 /* axControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axControl.cpp; sourceTree = "<group>"; };
 		7C18C3B61B027C7F00885929 /* axControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axControl.h; sourceTree = "<group>"; };
+		7C18C3B91B027FF900885929 /* axDirection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDirection.cpp; sourceTree = "<group>"; };
+		7C18C3BA1B027FF900885929 /* axDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDirection.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			children = (
 				7C18C3AE1B02788200885929 /* axClamp.h */,
 				7C18C3B61B027C7F00885929 /* axControl.h */,
+				7C18C3BA1B027FF900885929 /* axDirection.h */,
 				7C18C3AA1B02774500885929 /* axInterpole.h */,
 				7C18C39C1B02713F00885929 /* axPoint2D.h */,
 				7C18C3A61B02747400885929 /* axRange.h */,
@@ -109,6 +114,7 @@
 			children = (
 				7C18C3AD1B02788200885929 /* axClamp.cpp */,
 				7C18C3B51B027C7F00885929 /* axControl.cpp */,
+				7C18C3B91B027FF900885929 /* axDirection.cpp */,
 				7C18C3A91B02774500885929 /* axInterpole.cpp */,
 				7C18C39B1B02713F00885929 /* axPoint2D.cpp */,
 				7C18C3A51B02747400885929 /* axRange.cpp */,
@@ -125,6 +131,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C18C3BC1B027FF900885929 /* axDirection.h in Headers */,
 				7C18C39E1B02713F00885929 /* axPoint2D.h in Headers */,
 				7C18C3B41B02790300885929 /* axString.h in Headers */,
 				7C18C3B01B02788200885929 /* axClamp.h in Headers */,
@@ -205,6 +212,7 @@
 			files = (
 				7C18C3B71B027C7F00885929 /* axControl.cpp in Sources */,
 				7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */,
+				7C18C3BB1B027FF900885929 /* axDirection.cpp in Sources */,
 				7C18C3A71B02747400885929 /* axRange.cpp in Sources */,
 				7C18C39D1B02713F00885929 /* axPoint2D.cpp in Sources */,
 				7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */,

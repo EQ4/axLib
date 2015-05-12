@@ -28,7 +28,7 @@ axGrid::axGrid(axWindow* parent,
                ax::Size grid_dimension,
                //string label,
                axFlag flags,
-               string msg) :
+               std::string msg) :
 // Heritage.
 axPanel(parent, rect),
 // Members.
@@ -56,7 +56,7 @@ _currentElementColor(0.0, 0.8, 0.0)
 	_selectedElement(0, 0);
 }
 
-void axGrid::SetMsg(const string& msg)
+void axGrid::SetMsg(const std::string& msg)
 {
 	//_msg = msg;
 }
@@ -122,12 +122,12 @@ void axGrid::AddElement(const int& row, const int& col)
 
 void axGrid::OnMouseLeftDown(const ax::Point& pos)
 {
-	cout << "LEFT_DOWN" << endl;
+	std::cout << "LEFT_DOWN" << std::endl;
 	ax::Rect rect = GetAbsoluteRect();
 	ax::Point position = pos - rect.position;
 	axArrayIndex index = GetElementIndexFromMouse(position);
 
-	cout << index.x << " " << index.y << endl;
+	std::cout << index.x << " " << index.y << std::endl;
 	
 
 	if(_gridElements[index.y][index.x].on == false)

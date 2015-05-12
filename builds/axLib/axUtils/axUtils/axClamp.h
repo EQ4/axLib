@@ -17,7 +17,7 @@ namespace ax
          * ax::Utils::Clamp.
          **********************************************************************/
         template<typename T>
-        T axClamp(T d, T min, T max)
+        T Clamp(T d, T min, T max)
         {
             const T t = d < min ? min : d;
             return t > max ? max : t;

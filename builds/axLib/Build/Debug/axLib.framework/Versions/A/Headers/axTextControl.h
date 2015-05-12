@@ -53,7 +53,7 @@ public:
         _sender = nullptr;
     }
     
-    axTextControlMsg(axTextControl* sender, const string& msg)
+    axTextControlMsg(axTextControl* sender, const std::string& msg)
     {
         _sender = sender;
         _msg = msg;
@@ -76,7 +76,7 @@ public:
     
 private:
     axTextControl* _sender;
-    string _msg;
+    std::string _msg;
 };
 
 struct axTextControlEvents
@@ -125,7 +125,7 @@ struct axTextControlInfo
 
     void SerializeOutput(const std::string& path)
     {
-        fstream file;
+        std::fstream file;
         file.open(path, std::fstream::out | std::fstream::binary);
 
         if (file.fail())
@@ -146,7 +146,7 @@ struct axTextControlInfo
     
     void SerializeInput(const std::string& path)
     {
-        fstream file;
+        std::fstream file;
         file.open(path, std::fstream::in | std::fstream::binary);
         
         if (file.fail())
@@ -172,8 +172,8 @@ public:
                   const ax::Rect& rect,
                   const axTextControlEvents& events,
                   const axTextControlInfo& info,
-                  string img_path = "",
-                  string label = "",
+                  std::string img_path = "",
+                  std::string label = "",
                   axFlag flags = 0);
 
     void SetLabel(const std::string& label);
@@ -184,7 +184,7 @@ public:
 protected:
     axTextControlEvents _events;
     axTextControlInfo _info;
-    string _label;
+    std::string _label;
     axImage* _btnImg;
     axFlag _flags;
     axFont* _font;

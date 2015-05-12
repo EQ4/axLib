@@ -50,7 +50,7 @@ ax::Size axCoreMac::GetScreenSize()
     return axCocoaGetScreenSize();
 }
 
-string axCoreMac::GetAppDirectory()
+std::string axCoreMac::GetAppDirectory()
 {
     return std::string(CocoaGetAppDirectory() + std::string("/"));
 }

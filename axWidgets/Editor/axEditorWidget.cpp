@@ -36,7 +36,7 @@ _fontBold("FreeSansBold.ttf")
     SetEditable(false);
 }
 
-void axEditorWidget::SetMsg(const string& msg)
+void axEditorWidget::SetMsg(const std::string& msg)
 {
     _msg = msg;
 }

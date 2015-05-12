@@ -52,10 +52,10 @@ public:
     // Root Node.
     axMenuNode(axWindow* parent, const ax::Rect& rect);
 
-    axMenuNode( axMenuNode* parent,
-                const string& label,
-                string img_path = "",
-                axMenuNodeSelectionMode mode = axMENU_SELECT_ANY );
+    axMenuNode(axMenuNode* parent,
+               const std::string& label,
+               std::string img_path = "",
+               axMenuNodeSelectionMode mode = axMENU_SELECT_ANY);
 
     /********************************************************************************//**
      * @brief  Add a node to a parent node
@@ -78,7 +78,7 @@ public:
     void SelectNode();
     void UnselectAll();
 
-    string GetLabel() const
+    std::string GetLabel() const
     {
         return m_label;
     }
@@ -99,7 +99,7 @@ public:
 private:
     axMenuNodeSelectionMode m_select_mode;
     axImage* m_img;
-    string m_label;
+    std::string m_label;
     int m_nCurrentImg;
     int m_delta;
 
@@ -107,7 +107,7 @@ private:
     int m_nSubNode, m_nSubNodeMax;
     axMenuNode** m_nodes;
 
-    vector<axMenuNode*> _nodes;
+    std::vector<axMenuNode*> _nodes;
 
     // Parent
     axMenuNode* m_parentNode;

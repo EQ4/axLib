@@ -54,7 +54,7 @@ public:
 		_sender = nullptr;
 	}
 
-	axScrollBarMsg(axScrollBar* sender, const string& msg)
+	axScrollBarMsg(axScrollBar* sender, const std::string& msg)
 	{
 		_sender = sender;
 		_msg = msg;
@@ -65,7 +65,7 @@ public:
 		return _sender;
 	}
 
-	string GetMsg() const
+    std::string GetMsg() const
 	{
 		return _msg;
 	}
@@ -77,7 +77,7 @@ public:
 
 private:
 	axScrollBar* _sender;
-	string _msg;
+	std::string _msg;
 };
 
 struct axScrollBarEvents

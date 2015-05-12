@@ -32,7 +32,9 @@ axImageGlobalMapLoader::axImageGlobalMapLoader()
 
 }
 
-bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, ax::Size& _size)
+bool axImageGlobalMapLoader::LoadImage(const std::string& path,
+                                       GLuint& _texture,
+                                       ax::Size& _size)
 {
 #ifdef _AX_VST_APP_
     /// @todo Find a way to have a map with multiple opengl contexts.
@@ -57,7 +59,7 @@ bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, ax:
         if (InitImage(path, _texture, _size) == false)
         {
             axImageStruct img_info(_texture, _size);
-            _imageMap.insert(pair<std::string, axImageStruct>(path, img_info));
+            _imageMap.insert(std::pair<std::string, axImageStruct>(path, img_info));
             return true;
         }
     }
@@ -66,7 +68,7 @@ bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, ax:
 #endif // _AX_VST_APP_
 }
 
-bool axImageGlobalMapLoader::InitImage(const string& path, 
+bool axImageGlobalMapLoader::InitImage(const std::string& path, 
 									   GLuint& _texture, 
 									   ax::Size& _size)
 {
@@ -81,8 +83,8 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 
 	if (fp == NULL)
 	{
-		cerr << "Error opening png image : " << path << endl;
-		cerr << "Error : " << strerror(errno) << endl;
+        std::cerr << "Error opening png image : " << path << std::endl;
+        std::cerr << "Error : " << strerror(errno) << std::endl;
 		return 1;
 	}
 
@@ -91,7 +93,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 
 	if (png_sig_cmp(header, 0, 8))
 	{
-		cerr << "Error invalid image format." << endl;
+		std::cerr << "Error invalid image format." << std::endl;
 		fclose(fp);
 		return true;
 	}
@@ -101,7 +103,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 		NULL, NULL, NULL);
 	if (!png_ptr)
 	{
-		cerr << "Error png_create_read_struct." << endl;
+		std::cerr << "Error png_create_read_struct." << std::endl;
 		fclose(fp);
 		return true;
 	}
@@ -110,7 +112,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	png_infop info_ptr = png_create_info_struct(png_ptr);
 	if (!info_ptr)
 	{
-		cerr << "Error png_create_info_struct." << endl;
+		std::cerr << "Error png_create_info_struct." << std::endl;
 		png_destroy_read_struct(&png_ptr,
 			(png_infopp)NULL,
 			(png_infopp)NULL);
@@ -121,7 +123,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	png_infop end_info = png_create_info_struct(png_ptr);
 	if (!end_info)
 	{
-		cerr << "Error png_create_info_struct." << endl;
+		std::cerr << "Error png_create_info_struct." << std::endl;
 		png_destroy_read_struct(&png_ptr,
 			&info_ptr,
 			(png_infopp)NULL);
@@ -132,7 +134,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	// Gets called if libpng encounters an error.
 	if (setjmp(png_jmpbuf(png_ptr)))
 	{
-		cerr << "Error libpng." << endl;
+		std::cerr << "Error libpng." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		fclose(fp);
 		return true;
@@ -185,7 +187,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 
 	if (image_data == NULL)
 	{
-		cerr << "Error memory allocation for PNG image data." << endl;
+		std::cerr << "Error memory allocation for PNG image data." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 
 		fclose(fp);
@@ -197,7 +199,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 
 	if (row_pointers == NULL)
 	{
-		cout << "Error memory allocation for PNG row pointers." << endl;
+		std::cout << "Error memory allocation for PNG row pointers." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 
 		free(image_data);
@@ -231,7 +233,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR)
 	{
-		cout << "GL FUCKUP" << endl;
+		std::cout << "GL FUCKUP" << std::endl;
 	}
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -247,7 +249,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 }
 
 
-axImage::axImage(const string& path)
+axImage::axImage(const std::string& path)
 {
 	_path = path;
 
@@ -259,7 +261,7 @@ axImage::axImage(const string& path)
 		}
 		else
 		{
-			cerr << "Error opening image" << endl;
+			std::cerr << "Error opening image" << std::endl;
 		}
 	}
 }
@@ -433,7 +435,7 @@ bool axImage::IsImageReady()
 
 
 
-axBigImage::axBigImage(const string& path)
+axBigImage::axBigImage(const std::string& path)
 {
 	if_error_in (InitImage(path))
 	{
@@ -441,7 +443,7 @@ axBigImage::axBigImage(const string& path)
 	}
 }
 
-bool axBigImage::InitImage(const string& path)
+bool axBigImage::InitImage(const std::string& path)
 {
 	//glGenTextures(1, &_texture);
 
@@ -454,8 +456,8 @@ bool axBigImage::InitImage(const string& path)
 
 	if (fp == NULL)
 	{
-		cerr << "Error opening png image : " << path << endl;
-		cerr << "Error : " << strerror(errno) << endl;
+		std::cerr << "Error opening png image : " << path << std::endl;
+		std::cerr << "Error : " << strerror(errno) << std::endl;
 		return 1;
 	}
 
@@ -464,7 +466,7 @@ bool axBigImage::InitImage(const string& path)
 
 	if (png_sig_cmp(header, 0, 8))
 	{
-		cerr << "Error invalid image format." << endl;
+		std::cerr << "Error invalid image format." << std::endl;
 		fclose(fp);
 		return true;
 	}
@@ -474,7 +476,7 @@ bool axBigImage::InitImage(const string& path)
 		NULL, NULL, NULL);
 	if (!png_ptr)
 	{
-		cerr << "Error png_create_read_struct." << endl;
+		std::cerr << "Error png_create_read_struct." << std::endl;
 		fclose(fp);
 		return true;
 	}
@@ -483,7 +485,7 @@ bool axBigImage::InitImage(const string& path)
 	png_infop info_ptr = png_create_info_struct(png_ptr);
 	if (!info_ptr)
 	{
-		cerr << "Error png_create_info_struct." << endl;
+		std::cerr << "Error png_create_info_struct." << std::endl;
 		png_destroy_read_struct(&png_ptr,
 			(png_infopp)NULL,
 			(png_infopp)NULL);
@@ -494,7 +496,7 @@ bool axBigImage::InitImage(const string& path)
 	png_infop end_info = png_create_info_struct(png_ptr);
 	if (!end_info)
 	{
-		cerr << "Error png_create_info_struct." << endl;
+		std::cerr << "Error png_create_info_struct." << std::endl;
 		png_destroy_read_struct(&png_ptr,
 			&info_ptr,
 			(png_infopp)NULL);
@@ -505,7 +507,7 @@ bool axBigImage::InitImage(const string& path)
 	// Gets called if libpng encounters an error.
 	if (setjmp(png_jmpbuf(png_ptr)))
 	{
-		cerr << "Error libpng." << endl;
+		std::cerr << "Error libpng." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		fclose(fp);
 		return true;
@@ -558,7 +560,7 @@ bool axBigImage::InitImage(const string& path)
 
 	if (image_data == NULL)
 	{
-		cerr << "Error memory allocation for PNG image data." << endl;
+		std::cerr << "Error memory allocation for PNG image data." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 
 		fclose(fp);
@@ -570,7 +572,7 @@ bool axBigImage::InitImage(const string& path)
 
 	if (row_pointers == NULL)
 	{
-		cout << "Error memory allocation for PNG row pointers." << endl;
+		std::cout << "Error memory allocation for PNG row pointers." << std::endl;
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 
 		free(image_data);

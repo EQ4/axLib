@@ -206,12 +206,12 @@ void ax::App::OnDebugEditor(const ax::Event::Msg& msg)
 }
 //------------------------------------------------------------------------------
 
-string ax::App::OpenFileDialog()
+std::string ax::App::OpenFileDialog()
 {
 	return _core->OpenFileDialog();
 }
 
-string ax::App::GetAppDirectory()
+std::string ax::App::GetAppDirectory()
 {
 	return _core->GetAppDirectory();
 }

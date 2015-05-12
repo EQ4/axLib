@@ -25,7 +25,7 @@ axPopupMenu::axPopupMenu(axWindow* parent,
                          const ax::Rect& rect,
                          const axPopupMenuEvents& events,
                          const axPopupMenuInfo& info,
-                         const vector<string>& labels,
+                         const std::vector<std::string>& labels,
                          std::string bgImg,
                          axFlag flag) :
 // Heritage.

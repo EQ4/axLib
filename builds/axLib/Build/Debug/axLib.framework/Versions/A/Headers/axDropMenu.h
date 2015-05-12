@@ -74,7 +74,7 @@ public:
         return _sender;
     }
     
-    string GetMsg() const
+    std::string GetMsg() const
     {
         return _msg;
     }
@@ -86,7 +86,7 @@ public:
     
 private:
     axDropMenu* _sender;
-    string _msg;
+    std::string _msg;
 };
 
 /*******************************************************************************
@@ -147,7 +147,7 @@ public:
                axFlag flags = 0,
                std::string msg = "");
 
-    void SetMsg(const string& msg);
+    void SetMsg(const std::string& msg);
     
     void SetSelected(const bool& selected);
         
@@ -160,8 +160,8 @@ private:
     axColor* _currentColor;
     axImage* _btnImg;
     axImage* _bgImg;
-    string _label;
-    string _msg;
+    std::string _label;
+    std::string _msg;
     axFont* _font;
     
     bool _selected;
