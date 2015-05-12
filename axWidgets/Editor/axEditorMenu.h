@@ -8,7 +8,7 @@ class axWidget;
 class axEditorMenu : public axPanel
 {
 public:
-	axEditorMenu(const axRect& rect);
+	axEditorMenu(const ax::Rect& rect);
 
     void SetEditingWidget(axWidget* widget);
     

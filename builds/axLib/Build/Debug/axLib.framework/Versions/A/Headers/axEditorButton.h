@@ -74,11 +74,11 @@ protected:
 //    };
     
     virtual void OnPaint();
-    virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftDragging(const axPoint &pos);
-    virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftDragging(const ax::Point &pos);
+    virtual void OnMouseLeftUp(const ax::Point& pos);
     
-    virtual void OnMouseRightDown(const axPoint& pos);
+    virtual void OnMouseRightDown(const ax::Point& pos);
     
     virtual void OnKeyDown(const char& key);
     

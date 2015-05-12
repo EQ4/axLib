@@ -50,112 +50,112 @@ public:
                   const axDouble& b,
                   const axDouble& a);
 
-	void DrawRectangle(const axRect& rect);
+	void DrawRectangle(const ax::Rect& rect);
 
-	void DrawRectangleContour(const axRect& rect, float linewidth = 1.0);
+	void DrawRectangleContour(const ax::Rect& rect, float linewidth = 1.0);
 
-    void DrawRoundedRectangle(const axRect& rect,
+    void DrawRoundedRectangle(const ax::Rect& rect,
                               const int& radius);
     
-    void DrawRoundedRectangleContour(const axRect& rect,
+    void DrawRoundedRectangleContour(const ax::Rect& rect,
                                      const int& radius);
     
-    void DrawRoundedRectangleContourSmooth(const axRect& rect,
+    void DrawRoundedRectangleContourSmooth(const ax::Rect& rect,
                                            const int& radius);
     
-	void DrawImage(axImage* img, const axPoint& pos, double alpha = 1.0);
+	void DrawImage(axImage* img, const ax::Point& pos, double alpha = 1.0);
     
 	void DrawImageResize(axImage* img,
-                         const axPoint& position,
-                         const axSize& size,
+                         const ax::Point& position,
+                         const ax::Size& size,
                          double alpha = 1.0);
 
 	void DrawPartOfImage(axImage* img,
-                         const axPoint& posInImage,
-                         const axSize& sizeInImage,
-                         const axPoint& pos,
+                         const ax::Point& posInImage,
+                         const ax::Size& sizeInImage,
+                         const ax::Point& pos,
                          double alpha = 1.0);
     
     void DrawPartOfImageResize(axImage* img,
-                               const axPoint& posInImage,
-                               const axSize& sizeInImage,
-                               const axRect& rect,
+                               const ax::Point& posInImage,
+                               const ax::Size& sizeInImage,
+                               const ax::Rect& rect,
                                double alpha = 1.0);
 
-    axPoint DrawChar(axFont& font,
+    ax::Point DrawChar(axFont& font,
                      const char& key,
-                     const axPoint& pos);
+                     const ax::Point& pos);
     
 	void DrawString(axFont& font,
                     const string& text,
-                    const axPoint& pos);
+                    const ax::Point& pos);
 
 	void DrawStringAlignedCenter(axFont& font,
                                  const string& text,
-                                 const axRect& rect);
+                                 const ax::Rect& rect);
 
-	void DrawRectangleColorFade(const axRect& rect,
+	void DrawRectangleColorFade(const ax::Rect& rect,
                                 const axColor& c1,
                                 const float& alpha1,
                                 const axColor& c2,
                                 const float& alpha2);
     
-    void DrawRectangleColorFade(const axRect& rect,
+    void DrawRectangleColorFade(const ax::Rect& rect,
                                 const axColor& c1,
                                 const axColor& c2);
     
-    void DrawPolygone(const std::vector<axPoint>& points);
+    void DrawPolygone(const std::vector<ax::Point>& points);
     
-    void DrawArrow(const axPoint& p1,
-                   const axPoint& p2,
+    void DrawArrow(const ax::Point& p1,
+                   const ax::Point& p2,
                    const double& arrow_length = 12,
                    const double& base_length = 8,
                    const double& width = 1);
     
-    void DrawTriangleColorFade(const axPoint& p1,
-                          const axPoint& p2,
-                          const axPoint& p3,
+    void DrawTriangleColorFade(const ax::Point& p1,
+                          const ax::Point& p2,
+                          const ax::Point& p3,
                           const axColor& c1,
                           const axColor& c2,
                           const axColor& c3);
 
     
-	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
+	void DrawLine(const ax::Point& pt1, const ax::Point& pt2, float width = 1.0);
     
-    void DrawLineColorfade(const axPoint& pt1, const axPoint& pt2,
+    void DrawLineColorfade(const ax::Point& pt1, const ax::Point& pt2,
                            const axColor& c1, const axColor& c2,
                            float width = 1.0);
     
-    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width = 2.0);
-	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
+    void DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float width = 2.0);
+	void DrawLines(const vector<ax::Point>& pts, float width = 1.0);
     
-    void DrawPoint(const axPoint& pt, const int& size);
+    void DrawPoint(const ax::Point& pt, const int& size);
     
     /// @todo This function is not finish. (Add some param)
-    void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
+    void DrawLineCubic(const ax::Point& pt1, const ax::Point& pt2);
 
     void SetLineWidth(const double& width);
     
     void SetSmoothLine(const int& width);
     void SetDefaultLine();
     
-	void DrawCircle(const axPoint& pos,
+	void DrawCircle(const ax::Point& pos,
                     const double& radius,
                     const int& nSegments);
 	
 	void DrawTexture(GLuint texture,
-                     const axRect& rect,
+                     const ax::Rect& rect,
                      axColor color = axColor(0.0, 0.0, 0.0));
     
 	void DrawBigImageResize(axBigImage* img,
-		const axPoint& position,
-		const axSize& size,
+		const ax::Point& position,
+		const ax::Size& size,
 		double alpha = 1.0);
 
 //    void DrawWindowBuffer();
     
     // Just blocking x axis for now.
-    void BlockDrawing(const axRect& rect);
+    void BlockDrawing(const ax::Rect& rect);
     void UnBlockDrawing();
     
     //void DrawBuffer(axDrawingBuffer* buffer);
@@ -164,7 +164,7 @@ private:
 	axWindow* _win;
 //	axFont _font;
     
-	axFloatRect RectToFloatRect(const axRect& rect);
+    ax::FloatRect RectToFloatRect(const ax::Rect& rect);
 };
 
 /// @}

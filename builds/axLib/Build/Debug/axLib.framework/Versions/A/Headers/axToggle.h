@@ -157,7 +157,7 @@ public:
     {
     public:
         Builder(axPanel* parent,
-                const axSize& size,
+                const ax::Size& size,
                 const axToggle::Info& info,
                 string img_path = "",
                 string label = "",
@@ -177,7 +177,7 @@ public:
         std::string _label;
         std::string _img;
         axFlag _flags;
-        axSize _size;
+        ax::Size _size;
         int _nextPositionDelta;
         axToggle* _past;
         axDirection _direction;
@@ -187,7 +187,7 @@ public:
      * axToggle::axToggle.
      **************************************************************************/
     axToggle(axWindow* parent,
-             const axRect& rect,
+             const ax::Rect& rect,
              const axToggle::Events& events,
              const axToggle::Info& info,
              string img_path = "",
@@ -225,8 +225,8 @@ protected:
 
     // Events.
 	virtual void OnPaint();
-	virtual void OnMouseLeftDown(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
 };

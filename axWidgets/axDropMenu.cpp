@@ -22,7 +22,7 @@
 #include "axDropMenu.h"
 
 axDropMenu::axDropMenu(axWindow* parent,
-                       const axRect& rect,
+                       const ax::Rect& rect,
                        const axDropMenuEvents& events,
                        const axDropMenuInfo& info,
                        std::string img_path,
@@ -66,11 +66,11 @@ _msg(msg)
     menu_evts.selection_change = GetOnPopupMenuChoice();
     
     // Popup menu position.
-    axPoint menu_pos = GetAbsoluteRect().position;
+    ax::Point menu_pos = GetAbsoluteRect().position;
     menu_pos.y += rect.size.y;
     
     _popMenu = new_ axPopupMenu(this,
-                               axRect(menu_pos, axSize(rect.size.x, 30)),
+                               ax::Rect(menu_pos, ax::Size(rect.size.x, 30)),
                                menu_evts,
                                menu_info,
                                menu_str,
@@ -122,7 +122,7 @@ void axDropMenu::OnPopupMenuChoice(const axPopupMenuMsg& msg)
     Update();
 }
 
-void axDropMenu::OnMouseLeftDown(const axPoint& pos)
+void axDropMenu::OnMouseLeftDown(const ax::Point& pos)
 {
     _currentColor = &_info.clicking;
     _nCurrentImg = axDROP_DOWN;
@@ -142,7 +142,7 @@ void axDropMenu::OnMouseLeftDown(const axPoint& pos)
     Update();
 }
 
-void axDropMenu::OnMouseLeftUp(const axPoint& pos)
+void axDropMenu::OnMouseLeftUp(const ax::Point& pos)
 {
     if (IsGrabbed())
     {
@@ -205,8 +205,8 @@ void axDropMenu::OnMouseLeave()
 void axDropMenu::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(ax::Point(0, 0), rect.size);
     
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
@@ -215,14 +215,14 @@ void axDropMenu::OnPaint()
     {
         if (axFlag_exist(axDROP_MENU_SINGLE_BACKGROUND_IMG, _flags))
         {
-            gc->DrawImageResize(_bgImg, axPoint(0, 0), rect.size, 1.0);
+            gc->DrawImageResize(_bgImg, ax::Point(0, 0), rect.size, 1.0);
         }
         else
         {
             gc->DrawPartOfImageResize(_bgImg,
-                                      axPoint(0, _nCurrentImg * _bgImg->GetSize().y / 3),
-                                      axSize(_bgImg->GetSize().x, _bgImg->GetSize().y / 3),
-                                      axRect(axPoint(0, 0), GetRect().size));
+                                      ax::Point(0, _nCurrentImg * _bgImg->GetSize().y / 3),
+                                      ax::Size(_bgImg->GetSize().x, _bgImg->GetSize().y / 3),
+                                      ax::Rect(ax::Point(0, 0), GetRect().size));
         }
     }
     
@@ -231,18 +231,18 @@ void axDropMenu::OnPaint()
         if (axFlag_exist(axDROP_MENU_SINGLE_IMG, _flags))
         {
             gc->DrawImageResize(_btnImg,
-                                axPoint(rect.size.x - _btnImg->GetSize().x - 5,
+                                ax::Point(rect.size.x - _btnImg->GetSize().x - 5,
                                         (rect.size.y - _btnImg->GetHeight()) * 0.5),
                                 _btnImg->GetSize(), 1.0);
         }
         else
         {
-            axSize btn_size = _btnImg->GetSize();
+            ax::Size btn_size = _btnImg->GetSize();
             btn_size.y /= 3;
             
-            gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
+            gc->DrawPartOfImage(_btnImg, ax::Point(0, _nCurrentImg * rect.size.y),
                                 btn_size,
-                                axPoint(rect.size.x - _btnImg->GetSize().x - 5,
+                                ax::Point(rect.size.x - _btnImg->GetSize().x - 5,
                                         (rect.size.y - _btnImg->GetHeight()) * 0.5));
         }
         
@@ -257,5 +257,5 @@ void axDropMenu::OnPaint()
     }
     
     gc->SetColor(_info.contour);
-    gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+    gc->DrawRectangleContour(ax::Rect(ax::Point(0, 0), rect.size));
 }

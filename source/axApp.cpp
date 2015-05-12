@@ -44,7 +44,7 @@ _debugEditorActive(false)
     
 #ifdef __linux__
 	_core = new axCoreX11(this);
-	_core->Init(axSize(0, 0));
+	_core->Init(ax::Size(0, 0));
 //#endif //__linux__
 
 
@@ -52,11 +52,11 @@ _debugEditorActive(false)
 	#if _axWxWidgetsCore_ == 1
     
 	_core = new axCoreWxWidgets();
-	_core->Init(axSize(0, 0));
+	_core->Init(ax::Size(0, 0));
 	#else
 		_core = new axCoreWin32();
 		axCORE = _core;
-		_core->Init(axSize(0, 0));
+		_core->Init(ax::Size(0, 0));
 	#endif //_axWxWidgetsCore_
 
 //#endif //_MSC_VER
@@ -65,17 +65,17 @@ _debugEditorActive(false)
     
 #ifdef _AX_VST_APP_
     _core = new axVstCoreMac();
-    _core->Init(axSize(800, 273));
+    _core->Init(ax::Size(800, 273));
 #else
     _core = new axCoreMac();
-//    _core->Init(axSize(500, 500));
+//    _core->Init(ax::Size(500, 500));
 #endif // _AX_VST_APP_
     
 #endif // __APPLE__
 
 }
 
-axApp::axApp(const axSize& frame_size):
+axApp::axApp(const ax::Size& frame_size):
 _debugEditorActive(false)
 {
     _mainApp = this;
@@ -119,7 +119,7 @@ void axApp::CreateEditor()
     // @todo Fix this.
 //    MainInstance = this;
     
-    axSize size = _core->GetGlobalSize();
+    ax::Size size = _core->GetGlobalSize();
     
     axPrint("Size : ", size.x, size.y);
     
@@ -127,7 +127,7 @@ void axApp::CreateEditor()
     
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
-                                      axRect(size.x - 20, size.y - 20, 20, 20));
+                                      ax::Rect(size.x - 20, size.y - 20, 20, 20));
     
     axToggle::Info btn_info;
     btn_info.normal = axColor(1.0, 0.8, 0.8, 0.0);
@@ -145,7 +145,7 @@ void axApp::CreateEditor()
     btn_info.single_img = true;
     
     axToggle* tog = new axToggle(debugPanel,
-                                 axRect(axPoint(0, 0), axSize(20, 20)),
+                                 ax::Rect(ax::Point(0, 0), ax::Size(20, 20)),
                                  axToggle::Events(GetOnDebugEditor()),
                                  btn_info,
                                  "",
@@ -153,7 +153,7 @@ void axApp::CreateEditor()
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
     
-    _debugMenu = new axEditorMenu(axRect(size.x, 0, 300, size.y));
+    _debugMenu = new axEditorMenu(ax::Rect(size.x, 0, 300, size.y));
     _debugMenu->Hide();
 
 #endif // _axDebugEditor_
@@ -178,8 +178,8 @@ void axApp::OnDebugEditor(const axMsg& msg)
     if(_debugEditorActive)
     {
         _debugEditorActive = false;
-        axSize size = _core->GetGlobalSize();
-        _core->ResizeFrame(axSize(size.x - 300, size.y));
+        ax::Size size = _core->GetGlobalSize();
+        _core->ResizeFrame(ax::Size(size.x - 300, size.y));
         _debugMenu->Hide();
         
         if(_widgetSelector != nullptr)
@@ -190,9 +190,9 @@ void axApp::OnDebugEditor(const axMsg& msg)
     else
     {
         _debugEditorActive = true;
-        axSize size = _core->GetGlobalSize();
-        _core->ResizeFrame(axSize(size.x + 300, size.y));
-        _debugMenu->SetRect(axRect(axRect(size.x, 0, 310, size.y)));
+        ax::Size size = _core->GetGlobalSize();
+        _core->ResizeFrame(ax::Size(size.x + 300, size.y));
+        _debugMenu->SetRect(ax::Rect(ax::Rect(size.x, 0, 310, size.y)));
         _debugMenu->Show();
         
         if(_widgetSelector != nullptr)

@@ -58,7 +58,7 @@ public:
     
     void DrawNode();
     
-    void ResizeNode(const axSize& size);
+    void ResizeNode(const ax::Size& size);
 
 private:
 	vector<axWindowNode*> _childNodes;
@@ -99,7 +99,7 @@ public:
 	/**
 	*  @brief Find the window on wich the point is over.
 	*/
-	axWindow* FindMousePosition(const axPoint& pos);
+	axWindow* FindMousePosition(const ax::Point& pos);
 
     std::vector<axWindowNode*> GetMainNode();
     

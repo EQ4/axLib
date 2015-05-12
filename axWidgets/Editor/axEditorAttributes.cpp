@@ -1,6 +1,6 @@
 #include "axEditorAttributes.h"
 
-axEditorAttributes::axEditorAttributes(axWindow* parent, const axRect& rect) :
+axEditorAttributes::axEditorAttributes(axWindow* parent, const ax::Rect& rect) :
 axPanel(parent, rect),
 _font(0),
 _widget(nullptr)
@@ -62,7 +62,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
                                     std::to_string(_widget->GetId())),
                        labelInfo, txtInfo, axTextBox::Events());
     
-    axRect rel_rect(_widget->GetRect());
+    ax::Rect rel_rect(_widget->GetRect());
     std::string relative_rect = std::to_string(rel_rect.position.x) + ", " +
     std::to_string(rel_rect.position.y) + ", " +
     std::to_string(rel_rect.size.x) + ", " +
@@ -71,7 +71,7 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     AddEditorAttribute(ax::StringPair("relative rectangle", relative_rect),
                        labelInfo, txtInfo, axTextBox::Events());
     
-    axRect abs_rect(_widget->GetAbsoluteRect());
+    ax::Rect abs_rect(_widget->GetAbsoluteRect());
     std::string absolute_rect = std::to_string(abs_rect.position.x) + ", " +
     std::to_string(abs_rect.position.y) + ", " +
     std::to_string(abs_rect.size.x) + ", " +
@@ -104,8 +104,8 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
                            labelInfo, txtInfo, txtEvents);
     }
     
-    axRect lastRect = std::get<1>(_infoEditor[_infoEditor.size()-1])->GetRect();
-    axSize newSize(GetRect().size.x, lastRect.position.y + lastRect.size.y);
+    ax::Rect lastRect = std::get<1>(_infoEditor[_infoEditor.size()-1])->GetRect();
+    ax::Size newSize(GetRect().size.x, lastRect.position.y + lastRect.size.y);
     SetSizeNoShowRect(newSize);
     
     axScrollBar* scrollBar = GetScrollBar();
@@ -122,18 +122,18 @@ void axEditorAttributes::AddEditorAttribute(const ax::StringPair& att,
                                       const axTextBox::Info& txtInfo,
                                       const axTextBox::Events& evt)
 {
-    axPoint pos(0, 0);
+    ax::Point pos(0, 0);
     
     if(_infoEditor.size())
     {
         pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetNextPosDown(0);
     }
     
-    axLabel* label = new_ axLabel(this, axRect(pos, axSize(120, 25)),
+    axLabel* label = new_ axLabel(this, ax::Rect(pos, ax::Size(120, 25)),
                                   labelInfo, att.first);
     
-    axTextBox* txtBox = new_ axTextBox(this, axRect(label->GetNextPosRight(0),
-                                                    axSize(180, 25)),
+    axTextBox* txtBox = new_ axTextBox(this, ax::Rect(label->GetNextPosRight(0),
+                                                    ax::Size(180, 25)),
                                        evt, txtInfo, "",
                                        att.second);
     
@@ -148,14 +148,14 @@ void axEditorAttributes::AddEditorAttribute(const ax::StringPair& att,
 void axEditorAttributes::AddEditorLabel(const std::string& name,
                                   const axLabel::Info& labelInfo)
 {
-    axPoint pos(0, 00);
+    ax::Point pos(0, 00);
     
     if(_infoEditor.size())
     {
         pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetNextPosDown(0);
     }
     
-    axLabel* label = new_ axLabel(this, axRect(pos, axSize(300, 25)),
+    axLabel* label = new_ axLabel(this, ax::Rect(pos, ax::Size(300, 25)),
                                   labelInfo, name);
     
     _infoEditor.push_back(axEditorTuple(name, label, nullptr));
@@ -204,7 +204,7 @@ void axEditorAttributes::UpdateInfo()
     
     UpdateAttribute(ax::StringPair("object id", std::to_string(_widget->GetId())));
     
-    axRect rel_rect(_widget->GetRect());
+    ax::Rect rel_rect(_widget->GetRect());
     std::string relative_rect = std::to_string(rel_rect.position.x) + ", " +
     std::to_string(rel_rect.position.y) + ", " +
     std::to_string(rel_rect.size.x) + ", " +
@@ -213,7 +213,7 @@ void axEditorAttributes::UpdateInfo()
     UpdateAttribute(ax::StringPair("relative rectangle", relative_rect));
     
     
-    axRect abs_rect(_widget->GetAbsoluteRect());
+    ax::Rect abs_rect(_widget->GetAbsoluteRect());
     std::string absolute_rect = std::to_string(abs_rect.position.x) + ", " +
     std::to_string(abs_rect.position.y) + ", " +
     std::to_string(abs_rect.size.x) + ", " +
@@ -231,7 +231,7 @@ void axEditorAttributes::UpdateInfo()
 void axEditorAttributes::OnPaint()
 {
     axGC gc(this);
-    axRect rect(GetDrawingRect());
+    ax::Rect rect(GetDrawingRect());
     
     gc.DrawRectangleColorFade(rect, axColor(0.5), axColor(0.6));
 }

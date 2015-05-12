@@ -46,6 +46,7 @@
 #include <map>
 #include <deque>
 #include <algorithm>
+#include <dirent.h>
 
 #ifdef __linux__
 #include <unistd.h>
@@ -114,12 +115,16 @@ enum axControlInterpolation
  ******************************************************************************/
 std::string axGetExtension(const std::string& path);
 
-
 namespace ax
 {
     typedef std::pair<std::string, std::string> StringPair;
     typedef std::vector<StringPair> StringPairVector;
     typedef std::vector<std::string> StringVector;
+    
+    namespace Utils
+    {
+        StringVector ListDirectory(const std::string& dir);
+    }
 }
 
 
@@ -250,7 +255,7 @@ public:
 };
 
 /*******************************************************************************
- * axRectPoints.
+ * ax::RectPoints.
  ******************************************************************************/
 template<typename T>
 struct axRectPoints
@@ -386,6 +391,26 @@ public:
                                   CPos(position.x + size.x, position.y + size.y));
     }
 };
+
+
+namespace ax
+{
+    // Point.
+    typedef axTemplate2DPoint<int> Point;
+    typedef axTemplate2DPoint<double> FloatPoint;
+    
+    // Size.
+    typedef axTemplate2DPoint<int> Size;
+    typedef axTemplate2DPoint<double> FloatSize;
+    
+    // Rectangle.
+    typedef axTemplateRect<Point, Size, int> Rect;
+    typedef axTemplateRect<FloatPoint, FloatSize, double> FloatRect;
+    
+    // Range.
+    typedef axRange<double> FloatRange;
+    typedef axRange<int> IntRange;
+}
 
 /// @}
 #endif

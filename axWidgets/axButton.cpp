@@ -197,7 +197,7 @@ _flags(0)
 axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     axButton::Events evts;
     axWindow* parent = GetParent();
     
@@ -212,10 +212,10 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
             
-            _size = axSize(stoi(strVec[2]),
+            _size = ax::Size(stoi(strVec[2]),
                            stoi(strVec[3]));
         }
         else if(s.first == "info")
@@ -244,7 +244,7 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
         }
     }
     
-    axButton* btn = new_ axButton(parent, axRect(pos, _size), evts,
+    axButton* btn = new_ axButton(parent, ax::Rect(pos, _size), evts,
                                  _info, _img, _label, _flags, _msg);
     
     parent->GetResourceManager()->Add(name, btn);
@@ -254,21 +254,24 @@ axWidget* axButton::Builder::Create(const ax::StringPairVector& attributes)
 
 ax::StringVector axButton::Builder::GetParamNameList() const
 {
-    return ax::StringVector{"name",
-                            "rect",
-                            "info",
-                            "img",
-                            "label",
-                            "flags",
-                            "event",
-                            "msg"};
+    return ax::StringVector
+    {
+        "name",
+        "rect",
+        "info",
+        "img",
+        "label",
+        "flags",
+        "event",
+        "msg"
+    };
 }
 
 /*******************************************************************************
  * axButon::axButton.
  ******************************************************************************/
 axButton::axButton(axWindow* parent,
-                   const axRect& rect,
+                   const ax::Rect& rect,
                    const axButton::Events& events,
                    const axButton::Info& info,
                    std::string img_path,
@@ -334,7 +337,7 @@ void axButton::SetLabel(const std::string& label)
     Update();
 }
 
-void axButton::OnMouseLeftDown(const axPoint& pos)
+void axButton::OnMouseLeftDown(const ax::Point& pos)
 {
     _currentColor = &static_cast<axButton::Info*>(_info)->clicking;
     _nCurrentImg = axBTN_DOWN;
@@ -346,7 +349,7 @@ void axButton::OnMouseLeftDown(const axPoint& pos)
     Update();
 }
 
-void axButton::OnMouseLeftUp(const axPoint& pos)
+void axButton::OnMouseLeftUp(const ax::Point& pos)
 {
     if (IsGrabbed())
     {
@@ -411,8 +414,8 @@ void axButton::OnPaint()
 {
     axGC gc = axGC(this);
     
-    axRect rect(GetRect());
-    axRect rect0(GetDrawingRect());
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(GetDrawingRect());
     
     gc.SetColor(*_currentColor);
     
@@ -431,12 +434,12 @@ void axButton::OnPaint()
     {
         if (IsFlag(Flags::SINGLE_IMG, _flags))
         {
-            gc.DrawImageResize(_btnImg, axPoint(0, 0), rect0.size, 1.0);
+            gc.DrawImageResize(_btnImg, ax::Point(0, 0), rect0.size, 1.0);
         }
         else
         {
-            gc.DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-                                rect.size, axPoint(0, 0));
+            gc.DrawPartOfImage(_btnImg, ax::Point(0, _nCurrentImg * rect.size.y),
+                                rect.size, ax::Point(0, 0));
         }
     }
     

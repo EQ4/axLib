@@ -144,7 +144,7 @@ axWidget* axWaveform::Builder::Create(const axVectorPairString& attributes)
 {
     axWindow* parent = GetParent();
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     
     for(auto& s : attributes)
     {
@@ -157,10 +157,10 @@ axWidget* axWaveform::Builder::Create(const axVectorPairString& attributes)
             axStringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
             
-            _size = axSize(stoi(strVec[2]),
+            _size = ax::Size(stoi(strVec[2]),
                            stoi(strVec[3]));
         }
         else if(s.first == "info")
@@ -169,7 +169,7 @@ axWidget* axWaveform::Builder::Create(const axVectorPairString& attributes)
         }
     }
     
-    axWaveform* wave = new axWaveform(parent, axRect(pos, _size), _info);
+    axWaveform* wave = new axWaveform(parent, ax::Rect(pos, _size), _info);
     
     parent->GetResourceManager()->Add(name, wave);
     return wave;
@@ -179,7 +179,7 @@ axWidget* axWaveform::Builder::Create(const axVectorPairString& attributes)
  * axWaveform::axWaveform.
  ******************************************************************************/
 axWaveform::axWaveform(axWindow* parent,
-                       const axRect& rect,
+                       const ax::Rect& rect,
                        const axWaveform::Info& info) :
 axWidget(parent, rect, new Info(info)),
 _audioBuffer(nullptr)
@@ -277,8 +277,8 @@ void axWaveform::OnPaint()
 //    std::cout << "nDraw : " << nDraw << std::endl;
 
     axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(GetDrawingRect());
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(GetDrawingRect());
     axWaveform::Info* info = static_cast<Info*>(_info);
     
     // Draw background.
@@ -335,8 +335,8 @@ void axWaveform::OnPaint()
                     int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
                     
                     // Draw min to max line on the left pixel.
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_left, y_pixel_right));
+                    gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+                                 ax::Point(x_pos_left, y_pixel_right));
                     
                     // Draw last value of left pixel and first value of right
                     // pixel. This is to make sure that horizontal lines will be
@@ -344,8 +344,8 @@ void axWaveform::OnPaint()
                     y_pixel_left = middle_y - l_value * 0.9 * middle_y;
                     y_pixel_right = middle_y - r_value * 0.9 * middle_y;
                     
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_right, y_pixel_right));
+                    gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+                                 ax::Point(x_pos_right, y_pixel_right));
                 }
                 // One sample or less per pixel.
                 else
@@ -354,8 +354,8 @@ void axWaveform::OnPaint()
                     int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
                     int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
                     
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_right, y_pixel_right));
+                    gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+                                 ax::Point(x_pos_right, y_pixel_right));
                 }
                 
                 changing_pixel++;
@@ -367,7 +367,7 @@ void axWaveform::OnPaint()
         
         // Draw middle line.
         gc->SetColor(info->middle_line_color);
-        gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
+        gc->DrawLine(ax::Point(1, middle_y), ax::Point(rect.size.x - 2, middle_y));
     }
     
     //--------------------------------------------------------------------------
@@ -422,8 +422,8 @@ void axWaveform::OnPaint()
 //                        int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
 //                        
 //                        // Draw min to max line on the left pixel.
-//                        gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                     axPoint(x_pos_left, y_pixel_right));
+//                        gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+//                                     ax::Point(x_pos_left, y_pixel_right));
 //                        
 //                        // Draw last value of left pixel and first value of right
 //                        // pixel. This is to make sure that horizontal lines will be
@@ -431,8 +431,8 @@ void axWaveform::OnPaint()
 //                        y_pixel_left = middle_y - l_value * 0.9 * middle_y;
 //                        y_pixel_right = middle_y - r_value * 0.9 * middle_y;
 //                        
-//                        gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                     axPoint(x_pos_right, y_pixel_right));
+//                        gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+//                                     ax::Point(x_pos_right, y_pixel_right));
 //                    }
 //                    // One sample or less per pixel.
 //                    else
@@ -441,8 +441,8 @@ void axWaveform::OnPaint()
 //                        int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
 //                        int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
 //                        
-//                        gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                     axPoint(x_pos_right, y_pixel_right));
+//                        gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+//                                     ax::Point(x_pos_right, y_pixel_right));
 //                    }
 //                    
 //                    changing_pixel++;
@@ -466,8 +466,8 @@ void axWaveform::OnPaint()
 ////            for(auto& n : *_envPoints)
 ////            {
 ////                double x_pos = n.x * GetRect().size.x;
-////                gc->DrawLine(axPoint(x_pos, middle_y),
-////                             axPoint(x_pos, middle_y - n.y * 0.9 * middle_y));
+////                gc->DrawLine(ax::Point(x_pos, middle_y),
+////                             ax::Point(x_pos, middle_y - n.y * 0.9 * middle_y));
 ////                
 //////                std::cout << n.x << " " << n.y << std::endl;
 ////            }
@@ -481,10 +481,10 @@ void axWaveform::OnPaint()
 //                int y_pixel_left = middle_y - (*_envPoints)[i-1].y * 0.9 * middle_y;
 //                int y_pixel_right = middle_y - (*_envPoints)[i].y * 0.9 * middle_y;
 //                
-//                gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                             axPoint(x_pos_right, y_pixel_right));
-////                gc->DrawLine(axPoint(x_pos, middle_y),
-////                             axPoint(x_pos, middle_y - n.y * 0.9 * middle_y));
+//                gc->DrawLine(ax::Point(x_pos_left, y_pixel_left),
+//                             ax::Point(x_pos_right, y_pixel_right));
+////                gc->DrawLine(ax::Point(x_pos, middle_y),
+////                             ax::Point(x_pos, middle_y - n.y * 0.9 * middle_y));
 //                
 //                //                std::cout << n.x << " " << n.y << std::endl;
 //            }

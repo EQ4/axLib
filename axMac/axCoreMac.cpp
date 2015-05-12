@@ -37,7 +37,7 @@ void axCoreMac::MainLoop()
     axCallNSApplicationMain();
 }
 
-void axCoreMac::Init(const axSize& frame_size)
+void axCoreMac::Init(const ax::Size& frame_size)
 {
     std::cout << "Init axCoreMac." << std::endl;
     InitManagers();
@@ -45,7 +45,7 @@ void axCoreMac::Init(const axSize& frame_size)
 //    _size = frame_size;
 }
 
-axSize axCoreMac::GetScreenSize()
+ax::Size axCoreMac::GetScreenSize()
 {
     return axCocoaGetScreenSize();
 }
@@ -65,7 +65,7 @@ std::string axCoreMac::GetAppPath()
 //    return false;
 //}
 
-axRect axCoreMac::GetScreenRect()
+ax::Rect axCoreMac::GetScreenRect()
 {
     return axCocoaGetScreenSize();
 }
@@ -87,7 +87,7 @@ void axCoreMac::UpdateAll()
     TestFunctionInterface();
 }
 
-void axCoreMac::ResizeFrame(const axSize& size)
+void axCoreMac::ResizeFrame(const ax::Size& size)
 {
     axCocoaResizeFrame(size);
     ResizeGLScene(size);

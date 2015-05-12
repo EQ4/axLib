@@ -102,8 +102,8 @@ void BeforeDrawing(axWindow* win)
         axMatrix4 mview;
         mview.Identity().Load();
         
-        axRect abs_rect = win->GetAbsoluteRect();
-        axRect shown_rect = win->GetShownRect();
+        ax::Rect abs_rect = win->GetAbsoluteRect();
+        ax::Rect shown_rect = win->GetShownRect();
         
         double delta_size_x = shown_rect.size.x - abs_rect.size.x;
         double delta_size_y = shown_rect.size.y - abs_rect.size.y;
@@ -209,7 +209,7 @@ void axWindowNode::DrawNode()
     EndDrawing(window);
 }
 
-void axWindowNode::ResizeNode(const axSize& size)
+void axWindowNode::ResizeNode(const ax::Size& size)
 {
     
     window->OnResize(size);
@@ -377,15 +377,15 @@ axWindowNode* axWindowTree::Get(axWindow* win)
     return nullptr;
 }
 
-axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
+axWindow* axWindowTree::FindMousePosition(const ax::Point& pos)
 {
     axWindowNode* node = nullptr;
     
     // Find first level window.
     for (axWindowNode* it : _nodes)
     {
-        axPoint position = it->window->GetAbsoluteRect().position;
-        axRect rect(position, it->window->GetShownRect().size);
+        ax::Point position = it->window->GetAbsoluteRect().position;
+        ax::Rect rect(position, it->window->GetShownRect().size);
         if(rect.IsPointInside(pos))
         {
             node = it;
@@ -407,8 +407,8 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
             n = node;
             for (axWindowNode* it : n->GetChild())
             {
-                axPoint position = it->window->GetAbsoluteRect().position;
-                axRect rect(position, it->window->GetShownRect().size);
+                ax::Point position = it->window->GetAbsoluteRect().position;
+                ax::Rect rect(position, it->window->GetShownRect().size);
                 
                 if (rect.IsPointInside(pos) && it->window->IsShown())
                 {
@@ -425,8 +425,8 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
                         for(axWindowNode* k : it->GetChild())
                         {
                             axWindow* win = k->window;
-                            axPoint p = win->GetAbsoluteRect().position;
-                            axRect r(p, win->GetShownRect().size);
+                            ax::Point p = win->GetAbsoluteRect().position;
+                            ax::Rect r(p, win->GetShownRect().size);
                             
                             if(r.IsPointInside(pos) && win->IsEditingWidget())
                             {

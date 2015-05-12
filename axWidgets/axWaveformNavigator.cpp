@@ -10,7 +10,7 @@
 #include "axAudio/axAudioBuffer.h"
 
 axWaveformNavigator::axWaveformNavigator(axWindow* parent,
-                                         const axRect& rect,
+                                         const ax::Rect& rect,
                                          const axSliderEvents& events):
 axPanel(parent, rect),
 _audioBuffer(nullptr)
@@ -52,7 +52,7 @@ void axWaveformNavigator::FillWaveformDrawingData()
 {
     if(_audioBuffer != nullptr)
     {
-        axRect rect(GetRect());
+        ax::Rect rect(GetRect());
         
         //    std::cout << "RECT : " << (rect.size.x-3) * 4 << std::endl;
 
@@ -119,15 +119,15 @@ void axWaveformNavigator::FillWaveformDrawingData()
                         // Draw min to max line on the left pixel.
                         if(need_to_push_back)
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_left, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_left, y_pixel_right);
                             _waveformDrawingData.push_back(left);
                             _waveformDrawingData.push_back(right);
                         }
                         else
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_left, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_left, y_pixel_right);
                             _waveformDrawingData[data_vector_index++] = left;
                             _waveformDrawingData[data_vector_index++] = right;
                         }
@@ -141,15 +141,15 @@ void axWaveformNavigator::FillWaveformDrawingData()
                         
                         if(need_to_push_back)
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_right, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_right, y_pixel_right);
                             _waveformDrawingData.push_back(left);
                             _waveformDrawingData.push_back(right);
                         }
                         else
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_right, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_right, y_pixel_right);
                             _waveformDrawingData[data_vector_index++] = left;
                             _waveformDrawingData[data_vector_index++] = right;
                         }
@@ -165,15 +165,15 @@ void axWaveformNavigator::FillWaveformDrawingData()
                         
                         if(need_to_push_back)
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_right, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_right, y_pixel_right);
                             _waveformDrawingData.push_back(left);
                             _waveformDrawingData.push_back(right);
                         }
                         else
                         {
-                            axPoint left(x_pos_left, y_pixel_left);
-                            axPoint right(x_pos_right, y_pixel_right);
+                            ax::Point left(x_pos_left, y_pixel_left);
+                            ax::Point right(x_pos_right, y_pixel_right);
                             _waveformDrawingData[data_vector_index++] = left;
                             _waveformDrawingData[data_vector_index++] = right;
                         }
@@ -222,26 +222,26 @@ void axWaveformNavigator::SetBorders(const axFloatRange& borders)
 
 // PRIVATE.
 
-axRect axWaveformNavigator::GetBorderRect() const
+ax::Rect axWaveformNavigator::GetBorderRect() const
 {
-    axRect rect = GetRect();
-    axPoint border_pos(1 + _leftBorder * (rect.size.x-2), 1);
-    axSize border_size(ceil((_rightBorder - _leftBorder) * (rect.size.x-2)), rect.size.y-2);
-    return axRect(border_pos, border_size);
+    ax::Rect rect = GetRect();
+    ax::Point border_pos(1 + _leftBorder * (rect.size.x-2), 1);
+    ax::Size border_size(ceil((_rightBorder - _leftBorder) * (rect.size.x-2)), rect.size.y-2);
+    return ax::Rect(border_pos, border_size);
 }
 
-axFloatRange axWaveformNavigator::GetBorderRangeFromRect(const axRect& border_rect) const
+axFloatRange axWaveformNavigator::GetBorderRangeFromRect(const ax::Rect& border_rect) const
 {
-    axRect rect(GetRect());
+    ax::Rect rect(GetRect());
     double left = double(border_rect.position.x - 1) / double(rect.size.x - 2);
     double right = border_rect.size.x / double(rect.size.x - 2) + left;
     return axFloatRange(left, right);
 }
 
-void axWaveformNavigator::OnMouseLeftDown(const axPoint& mousePos)
+void axWaveformNavigator::OnMouseLeftDown(const ax::Point& mousePos)
 {
-    axRect borderRect(GetBorderRect());
-    axPoint pos = mousePos - GetAbsoluteRect().position;
+    ax::Rect borderRect(GetBorderRect());
+    ax::Point pos = mousePos - GetAbsoluteRect().position;
     
     if(borderRect.IsPointInside(pos))
     {
@@ -255,11 +255,11 @@ void axWaveformNavigator::OnMouseLeftDown(const axPoint& mousePos)
     }
 }
 
-void axWaveformNavigator::OnMouseLeftDragging(const axPoint& mousePos)
+void axWaveformNavigator::OnMouseLeftDragging(const ax::Point& mousePos)
 {
-    axPoint pos = mousePos - GetAbsoluteRect().position;
+    ax::Point pos = mousePos - GetAbsoluteRect().position;
     
-    axRect borderRect(GetBorderRect());
+    ax::Rect borderRect(GetBorderRect());
     int x = (pos.x - _click_pos_delta_x);
     
     if (x < 1)
@@ -286,7 +286,7 @@ void axWaveformNavigator::OnMouseLeftDragging(const axPoint& mousePos)
     Update();
 }
 
-void axWaveformNavigator::OnMouseLeftUp(const axPoint& pos)
+void axWaveformNavigator::OnMouseLeftUp(const ax::Point& pos)
 {
     if(IsGrabbed())
     {
@@ -312,8 +312,8 @@ void axWaveformNavigator::OnMouseLeave()
 void axWaveformNavigator::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(ax::Point(0, 0), rect.size);
     
     // Draw background.
     gc->SetColor(axColor(0.5, 0.5, 0.5), 0.01);
@@ -326,10 +326,10 @@ void axWaveformNavigator::OnPaint()
     // Draw middle line.
     int middle_y = rect.size.y * 0.5;
     gc->SetColor(axColor(0.5, 0.5, 0.5), 0.4);
-    gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
+    gc->DrawLine(ax::Point(1, middle_y), ax::Point(rect.size.x - 2, middle_y));
     
     // Draw navigator borders.
-    axRect borderRect(GetBorderRect());
+    ax::Rect borderRect(GetBorderRect());
     gc->SetColor(axColor(0.9, 0.4, 0.0, _fillAlpha));
     gc->DrawRectangle(borderRect);
     
@@ -342,7 +342,7 @@ void axWaveformNavigator::OnPaint()
     {
         gc->SetColor(axColor(0.0, 0.1, 1.0), 0.7);
         int x_pos = 1 + _playingPos * (rect.size.x - 2);
-        gc->DrawLine(axPoint(x_pos, 1), axPoint(x_pos, rect.size.y - 2));
+        gc->DrawLine(ax::Point(x_pos, 1), ax::Point(x_pos, rect.size.y - 2));
     }
 
     // Draw background contour.

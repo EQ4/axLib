@@ -10,13 +10,13 @@
 #include <axlib/axCocoaInterfaceMac.h>
 #include "axFileBrowser.h"
 
-MainPanel::MainPanel(axApp* app, const axRect& rect):
+MainPanel::MainPanel(axApp* app, const ax::Rect& rect):
 // Parent.
 axPanel(app, rect)
 {
     
     _fileBrowser = new ax::FileBrowser(this,
-                                       axRect(0, 40, 200, rect.size.y - 40));
+                                       ax::Rect(0, 40, 200, rect.size.y - 40));
     
     axToggle::Events toggle_events;
     
@@ -35,7 +35,7 @@ axPanel(app, rect)
     radio_info.single_img = false;
     
     axRadio* radio = new axRadio(this,
-                                  axRect(axPoint(50, 50), axSize(18, 18)),
+                                 ax::Rect(ax::Point(50, 50), ax::Size(18, 18)),
                                   toggle_events,
                                   radio_info,
                                   "");
@@ -55,7 +55,7 @@ axPanel(app, rect)
     tog_info.single_img = false;
     
     axToggle* togg2 = new axToggle(this,
-                                   axRect(axPoint(50, 100), axSize(15, 15)),
+                                   ax::Rect(ax::Point(50, 100), ax::Size(15, 15)),
                                    toggle_events,
                                    tog_info,
                                    "");
@@ -63,7 +63,7 @@ axPanel(app, rect)
 //    axApp* app = GetApp();
     std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
     
-    axButton* btn = new axButton(this, axRect(150, 150, 60, 25),
+    axButton* btn = new axButton(this, ax::Rect(150, 150, 60, 25),
                                  GetOnButtonClick(),
                                  axButton::Info(btnInfoPath),
                                  "",
@@ -76,7 +76,7 @@ axPanel(app, rect)
 //                                 "",
 //                                 "Button");
     
-    axPanel* panel2 = new axPanel(this, axRect(10, 10, 60, 25));
+    axPanel* panel2 = new axPanel(this, ax::Rect(10, 10, 60, 25));
     panel2->SetWindowColor(axColor(1.0, 0.0, 0.0));
                                  
 }
@@ -118,24 +118,24 @@ void MainPanel::OnButtonClick(const axButton::Msg& msg)
 //    [controllerWindow showWindow:self];
 }
 
-void MainPanel::OnResize(const axSize& size)
+void MainPanel::OnResize(const ax::Size& size)
 {
     axPrint("MainPanel::OnResize : size : ", size.x, size.y);
     SetSize(size);
     
-    _fileBrowser->SetSize(axSize(200, size.y - 40));
+    _fileBrowser->SetSize(ax::Size(200, size.y - 40));
 }
 
 void MainPanel::OnPaint()
 {
     axGC gc(this);
-    axRect rect(GetDrawingRect());
+    ax::Rect rect(GetDrawingRect());
     
     gc.SetColor(axColor(0.95));
     gc.DrawRectangle(rect);
     
     gc.SetColor(axColor(0.75));
-    gc.DrawRectangle(axRect(0, 0, rect.size.x , 40));
+    gc.DrawRectangle(ax::Rect(0, 0, rect.size.x , 40));
     
 //    gc.SetColor(axColor(0.55));
 //    gc.DrawRectangle(axRect(0, 40, 200 , rect.size.y - 40));
@@ -148,12 +148,12 @@ void MainPanel::OnPaint()
 int main(int argc, char* argv[])
 {
 //	axEventManager::GetInstance();
-    axApp app(axSize(550, 500));
+    axApp app(ax::Size(550, 500));
 //	axApp* app = axApp::CreateApp(axSize(550, 500));
 
     app.AddMainEntry([&app]()
     {
-        MainPanel* mainPanel = new MainPanel(&app, axRect(0, 0, 550, 500));
+        MainPanel* mainPanel = new MainPanel(&app, ax::Rect(0, 0, 550, 500));
     });
 
 	app.MainLoop();

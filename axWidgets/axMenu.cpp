@@ -26,7 +26,7 @@
 * axMenuNode.
 ***********************************************************************************/
 axMenuNode::axMenuNode( axWindow* parent,
-                        const axRect& rect):
+                        const ax::Rect& rect):
                         axPanel(parent, rect),
                         // Members.
                         m_label("ROOT"),
@@ -43,7 +43,7 @@ axMenuNode::axMenuNode( axWindow* parent,
     m_delta = -8;
 
     // Set default node size.
-    SetSize(axSize(rect.size.x, axMENU_NODE_HEIGHT));
+    SetSize(ax::Size(rect.size.x, axMENU_NODE_HEIGHT));
 }
 
 axMenuNode::axMenuNode(axMenuNode* parent,
@@ -51,7 +51,7 @@ axMenuNode::axMenuNode(axMenuNode* parent,
                        string img_path,
                        axMenuNodeSelectionMode mode ):
 // Heritage.
-axPanel(parent, axRect(0, 0, 20, 20)),
+axPanel(parent, ax::Rect(0, 0, 20, 20)),
 // Members.
 m_parentNode(parent),
 m_label(label),
@@ -70,7 +70,7 @@ void axMenuNode::AddSubNode(axMenuNode* node)
     if( node )
     {
         // Resize node to parent size.
-        node->SetSize(axSize(GetParent()->GetSize().x, axMENU_NODE_HEIGHT));
+        node->SetSize(ax::Size(GetParent()->GetSize().x, axMENU_NODE_HEIGHT));
 
         // If is not the fisrt one to be added.
         if(_nodes.size())
@@ -80,7 +80,7 @@ void axMenuNode::AddSubNode(axMenuNode* node)
         // First added.
         else 
         {
-            node->SetPosition(axPoint(0, axMENU_NODE_HEIGHT));
+            node->SetPosition(ax::Point(0, axMENU_NODE_HEIGHT));
         }
 
         // Add Node.
@@ -105,7 +105,7 @@ void axMenuNode::ResizeNode()
 
         for(int i = 1; i < _nodes.size(); ++i)
         {
-            _nodes[i]->SetPosition(_nodes[i - 1]->GetButtomPosition() - axPoint(0, 1));
+            _nodes[i]->SetPosition(_nodes[i - 1]->GetButtomPosition() - ax::Point(0, 1));
         }
 
         for(auto n : _nodes)
@@ -123,7 +123,7 @@ void axMenuNode::ResizeNode()
         }
     }
 
-    SetSize(axSize(GetSize().x, y));
+    SetSize(ax::Size(GetSize().x, y));
 
     if(m_parentNode) 
     {
@@ -142,16 +142,16 @@ void axMenuNode::SelectNode()
     }
 }
 
-axPoint axMenuNode::GetButtomPosition()
+ax::Point axMenuNode::GetButtomPosition()
 {
-    return axPoint(GetRect().position.x, GetRect().position.y + GetRect().size.y + 1 );
+    return ax::Point(GetRect().position.x, GetRect().position.y + GetRect().size.y + 1 );
 }
 
 void axMenuNode::UnselectAll()
 {
 }
 
-void axMenuNode::OnMouseLeftDown(const axPoint& pos)
+void axMenuNode::OnMouseLeftDown(const ax::Point& pos)
 {
     // If node is already selected.
     if( m_nCurrentImg == axMENU_NODE_IMAGE_SELECTED )
@@ -172,9 +172,9 @@ void axMenuNode::OnMouseLeftDown(const axPoint& pos)
 void axMenuNode::OnPaint()
 {
     axGC* gc = GetGC();
-    axSize size = GetSize();
-    axRect rect( m_delta, 0, size.x, axMENU_NODE_HEIGHT );
-	axRect rect0(0.0, 0.0, rect.size.x, rect.size.y);
+    ax::Size size = GetSize();
+    ax::Rect rect( m_delta, 0, size.x, axMENU_NODE_HEIGHT );
+	ax::Rect rect0(0.0, 0.0, rect.size.x, rect.size.y);
 
     gc->SetColor(axColor(0.6, 0.6, 0.6));
     gc->DrawRectangle(rect0);
@@ -190,19 +190,19 @@ void axMenuNode::OnPaint()
     if( m_img != nullptr && m_img->IsImageReady() )
     {
         gc->DrawPartOfImage(m_img,
-                            axPoint( 0, m_nCurrentImg * 12 ),
-                            axSize( 12, 12 ), axPoint(m_delta + 7, 4));
+                            ax::Point( 0, m_nCurrentImg * 12 ),
+                            ax::Size( 12, 12 ), ax::Point(m_delta + 7, 4));
     }
 
     // Contour.
     gc->SetColor(axColor(0.0, 0.0, 0.0));
-    gc->DrawRectangleContour(axRect(0, 0, size.x, size.y));
+    gc->DrawRectangleContour(ax::Rect(0, 0, size.x, size.y));
 }
 
 /********************************************************************************//**
 * axMenu.
 ***********************************************************************************/
-axMenu::axMenu(axWindow* parent, const axRect& rect):
+axMenu::axMenu(axWindow* parent, const ax::Rect& rect):
                axPanel(parent, rect)
 {
     m_root = NULL;
@@ -225,7 +225,7 @@ bool axMenu::AddRootNode(axMenuNode* node)
             //node->SetSize(node->GetSize() + wxSize(GetSize().x - INIT_WIDTH, 0));
         //}
 
-        node->SetSize(axSize(GetSize().x, 15));
+        node->SetSize(ax::Size(GetSize().x, 15));
         m_root = node;
 
         return 1;
@@ -237,15 +237,15 @@ bool axMenu::AddRootNode(axMenuNode* node)
 void axMenu::OnPaint()
 {
     axGC* gc = GetGC();
-    axSize size = GetSize();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    ax::Size size = GetSize();
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(ax::Point(0, 0), rect.size);
 
     gc->SetColor( axColor("#444444") );
     gc->DrawRectangle(rect0);
 
     // Contour.
     gc->SetColor(axColor("#000000"));
-    gc->DrawRectangleContour(axRect(1, 1, rect0.size.x - 1, rect0.size.y - 1));
+    gc->DrawRectangleContour(ax::Rect(1, 1, rect0.size.x - 1, rect0.size.y - 1));
 }
 

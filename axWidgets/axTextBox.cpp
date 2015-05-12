@@ -207,7 +207,7 @@ _flags(0)
 axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     axTextBox::Events evts;
     axWindow* parent = GetParent();
     
@@ -222,8 +222,8 @@ axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));
-            _size = axSize(stoi(strVec[2]), stoi(strVec[3]));
+            pos = ax::Point(stoi(strVec[0]), stoi(strVec[1]));
+            _size = ax::Size(stoi(strVec[2]), stoi(strVec[3]));
         }
         else if(s.first == "info")
         {
@@ -251,7 +251,7 @@ axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
         }
     }
     
-    axTextBox* btn = new_ axTextBox(parent, axRect(pos, _size), evts,
+    axTextBox* btn = new_ axTextBox(parent, ax::Rect(pos, _size), evts,
                                    _info, _imgPath, _label, _flags);
     
     parent->GetResourceManager()->Add(name, btn);
@@ -262,7 +262,7 @@ axWidget* axTextBox::Builder::Create(const ax::StringPairVector& attributes)
  * axTextBox::Info.
  ******************************************************************************/
 axTextBox::axTextBox(axWindow* parent,
-                     const axRect& rect,
+                     const ax::Rect& rect,
                      const axTextBox::Events& events,
                      const axTextBox::Info& info,
                      std::string img_path,
@@ -311,7 +311,7 @@ _maxNumChar(10000000)
     
     
     // 
-    //SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
+    //SetShownRect(ax::Rect(-5, -5, rect.size.x + 10, rect.size.y + 10));
 }
 
 void axTextBox::SetLabel(const std::string& label)
@@ -337,7 +337,7 @@ std::string axTextBox::GetLabel() const
     return _label;
 }
 
-void axTextBox::OnMouseLeftDown(const axPoint& pos)
+void axTextBox::OnMouseLeftDown(const ax::Point& pos)
 {
     _findClickCursorIndex = true;
     _clickPosition = pos - GetAbsoluteRect().position;
@@ -358,7 +358,7 @@ void axTextBox::OnFlashingCursorTimer(const axTimerMsg& msg)
     Update();
 }
 
-void axTextBox::OnMouseLeftUp(const axPoint& pos)
+void axTextBox::OnMouseLeftUp(const ax::Point& pos)
 {
     if(IsGrabbed())
     {
@@ -376,14 +376,14 @@ void axTextBox::OnMouseLeave()
 
 }
 
-void axTextBox::OnMouseLeftDragging(const axPoint& pos)
+void axTextBox::OnMouseLeftDragging(const ax::Point& pos)
 {
     _clickPosition = pos - GetAbsoluteRect().position;
     Update();
     
 }
 
-void axTextBox::OnMouseLeftDoubleClick(const axPoint& pos)
+void axTextBox::OnMouseLeftDoubleClick(const ax::Point& pos)
 {
     _isHightlight = true;
     Update();
@@ -533,13 +533,13 @@ void axTextBox::DrawContourRectangle(axGC* gc)
     {
         if(IsKeyGrab())
         {
-            axRect rect(GetRect());
+            ax::Rect rect(GetRect());
             
             if(IsFlag(Flags::CONTOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(static_cast<Info*>(_info)->selected_shadow);
-                gc->DrawRectangle(axRect(axPoint(-5, -5),
-                                         axSize(rect.size + axSize(9, 9))));
+                gc->DrawRectangle(ax::Rect(ax::Point(-5, -5),
+                                         ax::Size(rect.size + ax::Size(9, 9))));
             }
             else
             {
@@ -549,8 +549,8 @@ void axTextBox::DrawContourRectangle(axGC* gc)
                 int nRect = 5;
                 for(int i = 0; i < nRect; i++)
                 {
-                    gc->DrawRectangleContour(axRect(axPoint(-i, -i),
-                                                    axSize(rect.size + axSize(2*i, 2*i))));
+                    gc->DrawRectangleContour(ax::Rect(ax::Point(-i, -i),
+                                                    ax::Size(rect.size + ax::Size(2*i, 2*i))));
                     
                     double alpha = static_cast<Info*>(_info)->selected_shadow.GetAlpha();
                     double mu = double(i) / double(nRect);
@@ -566,15 +566,15 @@ void axTextBox::DrawContourRectangle(axGC* gc)
 void axTextBox::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect(GetRect());
-	axRect rect0(GetDrawingRect());
+	ax::Rect rect(GetRect());
+	ax::Rect rect0(GetDrawingRect());
     
 //    DrawContourRectangle(gc);
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
     
-    axPoint next_pos(5, 5);
+    ax::Point next_pos(5, 5);
     
     if_not_empty(_label)
     {
@@ -586,7 +586,7 @@ void axTextBox::OnPaint()
             for(int i = 0; i < _label.size(); i++)
             {
                 gc->SetColor(static_cast<Info*>(_info)->font_color);
-                gc->DrawPoint(axPoint(x_pos, 14), 6);
+                gc->DrawPoint(ax::Point(x_pos, 14), 6);
                 
                 x_pos += 9;
                 _cursorBarXPosition = x_pos;
@@ -607,7 +607,7 @@ void axTextBox::OnPaint()
                 if(_isHightlight) // hightlight on.
                 {
                     gc->SetColor(static_cast<Info*>(_info)->highlight);
-                    gc->DrawRectangle(axRect(x_past_pos, 5,
+                    gc->DrawRectangle(ax::Rect(x_past_pos, 5,
                                              next_pos.x - x_past_pos, rect0.size.y - 10));
                 }
                 
@@ -648,8 +648,8 @@ void axTextBox::OnPaint()
     {
         gc->SetColor(static_cast<Info*>(_info)->cursor);
   
-        gc->DrawLine(axPoint(_cursorBarXPosition, 5),
-                     axPoint(_cursorBarXPosition, rect0.size.y - 5));
+        gc->DrawLine(ax::Point(_cursorBarXPosition, 5),
+                     ax::Point(_cursorBarXPosition, rect0.size.y - 5));
     }
 
 	gc->SetColor(static_cast<Info*>(_info)->contour);

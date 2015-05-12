@@ -14,7 +14,7 @@
 
 namespace axGraphicInterface
 {
-    void Resize(const axSize& size)
+    void Resize(const ax::Size& size)
     {
         glViewport(0, 0, size.x, size.y);
         
@@ -51,7 +51,7 @@ namespace axGraphicInterface
         glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     }
     
-    void Draw(const axSize& size)
+    void Draw(const ax::Size& size)
     {
         // Clear screen and depth buffer.
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -69,8 +69,9 @@ namespace axGraphicInterface
         glColor4d(0.4, 0.0, 0.0, 1.0);
         
         // Draw black rectangle.
-        axFloatRect rect(-1.0, -1.0, size.x * 2.0, size.y * 2.0);
-        axRectFloatPoints points = rect.GetPoints();
+        ax::FloatRect rect(-1.0, -1.0, size.x * 2.0, size.y * 2.0);
+        axRectPoints<ax::FloatPoint> points = rect.GetPoints();
+//        auto points = rect.GetPoints();
         GLubyte indices[] = {0, 1,2, 2,3};
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(2, GL_DOUBLE, 0, &points);

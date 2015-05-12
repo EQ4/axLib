@@ -35,7 +35,7 @@ public:
     
     virtual void MainLoop();
     
-    virtual void Init(const axSize& frame_size);
+    virtual void Init(const ax::Size& frame_size);
 
     virtual string GetAppDirectory();
     
@@ -43,9 +43,9 @@ public:
     
 //    virtual bool CreatePopupWindow(const char* title, int width, int height);
 
-    virtual axRect GetScreenRect();
+    virtual ax::Rect GetScreenRect();
     
-    virtual axSize GetScreenSize();
+    virtual ax::Size GetScreenSize();
     
     virtual string OpenFileDialog();
     
@@ -57,7 +57,7 @@ public:
     
     virtual void UpdateAll();
     
-    virtual void ResizeFrame(const axSize& size);
+    virtual void ResizeFrame(const ax::Size& size);
     
     virtual void HideMouse();
     

@@ -64,10 +64,10 @@ axManager* axCore::GetRealPopWindowManager()
     return _realPopWindowManager.get();
 }
 
-void axCore::ResizeGLScene(const axSize& size)
+void axCore::ResizeGLScene(const ax::Size& size)
 {
     // Prevent a division by zero.
-	_size = axSize(size.x, size.y == 0 ? 1 : size.y);
+	_size = ax::Size(size.x, size.y == 0 ? 1 : size.y);
     
     axGraphicInterface::Resize(_size);
     
@@ -77,12 +77,12 @@ void axCore::ResizeGLScene(const axSize& size)
     GetWindowManager()->OnSize(size);
 }
 
-axSize axCore::GetGlobalSize() const
+ax::Size axCore::GetGlobalSize() const
 {
 	return _size;
 }
 
-void axCore::SetGlobalSize(const axSize& size)
+void axCore::SetGlobalSize(const ax::Size& size)
 {
     _size = size;
 }

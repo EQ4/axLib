@@ -123,7 +123,7 @@ class axScrollBar : public axPanel
 {
 public:
 	axScrollBar(axWindow* parent, axWindow* handle,
-                const axRect& rect,
+                const ax::Rect& rect,
                 const axScrollBarEvents& events,
                 const axScrollBarInfo& info,
                 axFlag flags = 0);
@@ -139,7 +139,7 @@ public:
 //	double getSliderValue() const;
 //	inline void recalculateInputValue();
     
-    void SetPanelSize(const axSize& size);
+    void SetPanelSize(const ax::Size& size);
 
 private:
 	axScrollBarEvents _events;
@@ -150,16 +150,16 @@ private:
 	axButton* _btn[2];
 
 	int _imgHeight, _sliderHeight, _sliderMaxHeight, _sliderPos, _yClickDelta;
-    axSize _panelSize;
+    ax::Size _panelSize;
     
     axColor* _currentScrollBarColor;
 	double _value;
 
 	virtual void OnPaint();
-	virtual void OnMouseLeftDragging(const axPoint& pos);
-	virtual void OnMouseLeftDown(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
-    virtual void OnMouseMotion(const axPoint& pos);
+	virtual void OnMouseLeftDragging(const ax::Point& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
+    virtual void OnMouseMotion(const ax::Point& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
 };

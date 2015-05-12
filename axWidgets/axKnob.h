@@ -93,7 +93,7 @@ public:
              const axColor& bg_hoverColor,
              const axColor& bg_clickingColor,
              const unsigned int& numberKnob,
-             const axSize& size,
+             const ax::Size& size,
              const string& imgPath,
              const string& sImgPath);
         
@@ -103,7 +103,7 @@ public:
         virtual void SetAttribute(const ax::StringPair& attribute);
         
         std::string img_path, selected_img_path;
-        axSize knob_size;
+        ax::Size knob_size;
         unsigned int n_knob;
         axColor bgColorNormal, bgColorHover, bgColorClicked;
     };
@@ -115,7 +115,7 @@ public:
     {
     public:
         Builder(axWindow* parent,
-                const axSize& size,
+                const ax::Size& size,
                 const axKnob::Info& info,
                 axFlag flags = 0,
                 int nextPositionDelta = 5,
@@ -126,9 +126,9 @@ public:
                 int nextPositionDelta = 5,
                 axDirection direction = axDIRECTION_RIGHT);
         
-        axKnob* Create(const axPoint& pos, const axEventFunction& evt);
+        axKnob* Create(const ax::Point& pos, const axEventFunction& evt);
         
-        axKnob* Create(const axPoint& pos);
+        axKnob* Create(const ax::Point& pos);
         
         axKnob* Create(const axEventFunction& evt);
         
@@ -140,7 +140,7 @@ public:
         axWindow* _parent;
         axKnob::Info _info;
         axFlag _flags;
-        axSize _size;
+        ax::Size _size;
         int _nextPositionDelta;
         axKnob* _pastKnob;
         axDirection _direction;
@@ -150,7 +150,7 @@ public:
      * axKnob::axKnob.
      **************************************************************************/
     axKnob(axWindow* parent,
-           const axRect& rect,
+           const ax::Rect& rect,
            const axKnob::Events& events,
            const axKnob::Info& info,
            axFlag flags = 0,
@@ -174,7 +174,7 @@ private:
     std::string _msg;
 //    axKnob::Info _info;
     axFlag _flags;
-    axFloatRange _range;
+    ax::FloatRange _range;
 
     axImage* m_knobImg;
     axColor* m_currentBgColor;
@@ -185,9 +185,9 @@ private:
     double _zeroToOneValue;
 
     void OnPaint();
-    void OnMouseLeftDragging(const axPoint& pos);
-    void OnMouseLeftDown(const axPoint& pos);
-    void OnMouseLeftUp(const axPoint& pos);
+    void OnMouseLeftDragging(const ax::Point& pos);
+    void OnMouseLeftDown(const ax::Point& pos);
+    void OnMouseLeftUp(const ax::Point& pos);
 };
 
 /********************************************************************************//**
@@ -197,7 +197,7 @@ private:
  {
  public:
      axKnobControl(axWindow* parent,
-                   const axRect& rect,
+                   const ax::Rect& rect,
                    const axKnob::Events& events,
                    const axKnob::Info& info,
                    const std::string& label,
@@ -225,7 +225,7 @@ private:
                                           axColor("#999999"),            \
                                           axColor("#999999"),            \
                                           128,                           \
-                                          axSize( 32, 32 ),              \
+                                          ax::Size( 32, 32 ),              \
                                           "knob.png",         \
                                           "knobSelected.png")
 
@@ -233,7 +233,7 @@ private:
                                             axColor("#AAAAAA"),            \
                                             axColor("#BBBBBB"),            \
                                             128,                           \
-                                            axSize( 32, 32 ),              \
+                                            ax::Size( 32, 32 ),              \
                                             "ressources/images/knobs/simple_blue_knob.png", \
                                             "ressources/images/knobs/simple_blue_knob.png")
 

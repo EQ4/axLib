@@ -39,8 +39,8 @@ class axApp;
 class axWindow : public axObject
 {
 public:
-	axWindow(axWindow* parent, const axRect& rect);
-    axWindow(axApp* app, const axRect& rect);
+	axWindow(axWindow* parent, const ax::Rect& rect);
+    axWindow(axApp* app, const ax::Rect& rect);
     virtual ~axWindow();
     
     enum axWindowType
@@ -57,29 +57,29 @@ public:
     
 	axWindow* GetParent() const;
 
-	axRect GetRect() const;
-	axRect GetAbsoluteRect() const;
+	ax::Rect GetRect() const;
+	ax::Rect GetAbsoluteRect() const;
 
-	void SetRect(const axRect& rect);
+	void SetRect(const ax::Rect& rect);
     
-	axSize GetSize() const;
-	void SetSize(const axSize& size);
-	void SetPosition(const axPoint& pos);
+	ax::Size GetSize() const;
+	void SetSize(const ax::Size& size);
+	void SetPosition(const ax::Point& pos);
     
-    void SetShownRect(const axRect& size);
-    void SetSizeNoShowRect(const axSize& size);
-    axRect GetShownRect() const;
+    void SetShownRect(const ax::Rect& size);
+    void SetSizeNoShowRect(const ax::Size& size);
+    ax::Rect GetShownRect() const;
     
-    axPoint GetBottomLeftPosition() const;
-    axPoint GetTopRightPosition() const;
+    ax::Point GetBottomLeftPosition() const;
+    ax::Point GetTopRightPosition() const;
     
-    axPoint GetNextPosRight(const int& delta) const;
-    axPoint GetNextPosDown(const int& delta) const;
-    axPoint GetNextPosLeft(const int& delta) const;
-    axPoint GetNextPosUp(const int& delta) const;
+    ax::Point GetNextPosRight(const int& delta) const;
+    ax::Point GetNextPosDown(const int& delta) const;
+    ax::Point GetNextPosLeft(const int& delta) const;
+    ax::Point GetNextPosUp(const int& delta) const;
 
-	void SetScrollDecay(const axPoint& decay);
-	axPoint GetScrollDecay() const;
+	void SetScrollDecay(const ax::Point& decay);
+	ax::Point GetScrollDecay() const;
 
     bool IsShown() const;
     void Show();
@@ -87,7 +87,7 @@ public:
     
 	axGC* GetGC();
 
-	void Reparent(axWindow* parent, const axPoint& position);
+	void Reparent(axWindow* parent, const ax::Point& position);
 
     bool GetIsPopup();
     
@@ -124,7 +124,7 @@ public:
     
     void SetHasBackBuffer(const bool& hasBackBuffer);
     
-    axRect GetDrawingRect() const;
+    ax::Rect GetDrawingRect() const;
     
     void SetNeedUpdate();
     
@@ -132,21 +132,21 @@ public:
     virtual void OnPaint();
     virtual void OnPaintStatic(){}
     virtual void Update() = 0;
-    virtual void OnResize(const axSize& size){}
+    virtual void OnResize(const ax::Size& size){}
     
     // Mouse events.
     virtual void OnLeftDragging(){}
     virtual void OnRightDragging(){}
-	virtual void OnMouseMotion(const axPoint& pos){ (pos); }
-	virtual void OnMouseLeftDown(const axPoint& pos){ (pos); }
-	virtual void OnMouseLeftDoubleClick(const axPoint& pos){ (pos); }
-	virtual void OnMouseLeftUp(const axPoint& pos){ (pos); }
-	virtual void OnMouseRightDown(const axPoint& pos){ (pos); }
+	virtual void OnMouseMotion(const ax::Point& pos){ (pos); }
+	virtual void OnMouseLeftDown(const ax::Point& pos){ (pos); }
+	virtual void OnMouseLeftDoubleClick(const ax::Point& pos){ (pos); }
+	virtual void OnMouseLeftUp(const ax::Point& pos){ (pos); }
+	virtual void OnMouseRightDown(const ax::Point& pos){ (pos); }
     virtual void OnMouseRightUp(){}
     virtual void OnMouseEnter(){}
     virtual void OnMouseLeave(){}
     virtual void OnFocusIn(){}
-	virtual void OnMouseLeftDragging(const axPoint& pos){ (pos); }
+	virtual void OnMouseLeftDragging(const ax::Point& pos){ (pos); }
     
     // Keyboard events.
 	virtual void OnKeyDown(const char& key){ (key); }
@@ -163,8 +163,8 @@ public:
 private:
 //    axApp* _app;
 	axWindow* _parent;
-	axRect _rect, _shownRect;
-	axPoint _absolutePosition, _scrollDecay;
+	ax::Rect _rect, _shownRect;
+	ax::Point _absolutePosition, _scrollDecay;
     axColor _windowColor, _contourColor;
     axFrameBuffer _frameBufferObj;
     axResourceManager _resourceManager;

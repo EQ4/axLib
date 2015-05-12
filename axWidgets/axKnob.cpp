@@ -52,7 +52,7 @@ axKnob::Info::Info( const axColor& bg_normalColor,
                    const axColor& bg_hoverColor,
                    const axColor& bg_clickingColor,
                    const unsigned int& numberKnob,
-                   const axSize& size,
+                   const ax::Size& size,
                    const string& imgPath,
                    const string& sImgPath ):
 // Members.
@@ -99,7 +99,7 @@ axKnob::Info::Info()
 //        {
 //            axStringVector strVec;
 //            strVec = GetVectorFromStringDelimiter(n.second, ",");
-//            knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
+//            knob_size = ax::Size(stoi(strVec[0]), stoi(strVec[1]));
 //        }
 //        else if(n.first == "img")
 //        {
@@ -129,8 +129,16 @@ axKnob::Info::Info(const ax::StringPairVector& attributes)
 
 ax::StringVector axKnob::Info::GetParamNameList() const
 {
-    return ax::StringVector{"normal", "hover", "clicking",
-        "knob_size", "nknob", "img", "selected_img"};
+    return ax::StringVector
+    {
+        "normal",
+        "hover",
+        "clicking",
+        "knob_size",
+        "nknob",
+        "img",
+        "selected_img"
+    };
 }
 
 std::string axKnob::Info::GetAttributeValue(const std::string& name)
@@ -189,7 +197,7 @@ void axKnob::Info::SetAttribute(const ax::StringPair& attribute)
     {
         ax::StringVector strVec;
         strVec = GetVectorFromStringDelimiter(attribute.second, ",");
-        knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
+        knob_size = ax::Size(stoi(strVec[0]), stoi(strVec[1]));
     }
     else if(attribute.first == "img")
     {
@@ -205,7 +213,7 @@ void axKnob::Info::SetAttribute(const ax::StringPair& attribute)
  * axKnob::Builder.
  ******************************************************************************/
 axKnob::Builder::Builder(axWindow* parent,
-                         const axSize& size,
+                         const ax::Size& size,
                          const axKnob::Info& info,
                          axFlag flags,
                          int nextPositionDelta,
@@ -233,16 +241,16 @@ _pastKnob(nullptr)
     
 }
 
-axKnob* axKnob::Builder::Create(const axPoint& pos, const axEventFunction& evt)
+axKnob* axKnob::Builder::Create(const ax::Point& pos, const axEventFunction& evt)
 {
-    return _pastKnob = new_ axKnob(_parent, axRect(pos, _size), evt,
+    return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evt,
                                   _info, _flags);
 }
 
-axKnob* axKnob::Builder::Create(const axPoint& pos)
+axKnob* axKnob::Builder::Create(const ax::Point& pos)
 {
     axKnob::Events evts;
-    return _pastKnob = new_ axKnob(_parent, axRect(pos, _size), evts,
+    return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evts,
                                   _info, _flags);
 }
 
@@ -252,8 +260,8 @@ axKnob* axKnob::Builder::Create(const axEventFunction& evt)
     {
         if(_direction == axDIRECTION_RIGHT)
         {
-            axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
-            return _pastKnob = new_ axKnob(_parent, axRect(pos, _size), evt,
+            ax::Point pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+            return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evt,
                                           _info, _flags);
         }
         else if(_direction == axDIRECTION_DOWN)
@@ -280,8 +288,8 @@ axKnob* axKnob::Builder::Create()
     if(_pastKnob != nullptr)
     {
         axKnob::Events evts;
-        axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
-        return _pastKnob = new_ axKnob(_parent, axRect(pos, _size),
+        ax::Point pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+        return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size),
                                       evts, _info, _flags);
     }
     
@@ -291,7 +299,7 @@ axKnob* axKnob::Builder::Create()
 axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     axKnob::Events evts;
     for(auto& s : attributes)
     {
@@ -304,10 +312,10 @@ axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
             
-            _size = axSize(stoi(strVec[2]),
+            _size = ax::Size(stoi(strVec[2]),
                            stoi(strVec[3]));
         }
         else if(s.first == "info")
@@ -325,7 +333,7 @@ axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
         
     }
     
-    axKnob* knob = new_ axKnob(_parent, axRect(pos, _size),
+    axKnob* knob = new_ axKnob(_parent, ax::Rect(pos, _size),
                               evts, _info);
     
     _parent->GetResourceManager()->Add(name, knob);
@@ -336,7 +344,7 @@ axKnob* axKnob::Builder::Create(ax::StringPairVector attributes)
  * axKnob.
  ******************************************************************************/
 axKnob::axKnob(axWindow* parent,
-               const axRect& rect,
+               const ax::Rect& rect,
                const axKnob::Events& events,
                const axKnob::Info& info,
                axFlag flags,
@@ -381,7 +389,7 @@ void axKnob::SetInfo(const ax::StringPairVector& attributes)
     Update();
 }
 
-void axKnob::OnMouseLeftDown(const axPoint& pos)
+void axKnob::OnMouseLeftDown(const ax::Point& pos)
 {
     _clickPosY = (pos - GetAbsoluteRect().position).y;
 
@@ -393,7 +401,7 @@ void axKnob::OnMouseLeftDown(const axPoint& pos)
     PushEvent(0, new_ Msg(m_knobValue, _msg));
 }
 
-void axKnob::OnMouseLeftUp(const axPoint& pos)
+void axKnob::OnMouseLeftUp(const ax::Point& pos)
 {
     if( IsGrabbed() )
     {
@@ -405,11 +413,11 @@ void axKnob::OnMouseLeftUp(const axPoint& pos)
     }
 }
 
-void  axKnob::OnMouseLeftDragging(const axPoint& position)
+void  axKnob::OnMouseLeftDragging(const ax::Point& position)
 {
     int cur_img = m_nCurrentImg;
-    axPoint pt(GetAbsoluteRect().position);
-    axPoint p = position - pt;
+    ax::Point pt(GetAbsoluteRect().position);
+    ax::Point p = position - pt;
     
     double delta = p.y - _clickPosY;
     
@@ -452,24 +460,24 @@ void axKnob::SetValue(const axFloat& value, bool callValueChangeEvent)
 void axKnob::OnPaint()
 {
     axGC* gc = GetGC();
-    axSize size = GetSize();
-    axRect rect0(0, 0, size.x, size.y);
+    ax::Size size = GetSize();
+    ax::Rect rect0(0, 0, size.x, size.y);
 	
 	gc->SetColor(*m_currentBgColor);
 
     gc->DrawRectangle(rect0);
 
     gc->DrawPartOfImage(m_knobImg,
-                        axPoint( m_nCurrentImg * static_cast<Info*>(_info)->knob_size.x, 0),
+                        ax::Point( m_nCurrentImg * static_cast<Info*>(_info)->knob_size.x, 0),
                         static_cast<Info*>(_info)->knob_size,
-                        axPoint(0, 0));
+                        ax::Point(0, 0));
 }
 
 /*******************************************************************************
  * axKnobControl.
  ******************************************************************************/
 axKnobControl::axKnobControl(axWindow* parent,
-                             const axRect& rect,
+                             const ax::Rect& rect,
                              const axKnob::Events& events,
                              const axKnob::Info& info,
                              const std::string& label,
@@ -485,10 +493,10 @@ _value("0.00")
     axKnob::Events evts;
     evts.value_change = GetOnKnobValueChange();
     
-    axPoint knobPos((rect.size.x - info.knob_size.x) * 0.5,
+    ax::Point knobPos((rect.size.x - info.knob_size.x) * 0.5,
                     20 + (rect.size.y - 40 - info.knob_size.y) * 0.5);
 
-    _knob = new_ axKnob(this, axRect(knobPos, info.knob_size),
+    _knob = new_ axKnob(this, ax::Rect(knobPos, info.knob_size),
                        evts, info, flags, value);
     
     if(events.value_change)
@@ -513,12 +521,12 @@ void axKnobControl::OnKnobValueChange(const axKnob::Msg& msg)
 void axKnobControl::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect0(axPoint(0, 0), GetRect().size);
+    ax::Rect rect0(ax::Point(0, 0), GetRect().size);
     
     gc->SetColor(axColor(0.5, 0.5, 0.5, 0.3));
     gc->DrawRectangle(rect0);
     
-    axRect labelRect(0, 0, rect0.size.x - 1, 20);
+    ax::Rect labelRect(0, 0, rect0.size.x - 1, 20);
     gc->SetColor(axColor(0.6, 0.6, 0.6, 0.3));
     gc->DrawRectangle(labelRect);
     
@@ -529,7 +537,7 @@ void axKnobControl::OnPaint()
     
 //    gc->SetFontSize(10);
     font.SetFontSize(10);
-    gc->DrawStringAlignedCenter(font, _value, axRect(0, rect0.size.y - 20,
+    gc->DrawStringAlignedCenter(font, _value, ax::Rect(0, rect0.size.y - 20,
                                                rect0.size.x, 20));
     
     gc->SetColor(axColor(0.0, 0.0, 0.0, 0.3));

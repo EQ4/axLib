@@ -73,7 +73,7 @@ axMatrix4& axMatrix4::Identity()
     return *this;
 }
 
-axMatrix4& axMatrix4::Translate(const axPoint& vec)
+axMatrix4& axMatrix4::Translate(const ax::Point& vec)
 {
     axMatrix4 trans;
     trans.Identity();
@@ -107,7 +107,7 @@ void axMatrix4::Process()
     glMultMatrixd(_data);
 }
 
-void axOrtho2D(double* data, const axSize& size)
+void axOrtho2D(double* data, const ax::Size& size)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

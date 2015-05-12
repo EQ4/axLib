@@ -20,7 +20,7 @@ namespace ax
 class MainPanel : public axPanel
 {
 public:
-    MainPanel(axApp* app, const axRect& rect);
+    MainPanel(axApp* app, const ax::Rect& rect);
     
     axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
     
@@ -30,7 +30,7 @@ private:
     
     void OnButtonClick(const axButton::Msg& msg);
     
-    virtual void OnResize(const axSize& size);
+    virtual void OnResize(const ax::Size& size);
     
 };
 

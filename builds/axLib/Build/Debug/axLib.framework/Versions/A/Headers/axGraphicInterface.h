@@ -15,11 +15,11 @@ class axWindow;
 
 namespace axGraphicInterface
 {
-    void Resize(const axSize& size);
+    void Resize(const ax::Size& size);
     
     void Init();
     
-    void Draw(const axSize& size);
+    void Draw(const ax::Size& size);
 }
 
 #endif /* defined(__axLib__axGraphicInterface__) */

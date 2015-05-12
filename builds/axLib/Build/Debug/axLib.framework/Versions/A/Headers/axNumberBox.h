@@ -143,7 +143,7 @@ public:
         axWindow* _parent;
         axNumberBox::Info _info;
         axFlag _flags;
-        axSize _size;
+        ax::Size _size;
         int _nextPositionDelta;
         axNumberBox* _past;
         axDirection _direction;
@@ -153,12 +153,12 @@ public:
      * axNumberBox::axNumberBox.
      **************************************************************************/
     axNumberBox(axWindow* parent,
-                const axRect& rect,
+                const ax::Rect& rect,
                 const axNumberBox::Events& events,
                 const axNumberBox::Info& info,
                 axFlag flags = 0,
                 double value = 0.0,
-                axFloatRange range = axFloatRange(0.0, 1.0),
+                ax::FloatRange range = ax::FloatRange(0.0, 1.0),
                 axControlType type = axCTRL_FLOAT,
                 axControlUnit m_unit = axCTRL_NO_UNIT,
                 axControlInterpolation interpolation = axCTRL_LINEAR,
@@ -182,7 +182,7 @@ private:
 
     axControlType _type;
     axControlUnit _unit;
-    axFloatRange _range;
+    ax::FloatRange _range;
     axControlInterpolation _interpolation;
 
     axColor* _currentColor;
@@ -203,9 +203,9 @@ private:
     // Events.
     virtual void OnPaint();
     virtual void OnMouseEnter();
-    virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftUp(const axPoint& pos);
-    virtual void OnMouseLeftDragging(const axPoint& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftUp(const ax::Point& pos);
+    virtual void OnMouseLeftDragging(const ax::Point& pos);
     virtual void OnMouseLeave();
 
 };

@@ -16,9 +16,9 @@
 //class axDrawingBuffer
 //{
 //public:
-//    axDrawingBuffer(const axSize& size);
+//    axDrawingBuffer(const ax::Size& size);
 //    
-//    axSize GetSize() const
+//    ax::Size GetSize() const
 //    {
 //        return _size;
 //    }
@@ -38,7 +38,7 @@
 //private:
 //     GLuint _frameBuffer, _depthBuffer;
 //    GLuint _texture;
-//    axSize _size;
+//    ax::Size _size;
 //    cairo_surface_t *surface;
 //    cairo_t *context;
 //    unsigned char* surf_data;

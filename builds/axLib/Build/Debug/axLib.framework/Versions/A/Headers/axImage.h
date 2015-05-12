@@ -42,13 +42,13 @@ class axImage;
 
 struct axImageStruct
 {
-	axImageStruct(GLuint tex, axSize size) :
+	axImageStruct(GLuint tex, ax::Size size) :
 	_texture(tex), _size(size)
 	{
 	}
 
 	GLuint _texture;
-	axSize _size;
+	ax::Size _size;
 };
 
 class axImageGlobalMapLoader
@@ -56,14 +56,14 @@ class axImageGlobalMapLoader
 public:
 	axImageGlobalMapLoader();
 
-	bool LoadImage(const string& path, GLuint& _texture, axSize& _size);
+    bool LoadImage(const std::string& path, GLuint& _texture, ax::Size& _size);
 
 private:
 	std::map<std::string, axImageStruct> _imageMap;
 
 	bool InitImage(const string& path, 
 				   GLuint& _texture, 
-				   axSize& _size);
+				   ax::Size& _size);
 };
 
 class axImage
@@ -71,11 +71,11 @@ class axImage
 public:
 	axImage(const string& path);
     
-    axImage(void* data, const axSize& size);
+    axImage(void* data, const ax::Size& size);
 
 	GLuint GetTexture();
 	bool IsImageReady();
-	axSize GetSize();
+	ax::Size GetSize();
 	int GetHeight();
 	int GetWidth();
     
@@ -88,7 +88,7 @@ public:
 
 private:
 	GLuint _texture;
-	axSize _size;
+	ax::Size _size;
     std::string _path;
 
 	//bool InitImage(const string& path);
@@ -136,7 +136,7 @@ public:
 		return _pixelDepth;
 	}
 
-	axSize GetImageSize() const
+	ax::Size GetImageSize() const
 	{
 		return _size;
 	}
@@ -148,7 +148,7 @@ public:
 
 private:
 	std::string _path;
-	axSize _size;
+	ax::Size _size;
 	void* _imgData;
 	ColorType _colorType;
 	PixelDepth _pixelDepth;

@@ -26,7 +26,7 @@
 
 
 
-axWidget::axWidget(axWindow* parent, const axRect& rect, axInfo* info):
+axWidget::axWidget(axWindow* parent, const ax::Rect& rect, axInfo* info):
 axPanel(parent, rect),
 _info(info)
 {
@@ -35,7 +35,7 @@ _info(info)
     #endif // _axDebugEditor_
 }
 
-axWidget::axWidget(int f, axWindow* parent, const axRect& rect):
+axWidget::axWidget(int f, axWindow* parent, const ax::Rect& rect):
 axPanel(f, parent, rect),
 _info(nullptr)
 {

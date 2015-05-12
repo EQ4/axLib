@@ -95,14 +95,14 @@ public:
         axWindow* _parent;
         axLabel::Info _info;
         std::string _label;
-        axSize _size;
+        ax::Size _size;
     };
     
     /***************************************************************************
      * axLabel::axLabel.
      **************************************************************************/
     axLabel(axWindow* parent,
-            const axRect& rect,
+            const ax::Rect& rect,
             const axLabel::Info& info,
             const std::string& label);
     

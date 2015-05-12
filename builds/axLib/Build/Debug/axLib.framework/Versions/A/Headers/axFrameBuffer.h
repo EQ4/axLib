@@ -38,17 +38,17 @@
 class axFrameBuffer
 {
 public:
-    axFrameBuffer(const axSize& size);
+    axFrameBuffer(const ax::Size& size);
     
-    void Init(const axSize& size);
+    void Init(const ax::Size& size);
     
-    void Resize(const axSize& size);
+    void Resize(const ax::Size& size);
     
     void DrawOnFrameBuffer(const std::function<void()>& fct,
-                           const axSize& size,
-                           const axSize& globalSize);
+                           const ax::Size& size,
+                           const ax::Size& globalSize);
     
-    void DrawFrameBuffer(const axSize& shownSize);
+    void DrawFrameBuffer(const ax::Size& shownSize);
     
 private:
     GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;

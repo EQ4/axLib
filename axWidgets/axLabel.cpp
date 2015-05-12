@@ -62,8 +62,15 @@ axLabel::Info::Info(const ax::StringPairVector& attributes)
 
 ax::StringVector axLabel::Info::GetParamNameList() const
 {
-    return ax::StringVector{"normal",
-        "contour", "font_color", "font_name", "font_size", "align"};
+    return ax::StringVector
+    {
+        "normal",
+        "contour",
+        "font_color",
+        "font_name",
+        "font_size",
+        "align"
+    };
 }
 
 std::string axLabel::Info::GetAttributeValue(const std::string& name)
@@ -158,7 +165,7 @@ _parent(win)
 axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     for(auto& s : attributes)
     {
         if(s.first == "name")
@@ -170,10 +177,10 @@ axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
             
-            _size = axSize(stoi(strVec[2]),
+            _size = ax::Size(stoi(strVec[2]),
                            stoi(strVec[3]));
         }
         else if(s.first == "info")
@@ -186,7 +193,7 @@ axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
         }
     }
     
-    axLabel* label = new_ axLabel(_parent, axRect(pos, _size),
+    axLabel* label = new_ axLabel(_parent, ax::Rect(pos, _size),
                                  _info, _label);
     
     _parent->GetResourceManager()->Add(name, label);
@@ -197,7 +204,7 @@ axLabel* axLabel::Builder::Create(ax::StringPairVector attributes)
  * axLabel.
  ******************************************************************************/
 axLabel::axLabel(axWindow* parent,
-                 const axRect& rect,
+                 const ax::Rect& rect,
                  const axLabel::Info& info,
                  const std::string& label):
 axWidget(parent, rect, new_ Info(info)),
@@ -230,8 +237,8 @@ void axLabel::SetLabel(const std::string& label)
 void axLabel::OnPaint()
 {
     axGC* gc = GetGC();
-//    axRect rect(axPoint(0, 0), GetRect().size);
-    axRect rect(GetDrawingRect());
+//    ax::Rect rect(ax::Point(0, 0), GetRect().size);
+    ax::Rect rect(GetDrawingRect());
     
     gc->SetColor(static_cast<Info*>(_info)->normal);
     gc->DrawRectangle(rect);
@@ -244,7 +251,7 @@ void axLabel::OnPaint()
     }
     else if(static_cast<Info*>(_info)->_alignement == axALIGN_LEFT)
     {
-        gc->DrawString(*_font, _label, axPoint(5, 2));
+        gc->DrawString(*_font, _label, ax::Point(5, 2));
     }
     
     

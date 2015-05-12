@@ -1,13 +1,13 @@
 #include "axEditorMenu.h"
 #include "axWidget.h"
 
-axEditorMenu::axEditorMenu(const axRect& rect) :
+axEditorMenu::axEditorMenu(const ax::Rect& rect) :
 axPanel(3, nullptr, rect),
 _font(0)
 {
 	_font.SetFontSize(14);
     
-    _toolbar = new axEditorToolbar(this, axRect(0, 0, rect.size.x, 40),
+    _toolbar = new axEditorToolbar(this, ax::Rect(0, 0, rect.size.x, 40),
                                    axButton::Events(GetOnEditorToolbar()));
     
     
@@ -23,14 +23,14 @@ _font(0)
     
  
 
-    axRect attPanelRect(0, 40, rect.size.x - 8, rect.size.y - 40);
+    ax::Rect attPanelRect(0, 40, rect.size.x - 8, rect.size.y - 40);
     _editorAttributesPanel = new axEditorAttributes(this, attPanelRect);
     
-    axPoint pos(rect.size.x - 8, 39);
+    ax::Point pos(rect.size.x - 8, 39);
     axScrollBar* _scrollBar = new axScrollBar(this,
                                               _editorAttributesPanel,
-                                              axRect(pos,
-                                                     axSize(8, rect.size.y - 40)),
+                                              ax::Rect(pos,
+                                                     ax::Size(8, rect.size.y - 40)),
                                               scrollEvents,
                                               scroll_info);
     
@@ -79,7 +79,7 @@ void axEditorMenu::OnEditorToolbar(const axButton::Msg& msg)
 void axEditorMenu::OnPaint()
 {
 	axGC gc(this);
-	axRect rect(GetDrawingRect());
+	ax::Rect rect(GetDrawingRect());
 
 	gc.DrawRectangleColorFade(rect, axColor(0.5), axColor(0.6));
 }

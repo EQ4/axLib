@@ -92,7 +92,7 @@ struct axSliderEvents
 struct axSliderInfo
 {
 	string img_path;
-	axSize btn_size;
+	ax::Size btn_size;
 	unsigned int slider_width;
     int contour_round_radius = 0;
 
@@ -109,7 +109,7 @@ struct axSliderInfo
 
     axSliderInfo(){}
 	axSliderInfo(const string& imgPath,
-				 const axSize& size,
+				 const ax::Size& size,
 				 const axColor& bg_normal,
 				 const axColor& bg_hover,
 				 const axColor& bg_clicking,
@@ -194,7 +194,7 @@ class axSlider : public axPanel
 {
 public:
 	axSlider(axWindow* parent,
-			 const axRect& rect,
+			 const ax::Rect& rect,
 			 const axSliderEvents& events,
 			 const axSliderInfo& info,
 			 axFlag flags = 0);
@@ -204,7 +204,7 @@ public:
 		_bg_alpha = alpha;
 	}
 
-	void ResizeSlider(const axSize& size)
+	void ResizeSlider(const ax::Size& size)
 	{
 		SetSize(size);
 		_sliderYPos = int((GetSize().x - _info.slider_width) * 0.5);
@@ -248,21 +248,21 @@ protected:
 		axBTN_DOWN
 	};
 
-	void blockSliderPosition(const axPoint& pos);
+	void blockSliderPosition(const ax::Point& pos);
 	void updateSliderValue();
 
-	void DrawVerticalSlider(axGC* gc, const axRect& rect0);
-	void DrawLineBehindSlider_Vertical(axGC* gc, const axRect& rect0);
+	void DrawVerticalSlider(axGC* gc, const ax::Rect& rect0);
+	void DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0);
 
 
 
 	void OnPaint();
-	void OnMouseEnter(const axPoint& pos);
-	void OnMouseLeftDown(const axPoint& pos);
-	void OnMouseLeftUp(const axPoint& pos);
-	void OnMouseMotion(const axPoint& pos);
-	void OnMouseLeftDragging(const axPoint& pos);
-	void OnMouseLeave(const axPoint& pos);
+	void OnMouseEnter(const ax::Point& pos);
+	void OnMouseLeftDown(const ax::Point& pos);
+	void OnMouseLeftUp(const ax::Point& pos);
+	void OnMouseMotion(const ax::Point& pos);
+	void OnMouseLeftDragging(const ax::Point& pos);
+	void OnMouseLeave(const ax::Point& pos);
 	//void OnFocusIn();
 };
 
@@ -289,7 +289,7 @@ protected:
 //}
 
 //#define axSLIDER_STANDARD_BLUE axSliderInfo( "ressources/images/bouttons/sliderCtrl.png",   \
-//											 axSize(12, 12),								\
+//											 ax::Size(12, 12),								\
 //											 axColor("#444444"),							\
 //											 axColor("#444444"),							\
 //											 axColor("#444444"),							\
@@ -303,7 +303,7 @@ protected:
 //											 5)
 //
 //#define axSLIDER_STANDARD_BLUE_NO_IMG axSliderInfo( "",										\
-//													axSize(0, 0),							\
+//													ax::Size(0, 0),							\
 //													axColor("#AAAAAA"),						\
 //													axColor("#BBBBBB"),						\
 //													axColor("#CCCCCC"),						\
@@ -318,7 +318,7 @@ protected:
 //
 
 #define axSLIDER_PLAIN_GREY     axSliderInfo( "/Users/alexarse/Project/axLib/ressources/sliderPlain.png",          \
-	axSize(12, 12), \
+	ax::Size(12, 12), \
 	axColor(0.1, 0.1, 0.1), \
 	axColor("#888888"), \
 	axColor("#888888"), \

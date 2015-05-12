@@ -32,7 +32,7 @@ axImageGlobalMapLoader::axImageGlobalMapLoader()
 
 }
 
-bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, axSize& _size)
+bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, ax::Size& _size)
 {
 #ifdef _AX_VST_APP_
     /// @todo Find a way to have a map with multiple opengl contexts.
@@ -68,7 +68,7 @@ bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, axS
 
 bool axImageGlobalMapLoader::InitImage(const string& path, 
 									   GLuint& _texture, 
-									   axSize& _size)
+									   ax::Size& _size)
 {
     glGenTextures(1, &_texture);
     
@@ -168,7 +168,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	//    6       8,16        Each pixel is an R,G,B triple,
 	//                         followed by an alpha sample.
 
-	_size = axSize(w, h);
+	_size = ax::Size(w, h);
 
 	// Update png info struct.
 	png_read_update_info(png_ptr, info_ptr);
@@ -264,7 +264,7 @@ axImage::axImage(const string& path)
 	}
 }
 
-axImage::axImage(void* data, const axSize& size):
+axImage::axImage(void* data, const ax::Size& size):
 _size(size),
 _path("tmp")
 {
@@ -411,7 +411,7 @@ GLuint axImage::GetTexture()
 	return _texture;
 }
 
-axSize axImage::GetSize()
+ax::Size axImage::GetSize()
 {
 	return _size;
 }
@@ -541,7 +541,7 @@ bool axBigImage::InitImage(const string& path)
 	//    6       8,16        Each pixel is an R,G,B triple,
 	//                         followed by an alpha sample.
 
-	_size = axSize(w, h);
+	_size = ax::Size(w, h);
 
 	// Update png info struct.
 	png_read_update_info(png_ptr, info_ptr);

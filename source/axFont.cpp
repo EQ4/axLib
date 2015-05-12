@@ -128,12 +128,12 @@ int axFont::GetFontSize() const
     return _font_size;
 }
 
-axSize axFont::GetSize() const
+ax::Size axFont::GetSize() const
 {
     return _size;
 }
 
-axPoint axFont::GetDelta() const
+ax::Point axFont::GetDelta() const
 {
     return _delta;
 }
@@ -175,9 +175,9 @@ void axFont::SetChar(const char& letter)
         else
         {
             FT_GlyphSlot g = _face->glyph;
-            _size = axSize(g->bitmap.width, g->bitmap.rows);
+            _size = ax::Size(g->bitmap.width, g->bitmap.rows);
             
-            _delta = axPoint(_face->glyph->bitmap_left,
+            _delta = ax::Point(_face->glyph->bitmap_left,
                              _face->glyph->bitmap_top);
             
             _next = g->advance.x / 64.0;

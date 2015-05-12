@@ -50,7 +50,7 @@ class axMenuNode: public axPanel
 {
 public:
     // Root Node.
-    axMenuNode(axWindow* parent, const axRect& rect);
+    axMenuNode(axWindow* parent, const ax::Rect& rect);
 
     axMenuNode( axMenuNode* parent,
                 const string& label,
@@ -89,7 +89,7 @@ public:
      *
      * @return buttom left position of the last node
      ***********************************************************************************/
-    axPoint GetButtomPosition();
+    ax::Point GetButtomPosition();
 
     int GetDelta()
     {
@@ -122,7 +122,7 @@ private:
     static const int axMENU_NODE_HEIGHT = 25;
 
     void ResizeNode();
-    virtual void OnMouseLeftDown(const axPoint& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
 
     void OnPaint();
 };
@@ -133,8 +133,8 @@ private:
 class axMenu: public axPanel
 {
 public:
-    axMenu(axWindow* parent, const axRect& rect);
-    // axMenu(axApp* app, axWindow* parent, const axRect& rect, string test);
+    axMenu(axWindow* parent, const ax::Rect& rect);
+    // axMenu(axApp* app, axWindow* parent, const ax::Rect& rect, string test);
 
     bool AddRootNode(axMenuNode* node);
 

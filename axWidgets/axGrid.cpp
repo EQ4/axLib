@@ -22,10 +22,10 @@
 #include "axGrid.h"
 
 axGrid::axGrid(axWindow* parent,
-               const axRect& rect,
+               const ax::Rect& rect,
                const axGridEvents& events,
                const axGridInfo& info,
-               axSize grid_dimension,
+               ax::Size grid_dimension,
                //string label,
                axFlag flags,
                string msg) :
@@ -50,7 +50,7 @@ _currentElementColor(0.0, 0.8, 0.0)
 
 	// _gridElements[4][3].on = true;
 	// _gridElements[4][3].color = axColor(0.0, 0.4, 0.0);
-	// _gridElements[4][3].position = axPoint((double(4) / _dimension.x) * rect.size.x,
+	// _gridElements[4][3].position = ax::Point((double(4) / _dimension.x) * rect.size.x,
 	// 									   (double(3) / _dimension.y) * rect.size.y);
 
 	_selectedElement(0, 0);
@@ -99,32 +99,32 @@ void axGrid::SetElementColor(const axColor& color)
 
 void axGrid::AddElement(const int& row, const int& col)
 {
-	axRect rect(GetRect());
+	ax::Rect rect(GetRect());
 	_gridElements[row][col].on = true;
 	_gridElements[row][col].color = _currentElementColor;
-	_gridElements[row][col].position = axPoint(floor(double(col) / _dimension.x * rect.size.x),
+	_gridElements[row][col].position = ax::Point(floor(double(col) / _dimension.x * rect.size.x),
 										   (double(row) / _dimension.y) * rect.size.y);
 }
  
- axPoint axGrid::GetPositionOfElement(const axArrayIndex& index)
+ ax::Point axGrid::GetPositionOfElement(const axArrayIndex& index)
  {
- 	axRect rect = GetRect();
- 	return axPoint((double(index.x) / _dimension.x) * rect.size.x,
+ 	ax::Rect rect = GetRect();
+ 	return ax::Point((double(index.x) / _dimension.x) * rect.size.x,
 										   (double(index.y) / _dimension.y) * rect.size.y);
  }
 
- axPoint axGrid::GetElementIndexFromMouse(const axPoint& pos)
+ ax::Point axGrid::GetElementIndexFromMouse(const ax::Point& pos)
  {
- 	axRect rect = GetRect();
- 	return axSize(floor(((double)pos.x / rect.size.x)  * _dimension.x),
+ 	ax::Rect rect = GetRect();
+ 	return ax::Size(floor(((double)pos.x / rect.size.x)  * _dimension.x),
  				  floor(((double)pos.y / rect.size.y)  * _dimension.y));
  }
 
-void axGrid::OnMouseLeftDown(const axPoint& pos)
+void axGrid::OnMouseLeftDown(const ax::Point& pos)
 {
 	cout << "LEFT_DOWN" << endl;
-	axRect rect = GetAbsoluteRect();
-	axPoint position = pos - rect.position;
+	ax::Rect rect = GetAbsoluteRect();
+	ax::Point position = pos - rect.position;
 	axArrayIndex index = GetElementIndexFromMouse(position);
 
 	cout << index.x << " " << index.y << endl;
@@ -144,7 +144,7 @@ void axGrid::OnMouseLeftDown(const axPoint& pos)
 	
 // }
 
-void axGrid::OnMouseLeftUp(const axPoint& pos)
+void axGrid::OnMouseLeftUp(const ax::Point& pos)
 {
 }
 
@@ -159,8 +159,8 @@ void axGrid::OnMouseLeave()
 void axGrid::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect(GetRect());
-	axRect rect0(axPoint(0, 0), rect.size);
+	ax::Rect rect(GetRect());
+	ax::Rect rect0(ax::Point(0, 0), rect.size);
 
 	gc->SetColor(_info.normal, 1.0);
 	gc->DrawRectangle(rect0);
@@ -172,17 +172,17 @@ void axGrid::OnPaint()
 	for(int j = 0; j <= _dimension.y; j++)
 	{
 		int y = (double(j) / _dimension.y) * rect.size.y;
-		gc->DrawLine(axPoint(0, y), axPoint(rect.size.x, y));
+		gc->DrawLine(ax::Point(0, y), ax::Point(rect.size.x, y));
 	}
 
 	int x = 0;
 	for(int i = 0; i <= _dimension.x; i++)
 	{
 		int x = (double(i) / _dimension.x) * rect.size.x;
-		gc->DrawLine(axPoint(x, 0), axPoint(x, rect.size.y));
+		gc->DrawLine(ax::Point(x, 0), ax::Point(x, rect.size.y));
 	}
 
-	axSize element_size(1.0 / _dimension.x * rect.size.x - 1, 
+	ax::Size element_size(1.0 / _dimension.x * rect.size.x - 1, 
 						1.0 / _dimension.y * rect.size.y - 1);
 	for(int j = 0;j < _dimension.y; j++)
 	{
@@ -192,10 +192,10 @@ void axGrid::OnPaint()
 			{
 				gc->SetColor(_gridElements[j][i].color);
 
-				axSize elem_size(floor((double(i+1)/ _dimension.x * rect.size.x)) - 
+				ax::Size elem_size(floor((double(i+1)/ _dimension.x * rect.size.x)) - 
 								 floor((double(i) / _dimension.x * rect.size.x)) - 1,
 								1.0 / _dimension.y * rect.size.y - 1);
-				gc->DrawRectangle(axRect(_gridElements[j][i].position, elem_size));
+				gc->DrawRectangle(ax::Rect(_gridElements[j][i].position, elem_size));
 			}
 		}
 	}
@@ -205,11 +205,11 @@ void axGrid::OnPaint()
 	//_selectedElement
 	gc->SetColor(axColor(0.0, 0.0, 1.0));
 	//glLineWidth(4.0);
-	gc->DrawRectangleContour(axRect(GetPositionOfElement(_selectedElement), element_size), 2);
+	gc->DrawRectangleContour(ax::Rect(GetPositionOfElement(_selectedElement), element_size), 2);
 
 	// glLineWidth(1.0);
 
-	// gc->DrawCircle(axPoint(50, 50), 10, 500);
+	// gc->DrawCircle(ax::Point(50, 50), 10, 500);
 
 }
 

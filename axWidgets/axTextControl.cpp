@@ -22,7 +22,7 @@
 #include "axTextControl.h"
 
 axTextControl::axTextControl(axWindow* parent,
-                             const axRect& rect,
+                             const ax::Rect& rect,
                              const axTextControlEvents& events,
                              const axTextControlInfo& info,
                              string img_path,
@@ -62,7 +62,7 @@ _findClickCursorIndex(false)
     
     _font = new_ axFont(0);
     
-    SetShownRect(axRect(-5,
+    SetShownRect(ax::Rect(-5,
                         -5,
                         rect.size.x + 10,
                         rect.size.y + 10));
@@ -74,7 +74,7 @@ void axTextControl::SetLabel(const std::string& label)
     Update();
 }
 
-void axTextControl::OnMouseLeftDown(const axPoint& pos)
+void axTextControl::OnMouseLeftDown(const ax::Point& pos)
 {
     _findClickCursorIndex = true;
     _clickPosition = pos - GetAbsoluteRect().position;
@@ -95,7 +95,7 @@ void axTextControl::OnFlashingCursorTimer(const axTimerMsg& msg)
     Update();
 }
 
-void axTextControl::OnMouseLeftUp(const axPoint& pos)
+void axTextControl::OnMouseLeftUp(const ax::Point& pos)
 {
     if(IsGrabbed())
     {
@@ -113,14 +113,14 @@ void axTextControl::OnMouseLeave()
 
 }
 
-void axTextControl::OnMouseLeftDragging(const axPoint& pos)
+void axTextControl::OnMouseLeftDragging(const ax::Point& pos)
 {
     _clickPosition = pos - GetAbsoluteRect().position;
     Update();
     
 }
 
-void axTextControl::OnMouseLeftDoubleClick(const axPoint& pos)
+void axTextControl::OnMouseLeftDoubleClick(const ax::Point& pos)
 {
     _isHightlight = true;
     Update();
@@ -254,7 +254,7 @@ void axTextControl::OnRightArrowDown()
 
 void axTextControl::DrawContourRectangle(axGC* gc)
 {
-    axRect rect(GetRect());
+    ax::Rect rect(GetRect());
     
     if(IsFlag(axTEXT_CTRL_CONTOUR_HIGHLIGHT, _flags))
     {
@@ -263,8 +263,8 @@ void axTextControl::DrawContourRectangle(axGC* gc)
             if(IsFlag(axTEXT_CTRL_CONOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(_info.selected_shadow);
-                gc->DrawRectangle(axRect(axPoint(-5, -5),
-                                         axSize(rect.size + axSize(9, 9))));
+                gc->DrawRectangle(ax::Rect(ax::Point(-5, -5),
+                                         ax::Size(rect.size + ax::Size(9, 9))));
             }
             else
             {
@@ -274,8 +274,8 @@ void axTextControl::DrawContourRectangle(axGC* gc)
                 int nRect = 5;
                 for(int i = 0; i < nRect; i++)
                 {
-                    gc->DrawRectangleContour(axRect(axPoint(-i, -i),
-                                                    axSize(rect.size + axSize(2*i, 2*i))));
+                    gc->DrawRectangleContour(ax::Rect(ax::Point(-i, -i),
+                                                    ax::Size(rect.size + ax::Size(2*i, 2*i))));
                     
                     double alpha = _info.selected_shadow.GetAlpha();
                     double mu = double(i) / double(nRect);
@@ -291,15 +291,15 @@ void axTextControl::DrawContourRectangle(axGC* gc)
 void axTextControl::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect(GetRect());
-	axRect rect0(axPoint(0, 0), rect.size);
+	ax::Rect rect(GetRect());
+	ax::Rect rect0(ax::Point(0, 0), rect.size);
     
     DrawContourRectangle(gc);
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
     
-    axPoint next_pos(5, 5);
+    ax::Point next_pos(5, 5);
     
     if_not_empty(_label)
     {
@@ -315,7 +315,7 @@ void axTextControl::OnPaint()
             if(_isHightlight) // hightlight on.
             {
                 gc->SetColor(_info.hightlight);
-                gc->DrawRectangle(axRect(x_past_pos, 5,
+                gc->DrawRectangle(ax::Rect(x_past_pos, 5,
                                          next_pos.x - x_past_pos, rect0.size.y - 10));
             }
             
@@ -355,10 +355,10 @@ void axTextControl::OnPaint()
     {
         gc->SetColor(_info.cursor);
   
-        gc->DrawLine(axPoint(_cursorBarXPosition, 5),
-                     axPoint(_cursorBarXPosition, rect0.size.y - 5));
+        gc->DrawLine(ax::Point(_cursorBarXPosition, 5),
+                     ax::Point(_cursorBarXPosition, rect0.size.y - 5));
     }
 
 	gc->SetColor(_info.contour);
-	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+	gc->DrawRectangleContour(ax::Rect(ax::Point(0, 0), rect.size));
 }

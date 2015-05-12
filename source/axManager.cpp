@@ -64,7 +64,7 @@ axWindowTree* axManager::GetWindowTree()
     return &_windowTree;
 }
 
-void axManager::OnSize(const axSize& size)
+void axManager::OnSize(const ax::Size& size)
 {
     
 //    for(auto& n : _windowTree.GetMainNode())

@@ -144,7 +144,7 @@ public:
         virtual axWidget* Create(const ax::StringPairVector& attributes);
         
     private:
-        axSize _size;
+        ax::Size _size;
         axFlag _flags;
         axTextBox::Info _info;
         std::string _imgPath;
@@ -156,7 +156,7 @@ public:
      * axTextBox::axTextBox.
      **************************************************************************/
     axTextBox(axWindow* parent,
-              const axRect& rect,
+              const ax::Rect& rect,
               const axTextBox::Events& events,
               const axTextBox::Info& info,
               string img_path = "",
@@ -180,7 +180,7 @@ protected:
     int _nCurrentImg, _cursorIndex, _cursorBarXPosition, _lastCharXPosition;
     unsigned int _maxNumChar;
     bool _isHightlight, _findClickCursorIndex, _cursorFlashActive;
-    axPoint _clickPosition;
+    ax::Point _clickPosition;
     
     enum axTextBoxState
     {
@@ -193,12 +193,12 @@ protected:
     axTimer* _flashingCursor;
     
 	virtual void OnPaint();
-	virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftDragging(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftDragging(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
-    virtual void OnMouseLeftDoubleClick(const axPoint& pos);
+    virtual void OnMouseLeftDoubleClick(const ax::Point& pos);
     virtual void OnKeyDown(const char& key);
     virtual void OnBackSpaceDown();
     

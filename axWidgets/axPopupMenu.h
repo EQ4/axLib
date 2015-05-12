@@ -111,7 +111,7 @@ class axPopupMenu : public axPanel
 {
 public:
 	axPopupMenu(axWindow* parent,
-				const axRect& rect,
+				const ax::Rect& rect,
 				const axPopupMenuEvents& events,
 				const axPopupMenuInfo& info,
                 const std::vector<std::string>& labels,
@@ -136,8 +136,8 @@ private:
     void OnButtonClick(const axToggle::Msg& msg);
 
 	virtual void OnPaint();
-	virtual void OnMouseMotion(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseMotion(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 
 	static const int LABEL_HEIGHT = 20;
 

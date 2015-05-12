@@ -52,7 +52,7 @@ public:
      * axRadio::axRadio.
      **************************************************************************/
     axRadio(axWindow* parent,
-            const axRect& rect,
+            const ax::Rect& rect,
             const axRadio::Events& events,
             const axRadio::Info& info,
             string img_path = "",
@@ -66,8 +66,8 @@ public:
 private:
     // Events.
 	virtual void OnPaint();
-//	virtual void OnMouseLeftDown(const axPoint& pos);
-//	virtual void OnMouseLeftUp(const axPoint& pos);
+//	virtual void OnMouseLeftDown(const ax::Point& pos);
+//	virtual void OnMouseLeftUp(const ax::Point& pos);
 //	virtual void OnMouseEnter();
 //	virtual void OnMouseLeave();
 };

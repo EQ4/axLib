@@ -76,9 +76,9 @@ public:
     
 	void SetChar(const char& letter);
     
-    axSize GetSize() const;
+    ax::Size GetSize() const;
     
-    axPoint GetDelta() const;
+    ax::Point GetDelta() const;
     
     int GetNextPosition() const;
     
@@ -90,8 +90,8 @@ private:
 	FT_Library _freeType;
 	FT_Face _face;
 	GLuint _texture;
-	axSize _size;
-	axPoint _delta;
+    ax::Size _size;
+    ax::Point _delta;
 	int _next, _font_size;
     bool _isReady;
     

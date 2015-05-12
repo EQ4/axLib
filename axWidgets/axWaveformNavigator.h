@@ -19,7 +19,7 @@ class axWaveformNavigator : public axPanel
 {
 public:
     axWaveformNavigator(axWindow* parent,
-                        const axRect& rect,
+                        const ax::Rect& rect,
                         const axSliderEvents& events);
     
     void SetAudioBuffer(axAudioBuffer* buffer);
@@ -45,19 +45,19 @@ private:
     
     int _click_pos_delta_x;
     
-    std::vector<axPoint> _waveformDrawingData;
+    std::vector<ax::Point> _waveformDrawingData;
     
     void FillWaveformDrawingData();
-    axRect GetBorderRect() const;
-    axFloatRange GetBorderRangeFromRect(const axRect& rect) const;
+    ax::Rect GetBorderRect() const;
+    axFloatRange GetBorderRangeFromRect(const ax::Rect& rect) const;
     
     axEvtFunction(double) _value_change_evt;
     
     // Events.
     virtual void OnPaint();
-    virtual void OnMouseLeftDragging(const axPoint& pos);
-    virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseLeftDragging(const ax::Point& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftUp(const ax::Point& pos);
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
     

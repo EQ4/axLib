@@ -29,14 +29,14 @@
 /*******************************************************************************
  * axFrameBuffer.
  ******************************************************************************/
-axFrameBuffer::axFrameBuffer(const axSize& size)
+axFrameBuffer::axFrameBuffer(const ax::Size& size)
 {
 #if _axBackBufferWindow_ == 1
     Init(size);
 #endif // _axBackBufferWindow_
 }
 
-void axFrameBuffer::Init(const axSize& size)
+void axFrameBuffer::Init(const ax::Size& size)
 {
     glGenFramebuffers(1, &_frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
@@ -80,7 +80,7 @@ void axFrameBuffer::Init(const axSize& size)
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void axFrameBuffer::Resize(const axSize& size)
+void axFrameBuffer::Resize(const ax::Size& size)
 {
 #if _axBackBufferWindow_ == 1
     Init(size);
@@ -88,8 +88,8 @@ void axFrameBuffer::Resize(const axSize& size)
 }
 
 void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
-                                      const axSize& size,
-                                      const axSize& globalSize)
+                                      const ax::Size& size,
+                                      const ax::Size& globalSize)
 {
 #if _axBackBufferWindow_ == 1
     bool need_to_reactive_clip_test = false;
@@ -136,7 +136,7 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
     
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     
-    axSize gSize(globalSize);
+    ax::Size gSize(globalSize);
     glViewport(0, 0, gSize.x, gSize.y);
     axOrtho2D(proj.Identity().GetData(), gSize);
     
@@ -151,15 +151,15 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
 #endif //_axBackBufferWindow_
 }
 
-void axFrameBuffer::DrawFrameBuffer(const axSize& shownSize)
+void axFrameBuffer::DrawFrameBuffer(const ax::Size& shownSize)
 {
 #if _axBackBufferWindow_ == 1
     glEnable(GL_TEXTURE_2D);
     
     DrawingFrameBufferBlendFunction();
 
-    axFloatPoint pos(0.0, 0.0);
-    axFloatSize size(shownSize.x, shownSize.y);
+    ax::FloatPoint pos(0.0, 0.0);
+    ax::FloatSize size(shownSize.x, shownSize.y);
     
     glBindTexture(GL_TEXTURE_2D, _frameBufferTexture);
     

@@ -15,7 +15,7 @@
 class axEditorWidgetsPanel : public axPanel
 {
 public:
-    axEditorWidgetsPanel(axWindow* parent, const axRect& rect);
+    axEditorWidgetsPanel(axWindow* parent, const ax::Rect& rect);
     
 private:
     

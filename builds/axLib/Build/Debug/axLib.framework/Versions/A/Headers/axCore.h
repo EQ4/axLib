@@ -38,9 +38,9 @@ public:
 
 	virtual void MainLoop() = 0;
     
-	virtual void Init(const axSize& frame_size) = 0;
+    virtual void Init(const ax::Size& frame_size) = 0;
 
-	virtual void ResizeGLScene(const axSize& size);
+    virtual void ResizeGLScene(const ax::Size& size);
     
     virtual bool CreateGLWindow(const char* title,
                                 int width,
@@ -50,15 +50,15 @@ public:
     
     virtual std::string GetAppPath(){return "";}
     
-    virtual axRect GetScreenRect() = 0;
+    virtual ax::Rect GetScreenRect() = 0;
     
-    virtual axSize GetScreenSize() = 0;
+    virtual ax::Size GetScreenSize() = 0;
     
     virtual string OpenFileDialog() = 0;
     
     virtual void PushEventOnSystemQueue() = 0;
     
-    virtual void ResizeFrame(const axSize& size) = 0;
+    virtual void ResizeFrame(const ax::Size& size) = 0;
     
     virtual void KillGLWindow() = 0;
     
@@ -70,9 +70,9 @@ public:
     
     virtual axManager* GetRealPopWindowManager();
     
-	axSize GetGlobalSize() const;
+    ax::Size GetGlobalSize() const;
     
-    void SetGlobalSize(const axSize& size);
+    void SetGlobalSize(const ax::Size& size);
     
 	virtual void UpdateAll();
     
@@ -89,7 +89,7 @@ protected:
     std::unique_ptr<axManager> _realPopWindowManager;
 
 	bool _needToDraw, _popupNeedToDraw;
-	axSize _size, _popSize;
+    ax::Size _size, _popSize;
 
     virtual void InitManagers();
 };

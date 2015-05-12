@@ -65,13 +65,13 @@ public:
         
     private:
         axWaveform::Info _info;
-        axSize _size;
+        ax::Size _size;
     };
     
     /***************************************************************************
      * axWaveform::axWaveform.
      **************************************************************************/
-    axWaveform(axWindow* parent, const axRect& rect,
+    axWaveform(axWindow* parent, const ax::Rect& rect,
                const axWaveform::Info& info);
     
     void SetAudioBuffer(axAudioBuffer* buffer);

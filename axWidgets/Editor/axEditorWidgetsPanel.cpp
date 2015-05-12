@@ -9,30 +9,30 @@
 #include "axEditorWidgetsPanel.h"
 #include "axEditorWidget.h"
 
-axEditorWidgetsPanel::axEditorWidgetsPanel(axWindow* parent, const axRect& rect):
+axEditorWidgetsPanel::axEditorWidgetsPanel(axWindow* parent, const ax::Rect& rect):
 axPanel(parent, rect)
 {
 //    SetBlockDrawing(true);
     
-    axSize btnSize(rect.size.x, 40);
+    ax::Size btnSize(rect.size.x, 40);
     axEditorWidget* btn1 = new axEditorWidget(this,
-                                              axRect(axPoint(0, 0), btnSize),
+                                              ax::Rect(ax::Point(0, 0), btnSize),
                                               "Button");
     
     axEditorWidget* btn2 = new axEditorWidget(this,
-                                  axRect(btn1->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn1->GetNextPosDown(0), btnSize),
                                               "Toggle");
     
     axEditorWidget* btn3 = new axEditorWidget(this,
-                                  axRect(btn2->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn2->GetNextPosDown(0), btnSize),
                                               "Number");
     
     axEditorWidget* btn4 = new axEditorWidget(this,
-                                  axRect(btn3->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn3->GetNextPosDown(0), btnSize),
                                               "Knob");
     
     axEditorWidget* btn5 = new axEditorWidget(this,
-                                  axRect(btn4->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn4->GetNextPosDown(0), btnSize),
                                               "Slider");
 
     btn1->SetEditingWidget(true);
@@ -54,12 +54,12 @@ axPanel(parent, rect)
 void axEditorWidgetsPanel::OnPaint()
 {
     axGC gc(this);
-    axRect rect(GetDrawingRect());
+    ax::Rect rect(GetDrawingRect());
     
     gc.DrawRectangleColorFade(rect, axColor(0.8), axColor(0.7));
     
     gc.SetColor(axColor(0.0));
     gc.DrawRectangleContour(rect);
-    //    gc.DrawRectangleColorFade(axRect(0, 0, rect.size.x, 40),
+    //    gc.DrawRectangleColorFade(ax::Rect(0, 0, rect.size.x, 40),
     //                              axColor(0.6), axColor(0.9));
 }

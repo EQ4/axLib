@@ -14,7 +14,7 @@
 class axEditorAttributes : public axPanel
 {
 public:
-    axEditorAttributes(axWindow* parent, const axRect& rect);
+    axEditorAttributes(axWindow* parent, const ax::Rect& rect);
     
     void SetEditingWidget(axWidget* widget);
     

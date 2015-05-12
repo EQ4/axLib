@@ -91,7 +91,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     
 //    _axApp = axApp::GetMainApp();
-////    _axApp->GetCore()->Init(axSize(500, 500));
+////    _axApp->GetCore()->Init(ax::Size(500, 500));
 //    
 //    _axApp->CallMainEntryFunction();
 //    _axApp->CallAfterGUILoadFunction();
@@ -127,7 +127,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 #else
     
     _axApp = axApp::GetMainApp();
-    _axApp->GetCore()->Init(axSize(500, 500));
+    _axApp->GetCore()->Init(ax::Size(500, 500));
     
     _axApp->CallMainEntryFunction();
     _axApp->CallAfterGUILoadFunction();
@@ -139,7 +139,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     //**************************************************************************
 
-//    app->GetCore()->Init(axSize(500, 500));
+//    app->GetCore()->Init(ax::Size(500, 500));
 //    
 //    app->CallMainEntryFunction();
 //    app->CallAfterGUILoadFunction();
@@ -180,20 +180,20 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 - (void)windowDidResize:(NSNotification *)notification
 {
     
-    axSize size([[self window] frame].size.width,
+    ax::Size size([[self window] frame].size.width,
                 [[self window] frame].size.height);
     
-    axSize size2([self bounds].size.width,
+    ax::Size size2([self bounds].size.width,
                  [self bounds].size.height);
     
-    axSize size3([[self window] contentLayoutRect].size.width,
+    ax::Size size3([[self window] contentLayoutRect].size.width,
                 [[self window] contentLayoutRect].size.height);
     
     axPrint("windowDidResize. : ", size.x, size.y);
     axPrint("Bounds : ", size2.x, size2.y);
     axPrint("Content : ", size3.x, size3.y);
     
-//    axSize size(frameSize.width, frameSize.height);
+//    ax::Size size(frameSize.width, frameSize.height);
     
     axApp::GetMainApp()->GetCore()->ResizeGLScene(size3);
     
@@ -222,7 +222,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 ////    [GlobalAppDelegate setBounds:NSMakeRect(0.f, 0.f,
 ////                                            frameSize.width, frameSize.height)];
 ////    
-////    axSize size(frameSize.width, frameSize.height);
+////    ax::Size size(frameSize.width, frameSize.height);
 ////    _axApp->GetWindowManager()->OnSize(size);
 //
 //    return frameSize;
@@ -270,7 +270,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
-    axPoint pos(locationInView.x, locationInView.y);
+    ax::Point pos(locationInView.x, locationInView.y);
     
         //**************************************************************************
     // Double click.
@@ -300,7 +300,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
-    axPoint pos(locationInView.x, locationInView.y);
+    ax::Point pos(locationInView.x, locationInView.y);
     
     // Double click.
     if (event.clickCount == 2)
@@ -332,7 +332,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
                                        fromView:nil];
 
         //**************************************************************************
-    axPoint pos(locationInView.x, locationInView.y);
+    ax::Point pos(locationInView.x, locationInView.y);
     _axApp->GetPopupManager()->OnMouseLeftUp(pos);
 
     // TODO :: Fix this.
@@ -347,7 +347,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
                                        fromView:nil];
     
         //**************************************************************************
-    axPoint pos(locationInView.x, locationInView.y);
+    ax::Point pos(locationInView.x, locationInView.y);
     _axApp->GetPopupManager()->OnMouseLeftDragging(pos);
     
     if(_axApp->GetPopupManager()->IsEventReachWindow() == false)
@@ -365,7 +365,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     NSPoint locationInView =
             [self convertPoint:[evt locationInWindow] fromView:nil];
 
-    axPoint pos(locationInView.x, locationInView.y);
+    ax::Point pos(locationInView.x, locationInView.y);
     _axApp->GetPopupManager()->OnMouseMotion(pos);
     
     if(_axApp->GetPopupManager()->IsEventReachWindow() == false)
@@ -500,11 +500,11 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
         //**************************************************************************
     axCore* core = _axApp->GetCore();
     
-    axSize global_size = core->GetGlobalSize();
+    ax::Size global_size = core->GetGlobalSize();
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
     {
-        core->ResizeGLScene(axSize(backingBounds.size.width,
+        core->ResizeGLScene(ax::Size(backingBounds.size.width,
                                    backingBounds.size.height));
 //        core->ResizeGLScene(backingBounds.size.width,
 //                            backingBounds.size.height,

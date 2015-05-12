@@ -10,7 +10,7 @@
 #include "axButton.h"
 
 axEditorWidget::axEditorWidget(axWindow* parent,
-                               const axRect& rect,
+                               const ax::Rect& rect,
                                const std::string& label) :
 // Heritage.
 axPanel(parent, rect),
@@ -72,7 +72,7 @@ void axEditorWidget::SetLabel(const std::string& label)
     Update();
 }
 
-void axEditorWidget::OnMouseLeftDown(const axPoint& pos)
+void axEditorWidget::OnMouseLeftDown(const ax::Point& pos)
 {
     _currentColor = &_info.clicking;
     
@@ -88,15 +88,15 @@ void axEditorWidget::OnMouseLeftDown(const axPoint& pos)
     
 }
 
-void axEditorWidget::OnMouseLeftDragging(const axPoint &pos)
+void axEditorWidget::OnMouseLeftDragging(const ax::Point &pos)
 {
 //    axApp::GetInstance()->GetEditor()->UpdateInfo();
 //    
 //    
 //    axWindow* panel = GetParent()->GetParent();
-//    axRect panelRect = panel->GetAbsoluteRect();
+//    ax::Rect panelRect = panel->GetAbsoluteRect();
 //    
-//    axPoint position(pos);
+//    ax::Point position(pos);
 //    position = position - panelRect.position;
 //    position.x = position.x - GetParent()->GetSize().x + 5;
 //    position.y = position.y - GetParent()->GetSize().y + 5;
@@ -112,7 +112,7 @@ void axEditorWidget::OnMouseLeftDragging(const axPoint &pos)
 //    GetParent()->SetPosition(position);
 }
 
-void axEditorWidget::OnMouseLeftUp(const axPoint& pos)
+void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
 {
     if (IsGrabbed())
     {
@@ -141,10 +141,10 @@ void axEditorWidget::OnMouseLeftUp(const axPoint& pos)
                 btn_info.selected = btn_info.normal;
                 btn_info.round_corner_radius = 3;
                 
-                axPoint rel_pos = pos - win->GetAbsoluteRect().position;
+                ax::Point rel_pos = pos - win->GetAbsoluteRect().position;
                 
                 axButton* btn1 = new axButton(win,
-                                              axRect(rel_pos, axSize(60, 26)),
+                                              ax::Rect(rel_pos, ax::Size(60, 26)),
                                               axButton::Events(),
                                               btn_info,
                                               "", "Widgets",
@@ -173,7 +173,7 @@ void axEditorWidget::OnMouseLeftUp(const axPoint& pos)
     }
 }
 
-void axEditorWidget::OnMouseRightDown(const axPoint& pos)
+void axEditorWidget::OnMouseRightDown(const ax::Point& pos)
 {
     
 }
@@ -209,7 +209,7 @@ void axEditorWidget::OnMouseLeave()
 void axEditorWidget::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect(GetDrawingRect());
+    ax::Rect rect(GetDrawingRect());
     
 //    gc->SetColor(*_currentColor);
 //    gc->DrawRectangle(rect);
@@ -217,11 +217,11 @@ void axEditorWidget::OnPaint()
     gc->DrawRectangleColorFade(rect, axColor(0.95), axColor(0.9));
     
     gc->SetColor(0.0);
-    gc->DrawRectangleContour(axRect(5, 5, 40, 30));
+    gc->DrawRectangleContour(ax::Rect(5, 5, 40, 30));
     
-    gc->DrawString(_fontBold, _label, axPoint(50, 12));
+    gc->DrawString(_fontBold, _label, ax::Point(50, 12));
     
-    gc->DrawString(_font, "Simple button (60x26)", axPoint(120, 12));
+    gc->DrawString(_font, "Simple button (60x26)", ax::Point(120, 12));
 
     
     gc->SetColor(_info.contour);

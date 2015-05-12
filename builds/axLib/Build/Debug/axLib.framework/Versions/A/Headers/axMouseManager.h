@@ -38,12 +38,12 @@ public:
     void SetWindowTree(axWindowTree* tree);
 
 	// Mouse events.
-	void OnMouseMotion(const axPoint& pos);
-    void OnMouseLeftDragging(const axPoint& pos);
-	void OnMouseLeftDown(const axPoint& pos);
-    void OnMouseLeftDoubleClick(const axPoint& pos);
-	void OnMouseLeftUp(const axPoint& pos);
-	void OnMouseRightDown(const axPoint& pos);
+	void OnMouseMotion(const ax::Point& pos);
+    void OnMouseLeftDragging(const ax::Point& pos);
+	void OnMouseLeftDown(const ax::Point& pos);
+    void OnMouseLeftDoubleClick(const ax::Point& pos);
+	void OnMouseLeftUp(const ax::Point& pos);
+	void OnMouseRightDown(const ax::Point& pos);
 	void OnMouseRightUp();
 	void GrabMouse(axWindow* win);
 	void UnGrabMouse();
@@ -62,7 +62,7 @@ private:
 	axWindow* _mouseCaptureWindow;
 	axWindow* _pastWindow;
 	axWindow* _currentWindow;
-	axPoint _mousePosition;
+	ax::Point _mousePosition;
     
     bool _evtHasReachWindow;
     void VerifyAndProcessWindowChange();

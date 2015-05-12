@@ -29793,12 +29793,12 @@ namespace exprtk
 } // namespace exprtk
 
 axPlot::axPlot(axWindow* parent,
-               const axRect& rect,
+               const ax::Rect& rect,
                const axPlotEvents& events,
                const axPlotInfo& info,
                const std::string& expr,
-               const axFloatRange& xRange,
-               const axFloatRange& yRange,
+               const ax::FloatRange& xRange,
+               const ax::FloatRange& yRange,
                const std::vector<double> xGridValue,
                const std::vector<double> xGridDarkValue,
                const std::vector<double> yGridValue,
@@ -29824,8 +29824,8 @@ _flags(flags)
 void axPlot::OnPaint()
 {
     axGC* gc = GetGC();
-    axSize size = GetSize();
-    axRect rect0(0, 0, size.x, size.y);
+    ax::Size size = GetSize();
+    ax::Rect rect0(0, 0, size.x, size.y);
     
     gc->SetColor(_info.background_color);
     gc->DrawRectangle(rect0);
@@ -29834,20 +29834,20 @@ void axPlot::OnPaint()
     
     
 //    double xAxisPos = _yRange.GetZeroToOneValue(0.0) * rect0.size.y;
-//    gc->DrawLine(axPoint(0, xAxisPos), axPoint(rect0.size.x, xAxisPos));
+//    gc->DrawLine(ax::Point(0, xAxisPos), ax::Point(rect0.size.x, xAxisPos));
     
     
     gc->SetColor(_info.grid_color);
     for(auto& n : _xGridValue)
     {
         double yAxisPos = _xRange.GetZeroToOneValue(n) * rect0.size.x;
-        gc->DrawLine(axPoint(yAxisPos, 0), axPoint(yAxisPos, rect0.size.y));
+        gc->DrawLine(ax::Point(yAxisPos, 0), ax::Point(yAxisPos, rect0.size.y));
     }
     
     for(auto& n : _yGridValue)
     {
         double xAxisPos = _yRange.GetZeroToOneValue(n) * rect0.size.y;
-        gc->DrawLine(axPoint(0, xAxisPos), axPoint(rect0.size.x, xAxisPos));
+        gc->DrawLine(ax::Point(0, xAxisPos), ax::Point(rect0.size.x, xAxisPos));
     }
     
     
@@ -29855,13 +29855,13 @@ void axPlot::OnPaint()
     for(auto& n : _xGridDarkValue)
     {
         double yAxisPos = _xRange.GetZeroToOneValue(n) * rect0.size.x;
-        gc->DrawLine(axPoint(yAxisPos, 0), axPoint(yAxisPos, rect0.size.y));
+        gc->DrawLine(ax::Point(yAxisPos, 0), ax::Point(yAxisPos, rect0.size.y));
     }
     
     for(auto& n : _xGridDarkValue)
     {
         double xAxisPos = _yRange.GetZeroToOneValue(n) * rect0.size.y;
-        gc->DrawLine(axPoint(0, xAxisPos), axPoint(rect0.size.x, xAxisPos));
+        gc->DrawLine(ax::Point(0, xAxisPos), ax::Point(rect0.size.x, xAxisPos));
     }
     
 
@@ -29895,8 +29895,8 @@ void axPlot::OnPaint()
         double yPosRight = (1.0 - _yRange.GetZeroToOneValue(v)) * rect0.size.y;
         
         
-        gc->DrawSmouthLine(axPoint(xPosLeft, yPosLeft),
-                           axPoint(xPosRight, yPosRight));
+        gc->DrawSmouthLine(ax::Point(xPosLeft, yPosLeft),
+                           ax::Point(xPosRight, yPosRight));
 
         past_v = v;
     }
@@ -29909,7 +29909,7 @@ void axPlot::OnPaint()
 //            double xPos = _xRange.GetZeroToOneValue(n.x) * rect0.size.x;
 //            double yPos = (1.0 - _yRange.GetZeroToOneValue(n.y)) * rect0.size.y;
 //
-//            axPoint pt(xPos, yPos);
+//            ax::Point pt(xPos, yPos);
 //            gc->DrawPoint(pt, 5);
 //        }
 //    }

@@ -94,14 +94,17 @@ axNumberBox::Info::Info(const ax::StringPairVector& attributes)
 
 ax::StringVector axNumberBox::Info::GetParamNameList() const
 {
-    return ax::StringVector{"normal",
-                            "hover",
-                            "clicking",
-                            "selected",
-                            "contour",
-                            "font_color",
-                            "img",
-                            "single_img"};
+    return ax::StringVector
+    {
+        "normal",
+        "hover",
+        "clicking",
+        "selected",
+        "contour",
+        "font_color",
+        "img",
+        "single_img"
+    };
 }
 
 std::string axNumberBox::Info::GetAttributeValue(const std::string& name)
@@ -191,9 +194,9 @@ _past(nullptr)
 axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     axNumberBox::Events evts;
-    axFloatRange range(0.0, 1.0);
+    ax::FloatRange range(0.0, 1.0);
     axControlType ctrltype = axControlType::axCTRL_FLOAT;
     for(auto& s : attributes)
     {
@@ -206,10 +209,10 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
             
-            _size = axSize(stoi(strVec[2]),
+            _size = ax::Size(stoi(strVec[2]),
                            stoi(strVec[3]));
         }
         else if(s.first == "info")
@@ -230,8 +233,8 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            range = axFloatRange(stod(strVec[0]),
-                                 stod(strVec[1]));
+            range = ax::FloatRange(stod(strVec[0]),
+                                   stod(strVec[1]));
         }
         else if(s.first == std::string("ctrl_type"))
         {
@@ -251,7 +254,7 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
         
     }
     
-    axNumberBox* box = new_ axNumberBox(_parent, axRect(pos, _size),
+    axNumberBox* box = new_ axNumberBox(_parent, ax::Rect(pos, _size),
                                        evts, _info, 0, 0.0, range,
                                        ctrltype);
     
@@ -263,12 +266,12 @@ axNumberBox* axNumberBox::Builder::Create(ax::StringPairVector attributes)
  * axNumberBox::axNumberBox.
  ******************************************************************************/
 axNumberBox::axNumberBox(axWindow* parent,
-                         const axRect& rect,
+                         const ax::Rect& rect,
                          const axNumberBox::Events& events,
                          const axNumberBox::Info& info,
                          axFlag flags,
                          double value,
-                         axFloatRange range,
+                         ax::FloatRange range,
                          axControlType type,
                          axControlUnit unit,
                          axControlInterpolation interpolation,
@@ -339,7 +342,7 @@ void axNumberBox::OnMouseLeave()
     }
 }
 
-void axNumberBox::OnMouseLeftDown(const axPoint& pos)
+void axNumberBox::OnMouseLeftDown(const ax::Point& pos)
 {
 
 	_clickPosY = (pos - GetAbsoluteRect().position).y;
@@ -350,7 +353,7 @@ void axNumberBox::OnMouseLeftDown(const axPoint& pos)
 
 }
 
-void axNumberBox::OnMouseLeftUp(const axPoint& pos)
+void axNumberBox::OnMouseLeftUp(const ax::Point& pos)
 {
     if(IsGrabbed())
     {
@@ -372,10 +375,10 @@ void axNumberBox::OnMouseLeftUp(const axPoint& pos)
     }
 }
 
-void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
+void axNumberBox::OnMouseLeftDragging(const ax::Point& pos)
 {
-	axPoint pt(GetAbsoluteRect().position);
-    axPoint p = pos - pt;
+	ax::Point pt(GetAbsoluteRect().position);
+    ax::Point p = pos - pt;
 
     double delta = p.y - _clickPosY;
     
@@ -395,10 +398,10 @@ void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
 void axNumberBox::OnPaint()
 {
 	axGC* gc = GetGC();
-	axSize size = GetSize();
-//	axRect rect0(0, 0, size.x, size.y);
-    axRect rect0(GetDrawingRect());
-    axRect rect(GetRect());
+	ax::Size size = GetSize();
+//	ax::Rect rect0(0, 0, size.x, size.y);
+    ax::Rect rect0(GetDrawingRect());
+    ax::Rect rect(GetRect());
 
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
@@ -409,17 +412,17 @@ void axNumberBox::OnPaint()
         {
             if(IsFlag(Flags::NO_IMG_RESIZE, _flags))
             {
-                gc->DrawImage(_bgImg, axPoint(0, 0));
+                gc->DrawImage(_bgImg, ax::Point(0, 0));
             }
             else
             {
-                gc->DrawImageResize(_bgImg, axPoint(0, 0), rect0.size);
+                gc->DrawImageResize(_bgImg, ax::Point(0, 0), rect0.size);
             }
         }
         else
         {
-            gc->DrawPartOfImage(_bgImg, axPoint(0, _nCurrentImg * rect.size.y),
-                                rect.size, axPoint(0, 0));
+            gc->DrawPartOfImage(_bgImg, ax::Point(0, _nCurrentImg * rect.size.y),
+                                rect.size, ax::Point(0, 0));
         }
     }
 

@@ -22,7 +22,7 @@
 #include "axSlider.h"
 
 axSlider::axSlider(axWindow* parent,
-	const axRect& rect,
+	const ax::Rect& rect,
 	const axSliderEvents& events,
 	const axSliderInfo& info,
 	//string img_path,
@@ -99,19 +99,19 @@ void axSlider::SetValue(const double& value)
 	Update();
 }
 
-void axSlider::OnMouseLeftDown(const axPoint& mousePos)
+void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 {
-	axPoint pos = mousePos - GetAbsoluteRect().position;
+	ax::Point pos = mousePos - GetAbsoluteRect().position;
 
-	axRect sliderBtnRect;
+	ax::Rect sliderBtnRect;
 	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
-		sliderBtnRect = axRect(axPoint(_btnYPos, _sliderPosition),
+		sliderBtnRect = ax::Rect(ax::Point(_btnYPos, _sliderPosition),
 			_info.btn_size);
 	}
 	else
 	{
-		sliderBtnRect = axRect(axPoint(_sliderPosition, _btnYPos),
+		sliderBtnRect = ax::Rect(ax::Point(_sliderPosition, _btnYPos),
 			_info.btn_size);
 	}
 
@@ -178,10 +178,10 @@ void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 	}
 }
 
-void axSlider::OnMouseLeftUp(const axPoint& p)
+void axSlider::OnMouseLeftUp(const ax::Point& p)
 {
 	
-	axPoint pos = p - GetAbsoluteRect().position;
+	ax::Point pos = p - GetAbsoluteRect().position;
 
 	if (IsGrabbed())
 	{
@@ -194,11 +194,11 @@ void axSlider::OnMouseLeftUp(const axPoint& p)
 	}
 }
 
-void axSlider::OnMouseLeftDragging(const axPoint& p)
+void axSlider::OnMouseLeftDragging(const ax::Point& p)
 {
 	cout << "Drag" << endl;
 	//DSTREAM << "DRAG" << endl;
-	axPoint pos = p - GetAbsoluteRect().position;
+	ax::Point pos = p - GetAbsoluteRect().position;
 
 	blockSliderPosition(pos);
 
@@ -213,9 +213,9 @@ void axSlider::OnMouseLeftDragging(const axPoint& p)
 	Update();
 }
 
-void axSlider::blockSliderPosition(const axPoint& pos)
+void axSlider::blockSliderPosition(const ax::Point& pos)
 {
-	//axPoint pos = p - GetRect().position;
+	//ax::Point pos = p - GetRect().position;
 
 	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
@@ -253,19 +253,19 @@ void axSlider::updateSliderValue()
 	}
 }
 
-void axSlider::OnMouseMotion(const axPoint& p)
+void axSlider::OnMouseMotion(const ax::Point& p)
 {
-	axPoint pos = p - GetAbsoluteRect().position;
+	ax::Point pos = p - GetAbsoluteRect().position;
 
-	axRect sliderBtnRect;
+	ax::Rect sliderBtnRect;
 	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
-		sliderBtnRect = axRect(axPoint(_btnYPos, _sliderPosition),
+		sliderBtnRect = ax::Rect(ax::Point(_btnYPos, _sliderPosition),
 			_info.btn_size);
 	}
 	else
 	{
-		sliderBtnRect = axRect(axPoint(_sliderPosition, _btnYPos),
+		sliderBtnRect = ax::Rect(ax::Point(_sliderPosition, _btnYPos),
 			_info.btn_size);
 	}
 
@@ -287,16 +287,16 @@ void axSlider::OnMouseMotion(const axPoint& p)
 	}
 }
 
-void axSlider::OnMouseEnter(const axPoint& p)
+void axSlider::OnMouseEnter(const ax::Point& p)
 {
 	// cout << "Enter" << endl;
-	axPoint pos = p - GetAbsoluteRect().position;
+	ax::Point pos = p - GetAbsoluteRect().position;
 
 	if (IsFlag(axSLIDER_FLAG_LEFT_CLICK_ENTER, _flags))
 	{
 		//if (GetParent()->LeftIsDown())
 		//{
-			axRect sliderBtnRect(axPoint(_sliderPosition, _btnYPos),
+			ax::Rect sliderBtnRect(ax::Point(_sliderPosition, _btnYPos),
 				_info.btn_size);
 
 			_nCurrentImg = axBTN_DOWN;
@@ -316,9 +316,9 @@ void axSlider::OnMouseEnter(const axPoint& p)
 	}
 }
 
-void axSlider::OnMouseLeave(const axPoint& p)
+void axSlider::OnMouseLeave(const ax::Point& p)
 {
-	axPoint pos = p - GetAbsoluteRect().position;
+	ax::Point pos = p - GetAbsoluteRect().position;
 
 	if (IsFlag(axSLIDER_FLAG_RELEASE_ON_LEAVE, _flags))
 	{
@@ -334,24 +334,24 @@ void axSlider::OnMouseLeave(const axPoint& p)
 	}
 }
 
-void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const axRect& rect0)
+void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0)
 {
 	int half_btn_size = _info.btn_size.y * 0.5;
 
-	axRect slider_rect;
+	ax::Rect slider_rect;
 	if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 	{
-		// slider_rect = axRect(_sliderYPos, _sliderPosition + half_btn_size,
+		// slider_rect = ax::Rect(_sliderYPos, _sliderPosition + half_btn_size,
 		// 					 12,// _info.slider_width,
 		// 					 GetSize().y - _sliderPosition - half_btn_size);
 
-		slider_rect = axRect(_sliderYPos, _sliderPosition + half_btn_size,
+		slider_rect = ax::Rect(_sliderYPos, _sliderPosition + half_btn_size,
 							 _info.slider_width,
 							 GetSize().y - _sliderPosition - half_btn_size);
 	}
 	else
 	{
-		slider_rect = axRect(_sliderYPos, 0,
+		slider_rect = ax::Rect(_sliderYPos, 0,
 							 _info.slider_width,
 							 _sliderPosition + half_btn_size);
 	}
@@ -363,15 +363,15 @@ void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const axRect& rect0)
 	// gc->DrawRectangleContour(slider_rect);
 }
 
-void axSlider::DrawVerticalSlider(axGC* gc, const axRect& rect0)
+void axSlider::DrawVerticalSlider(axGC* gc, const ax::Rect& rect0)
 {
-	axSize size(rect0.size);
+	ax::Size size(rect0.size);
 	int half_btn_size = _info.btn_size.y * 0.5;
 
 	// if (IsFlag(axSLIDER_FLAG_BACK_SLIDER, _flags))
 	// {
 	// 	// Back slider.
-	// 	axRect back_slider(_sliderYPos, 0, _info.slider_width, size.y);
+	// 	ax::Rect back_slider(_sliderYPos, 0, _info.slider_width, size.y);
 
 	// 	gc->SetColor(_info.backSliderColor, 1.0);
 	// 	gc->DrawRectangle(back_slider);
@@ -393,20 +393,20 @@ void axSlider::DrawVerticalSlider(axGC* gc, const axRect& rect0)
 	if (_btnImg.IsImageReady())
 	{
 		gc->DrawPartOfImage(&_btnImg,
-			axPoint(0, _nCurrentImg * _info.btn_size.y),
+			ax::Point(0, _nCurrentImg * _info.btn_size.y),
 			_info.btn_size,
-			axPoint(_btnYPos, _sliderPosition));
+			ax::Point(_btnYPos, _sliderPosition));
 	}
 }
 
 void axSlider::OnPaint()
 {
 	axGC* gc = GetGC();
-	axSize size = GetSize();
-//	axRect rect0(0, 0, size.x, size.y);
+	ax::Size size = GetSize();
+//	ax::Rect rect0(0, 0, size.x, size.y);
     
     int radius = _info.contour_round_radius;
-    axRect rect0(GetDrawingRect());
+    ax::Rect rect0(GetDrawingRect());
 
     
     if(radius > 1)
@@ -433,7 +433,7 @@ void axSlider::OnPaint()
 		if (IsFlag(axSLIDER_FLAG_BACK_SLIDER, _flags))
 		{
 			// Back slider.
-			axRect back_slider(0, _sliderYPos, size.x,
+			ax::Rect back_slider(0, _sliderYPos, size.x,
 				_info.slider_width);
 
 			gc->SetColor(_info.backSliderColor);
@@ -447,20 +447,20 @@ void axSlider::OnPaint()
 
 		if (!IsFlag(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
 		{
-			axRect slider_rect(0, _sliderYPos,
+			ax::Rect slider_rect(0, _sliderYPos,
 				_sliderPosition + half_btn_size,
 				_info.slider_width);
 
 			if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 			{
-				slider_rect = axRect(_sliderPosition,
+				slider_rect = ax::Rect(_sliderPosition,
 					_sliderYPos,
 					GetSize().x - _sliderPosition + half_btn_size,
 					_info.slider_width);
 			}
 			else
 			{
-				slider_rect = axRect(0, _sliderYPos,
+				slider_rect = ax::Rect(0, _sliderYPos,
 					_sliderPosition + half_btn_size,
 					_info.slider_width);
 			}
@@ -501,9 +501,9 @@ void axSlider::OnPaint()
 		if (_btnImg.IsImageReady())
 		{
 			gc->DrawPartOfImage(&_btnImg,
-				axPoint(0, _nCurrentImg * _info.btn_size.y),
+				ax::Point(0, _nCurrentImg * _info.btn_size.y),
 				_info.btn_size,
-				axPoint(_sliderPosition, _btnYPos));
+				ax::Point(_sliderPosition, _btnYPos));
 		}
 	}
 

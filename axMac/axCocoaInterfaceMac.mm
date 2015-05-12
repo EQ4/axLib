@@ -208,7 +208,7 @@ void AddEventToDispatchQueue()
     });
 }
 
-void axCocoaResizeFrame(const axSize& size)
+void axCocoaResizeFrame(const ax::Size& size)
 {
 #ifdef _AX_VST_APP_
 #else
@@ -221,7 +221,7 @@ void axCocoaResizeFrame(const axSize& size)
 
 }
 
-static axPoint hide_mouse_position;
+static ax::Point hide_mouse_position;
 
 void axCocoaHideMouse()
 {
@@ -318,7 +318,7 @@ void axReInitApp(void* appDelegate)
 }
 
 
-axSize axCocoaGetScreenSize()
+ax::Size axCocoaGetScreenSize()
 {
     NSRect screenRect;
     NSArray *screenArray = [NSScreen screens];
@@ -330,7 +330,7 @@ axSize axCocoaGetScreenSize()
         screenRect = [screen visibleFrame];
     }
     
-    return axSize(screenRect.size.width, screenRect.size.height);
+    return ax::Size(screenRect.size.width, screenRect.size.height);
 }
 
 

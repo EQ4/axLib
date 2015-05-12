@@ -34,7 +34,7 @@ std::string CocoaGetAppPath();
 
 void AddEventToDispatchQueue();
 
-void axCocoaResizeFrame(const axSize& size);
+void axCocoaResizeFrame(const ax::Size& size);
 
 void axCocoaHideMouse();
 
@@ -47,7 +47,7 @@ void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate);
 
 void axReInitApp(void* appDelegate);
 
-axSize axCocoaGetScreenSize();
+ax::Size axCocoaGetScreenSize();
 
 void MainEntryPointCocoa(int argc, const char * argv[]);
 

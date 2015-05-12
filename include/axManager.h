@@ -50,7 +50,7 @@ public:
 	void OnPaint();
 	void OnFocusIn();
 	void OnUpdate();
-	void OnSize(const axSize& size);
+	void OnSize(const ax::Size& size);
 
     std::string _managerName;
     axWindowTree* GetWindowTree();

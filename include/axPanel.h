@@ -33,9 +33,9 @@ class axScrollBar;
 class axPanel : public axWindow
 {
 public:
-    axPanel(axApp* app, const axRect& rect);
-	axPanel(axWindow* parent, const axRect& rect);
-	axPanel(int f, axWindow* parent, const axRect& rect);
+    axPanel(axApp* app, const ax::Rect& rect);
+	axPanel(axWindow* parent, const ax::Rect& rect);
+	axPanel(int f, axWindow* parent, const ax::Rect& rect);
 
     virtual ~axPanel();
     
@@ -63,11 +63,11 @@ public:
 //	axApp* GetApp();
 
 	void BlockDrawing();
-	void BlockDrawing(const axRect& rect);
+	void BlockDrawing(const ax::Rect& rect);
 
 	void UnBlockDrawing();
     
-    axRect GetWindowPixelData(unsigned char*& data) const;
+    ax::Rect GetWindowPixelData(unsigned char*& data) const;
     
     void SetScrollBar(axScrollBar* scrollbar);
     axScrollBar* GetScrollBar();

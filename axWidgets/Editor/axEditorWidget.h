@@ -18,7 +18,7 @@ class axEditorWidget : public axPanel
 {
 public:
     axEditorWidget(axWindow* parent,
-                   const axRect& rect,
+                   const ax::Rect& rect,
                    const std::string& label);
     
     void SetMsg(const std::string& msg);
@@ -38,11 +38,11 @@ protected:
     bool _selected;
     
     virtual void OnPaint();
-    virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftDragging(const axPoint &pos);
-    virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftDragging(const ax::Point &pos);
+    virtual void OnMouseLeftUp(const ax::Point& pos);
     
-    virtual void OnMouseRightDown(const axPoint& pos);
+    virtual void OnMouseRightDown(const ax::Point& pos);
     
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();

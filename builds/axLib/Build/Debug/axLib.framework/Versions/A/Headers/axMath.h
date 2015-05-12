@@ -44,7 +44,7 @@ public:
     
     axMatrix4& Identity();
     
-    axMatrix4& Translate(const axPoint& vec);
+    axMatrix4& Translate(const ax::Point& vec);
     
     axMatrix4& Multiply(const axMatrix4& mat);
     
@@ -58,7 +58,7 @@ private:
     double _data[16];
 };
 
-void axOrtho2D(double* data, const axSize& size);
+void axOrtho2D(double* data, const ax::Size& size);
 
 namespace axMath
 {

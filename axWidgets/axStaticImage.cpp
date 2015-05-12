@@ -32,10 +32,10 @@ _parent(win)
 }
 
 axStaticImage* axStaticImage::axStaticImageBuilder::
-Create(axVectorPairString attributes)
+Create(ax::StringPairVector attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     for(auto& s : attributes)
     {
         if(s.first == "name")
@@ -44,10 +44,10 @@ Create(axVectorPairString attributes)
         }
         else if(s.first == "pos")
         {
-            axStringVector strVec;
+            ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]),
+            pos = ax::Point(stoi(strVec[0]),
                           stoi(strVec[1]));
         }
         else if(s.first == "path")
@@ -57,7 +57,7 @@ Create(axVectorPairString attributes)
         }
     }
     
-    axStaticImage* img = new_ axStaticImage(_parent, axRect(pos, _size),
+    axStaticImage* img = new_ axStaticImage(_parent, ax::Rect(pos, _size),
                                            _img);
     
     _parent->GetResourceManager()->Add(name, img);
@@ -69,7 +69,7 @@ Create(axVectorPairString attributes)
  * axStaticImage.
  ******************************************************************************/
 axStaticImage::axStaticImage(axWindow* parent,
-                             const axRect& rect,
+                             const ax::Rect& rect,
                              const std::string& path):
 axPanel(parent, rect)
 {
@@ -78,7 +78,7 @@ axPanel(parent, rect)
 }
 
 axStaticImage::axStaticImage(axWindow* parent,
-                             const axRect& rect,
+                             const ax::Rect& rect,
                              axImage* img):
 axPanel(parent, rect),
 _img(img)
@@ -90,7 +90,7 @@ _img(img)
 void axStaticImage::OnPaint()
 {
     axGC* gc = GetGC();
-    gc->DrawImage(_img, axPoint(0, 0));
+    gc->DrawImage(_img, ax::Point(0, 0));
 }
 
 

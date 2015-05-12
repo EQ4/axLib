@@ -10,17 +10,22 @@
 
 namespace ax
 {
-    FileBrowser::FileBrowser(axWindow* parent, const axRect& rect):
+    FileBrowser::FileBrowser(axWindow* parent, const ax::Rect& rect):
     // Parent.
     axPanel(parent, rect)
     {
+        ax::StringVector dir = ax::Utils::ListDirectory("/Users/alexarse/");
         
+        for(auto& n : dir)
+        {
+            axPrint(n);
+        }
     }
     
     void FileBrowser::OnPaint()
     {
         axGC gc(this);
-        axRect rect(GetDrawingRect());
+        ax::Rect rect(GetDrawingRect());
         
         gc.SetColor(axColor(0.55));
         gc.DrawRectangle(rect);

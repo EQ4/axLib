@@ -21,6 +21,35 @@
  ******************************************************************************/
 #include "axUtils.h"
 
+namespace ax
+{
+    namespace Utils
+    {
+        StringVector ListDirectory(const std::string& dir_path)
+        {
+            StringVector file_list;
+            
+            DIR* dir = opendir(dir_path.c_str());
+            
+            struct dirent* entry = readdir(dir);
+            
+            while (entry != nullptr)
+            {
+//                if (entry->d_type == DT_DIR)
+//                    printf("%s\n", entry->d_name);
+                
+                file_list.emplace_back(std::string(entry->d_name));
+                
+                entry = readdir(dir);
+            }
+            
+            closedir(dir);
+            
+            return file_list;
+        }
+    }
+}
+
 ax::StringVector GetVectorFromStringDelimiter(const std::string& str,
                                               const std::string& delimiter)
 {

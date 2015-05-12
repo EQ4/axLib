@@ -34,10 +34,10 @@ axGC::axGC(axWindow* win)//:
     _win = win;
 }
 
-axFloatRect axGC::RectToFloatRect(const axRect& rect)
+ax::FloatRect axGC::RectToFloatRect(const ax::Rect& rect)
 {
-	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
-					   axFloat(rect.size.x), axFloat(rect.size.y));
+    return ax::FloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
+					     axFloat(rect.size.x), axFloat(rect.size.y));
 }
 
 void axGC::SetColor(const axDouble& r, const axDouble& g, const axDouble& b)
@@ -66,15 +66,15 @@ void axGC::SetColor(const axColor& color, const float& alpha)
 	glColor4d(color.GetRed(), color.GetGreen(), color.GetBlue(), alpha);
 }
 
-void axGC::DrawRectangle(const axRect& rect)
+void axGC::DrawRectangle(const ax::Rect& rect)
 {
 //    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
 //    axMatrix4 mview;
     
 //    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
     
-    axFloatRect frect = RectToFloatRect(rect);
-    axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    ax::FloatRect frect = RectToFloatRect(rect);
+    axRectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
     
     // For scroll bar.
     //	frect.position.x  -= floor(_win->GetScrollDecay().x);
@@ -88,7 +88,7 @@ void axGC::DrawRectangle(const axRect& rect)
 //    mview_before.Load();
 }
 
-void DrawQuarterCircleContour(const axFloatPoint& pos,
+void DrawQuarterCircleContour(const ax::FloatPoint& pos,
                               const int& radius,
                               const double& angle,
                               const int& nSegments)
@@ -113,7 +113,7 @@ void DrawQuarterCircleContour(const axFloatPoint& pos,
     glEnd();
 }
 
-void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
+void axGC::DrawRoundedRectangleContour(const ax::Rect& rect, const int& radius)
 {
 
     int r = radius;
@@ -124,7 +124,7 @@ void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
     }
     
     int nSegments = 10;
-    axFloatRect frect = RectToFloatRect(rect);
+    ax::FloatRect frect = RectToFloatRect(rect);
 
     glBegin(GL_LINES);
     
@@ -161,27 +161,27 @@ void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
 
     
     // Bottom right.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContour(ax::FloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + frect.size.y - r),
                              r, 0, nSegments);
     
     // Top left.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r - 1 ,
+    DrawQuarterCircleContour(ax::FloatPoint(frect.position.x + r - 1 ,
                                           frect.position.y + r - 1),
                              r, M_PI, nSegments);
     
     // Top right.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContour(ax::FloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + r - 1),
                              r, 3.0 * M_PI * 0.5, nSegments);
     
     // Bottom left.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r - 1,
+    DrawQuarterCircleContour(ax::FloatPoint(frect.position.x + r - 1,
                                           frect.position.y + frect.size.y - r),
                              r, M_PI * 0.5, nSegments);
 }
 
-void DrawQuarterCircleContourSmooth(axGC* gc, const axFloatPoint& pos,
+void DrawQuarterCircleContourSmooth(axGC* gc, const ax::FloatPoint& pos,
                               const int& radius,
                               const double& angle,
                               const int& nSegments)
@@ -197,13 +197,13 @@ void DrawQuarterCircleContourSmooth(axGC* gc, const axFloatPoint& pos,
         
 //        glVertex2d(x + pos.x, y + pos.y);
         
-        axPoint pt1(x + pos.x, y + pos.y);
+        ax::Point pt1(x + pos.x, y + pos.y);
         theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
         
         x = radius * cosf(theta + angle);
         y = radius * sinf(theta + angle);
         
-        axPoint pt2(x + pos.x, y + pos.y);
+        ax::Point pt2(x + pos.x, y + pos.y);
 //        glVertex2d(x + pos.x, y + pos.y);
         
         gc->DrawSmouthLine(pt1, pt2, 3);
@@ -211,7 +211,7 @@ void DrawQuarterCircleContourSmooth(axGC* gc, const axFloatPoint& pos,
 //    glEnd();
 }
 
-void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
+void axGC::DrawRoundedRectangleContourSmooth(const ax::Rect& rect,
                                              const int& radius)
 {
     
@@ -223,7 +223,7 @@ void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
     }
     
     int nSegments = 5;
-    axFloatRect frect = RectToFloatRect(rect);
+    ax::FloatRect frect = RectToFloatRect(rect);
     
     glLineWidth(2.0f);
     glEnable(GL_LINE_SMOOTH);
@@ -234,15 +234,15 @@ void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
     glBegin(GL_LINES);
     
     // Top line.
-    DrawSmouthLine(axPoint(frect.position.x + r - 2,
+    DrawSmouthLine(ax::Point(frect.position.x + r - 2,
                            frect.position.y),
-                   axPoint(frect.position.x + frect.size.x - r + 2,
+                   ax::Point(frect.position.x + frect.size.x - r + 2,
                            frect.position.y));
     
     // Bottom line.
-    DrawSmouthLine(axPoint(frect.position.x + r - 2,
+    DrawSmouthLine(ax::Point(frect.position.x + r - 2,
                            frect.position.y + frect.size.y),
-                   axPoint(frect.position.x + frect.size.x - r + 2,
+                   ax::Point(frect.position.x + frect.size.x - r + 2,
                            frect.position.y + frect.size.y));
     
 //    DrawSmouthLine();
@@ -277,22 +277,22 @@ void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
 //    glEnd();
     
     // Bottom right.
-    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContourSmooth(this, ax::FloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + frect.size.y - r),
                              r, 0, nSegments);
     
     // Top left.
-    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + r,
+    DrawQuarterCircleContourSmooth(this, ax::FloatPoint(frect.position.x + r,
                                           frect.position.y + r),
                              r, M_PI, nSegments);
     
     // Top right.
-    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContourSmooth(this, ax::FloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + r),
                              r, 3.0 * M_PI * 0.5, nSegments);
     
     // Bottom left.
-    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + r,
+    DrawQuarterCircleContourSmooth(this, ax::FloatPoint(frect.position.x + r,
                                           frect.position.y + frect.size.y - r),
                              r, M_PI * 0.5, nSegments);
     
@@ -302,7 +302,7 @@ void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
     
 }
 
-void DrawQuarterCircle(const axFloatPoint& pos,
+void DrawQuarterCircle(const ax::FloatPoint& pos,
                        const int& radius,
                        const double& angle,
                        const int& nSegments)
@@ -324,7 +324,7 @@ void DrawQuarterCircle(const axFloatPoint& pos,
     glEnd();
 }
 
-void axGC::DrawRoundedRectangle(const axRect& rect, const int& radius)
+void axGC::DrawRoundedRectangle(const ax::Rect& rect, const int& radius)
 {
     int r = radius;
     
@@ -334,10 +334,10 @@ void axGC::DrawRoundedRectangle(const axRect& rect, const int& radius)
     }
     
     int nSegments = 40;
-    axFloatRect frect = RectToFloatRect(rect);
+    ax::FloatRect frect = RectToFloatRect(rect);
     
     // Middle.
-    DrawRectangle(axRect(frect.position.x + r - 1,
+    DrawRectangle(ax::Rect(frect.position.x + r - 1,
                          frect.position.y - 1,
                          frect.size.x - 2.0 * r + 1,
                          frect.size.y + 1));
@@ -347,48 +347,48 @@ void axGC::DrawRoundedRectangle(const axRect& rect, const int& radius)
     if(size_rect_height > 0)
     {
         // Left.
-        DrawRectangle(axRect(frect.position.x - 1,
+        DrawRectangle(ax::Rect(frect.position.x - 1,
                              frect.position.y + r - 1,
                              r,
                              size_rect_height));
         
         // Right.
-        DrawRectangle(axRect(frect.position.x +frect.size.x - r,
+        DrawRectangle(ax::Rect(frect.position.x +frect.size.x - r,
                              frect.position.y + r - 1,
                              r + 1,
                              size_rect_height));
     }
 
     // Bottom right.
-    DrawQuarterCircle(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircle(ax::FloatPoint(frect.position.x + frect.size.x - r,
                                    frect.position.y + frect.size.y - r),
                       r, 0, nSegments);
 
     
     // Top left.
-    DrawQuarterCircle(axFloatPoint(frect.position.x + r - 1 ,
+    DrawQuarterCircle(ax::FloatPoint(frect.position.x + r - 1 ,
                                    frect.position.y + r - 1),
                       r, M_PI, nSegments);
     
     // Top right.
-    DrawQuarterCircle(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircle(ax::FloatPoint(frect.position.x + frect.size.x - r,
                                    frect.position.y + r - 1),
                       r, 3.0 * M_PI * 0.5, nSegments);
     
     // Bottom left.
-    DrawQuarterCircle(axFloatPoint(frect.position.x + r - 1,
+    DrawQuarterCircle(ax::FloatPoint(frect.position.x + r - 1,
                                    frect.position.y + frect.size.y - r),
                       r, M_PI * 0.5, nSegments);
     
 }
 
-void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
+void axGC::DrawRectangleContour(const ax::Rect& rect, float linewidth)
 {
 //    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
 //    axMatrix4 mview;
 //    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
     
-	axFloatRect frect = RectToFloatRect(rect);
+	ax::FloatRect frect = RectToFloatRect(rect);
 //	frect.position.x  -= floor(_win->GetScrollDecay().x);
 //	frect.position.y  -= _win->GetScrollDecay().y;
     
@@ -401,7 +401,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 
 	glLineWidth((GLfloat)linewidth);
     
-    axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    axRectPoints<ax::FloatPoint> points = frect.GetPoints(); // Order : bl, tl, tr, br.
     GLubyte indices[] = {1,2, 2,3, 3,0, 0,1};
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(2, GL_DOUBLE, 0, &points); // The value of z defaults is 0.
@@ -413,10 +413,10 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
     glLineWidth(1.0f);
 }
 
-void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
+void axGC::DrawTexture(GLuint texture, const ax::Rect& rect, axColor color)
 {
-//	axPoint pos = rect.position + _win->GetAbsoluteRect().position;
-    axPoint pos = rect.position;
+//	ax::Point pos = rect.position + _win->GetAbsoluteRect().position;
+    ax::Point pos = rect.position;
 //	pos.x  -= _win->GetScrollDecay().x;
 //	pos.y  -= _win->GetScrollDecay().y;
 
@@ -445,7 +445,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 //	)
 //    glColor4d(1.0, 1.0, 1.0, 1.0);
 	glDepthMask(GL_TRUE);
-	axSize img_size = rect.size;
+	ax::Size img_size = rect.size;
 
 	glBegin(GL_QUADS);
 	
@@ -476,29 +476,29 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 struct axRectPointsOrder
 {
     axRectPointsOrder(){}
-    axRectPointsOrder(const axRectFloatPoints& points):
+    axRectPointsOrder(const axRectPoints<ax::FloatPoint>& points):
     top_left(points.top_left),
     top_right(points.top_right),
     bottom_left(points.bottom_left),
     bottom_right(points.bottom_right)
     {
     }
-    axRectPointsOrder(const axFloatPoint& tl,
-                      const axFloatPoint& tr,
-                      const axFloatPoint& bl,
-                      const axFloatPoint& br):
+    axRectPointsOrder(const ax::FloatPoint& tl,
+                      const ax::FloatPoint& tr,
+                      const ax::FloatPoint& bl,
+                      const ax::FloatPoint& br):
     top_left(tl), top_right(tr), bottom_left(bl),bottom_right(br)
     {
         
     }
     
-    axFloatPoint top_left, top_right, bottom_left, bottom_right;
+    ax::FloatPoint top_left, top_right, bottom_left, bottom_right;
 };
 
-void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
+void axGC::DrawImage(axImage* img, const ax::Point& position, double alpha)
 {
-//	axPoint pos = position + _win->GetAbsoluteRect().position;
-    axPoint pos = position;
+//	ax::Point pos = position + _win->GetAbsoluteRect().position;
+    ax::Point pos = position;
 	//pos -= _win->GetScrollDecay();
 
 	glColor4f(1.0, 1.0, 1.0, alpha);
@@ -509,7 +509,7 @@ void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 
 	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
 //	glDepthMask(GL_TRUE);
-	axSize img_size = img->GetSize();
+	ax::Size img_size = img->GetSize();
 
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
 	glBegin(GL_QUADS);
@@ -533,10 +533,10 @@ void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 	glDisable(GL_TEXTURE_2D);
 }
 
-void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& size, double alpha)
+void axGC::DrawImageResize(axImage* img, const ax::Point& position, const ax::Size& size, double alpha)
 {
-//	axPoint pos = position + _win->GetAbsoluteRect().position;
-    axPoint pos = position;
+//	ax::Point pos = position + _win->GetAbsoluteRect().position;
+    ax::Point pos = position;
 	//pos -= _win->GetScrollDecay();
 
 	glColor4f(1.0, 1.0, 1.0, alpha);
@@ -547,7 +547,7 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 
 	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
 //	glDepthMask(GL_TRUE);
-	axSize img_size = size;
+	ax::Size img_size = size;
 
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
 	glBegin(GL_QUADS);
@@ -573,17 +573,17 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 }
 
 void axGC::DrawPartOfImage(axImage* img,
-                           const axPoint& posInImage,
-                           const axSize& sizeInImage,
-                           const axPoint& position,
+                           const ax::Point& posInImage,
+                           const ax::Size& sizeInImage,
+                           const ax::Point& position,
                            double alpha)
 {
-    //	axPoint pos = position + _win->GetAbsoluteRect().position;
+    //	ax::Point pos = position + _win->GetAbsoluteRect().position;
     
-    axPoint pos = position;
+    ax::Point pos = position;
     //pos -= _win->GetScrollDecay();
     
-    axSize img_size = img->GetSize();
+    ax::Size img_size = img->GetSize();
     
     double img_x = (posInImage.x + sizeInImage.x) / double(img_size.x),
     img_y = 1.0 - (posInImage.y + sizeInImage.y) / double(img_size.y);
@@ -626,13 +626,13 @@ void axGC::DrawPartOfImage(axImage* img,
 
 
 void axGC::DrawPartOfImageResize(axImage* img,
-					 const axPoint& posInImage,
-					 const axSize& sizeInImage,
-					 const axRect& rect,
+					 const ax::Point& posInImage,
+					 const ax::Size& sizeInImage,
+					 const ax::Rect& rect,
                      double alpha)
 {
-    axPoint pos = rect.position;
-	axSize img_size = img->GetSize();
+    ax::Point pos = rect.position;
+	ax::Size img_size = img->GetSize();
 
 	double img_x = (posInImage.x + sizeInImage.x) / double(img_size.x),
 		img_y = 1.0 - (posInImage.y + sizeInImage.y) / double(img_size.y);
@@ -674,7 +674,7 @@ void axGC::DrawPartOfImageResize(axImage* img,
 
 void axGC::DrawString(axFont& font,
                       const std::string& text,
-                      const axPoint& pos)
+                      const ax::Point& pos)
 {
     if(font)
     {
@@ -683,10 +683,10 @@ void axGC::DrawString(axFont& font,
         for (int i = 0; i < text.size(); i++)
         {
             font.SetChar(text[i]);
-            axPoint delta = font.GetDelta();
+            ax::Point delta = font.GetDelta();
             
             DrawTexture(font.GetTexture(),
-                        axRect(axPoint(x + delta.x, pos.y - delta.y + font.GetFontSize()),
+                        ax::Rect(ax::Point(x + delta.x, pos.y - delta.y + font.GetFontSize()),
                                font.GetSize()));
             
             x += font.GetNextPosition();
@@ -695,40 +695,40 @@ void axGC::DrawString(axFont& font,
 
 }
 
-axPoint axGC::DrawChar(axFont& font,
+ax::Point axGC::DrawChar(axFont& font,
                        const char& key,
-                       const axPoint& pos)
+                       const ax::Point& pos)
 {
     if(font)
     {
         int x = pos.x;
         
         font.SetChar(key);
-        axPoint delta = font.GetDelta();
+        ax::Point delta = font.GetDelta();
         
         DrawTexture(font.GetTexture(),
-                    axRect(axPoint(x + delta.x, pos.y - delta.y + font.GetFontSize()),
+                    ax::Rect(ax::Point(x + delta.x, pos.y - delta.y + font.GetFontSize()),
                            font.GetSize()));
         
         x += font.GetNextPosition();
         
-        return axPoint(x, pos.y);
+        return ax::Point(x, pos.y);
     }
 
-    return axPoint(0, 0);
+    return ax::Point(0, 0);
 }
 
 
 // Just blocking x axis for now.
-void axGC::BlockDrawing(const axRect& rect)
+void axGC::BlockDrawing(const ax::Rect& rect)
 {
     axMatrix4 before_proj(GL_MODELVIEW);
     axMatrix4 proj;
     proj.Identity().Load();
     
-//    axRect r = rect;
+//    ax::Rect r = rect;
     
-    axPoint abso(_win->GetAbsoluteRect().position);
+    ax::Point abso(_win->GetAbsoluteRect().position);
     
     glScissor(abso.x + rect.position.x,
               _win->GetApp()->GetCore()->GetGlobalSize().y -
@@ -747,8 +747,8 @@ void axGC::UnBlockDrawing()
 
 void axGC::DrawStringAlignedCenter(axFont& font,
                                    const string& text,
-								   //const axPoint& pos,
-								   const axRect& rect)
+								   //const ax::Point& pos,
+								   const ax::Rect& rect)
 {
     if(font)
     {
@@ -763,17 +763,17 @@ void axGC::DrawStringAlignedCenter(axFont& font,
                 height = font.GetSize().y;
         }
         
-        axPoint pos(rect.position.x + (rect.size.x - length) * 0.5,
+        ax::Point pos(rect.position.x + (rect.size.x - length) * 0.5,
                     rect.position.y + ceil((rect.size.y - height) * 0.5));
         
         int x = pos.x;
         for (int i = 0; i < text.size(); i++)
         {
             font.SetChar(text[i]);
-            axPoint delta = font.GetDelta();
+            ax::Point delta = font.GetDelta();
             
             DrawTexture(font.GetTexture(),
-                        axRect(axPoint(x + delta.x, pos.y - delta.y + height),
+                        ax::Rect(ax::Point(x + delta.x, pos.y - delta.y + height),
                                font.GetSize()));
             
             x += font.GetNextPosition();
@@ -781,12 +781,12 @@ void axGC::DrawStringAlignedCenter(axFont& font,
     }
 }
 
-void axGC::DrawRectangleColorFade(const axRect& rectangle,
+void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
 								  const axColor& c1, const float& alpha1,
 								  const axColor& c2, const float& alpha2)
 {
-//	axFloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
-    axFloatRect rect = RectToFloatRect(rectangle);
+//	ax::FloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
+    ax::FloatRect rect = RectToFloatRect(rectangle);
 	//rect.position.x  -= _win->GetScrollDecay().x;
 	//rect.position.y  -= _win->GetScrollDecay().y;
 
@@ -808,12 +808,12 @@ void axGC::DrawRectangleColorFade(const axRect& rectangle,
 	glEnd();
 }
 
-void axGC::DrawRectangleColorFade(const axRect& rectangle,
+void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
                                   const axColor& c1,
                                   const axColor& c2)
 {
-//    axFloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
-    axFloatRect rect = RectToFloatRect(rectangle);
+//    ax::FloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
+    ax::FloatRect rect = RectToFloatRect(rectangle);
     
     glBegin(GL_QUADS);
     SetColor(c1);
@@ -831,10 +831,10 @@ void axGC::DrawRectangleColorFade(const axRect& rectangle,
     glEnd();
 }
 
-void axGC::DrawLines(const vector<axPoint>& pts, float width)
+void axGC::DrawLines(const vector<ax::Point>& pts, float width)
 {
-//	axPoint real_pos = _win->GetAbsoluteRect().position;
-//    axPoint real_pos = _win->GetRect().position;
+//	ax::Point real_pos = _win->GetAbsoluteRect().position;
+//    ax::Point real_pos = _win->GetRect().position;
 //	real_pos.x -= _win->GetScrollDecay().x;
 //	real_pos.y -= _win->GetScrollDecay().y;
 //
@@ -852,7 +852,7 @@ void axGC::DrawLines(const vector<axPoint>& pts, float width)
 }
 
 
-void axGC::DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width)
+void axGC::DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float width)
 {
 //    glEnable(GL_LINE_SMOOTH);
 //    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
@@ -916,17 +916,17 @@ void axGC::DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width)
     glDisable(GL_POLYGON_SMOOTH);
 }
 
-void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
+void axGC::DrawLine(const ax::Point& pt1, const ax::Point& pt2, float width)
 {
 
     
-//	axPoint real_pos = _win->GetAbsoluteRect().position;
-//    axPoint real_pos = _win->GetRect().position;
+//	ax::Point real_pos = _win->GetAbsoluteRect().position;
+//    ax::Point real_pos = _win->GetRect().position;
 //	real_pos.x  -= _win->GetScrollDecay().x;
 //	real_pos.y  -= _win->GetScrollDecay().y;
 
-    axPoint p1 = pt1;// - _win->GetScrollDecay().x;;// + real_pos;
-    axPoint p2 = pt2;// - _win->GetScrollDecay().y;// + real_pos;
+    ax::Point p1 = pt1;// - _win->GetScrollDecay().x;;// + real_pos;
+    ax::Point p2 = pt2;// - _win->GetScrollDecay().y;// + real_pos;
 
 //	glEnable(GL_LINE_SMOOTH);
 //	glEnable(GL_POLYGON_SMOOTH);
@@ -945,12 +945,12 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 //    glDisable(GL_LINE_SMOOTH);
 }
 
-void axGC::DrawLineColorfade(const axPoint& pt1, const axPoint& pt2,
+void axGC::DrawLineColorfade(const ax::Point& pt1, const ax::Point& pt2,
                              const axColor& c1, const axColor& c2,
                              float width)
 {
-    axPoint p1 = pt1;
-    axPoint p2 = pt2;
+    ax::Point p1 = pt1;
+    ax::Point p2 = pt2;
 
     glLineWidth(width);
     
@@ -962,7 +962,7 @@ void axGC::DrawLineColorfade(const axPoint& pt1, const axPoint& pt2,
     glEnd();
 }
 
-void axGC::DrawPoint(const axPoint& pt, const int& size)
+void axGC::DrawPoint(const ax::Point& pt, const int& size)
 {
     glEnable(GL_POINT_SMOOTH);
     glPointSize(size);
@@ -972,7 +972,7 @@ void axGC::DrawPoint(const axPoint& pt, const int& size)
     glDisable(GL_POINT_SMOOTH);
 }
 
-void axGC::DrawLineCubic(const axPoint& pt1, const axPoint& pt2)
+void axGC::DrawLineCubic(const ax::Point& pt1, const ax::Point& pt2)
 {
     // H1(t) = 2t^3 - 3t^2 + 1
     // H2(t) = -2t^3 + 3t^2
@@ -1048,11 +1048,11 @@ void axGC::SetDefaultLine()
     glLineWidth(1.0);
 }
 
-void axGC::DrawCircle(const axPoint& pos,
+void axGC::DrawCircle(const ax::Point& pos,
                       const double& radius,
                       const int& nSegments)
 {
-    axPoint real_pos = pos;
+    ax::Point real_pos = pos;
 
 	glBegin(GL_LINE_LOOP); 
 	for(int i = 0; i < nSegments; i++)
@@ -1073,7 +1073,7 @@ void axGC::DrawCircle(const axPoint& pos,
 //{
 //    unsigned char* surf_data = buffer->GetData();
 //    GLuint texture_id = buffer->GetTexture();
-//    axSize size(buffer->GetSize());
+//    ax::Size size(buffer->GetSize());
 //    
 //    if (!surf_data)
 //    {
@@ -1128,8 +1128,8 @@ void axGC::DrawCircle(const axPoint& pos,
 
 
 void axGC::DrawBigImageResize(axBigImage* img,
-	const axPoint& position,
-	const axSize& size,
+	const ax::Point& position,
+	const ax::Size& size,
 	double alpha)
 {
 	GLuint texture;
@@ -1137,7 +1137,7 @@ void axGC::DrawBigImageResize(axBigImage* img,
 	glBindTexture(GL_TEXTURE_2D, texture);
 	axBigImage::ColorType color_type = img->GetColorType();
 	//axBigImage::PixelDepth depth = img->GetPixelDepth();
-	axSize real_img_size(img->GetImageSize());
+	ax::Size real_img_size(img->GetImageSize());
 	void* data = img->GetImageData();
 
 	if (color_type == axBigImage::RGB)
@@ -1160,7 +1160,7 @@ void axGC::DrawBigImageResize(axBigImage* img,
 		axError("Can't draw axBigImage in axGC : ", err);
 	}
 
-	axPoint pos = position;
+	ax::Point pos = position;
 
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
@@ -1170,7 +1170,7 @@ void axGC::DrawBigImageResize(axBigImage* img,
 
 	//glBindTexture(GL_TEXTURE_2D, texture);
 	//	glDepthMask(GL_TRUE);
-	axSize img_size = size;
+	ax::Size img_size = size;
 
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
 	glBegin(GL_QUADS);
@@ -1196,7 +1196,7 @@ void axGC::DrawBigImageResize(axBigImage* img,
 	glDeleteTextures(1, &texture);
 }
 
-void axGC::DrawPolygone(const std::vector<axPoint>& points)
+void axGC::DrawPolygone(const std::vector<ax::Point>& points)
 {
     glBegin(GL_POLYGON);
     
@@ -1208,7 +1208,7 @@ void axGC::DrawPolygone(const std::vector<axPoint>& points)
     glEnd();
 }
 
-void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
+void axGC::DrawArrow(const ax::Point& p1, const ax::Point& p2,
                      const double& arrow_length, const double& base_length,
                      const double& width)
 {
@@ -1216,8 +1216,8 @@ void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
 //    double arrow_length = 12;
 //    double base_length = 8;
     
-    axPoint arrow_vec = p2 - p1;
-    axPoint normal_vec = axPoint(-arrow_vec.y, arrow_vec.x);
+    ax::Point arrow_vec = p2 - p1;
+    ax::Point normal_vec = ax::Point(-arrow_vec.y, arrow_vec.x);
     double normal_norm = sqrt(normal_vec.x * normal_vec.x +
                               normal_vec.y * normal_vec.y);
     
@@ -1225,7 +1225,7 @@ void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
     normal_vec.y = (normal_vec.y / normal_norm) * base_length;
     
     
-    axPoint arrow_base = arrow_vec;
+    ax::Point arrow_base = arrow_vec;
     double norm = sqrt(arrow_base.x * arrow_base.x +
                        arrow_base.y * arrow_base.y);
     arrow_base.x = (arrow_base.x / norm) * arrow_length;
@@ -1233,8 +1233,8 @@ void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
     arrow_base = p2 - arrow_base;
 
     
-    axPoint pt_vec1 = arrow_base + normal_vec;
-    axPoint pt_vec2 = arrow_base - normal_vec;
+    ax::Point pt_vec1 = arrow_base + normal_vec;
+    ax::Point pt_vec2 = arrow_base - normal_vec;
     
     glBegin(GL_LINES);
     glVertex2f(p1.x, p1.y);
@@ -1258,9 +1258,9 @@ void axGC::DrawArrow(const axPoint& p1, const axPoint& p2,
 //    glEnd();
 }
 
-void axGC::DrawTriangleColorFade(const axPoint& p1,
-                                 const axPoint& p2,
-                                 const axPoint& p3,
+void axGC::DrawTriangleColorFade(const ax::Point& p1,
+                                 const ax::Point& p2,
+                                 const ax::Point& p3,
                                  const axColor& c1,
                                  const axColor& c2,
                                  const axColor& c3)

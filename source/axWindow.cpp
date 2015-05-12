@@ -26,7 +26,7 @@
 #include "axGraphicInterface.h"
 #include "axWindowTree.h"
 
-axWindow::axWindow(axApp* app, const axRect& rect):
+axWindow::axWindow(axApp* app, const ax::Rect& rect):
 // Heritage.
 axObject(app),
 _parent(nullptr),
@@ -35,7 +35,7 @@ _isHidden(false),
 _isPopup(false),
 _isRealPopup(false),
 _isBlockDrawing(false),
-_shownRect(axPoint(0, 0), rect.size),
+_shownRect(ax::Point(0, 0), rect.size),
 _isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
@@ -48,7 +48,7 @@ _hasBackBuffer(true)
     
 }
 
-axWindow::axWindow(axWindow* parent, const axRect& rect):
+axWindow::axWindow(axWindow* parent, const ax::Rect& rect):
 // Heritage.
 axObject(parent->GetApp()),
 // Members.
@@ -58,7 +58,7 @@ _isHidden(false),
 _isPopup(false),
 _isRealPopup(false),
 _isBlockDrawing(false),
-_shownRect(axPoint(0, 0), rect.size),
+_shownRect(ax::Point(0, 0), rect.size),
 _isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
@@ -97,12 +97,12 @@ axWindow* axWindow::GetParent() const
 	return _parent;
 }
 
-void axWindow::SetScrollDecay(const axPoint& decay)
+void axWindow::SetScrollDecay(const ax::Point& decay)
 {
 	_scrollDecay = decay;
 }
 
-axPoint axWindow::GetScrollDecay() const
+ax::Point axWindow::GetScrollDecay() const
 {
 	return _scrollDecay;
 }
@@ -142,7 +142,7 @@ void axWindow::Hide()
     }
 }
 
-void axWindow::Reparent(axWindow* parent, const axPoint& position)
+void axWindow::Reparent(axWindow* parent, const ax::Point& position)
 {
 	_parent = parent;
 	SetPosition(position);
@@ -154,55 +154,55 @@ void axWindow::Reparent(axWindow* parent, const axPoint& position)
 	Update();
 }
 
-axRect axWindow::GetShownRect() const
+ax::Rect axWindow::GetShownRect() const
 {
     return _shownRect;
 }
 
-void axWindow::SetShownRect(const axRect& rect)
+void axWindow::SetShownRect(const ax::Rect& rect)
 {
     _shownRect = rect;
 }
 
-axRect axWindow::GetRect() const
+ax::Rect axWindow::GetRect() const
 {
 	return _rect;
 }
 
-axPoint axWindow::GetBottomLeftPosition() const
+ax::Point axWindow::GetBottomLeftPosition() const
 {
-	return axPoint(_rect.position.x, 
+	return ax::Point(_rect.position.x, 
 		_rect.position.y + _rect.size.y);
 }
 
-axPoint axWindow::GetTopRightPosition() const
+ax::Point axWindow::GetTopRightPosition() const
 {
-    return axPoint(_rect.position.x + _rect.size.x, _rect.position.y);
+    return ax::Point(_rect.position.x + _rect.size.x, _rect.position.y);
 }
 
-axPoint axWindow::GetNextPosRight(const int& delta) const
+ax::Point axWindow::GetNextPosRight(const int& delta) const
 {
-    return axPoint(_rect.position.x + _rect.size.x + delta, _rect.position.y);
+    return ax::Point(_rect.position.x + _rect.size.x + delta, _rect.position.y);
 }
 
-axPoint axWindow::GetNextPosDown(const int& delta) const
+ax::Point axWindow::GetNextPosDown(const int& delta) const
 {
-    return axPoint(_rect.position.x, _rect.position.y + _rect.size.y + delta);
+    return ax::Point(_rect.position.x, _rect.position.y + _rect.size.y + delta);
 }
 
-axPoint axWindow::GetNextPosLeft(const int& delta) const
+ax::Point axWindow::GetNextPosLeft(const int& delta) const
 {
-     return axPoint(_rect.position.x, _rect.position.y - delta);
+     return ax::Point(_rect.position.x, _rect.position.y - delta);
 }
 
-axPoint axWindow::GetNextPosUp(const int& delta) const
+ax::Point axWindow::GetNextPosUp(const int& delta) const
 {
-    return axPoint(_rect.position.x, _rect.position.y - delta);
+    return ax::Point(_rect.position.x, _rect.position.y - delta);
 }
 
-axRect axWindow::GetAbsoluteRect() const
+ax::Rect axWindow::GetAbsoluteRect() const
 {
-	axPoint pos = _rect.position;
+	ax::Point pos = _rect.position;
 	const axWindow* win = this;
 
 	// Too slow.
@@ -213,10 +213,10 @@ axRect axWindow::GetAbsoluteRect() const
 		win = win->GetParent();
 	}
 
-	return axRect(pos, _rect.size);
+	return ax::Rect(pos, _rect.size);
 }
 
-axSize axWindow::GetSize() const
+ax::Size axWindow::GetSize() const
 {
 	return _rect.size;
 }
@@ -226,7 +226,7 @@ axGC* axWindow::GetGC()
 	return _gc;
 }
 
-void axWindow::SetSize(const axSize& size)
+void axWindow::SetSize(const ax::Size& size)
 {
 	_rect.size = size;
     _shownRect.size = size;
@@ -240,7 +240,7 @@ void axWindow::SetSize(const axSize& size)
     Update();
 }
 
-void axWindow::SetSizeNoShowRect(const axSize& size)
+void axWindow::SetSizeNoShowRect(const ax::Size& size)
 {
     _rect.size = size;
     
@@ -253,7 +253,7 @@ void axWindow::SetSizeNoShowRect(const axSize& size)
     Update();
 }
 
-void axWindow::SetRect(const axRect& rect)
+void axWindow::SetRect(const ax::Rect& rect)
 {
 	_rect.position = rect.position;
 	_rect.size = rect.size;
@@ -269,7 +269,7 @@ void axWindow::SetRect(const axRect& rect)
 	Update();
 }
 
-void axWindow::SetPosition(const axPoint& pos)
+void axWindow::SetPosition(const ax::Point& pos)
 {
 	if (_parent == nullptr)
 	{
@@ -341,9 +341,9 @@ void axWindow::SetContourColor(const axColor& color)
     _contourColor = color;
 }
 
-axRect axWindow::GetDrawingRect() const
+ax::Rect axWindow::GetDrawingRect() const
 {
-    return axRect(1, 1, _rect.size.x - 1, _rect.size.y - 1);
+    return ax::Rect(1, 1, _rect.size.x - 1, _rect.size.y - 1);
 }
 
 void axWindow::SetNeedUpdate()
@@ -385,13 +385,13 @@ void axWindow::OnPaint()
 {
     
     axGC* gc = GetGC();
-    axRect rect(GetRect());
+    ax::Rect rect(GetRect());
     
     gc->SetColor(_windowColor);
-    gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
+    gc->DrawRectangle(ax::Rect(ax::Point(0, 0), rect.size));
     
     gc->SetColor(_contourColor);
-    gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
+    gc->DrawRectangle(ax::Rect(ax::Point(0, 0), rect.size));
 }
 
 void axWindow::RenderWindow()

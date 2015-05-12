@@ -22,7 +22,7 @@
 //#include "axAnimatedButton.h"
 //
 //axAnimatedButton::axAnimatedButton(axWindow* parent,
-//                                   const axRect& rect,
+//                                   const ax::Rect& rect,
 //                                   const axButton::Events& events,
 //                                   string img_path,
 //                                   string label):
@@ -56,13 +56,13 @@
 //    _fadeTimer->StartTimer(20, _fadeTimeMs);
 //}
 //
-//void axAnimatedButton::OnMouseLeftDown(const axPoint& pos)
+//void axAnimatedButton::OnMouseLeftDown(const ax::Point& pos)
 //{
 //    _nPastCurrentImg = _nCurrentImg;
 //    axButton::OnMouseLeftDown(pos);
 //}
 //
-//void axAnimatedButton::OnMouseLeftUp(const axPoint& pos)
+//void axAnimatedButton::OnMouseLeftUp(const ax::Point& pos)
 //{
 //    _nPastCurrentImg = _nCurrentImg;
 //    axButton::OnMouseLeftUp(pos);
@@ -96,8 +96,8 @@
 //void axAnimatedButton::OnPaint()
 //{
 //    axGC* gc = GetGC();
-//    axRect rect(GetRect());
-//    axRect rect0(axPoint(0, 0), rect.size);
+//    ax::Rect rect(GetRect());
+//    ax::Rect rect0(ax::Point(0, 0), rect.size);
 //    
 //    gc->SetColor(*_currentColor);
 //    gc->DrawRectangle(rect0);
@@ -107,11 +107,11 @@
 //    {
 //        _fadeValueMutex.lock();
 //        
-//        gc->DrawPartOfImage(_btnImg, axPoint(0, _nPastCurrentImg * rect.size.y),
-//                            rect.size, axPoint(0, 0), (1.0 - _fadeValue));
+//        gc->DrawPartOfImage(_btnImg, ax::Point(0, _nPastCurrentImg * rect.size.y),
+//                            rect.size, ax::Point(0, 0), (1.0 - _fadeValue));
 //        
-//        gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-//                            rect.size, axPoint(0, 0), _fadeValue);
+//        gc->DrawPartOfImage(_btnImg, ax::Point(0, _nCurrentImg * rect.size.y),
+//                            rect.size, ax::Point(0, 0), _fadeValue);
 //        _fadeValueMutex.unlock();
 //        
 //    }
@@ -126,7 +126,7 @@
 //    }
 //    
 //    gc->SetColor(static_cast<axButton::Info*>(_info)->contour);
-//    gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+//    gc->DrawRectangleContour(ax::Rect(ax::Point(0, 0), rect.size));
 //}
 //
 //

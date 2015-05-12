@@ -147,7 +147,7 @@ public:
         axButton::Info _info;
         std::string _label, _img, _msg;
         axFlag _flags;
-        axSize _size;
+        ax::Size _size;
         int _nextPositionDelta;
         axButton* _past;
         axDirection _direction;
@@ -157,7 +157,7 @@ public:
      * axButton::axButton.
      **************************************************************************/
 	axButton(axWindow* parent,
-             const axRect& rect,
+             const ax::Rect& rect,
              const axButton::Events& events,
              const axButton::Info& info,
              std::string img_path = "",
@@ -191,8 +191,8 @@ protected:
     };
     
 	virtual void OnPaint();
-	virtual void OnMouseLeftDown(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
 };

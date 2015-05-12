@@ -25,7 +25,7 @@
 #include "axScrollBar.h"
 //#include "NSOpenGLView+axPopupWindowCocoaView.h"
 
-axPanel::axPanel(axApp* app, const axRect& rect) :
+axPanel::axPanel(axApp* app, const ax::Rect& rect) :
 axWindow(app, rect)
 {
     if(GetIsPopup())
@@ -82,7 +82,7 @@ axWindow(app, rect)
 
 
 
-axPanel::axPanel(axWindow* parent, const axRect& rect) : 
+axPanel::axPanel(axWindow* parent, const ax::Rect& rect) : 
 axWindow(parent, rect)
 {
 	if (parent != nullptr)
@@ -123,7 +123,7 @@ axWindow(parent, rect)
 	}
 }
 
-axPanel::axPanel(int f, axWindow* parent, const axRect& rect) :
+axPanel::axPanel(int f, axWindow* parent, const ax::Rect& rect) :
 axWindow(parent, rect)
 {
     if(f == 86)
@@ -173,8 +173,8 @@ axPanel::axWindowType axPanel::GetWindowType()
 
 void axPanel::BlockDrawing()
 {
-	axRect absRect(GetAbsoluteRect());
-	axSize gSize(GetApp()->GetCore()->GetGlobalSize());
+	ax::Rect absRect(GetAbsoluteRect());
+	ax::Size gSize(GetApp()->GetCore()->GetGlobalSize());
 	
 	glScissor(absRect.position.x-1, 
 			  gSize.y - absRect.position.y - absRect.size.y,
@@ -185,9 +185,9 @@ void axPanel::BlockDrawing()
 
 }
 
-void axPanel::BlockDrawing(const axRect& rect)
+void axPanel::BlockDrawing(const ax::Rect& rect)
 {
-	axSize gSize(GetApp()->GetCore()->GetGlobalSize());
+	ax::Size gSize(GetApp()->GetCore()->GetGlobalSize());
 	
 	glScissor(rect.position.x-1, 
 			  gSize.y - rect.position.y - rect.size.y, 
@@ -333,9 +333,9 @@ void axPanel::DeleteWindow(axWindow* win)
 
 }
 
-axRect axPanel::GetWindowPixelData(unsigned char*& data) const
+ax::Rect axPanel::GetWindowPixelData(unsigned char*& data) const
 {
-    axRect rect(GetAbsoluteRect());
+    ax::Rect rect(GetAbsoluteRect());
     rect.position.x -= 1;
     rect.size.x += 1;
     rect.position.y -= 1;
@@ -343,7 +343,7 @@ axRect axPanel::GetWindowPixelData(unsigned char*& data) const
     
     data = new unsigned char[rect.size.x * rect.size.y * 4];
     
-    axSize globalSize(GetApp()->GetCore()->GetGlobalSize());
+    ax::Size globalSize(GetApp()->GetCore()->GetGlobalSize());
 
     glReadPixels(rect.position.x,
                  globalSize.y - rect.position.y - rect.size.y,

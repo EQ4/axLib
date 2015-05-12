@@ -40,11 +40,11 @@ class axStaticImage: public axPanel
 {
 public:
     axStaticImage(axWindow* parent,
-                  const axRect& rect,
+                  const ax::Rect& rect,
                   const std::string& path);
     
     axStaticImage(axWindow* parent,
-                  const axRect& rect,
+                  const ax::Rect& rect,
                   axImage* img);
     
     
@@ -61,8 +61,8 @@ public:
     private:
         axWindow* _parent;
         std::string _path;
-        axRect _rect;
-        axSize _size;
+        ax::Rect _rect;
+        ax::Size _size;
         axImage* _img;
     };
     

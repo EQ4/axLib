@@ -75,7 +75,7 @@ public:
 //               MainInstance = new axApp() : MainInstance;
 //	}
 //
-//	inline static axApp* CreateApp(const axSize& frame_size)
+//	inline static axApp* CreateApp(const ax::Size& frame_size)
 //	{
 //		return MainInstance == nullptr ?
 //               MainInstance = new axApp(frame_size) : MainInstance;
@@ -91,7 +91,7 @@ public:
         return _core->GetAppPath();
     }
 
-	axApp(const axSize& frame_size);
+	axApp(const ax::Size& frame_size);
 
 	void MainLoop();
 

@@ -27,9 +27,9 @@
 
 axDebugButton::axDebugButton(axWindow* parent) :
 // Heritage.
-axPanel(parent, axRect(axPoint(parent->GetSize().x - 8,
+axPanel(parent, ax::Rect(ax::Point(parent->GetSize().x - 8,
                                parent->GetSize().y - 8),
-                       axSize(8, 8))),
+                       ax::Size(8, 8))),
 // Members.
 //_events(events),
 _info(axColor(0.9, 0.0, 0.0, 0.6),
@@ -88,7 +88,7 @@ void axDebugButton::SetLabel(const std::string& label)
     Update();
 }
 
-void axDebugButton::OnMouseLeftDown(const axPoint& pos)
+void axDebugButton::OnMouseLeftDown(const ax::Point& pos)
 {
     _currentColor = &_info.clicking;
     
@@ -111,15 +111,15 @@ void axDebugButton::OnMouseLeftDown(const axPoint& pos)
     
 }
 
-void axDebugButton::OnMouseLeftDragging(const axPoint &pos)
+void axDebugButton::OnMouseLeftDragging(const ax::Point &pos)
 {
     GetApp()->GetEditor()->UpdateInfo();
     
     
     axWindow* panel = GetParent()->GetParent();
-    axRect panelRect = panel->GetAbsoluteRect();
+    ax::Rect panelRect = panel->GetAbsoluteRect();
     
-    axPoint position(pos);
+    ax::Point position(pos);
     position = position - panelRect.position;
     position.x = position.x - GetParent()->GetSize().x + 5;
     position.y = position.y - GetParent()->GetSize().y + 5;
@@ -135,7 +135,7 @@ void axDebugButton::OnMouseLeftDragging(const axPoint &pos)
     GetParent()->SetPosition(position);
 }
 
-void axDebugButton::OnMouseLeftUp(const axPoint& pos)
+void axDebugButton::OnMouseLeftUp(const ax::Point& pos)
 {
     if (IsGrabbed())
     {
@@ -162,7 +162,7 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
     }
 }
 
-void axDebugButton::OnMouseRightDown(const axPoint& pos)
+void axDebugButton::OnMouseRightDown(const ax::Point& pos)
 {
 
 }
@@ -219,14 +219,14 @@ void axDebugButton::OnMouseLeave()
 void axDebugButton::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    ax::Rect rect(GetRect());
+    ax::Rect rect0(ax::Point(0, 0), rect.size);
     
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
     
     gc->SetColor(_info.contour);
-    gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+    gc->DrawRectangleContour(ax::Rect(ax::Point(0, 0), rect.size));
 }
 
 

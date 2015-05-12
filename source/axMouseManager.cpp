@@ -63,7 +63,7 @@ void axMouseManager::VerifyAndProcessWindowChange()
     }
 }
 
-void axMouseManager::OnMouseLeftDragging(const axPoint& pos)
+void axMouseManager::OnMouseLeftDragging(const ax::Point& pos)
 {
     if(_mouseCaptureWindow != nullptr)
     {
@@ -76,7 +76,7 @@ void axMouseManager::OnMouseLeftDragging(const axPoint& pos)
     }
 }
 
-void axMouseManager::OnMouseMotion(const axPoint& pos)
+void axMouseManager::OnMouseMotion(const ax::Point& pos)
 {
 	_mousePosition = pos;
 
@@ -114,7 +114,7 @@ void axMouseManager::OnMouseMotion(const axPoint& pos)
 	}
 }
 
-void axMouseManager::OnMouseLeftDoubleClick(const axPoint& pos)
+void axMouseManager::OnMouseLeftDoubleClick(const ax::Point& pos)
 {
     _mousePosition = pos;
     
@@ -142,7 +142,7 @@ void axMouseManager::OnMouseLeftDoubleClick(const axPoint& pos)
     }
 }
 
-void axMouseManager::OnMouseLeftDown(const axPoint& pos)
+void axMouseManager::OnMouseLeftDown(const ax::Point& pos)
 {
 	_mousePosition = pos;
 
@@ -180,7 +180,7 @@ void axMouseManager::OnMouseLeftDown(const axPoint& pos)
 	}
 }
 
-void axMouseManager::OnMouseRightDown(const axPoint& pos)
+void axMouseManager::OnMouseRightDown(const ax::Point& pos)
 {
     _mousePosition = pos;
     
@@ -210,7 +210,7 @@ void axMouseManager::OnMouseRightDown(const axPoint& pos)
     }
 }
 
-void axMouseManager::OnMouseLeftUp(const axPoint& pos)
+void axMouseManager::OnMouseLeftUp(const ax::Point& pos)
 {
 	_mousePosition = pos;
 

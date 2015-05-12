@@ -67,7 +67,7 @@ public:
     
     virtual void SetAttribute(const ax::StringPair& attribute)
     {
-		(attribute);
+//		(attribute);
     }
    
     
@@ -81,7 +81,7 @@ public:
     
     virtual std::string GetAttributeValue(const std::string& name)
     {
-		(name);
+//		(name);
         return "";
     }
     
@@ -96,8 +96,8 @@ class axWidgetSelector;
 class axWidget : public axPanel
 {
 public:
-    axWidget(axWindow* parent, const axRect& rect, axInfo* info);
-    axWidget(int f, axWindow* parent, const axRect& rect);
+    axWidget(axWindow* parent, const ax::Rect& rect, axInfo* info);
+    axWidget(int f, axWindow* parent, const ax::Rect& rect);
     
     bool IsEditable() const;
     bool IsInfoEditable() const;

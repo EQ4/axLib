@@ -118,23 +118,23 @@ typedef long axLong;
 typedef unsigned long axUlong;
 typedef unsigned char axByte;
 
-// Point.
-typedef axTemplate2DPoint<axInt> axPoint;
-typedef axTemplate2DPoint<double> axFloatPoint;
+//// Point.
+//typedef axTemplate2DPoint<axInt> ax::Point;
+//typedef axTemplate2DPoint<double> axFloatPoint;
+//
+//// Size.
+//typedef axTemplate2DPoint<axInt> ax::Size;
+//typedef axTemplate2DPoint<axDouble> axFloatSize;
+//
+//// Rectangle.
+//typedef axTemplateRect<ax::Point, ax::Size, axInt> ax::Rect;
+//typedef axTemplateRect<axFloatPoint, axFloatSize, axDouble> axFloatRect;
+//
+//// Range.
+//typedef axRange<axDouble> axFloatRange;
+//typedef axRange<axInt> axIntRange;
 
-// Size.
-typedef axTemplate2DPoint<axInt> axSize;
-typedef axTemplate2DPoint<axDouble> axFloatSize;
-
-// Rectangle.
-typedef axTemplateRect<axPoint, axSize, axInt> axRect;
-typedef axTemplateRect<axFloatPoint, axFloatSize, axDouble> axFloatRect;
-
-// Range.
-typedef axRange<axDouble> axFloatRange;
-typedef axRange<axInt> axIntRange;
-
-typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
+//typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
 // Since variadic templates are recursive, must have a base case.
 void axPrint();

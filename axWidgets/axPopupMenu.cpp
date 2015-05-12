@@ -22,7 +22,7 @@
 #include "axPopupMenu.h"
 
 axPopupMenu::axPopupMenu(axWindow* parent,
-                         const axRect& rect,
+                         const ax::Rect& rect,
                          const axPopupMenuEvents& events,
                          const axPopupMenuInfo& info,
                          const vector<string>& labels,
@@ -38,7 +38,7 @@ _index(-1),
 _labels(labels),
 _lastSelected(nullptr)
 {
-	axSize tog_size(rect.size.x, LABEL_HEIGHT);
+    ax::Size tog_size(rect.size.x, LABEL_HEIGHT);
 
     axToggle::Events tog_event;
     tog_event.button_click = GetOnButtonClick();
@@ -58,13 +58,13 @@ _lastSelected(nullptr)
 	for (int i = 0; i < _labels.size(); i++)
 	{
 		_btns.push_back(new_ axToggle(this,
-						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
+						ax::Rect(ax::Point(0, i * LABEL_HEIGHT), tog_size),
 						tog_event, tog_info, bgImg, _labels[i],
                                      axToggle::Flags::CANT_UNSELECT_WITH_MOUSE,
                         _labels[i]));
 	}
 
-	SetSize(axSize(tog_size.x, (int)_btns.size() * LABEL_HEIGHT));
+	SetSize(ax::Size(tog_size.x, (int)_btns.size() * LABEL_HEIGHT));
     SetShownRect(GetRect());
     
     if(_events.selection_change)
@@ -120,7 +120,7 @@ void axPopupMenu::OnButtonClick(const axToggle::Msg& msg)
 
 
 
-void axPopupMenu::OnMouseMotion(const axPoint& pos)
+void axPopupMenu::OnMouseMotion(const ax::Point& pos)
 {
 	/*if (!IsGrabbed())
 	{
@@ -131,8 +131,8 @@ void axPopupMenu::OnMouseMotion(const axPoint& pos)
 
 	/*for (unsigned int i = 0; i < _labels.size(); ++i)
 	{
-		axRect rect(0, i * LABEL_HEIGHT, GetSize().x, LABEL_HEIGHT);
-		axRect r(rect + GetAbsoluteRect().position);
+		ax::Rect rect(0, i * LABEL_HEIGHT, GetSize().x, LABEL_HEIGHT);
+		ax::Rect r(rect + GetAbsoluteRect().position);
 
 		if (r.IsPointInside(pos))
 		{
@@ -146,7 +146,7 @@ void axPopupMenu::OnMouseMotion(const axPoint& pos)
 	}*/
 }
 
-void axPopupMenu::OnMouseLeftUp(const axPoint& pos)
+void axPopupMenu::OnMouseLeftUp(const ax::Point& pos)
 {
 	//UnGrabMouse();
 	////m_parent->TriggerEvent(m_eventID.valueChange);
@@ -158,12 +158,12 @@ void axPopupMenu::OnMouseLeftUp(const axPoint& pos)
 
 void axPopupMenu::OnPaint()
 {
-	//Resize(axSize(GetSize().x, m_labels.size() * LABEL_HEIGHT));
+	//Resize(ax::Size(GetSize().x, m_labels.size() * LABEL_HEIGHT));
 
 	///axGC gc(GetBackBuffer());
 	axGC* gc = GetGC();
-	//axSize size = GetSize();
-	axRect rect0(axPoint(0, 0), GetRect().size);
+	//ax::Size size = GetSize();
+	ax::Rect rect0(ax::Point(0, 0), GetRect().size);
 
 	gc->SetColor(_info.bgColorNormal);
 	gc->DrawRectangle(rect0);
@@ -171,13 +171,13 @@ void axPopupMenu::OnPaint()
 	gc->SetColor(_info.contourColor);
 	gc->DrawRectangleContour(rect0);
 
-	//axSize label_size(size.x, LABEL_HEIGHT);
+	//ax::Size label_size(size.x, LABEL_HEIGHT);
 	//for (unsigned int i = 0, pos_y = 0; i < _labels.size(); ++i, pos_y += LABEL_HEIGHT)
 	//{
 	//	if (i == _index)
 	//	{
 	//		gc->SetColor(_info.bgColorSelected);
-	//		axRect selected_rect(axPoint(2, pos_y + 2), label_size - axSize(4, 4));
+	//		ax::Rect selected_rect(ax::Point(2, pos_y + 2), label_size - ax::Size(4, 4));
 
 	//		gc->DrawRectangle(selected_rect);
 
@@ -188,18 +188,18 @@ void axPopupMenu::OnPaint()
 	//	else
 	//	{
 	//		gc->SetColor(_info.bgColorNormal);
-	//		axRect selected_rect(axPoint(2, pos_y + 2), label_size - axSize(4, 4));
+	//		ax::Rect selected_rect(ax::Point(2, pos_y + 2), label_size - ax::Size(4, 4));
 
 	//		gc->DrawRectangle(selected_rect);
 
 	//		gc->SetColor(_info.fontColor);
 	//		gc->DrawStringAlignedCenter(_labels[i], 
-	//			axRect(axPoint(0, pos_y), label_size));
+	//			ax::Rect(ax::Point(0, pos_y), label_size));
 
 	///*		gc.DrawTextAligned(m_labels[i], axTEXT_CENTER,
 	//			m_info.bgColorNormal.GetColorRGB(),
 	//			"8",
-	//			axRect(axPoint(0, pos_y), label_size));*/
+	//			ax::Rect(ax::Point(0, pos_y), label_size));*/
 	//	}
 	//}
 

@@ -26,7 +26,7 @@
  * axToggle::axToggle.
  ******************************************************************************/
 axRadio::axRadio(axWindow* parent,
-                   const axRect& rect,
+                   const ax::Rect& rect,
                    const axRadio::Events& events,
                    const axRadio::Info& info,
                    std::string img_path,
@@ -42,8 +42,8 @@ axToggle(parent, rect, events, info, img_path, label, flags, msg)
 void axRadio::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect(GetRect());
-	axRect rect0(GetDrawingRect());
+	ax::Rect rect(GetRect());
+	ax::Rect rect0(GetDrawingRect());
 
 	gc->SetColor(*_currentColor);
     gc->SetSmoothLine(1);
@@ -58,14 +58,14 @@ void axRadio::OnPaint()
 	{
         if (static_cast<Info*>(_info)->single_img)
 		{
-			gc->DrawImageResize(_bgImg, axPoint(0, 0), rect.size, 1.0);
+			gc->DrawImageResize(_bgImg, ax::Point(0, 0), rect.size, 1.0);
 		}
 		else
 		{
-            axPoint pos(0, _nCurrentImg * _bgImg->GetSize().y / 6);
-            axSize size(_bgImg->GetSize().x, _bgImg->GetSize().y / 6);
+            ax::Point pos(0, _nCurrentImg * _bgImg->GetSize().y / 6);
+            ax::Size size(_bgImg->GetSize().x, _bgImg->GetSize().y / 6);
             gc->DrawPartOfImageResize(_bgImg, pos, size,
-                                      axRect(axPoint(0, 0), GetRect().size));
+                                      ax::Rect(ax::Point(0, 0), GetRect().size));
 		}
 	}
 

@@ -137,7 +137,7 @@ class axDropMenu : public axPanel
 {
 public:
     axDropMenu(axWindow* parent,
-               const axRect& rect,
+               const ax::Rect& rect,
                const axDropMenuEvents& events,
                const axDropMenuInfo& info,
                std::string img_path = "",
@@ -182,8 +182,8 @@ private:
     int _nCurrentImg;
     
     virtual void OnPaint();
-    virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftUp(const ax::Point& pos);
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
     

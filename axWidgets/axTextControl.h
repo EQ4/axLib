@@ -169,7 +169,7 @@ class axTextControl : public axPanel
 {
 public:
 	axTextControl(axWindow* parent,
-                  const axRect& rect,
+                  const ax::Rect& rect,
                   const axTextControlEvents& events,
                   const axTextControlInfo& info,
                   string img_path = "",
@@ -194,7 +194,7 @@ protected:
     int _cursorIndex;
     bool _isHightlight;
     bool _findClickCursorIndex;
-    axPoint _clickPosition;
+    ax::Point _clickPosition;
     
     int _cursorBarXPosition, _lastCharXPosition;
     
@@ -209,12 +209,12 @@ protected:
     axTimer* _flashingCursor;
     
 	virtual void OnPaint();
-	virtual void OnMouseLeftDown(const axPoint& pos);
-    virtual void OnMouseLeftDragging(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+    virtual void OnMouseLeftDragging(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
-    virtual void OnMouseLeftDoubleClick(const axPoint& pos);
+    virtual void OnMouseLeftDoubleClick(const ax::Point& pos);
     virtual void OnKeyDown(const char& key);
     virtual void OnBackSpaceDown();
     

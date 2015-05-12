@@ -46,7 +46,7 @@
 //{
 //public:
 //    axAnimatedButton(axWindow* parent,
-//                     const axRect& rect,
+//                     const ax::Rect& rect,
 //                     const axButton::Events& events,
 //                     string img_path = "",
 //                     string label = "");
@@ -63,8 +63,8 @@
 //    void SetupTimer();
 //    
 //    virtual void OnPaint();
-//    virtual void OnMouseLeftDown(const axPoint& pos);
-//    virtual void OnMouseLeftUp(const axPoint& pos);
+//    virtual void OnMouseLeftDown(const ax::Point& pos);
+//    virtual void OnMouseLeftUp(const ax::Point& pos);
 //    virtual void OnMouseEnter();
 //    virtual void OnMouseLeave();
 //    

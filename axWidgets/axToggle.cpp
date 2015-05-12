@@ -234,7 +234,7 @@ void axToggle::Info::SetAttribute(const ax::StringPair& attribute)
  * axToggle::Builder.
  ******************************************************************************/
 axToggle::Builder::Builder(axPanel* parent,
-                           const axSize& size,
+                           const ax::Size& size,
                            const axToggle::Info& info,
                            string img_path,
                            string label,
@@ -264,7 +264,7 @@ _past(nullptr)
 axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
 {
     std::string name;
-    axPoint pos;
+    ax::Point pos;
     axToggle::Events evts;
     std::string msg;
     
@@ -279,8 +279,8 @@ axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
             ax::StringVector strVec;
             strVec = GetVectorFromStringDelimiter(s.second, ",");
             
-            pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));
-            _size = axSize(stoi(strVec[2]), stoi(strVec[3]));
+            pos = ax::Point(stoi(strVec[0]), stoi(strVec[1]));
+            _size = ax::Size(stoi(strVec[2]), stoi(strVec[3]));
                            
         }
         else if(s.first == "info")
@@ -305,7 +305,7 @@ axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
         }
     }
     
-    axToggle* tog = new_ axToggle(_parent, axRect(pos, _size),
+    axToggle* tog = new_ axToggle(_parent, ax::Rect(pos, _size),
                                  evts,
                                  _info, _img, _label, _flags, msg);
     
@@ -318,20 +318,23 @@ axToggle* axToggle::Builder::Create(const ax::StringPairVector& attributes)
 
 ax::StringVector axToggle::Builder::GetParamNameList() const
 {
-    return ax::StringVector{"name",
-                            "rect",
-                            "info",
-                            "label",
-                            "flags",
-                            "event",
-                            "msg"};
+    return ax::StringVector
+    {
+        "name",
+        "rect",
+        "info",
+        "label",
+        "flags",
+        "event",
+        "msg"
+    };
 }
 
 /*******************************************************************************
  * axToggle::axToggle.
  ******************************************************************************/
 axToggle::axToggle(axWindow* parent,
-                   const axRect& rect,
+                   const ax::Rect& rect,
                    const axToggle::Events& events,
                    const axToggle::Info& info,
                    std::string img_path,
@@ -395,7 +398,7 @@ void axToggle::SetSelected(const bool& selected)
 	}
 }
 
-void axToggle::OnMouseLeftDown(const axPoint& pos)
+void axToggle::OnMouseLeftDown(const ax::Point& pos)
 {
     if(_selected && IsFlag(Flags::CANT_UNSELECT_WITH_MOUSE, _flags))
     {
@@ -430,7 +433,7 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
     }
 }
 
-void axToggle::OnMouseLeftUp(const axPoint& pos)
+void axToggle::OnMouseLeftUp(const ax::Point& pos)
 {
 	if (IsGrabbed())
 	{
@@ -524,8 +527,8 @@ void axToggle::OnMouseLeave()
 void axToggle::OnPaint()
 {
 	axGC* gc = GetGC();
-	axRect rect(GetRect());
-	axRect rect0(GetDrawingRect());
+	ax::Rect rect(GetRect());
+	ax::Rect rect0(GetDrawingRect());
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
@@ -534,14 +537,14 @@ void axToggle::OnPaint()
 	{
         if (static_cast<Info*>(_info)->single_img)
 		{
-			gc->DrawImageResize(_bgImg, axPoint(0, 0), rect.size, 1.0);
+			gc->DrawImageResize(_bgImg, ax::Point(0, 0), rect.size, 1.0);
 		}
 		else
 		{
-            axPoint pos(0, _nCurrentImg * _bgImg->GetSize().y / 6);
-            axSize size(_bgImg->GetSize().x, _bgImg->GetSize().y / 6);
+            ax::Point pos(0, _nCurrentImg * _bgImg->GetSize().y / 6);
+            ax::Size size(_bgImg->GetSize().x, _bgImg->GetSize().y / 6);
             gc->DrawPartOfImageResize(_bgImg, pos, size,
-                                      axRect(axPoint(0, 0), GetRect().size));
+                                      ax::Rect(ax::Point(0, 0), GetRect().size));
 		}
 	}
 

@@ -114,12 +114,12 @@ class axPlot: public axPanel
 {
 public:
     axPlot(axWindow* parent,
-           const axRect& rect,
+           const ax::Rect& rect,
            const axPlotEvents& events,
            const axPlotInfo& info,
            const std::string& expr,
-           const axFloatRange& xRange,
-           const axFloatRange& yRange,
+           const ax::FloatRange& xRange,
+           const ax::FloatRange& yRange,
            const std::vector<double> xGridValue = {},
            const std::vector<double> xGridDarkValue = {},
            const std::vector<double> yGridValue = {},
@@ -132,7 +132,7 @@ public:
         Update();
     }
     
-    int SetPoints(std::vector<axFloatPoint> points)
+    int SetPoints(std::vector<ax::FloatPoint> points)
     {
         _points.push_back(points);
         
@@ -147,11 +147,11 @@ private:
     axPlotInfo _info;
     axFlag _flags;
     std::string _expr;
-    axFloatRange _xRange, _yRange;
+    ax::FloatRange _xRange, _yRange;
     std::vector<double> _xGridValue, _xGridDarkValue;
     std::vector<double> _yGridValue, _yGridDarkValue;
     
-    std::vector<std::vector<axFloatPoint>> _points;
+    std::vector<std::vector<ax::FloatPoint>> _points;
 
     void OnPaint();
 };

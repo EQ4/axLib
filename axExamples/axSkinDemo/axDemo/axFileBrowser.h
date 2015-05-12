@@ -16,7 +16,7 @@ namespace ax
     class FileBrowser: public axPanel
     {
     public:
-        FileBrowser(axWindow* parent, const axRect& rect);
+        FileBrowser(axWindow* parent, const ax::Rect& rect);
         
 //        axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
         

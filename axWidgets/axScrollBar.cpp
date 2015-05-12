@@ -23,7 +23,7 @@
 
 axScrollBar::axScrollBar(axWindow* parent,
                          axWindow* handle,
-                         const axRect& rect,
+                         const ax::Rect& rect,
                          const axScrollBarEvents& events,
                          const axScrollBarInfo& info,
                          axFlag flags) :
@@ -48,13 +48,13 @@ _value(0.0)
 	//function<void (axButtonMsg)> btnFct();
 
 //	_btn[0] = new_ axButton(this, 
-//						   axRect(0, 0, 14, 14), 
+//						   ax::Rect(0, 0, 14, 14), 
 //						   axButtonEvents(), 
 //						   btn_info, 
 //						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_up.png");
 //
 //	_btn[1] = new_ axButton(this, 
-//						   axRect(0, rect.size.y - 14, 14, 14), 
+//						   ax::Rect(0, rect.size.y - 14, 14, 14), 
 //						   axButtonEvents(), 
 //						   btn_info, 
 //						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_down.png");
@@ -77,9 +77,9 @@ _value(0.0)
 
 }
 
-void axScrollBar::SetPanelSize(const axSize& size)
+void axScrollBar::SetPanelSize(const ax::Size& size)
 {
-    axSize framSize(GetRect().size);
+    ax::Size framSize(GetRect().size);
     _panelSize = size;
     _sliderMaxHeight = framSize.y - (2.0 * _imgHeight);
     
@@ -95,11 +95,11 @@ void axScrollBar::SetPanelSize(const axSize& size)
     Update();
 }
 
-void axScrollBar::OnMouseMotion(const axPoint& position)
+void axScrollBar::OnMouseMotion(const ax::Point& position)
 {
-    axPoint pos = position - GetAbsoluteRect().position;
+    ax::Point pos = position - GetAbsoluteRect().position;
     
-    if(axRect(0, _sliderPos, GetRect().size.x, _sliderHeight).IsPointInside(pos))
+    if(ax::Rect(0, _sliderPos, GetRect().size.x, _sliderHeight).IsPointInside(pos))
     {
         _currentScrollBarColor = &_info.hover;
         Update();
@@ -111,11 +111,11 @@ void axScrollBar::OnMouseMotion(const axPoint& position)
     }
 }
 
-void axScrollBar::OnMouseLeftDown(const axPoint& position)
+void axScrollBar::OnMouseLeftDown(const ax::Point& position)
 {
-	axPoint pos = position - GetAbsoluteRect().position;
+	ax::Point pos = position - GetAbsoluteRect().position;
     
-    if(axRect(0, _sliderPos, GetRect().size.x, _sliderHeight).IsPointInside(pos))
+    if(ax::Rect(0, _sliderPos, GetRect().size.x, _sliderHeight).IsPointInside(pos))
     {
         _currentScrollBarColor = &_info.hover;
         _yClickDelta = pos.y - _sliderPos;
@@ -125,7 +125,7 @@ void axScrollBar::OnMouseLeftDown(const axPoint& position)
     }
 }
 
-void axScrollBar::OnMouseLeftUp(const axPoint& pos)
+void axScrollBar::OnMouseLeftUp(const ax::Point& pos)
 {
 	if(IsGrabbed())
 	{
@@ -133,9 +133,9 @@ void axScrollBar::OnMouseLeftUp(const axPoint& pos)
 	}
 }
 
-void axScrollBar::OnMouseLeftDragging(const axPoint& position)
+void axScrollBar::OnMouseLeftDragging(const ax::Point& position)
 {
-	axPoint pos = position - GetAbsoluteRect().position;
+	ax::Point pos = position - GetAbsoluteRect().position;
 
 	if(_sliderHeight < _sliderMaxHeight)
 	{
@@ -162,7 +162,7 @@ void axScrollBar::OnMouseLeftDragging(const axPoint& position)
         PushEvent(axScrollBarEvents::VALUE_CHANGE,
                   new_ axScrollBarMsg(this, std::string("")));
         
-        _handle->SetScrollDecay(axPoint(0, _value * (_panelSize.y - GetRect().size.y)));
+        _handle->SetScrollDecay(ax::Point(0, _value * (_panelSize.y - GetRect().size.y)));
 
 		Update();
 	}
@@ -184,8 +184,8 @@ void axScrollBar::OnMouseLeave()
 void axScrollBar::OnPaint()
 {
 	axGC* gc = GetGC();
-//	axRect rect0(axPoint(0, 0), GetRect().size);
-    axRect rect0(GetDrawingRect());
+//	ax::Rect rect0(ax::Point(0, 0), GetRect().size);
+    ax::Rect rect0(GetDrawingRect());
 //
 	gc->SetColor(axColor(1.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangle(rect0);
@@ -197,11 +197,11 @@ void axScrollBar::OnPaint()
 //	// gc->DrawImageResize(_bgImg, rect0.position, rect0.size);
 //
 //	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//	gc->DrawRectangleContour(axRect(axPoint(1, 1), rect0.size - axSize(1, 1) ));
+//	gc->DrawRectangleContour(ax::Rect(ax::Point(1, 1), rect0.size - ax::Size(1, 1) ));
 //
 
     gc->SetColor(*_currentScrollBarColor);
-	axRect bar_rect(0, _sliderPos, GetRect().size.x, _sliderHeight);
+	ax::Rect bar_rect(0, _sliderPos, GetRect().size.x, _sliderHeight);
 	gc->DrawRectangle(bar_rect);
     
     gc->SetColor(_info.slider_contour);

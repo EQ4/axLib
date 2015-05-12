@@ -8,7 +8,7 @@
 
 #include "axEditorToolbar.h"
 
-axEditorToolbar::axEditorToolbar(axWindow* parent, const axRect& rect,
+axEditorToolbar::axEditorToolbar(axWindow* parent, const ax::Rect& rect,
                                  const axButton::Events& evt):
 axPanel(parent, rect)
 {
@@ -21,7 +21,7 @@ axPanel(parent, rect)
     btn_info.round_corner_radius = 3;
     
     axButton* btn1 = new axButton(this,
-                                  axRect(10, 7, 60, 26),
+                                  ax::Rect(10, 7, 60, 26),
                                   evt,
                                   btn_info,
                                   "", "Widgets", axNO_FLAG, "Widgets");
@@ -30,7 +30,7 @@ axPanel(parent, rect)
     btn1->SetEditable(false);
     
     axButton* btn2 = new axButton(this,
-                                  axRect(btn1->GetNextPosRight(10), axSize(60, 26)),
+                                  ax::Rect(btn1->GetNextPosRight(10), ax::Size(60, 26)),
                                   evt,
                                   btn_info,
                                   "", "Attributes", axNO_FLAG, "Attributes");
@@ -42,12 +42,12 @@ axPanel(parent, rect)
 void axEditorToolbar::OnPaint()
 {
     axGC gc(this);
-    axRect rect(GetDrawingRect());
+    ax::Rect rect(GetDrawingRect());
     
     gc.DrawRectangleColorFade(rect, axColor(0.8), axColor(0.7));
     
     gc.SetColor(axColor(0.0));
     gc.DrawRectangleContour(rect);
-//    gc.DrawRectangleColorFade(axRect(0, 0, rect.size.x, 40),
+//    gc.DrawRectangleColorFade(ax::Rect(0, 0, rect.size.x, 40),
 //                              axColor(0.6), axColor(0.9));
 }

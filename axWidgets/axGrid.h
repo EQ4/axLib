@@ -134,10 +134,10 @@ class axGrid : public axPanel
 {
 public:
 	axGrid(axWindow* parent,
-		const axRect& rect,
+		const ax::Rect& rect,
 		const axGridEvents& events,
 		const axGridInfo& info,
-		axSize grid_dimension,
+		ax::Size grid_dimension,
 		//string label = "",
 		axFlag flags = 0,
 		string msg = "");
@@ -154,7 +154,7 @@ private:
 	string _msg;
 	
 	axFlag _flags;
-	axSize _dimension;
+	ax::Size _dimension;
 
 	int _nCurrentImg;
 
@@ -163,7 +163,7 @@ private:
 	struct axGridElement
 	{
 		bool on;
-		axPoint position;
+		ax::Point position;
 		axColor color;
 	};
 
@@ -171,15 +171,15 @@ private:
 	vector<vector<axGridElement>> _gridElements;
 	
 	void AddElement(const int& row, const int& col);
-	axArrayIndex GetElementIndexFromMouse(const axPoint& pos);
-	axPoint GetPositionOfElement(const axArrayIndex& index);
+	axArrayIndex GetElementIndexFromMouse(const ax::Point& pos);
+	ax::Point GetPositionOfElement(const axArrayIndex& index);
 
 	axArrayIndex _selectedElement;
 
 	virtual void OnPaint();
 	//virtual void OnMouseMotion(){}
-	virtual void OnMouseLeftDown(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseLeftDown(const ax::Point& pos);
+	virtual void OnMouseLeftUp(const ax::Point& pos);
 	// virtual void OnMouseRightDown();
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
