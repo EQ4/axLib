@@ -14,7 +14,6 @@ MainPanel::MainPanel(ax::App* app, const ax::Rect& rect):
 // Parent.
 axPanel(app, rect)
 {
-    
     _fileBrowser = new ax::FileBrowser(this,
                                        ax::Rect(0, 40, 200, rect.size.y - 40));
     

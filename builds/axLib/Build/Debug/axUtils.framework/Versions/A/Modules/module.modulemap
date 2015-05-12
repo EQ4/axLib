@@ -1,0 +1,6 @@
+framework module axUtils {
+  umbrella header "axUtils.h"
+
+  export *
+  module * { export * }
+}

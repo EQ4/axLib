@@ -127,7 +127,6 @@ namespace ax
     }
 }
 
-
 typedef std::vector<bool> axBoolVector;
 
 ax::StringVector GetVectorFromStringDelimiter(const std::string& str,

@@ -14,12 +14,12 @@ namespace ax
     // Parent.
     axPanel(parent, rect)
     {
-        ax::StringVector dir = ax::Utils::ListDirectory("/Users/alexarse/");
+        //ax::StringVector dir = ax::Utils::ListDirectory("/Users/alexarse/");
         
-        for(auto& n : dir)
-        {
-            axPrint(n);
-        }
+//        for(auto& n : dir)
+//        {
+//            axPrint(n);
+//        }
     }
     
     void FileBrowser::OnPaint()

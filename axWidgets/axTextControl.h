@@ -34,7 +34,7 @@
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
-#include "axTimer.h"
+#include <axEvent/axTimer.h>
 
 /**************************************************************************//**
  * axTextControlFlags.

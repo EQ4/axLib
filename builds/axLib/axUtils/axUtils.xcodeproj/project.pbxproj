@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C18C37C1B02709500885929 /* axUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C37B1B02709500885929 /* axUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C39D1B02713F00885929 /* axPoint2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C39B1B02713F00885929 /* axPoint2D.cpp */; };
+		7C18C39E1B02713F00885929 /* axPoint2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C39C1B02713F00885929 /* axPoint2D.h */; };
+		7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A11B02726D00885929 /* axRect2D.cpp */; };
+		7C18C3A41B02726D00885929 /* axRect2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A21B02726D00885929 /* axRect2D.h */; };
+		7C18C3A71B02747400885929 /* axRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A51B02747400885929 /* axRange.cpp */; };
+		7C18C3A81B02747400885929 /* axRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3A61B02747400885929 /* axRange.h */; };
+		7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3A91B02774500885929 /* axInterpole.cpp */; };
+		7C18C3AC1B02774500885929 /* axInterpole.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AA1B02774500885929 /* axInterpole.h */; };
+		7C18C3AF1B02788200885929 /* axClamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3AD1B02788200885929 /* axClamp.cpp */; };
+		7C18C3B01B02788200885929 /* axClamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3AE1B02788200885929 /* axClamp.h */; };
+		7C18C3B31B02790300885929 /* axString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B11B02790300885929 /* axString.cpp */; };
+		7C18C3B41B02790300885929 /* axString.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B21B02790300885929 /* axString.h */; };
+		7C18C3B71B027C7F00885929 /* axControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B51B027C7F00885929 /* axControl.cpp */; };
+		7C18C3B81B027C7F00885929 /* axControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B61B027C7F00885929 /* axControl.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C18C3761B02709500885929 /* axUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C18C37A1B02709500885929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C18C37B1B02709500885929 /* axUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axUtils.h; sourceTree = "<group>"; };
+		7C18C39B1B02713F00885929 /* axPoint2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPoint2D.cpp; sourceTree = "<group>"; };
+		7C18C39C1B02713F00885929 /* axPoint2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPoint2D.h; sourceTree = "<group>"; };
+		7C18C3A11B02726D00885929 /* axRect2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axRect2D.cpp; sourceTree = "<group>"; };
+		7C18C3A21B02726D00885929 /* axRect2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axRect2D.h; sourceTree = "<group>"; };
+		7C18C3A51B02747400885929 /* axRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axRange.cpp; sourceTree = "<group>"; };
+		7C18C3A61B02747400885929 /* axRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axRange.h; sourceTree = "<group>"; };
+		7C18C3A91B02774500885929 /* axInterpole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axInterpole.cpp; sourceTree = "<group>"; };
+		7C18C3AA1B02774500885929 /* axInterpole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axInterpole.h; sourceTree = "<group>"; };
+		7C18C3AD1B02788200885929 /* axClamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axClamp.cpp; sourceTree = "<group>"; };
+		7C18C3AE1B02788200885929 /* axClamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axClamp.h; sourceTree = "<group>"; };
+		7C18C3B11B02790300885929 /* axString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axString.cpp; sourceTree = "<group>"; };
+		7C18C3B21B02790300885929 /* axString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axString.h; sourceTree = "<group>"; };
+		7C18C3B51B027C7F00885929 /* axControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axControl.cpp; sourceTree = "<group>"; };
+		7C18C3B61B027C7F00885929 /* axControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axControl.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C18C3721B02709500885929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C18C36C1B02709400885929 = {
+			isa = PBXGroup;
+			children = (
+				7C18C3781B02709500885929 /* axUtils */,
+				7C18C3771B02709500885929 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C18C3771B02709500885929 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C3761B02709500885929 /* axUtils.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C18C3781B02709500885929 /* axUtils */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C37B1B02709500885929 /* axUtils.h */,
+				7C18C39F1B02714900885929 /* include */,
+				7C18C3A01B02714E00885929 /* source */,
+				7C18C3791B02709500885929 /* Supporting Files */,
+			);
+			path = axUtils;
+			sourceTree = "<group>";
+		};
+		7C18C3791B02709500885929 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C37A1B02709500885929 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C18C39F1B02714900885929 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C3AE1B02788200885929 /* axClamp.h */,
+				7C18C3B61B027C7F00885929 /* axControl.h */,
+				7C18C3AA1B02774500885929 /* axInterpole.h */,
+				7C18C39C1B02713F00885929 /* axPoint2D.h */,
+				7C18C3A61B02747400885929 /* axRange.h */,
+				7C18C3A21B02726D00885929 /* axRect2D.h */,
+				7C18C3B21B02790300885929 /* axString.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		7C18C3A01B02714E00885929 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C3AD1B02788200885929 /* axClamp.cpp */,
+				7C18C3B51B027C7F00885929 /* axControl.cpp */,
+				7C18C3A91B02774500885929 /* axInterpole.cpp */,
+				7C18C39B1B02713F00885929 /* axPoint2D.cpp */,
+				7C18C3A51B02747400885929 /* axRange.cpp */,
+				7C18C3A11B02726D00885929 /* axRect2D.cpp */,
+				7C18C3B11B02790300885929 /* axString.cpp */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7C18C3731B02709500885929 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C18C39E1B02713F00885929 /* axPoint2D.h in Headers */,
+				7C18C3B41B02790300885929 /* axString.h in Headers */,
+				7C18C3B01B02788200885929 /* axClamp.h in Headers */,
+				7C18C3B81B027C7F00885929 /* axControl.h in Headers */,
+				7C18C3AC1B02774500885929 /* axInterpole.h in Headers */,
+				7C18C3A81B02747400885929 /* axRange.h in Headers */,
+				7C18C37C1B02709500885929 /* axUtils.h in Headers */,
+				7C18C3A41B02726D00885929 /* axRect2D.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7C18C3751B02709500885929 /* axUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C18C38C1B02709500885929 /* Build configuration list for PBXNativeTarget "axUtils" */;
+			buildPhases = (
+				7C18C3711B02709500885929 /* Sources */,
+				7C18C3721B02709500885929 /* Frameworks */,
+				7C18C3731B02709500885929 /* Headers */,
+				7C18C3741B02709500885929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = axUtils;
+			productName = axUtils;
+			productReference = 7C18C3761B02709500885929 /* axUtils.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C18C36D1B02709500885929 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexandre Arsenault";
+				TargetAttributes = {
+					7C18C3751B02709500885929 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7C18C3701B02709500885929 /* Build configuration list for PBXProject "axUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7C18C36C1B02709400885929;
+			productRefGroup = 7C18C3771B02709500885929 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C18C3751B02709500885929 /* axUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C18C3741B02709500885929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C18C3711B02709500885929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C18C3B71B027C7F00885929 /* axControl.cpp in Sources */,
+				7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */,
+				7C18C3A71B02747400885929 /* axRange.cpp in Sources */,
+				7C18C39D1B02713F00885929 /* axPoint2D.cpp in Sources */,
+				7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */,
+				7C18C3AF1B02788200885929 /* axClamp.cpp in Sources */,
+				7C18C3B31B02790300885929 /* axString.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7C18C38A1B02709500885929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C18C38B1B02709500885929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C18C38D1B02709500885929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = axUtils/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7C18C38E1B02709500885929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = axUtils/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C18C3701B02709500885929 /* Build configuration list for PBXProject "axUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C18C38A1B02709500885929 /* Debug */,
+				7C18C38B1B02709500885929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C18C38C1B02709500885929 /* Build configuration list for PBXNativeTarget "axUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C18C38D1B02709500885929 /* Debug */,
+				7C18C38E1B02709500885929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C18C36D1B02709500885929 /* Project object */;
+}

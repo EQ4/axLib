@@ -82,7 +82,7 @@ namespace ax
             if(it == _event_fct_map.end())
             {
                 std::cerr << "Event Object id " << id <<
-                " has no function connected to event id " << evtId << std::endl;
+                " is not connected to the event map." << std::endl;
                 
                 manager_mutex.unlock();
                 delete msg;

@@ -45,11 +45,12 @@
 
 #include <axEvent/axEvent.h>
 #include <axEvent/axObject.h>
+#include <axEvent/axTimer.h>
 //#include "axEventManager.h"
 #include "axKeyboardManager.h"
 #include "axMouseManager.h"
 
-#include "axTimer.h"
+
 //#include "axMsg.h"
 #include "axObjectLoader.h"
 //#include "axObject.h"
