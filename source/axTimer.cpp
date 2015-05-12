@@ -20,93 +20,124 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axTimer.h"
-#include "axApp.h"
 
-axTimer::axTimer(ax::App* app, ax::Event::Function fct, int ms):
-ax::Event::Object(app->GetEventManager())
+namespace ax
 {
-//    AddConnection(0, fct);
-//    InitTimer(ms);
-}
-
-axTimer::axTimer(ax::App* app):
-ax::Event::Object(app->GetEventManager()),
-_isRunning(false)
-{
-    //InitTimer(ms);
-}
-
-bool axTimer::IsRunning() const
-{
-    return _isRunning;
-}
-
-void axTimer::StartTimer(const int& interval_ms, const int& length_ms)
-{
-    timer_mutex.lock();
-    
-    _isRunning = true;
-    
-    timer_mutex.unlock();
-    
-    // Return true if the thread object identifies an active thread
-    // of execution, false otherwise.
-    if(_timerThread.joinable() == false)
+    namespace Event
     {
-        _timerThread = std::thread(timer_thread,
-                                   std::ref(*this),
-                                   interval_ms,
-                                   length_ms);
-        _timerThread.detach();
+        //**********************************************************************
+        // ax::Event::Timer::Msg
+        //**********************************************************************
+        Timer::Msg::Msg(const TimeMs& t) :
+        _time(t)
+        {
+        }
+        
+        Timer::TimeMs Timer::Msg::GetTime() const
+        {
+            return _time;
+        }
+        
+        ax::Event::Msg* Timer::Msg::GetCopy()
+        {
+            return new Msg(*this);
+        }
+        
+        //**********************************************************************
+        // ax::Event::Timer
+        //**********************************************************************
+        Timer::Timer(Manager* evtManager, const Function& fct):
+        ax::Event::Object(evtManager),
+        _isRunning(false)
+        {
+            AddConnection(TIMER_ID, fct);
+        }
+        
+        Timer::Timer(Manager* evtManager):
+        Object(evtManager),
+        _isRunning(false)
+        {
+        }
+        
+        bool Timer::IsRunning() const
+        {
+            return _isRunning;
+        }
+        
+        void Timer::StartTimer(const TimeMs& interval_ms,
+                               const TimeMs& length_ms)
+        {
+            timer_mutex.lock();
+            
+            _isRunning = true;
+            
+            timer_mutex.unlock();
+            
+            // Return true if the thread object identifies an active thread
+            // of execution, false otherwise.
+            if(_timerThread.joinable() == false)
+            {
+                _timerThread = std::thread(timer_thread,
+                                           std::ref(*this),
+                                           interval_ms,
+                                           length_ms);
+                _timerThread.detach();
+            }
+        }
+        
+        void Timer::StartTimer(const TimeMs& interval_ms)
+        {
+            timer_mutex.lock();
+            
+            _isRunning = true;
+            
+            timer_mutex.unlock();
+            
+            // Return true if the thread object identifies an active thread
+            // of execution, false otherwise.
+            if(_timerThread.joinable() == false)
+            {
+                _timerThread = std::thread(timer_thread_no_end,
+                                           std::ref(*this),
+                                           interval_ms);
+                _timerThread.detach();
+            }
+        }
+        
+        void Timer::StopTimer()
+        {
+            timer_mutex.lock();
+            _isRunning = false;
+            timer_mutex.unlock();
+        }
+        
+        void Timer::timer_thread_no_end(Timer& timer, const TimeMs& interval_ms)
+        {
+            TimeMs count_ms(0);
+            
+            while (timer.IsRunning())
+            {
+                timer.PushEvent(0, new Timer::Msg(count_ms));
+                count_ms += interval_ms;
+                
+                std::this_thread::sleep_for(interval_ms);
+            }
+        }
+        
+        void Timer::timer_thread(Timer& timer,
+                                 const TimeMs& interval_ms,
+                                 const TimeMs& length_ms)
+        {
+            TimeMs count_ms(0);
+            
+            while (count_ms < length_ms)
+            {
+                timer.PushEvent(TIMER_ID, new Timer::Msg(count_ms));
+                count_ms += interval_ms;
+                std::this_thread::sleep_for(interval_ms);
+            }
+        }
     }
 }
 
-void axTimer::StartTimer(const int& interval_ms)
-{
-    timer_mutex.lock();
-    
-    _isRunning = true;
-    
-    timer_mutex.unlock();
-    
-    // Return true if the thread object identifies an active thread
-    // of execution, false otherwise.
-    if(_timerThread.joinable() == false)
-    {
-        _timerThread = std::thread(timer_thread_no_end,
-                                   std::ref(*this),
-                                   interval_ms);
-        _timerThread.detach();
-    }
-}
 
-void axTimer::StopTimer()
-{
-    timer_mutex.lock();
-    _isRunning = false;
-    timer_mutex.unlock();
-}
-
-void axTimer::timer_thread_no_end(axTimer& timer, int interval_ms)
-{
-    int count_ms = 0;
-    
-    while (timer.IsRunning())
-    {
-        timer.PushEvent(0, new axTimerMsg(count_ms));
-        count_ms += interval_ms;
-        std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
-    }
-}
-
-void axTimer::timer_thread(axTimer& timer, int interval_ms, int length_ms)
-{
-    int count_ms = 0;
-    
-    while (count_ms < length_ms)
-    {
-        timer.PushEvent(0, new axTimerMsg(count_ms));
-        count_ms += interval_ms;
-        std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
-    }
-}

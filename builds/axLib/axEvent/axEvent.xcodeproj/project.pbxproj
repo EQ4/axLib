@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C18C3551B02398100885929 /* axTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3531B02398100885929 /* axTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3561B02398100885929 /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3541B02398100885929 /* axTimer.cpp */; };
+		7C18C35E1B023E6B00885929 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C35D1B023E6B00885929 /* main.cpp */; };
+		7C18C3621B023EDA00885929 /* axEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC6B8451B0193FC0059D822 /* axEvent.framework */; };
 		7CC6B8701B0195020059D822 /* axEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC6B86A1B0195020059D822 /* axEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC6B8711B0195020059D822 /* axEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC6B86B1B0195020059D822 /* axEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC6B8721B0195020059D822 /* axMsg.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC6B86C1B0195020059D822 /* axMsg.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,7 +21,23 @@
 		7CC6B8791B01985F0059D822 /* axObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6B8781B01985F0059D822 /* axObject.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7C18C3591B023E6B00885929 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7C18C3531B02398100885929 /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axTimer.h; path = ../../../../include/axTimer.h; sourceTree = "<group>"; };
+		7C18C3541B02398100885929 /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axTimer.cpp; path = ../../../../source/axTimer.cpp; sourceTree = "<group>"; };
+		7C18C35B1B023E6B00885929 /* axEventTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = axEventTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C18C35D1B023E6B00885929 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7CC6B8451B0193FC0059D822 /* axEvent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axEvent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC6B8491B0193FC0059D822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC6B86A1B0195020059D822 /* axEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEvent.h; path = ../../../../include/axEvent.h; sourceTree = "<group>"; };
@@ -31,6 +51,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7C18C3581B023E6B00885929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C18C3621B023EDA00885929 /* axEvent.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CC6B8411B0193FC0059D822 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,10 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C18C35C1B023E6B00885929 /* axEventTest */ = {
+			isa = PBXGroup;
+			children = (
+				7C18C35D1B023E6B00885929 /* main.cpp */,
+			);
+			path = axEventTest;
+			sourceTree = "<group>";
+		};
 		7CC6B83B1B0193FC0059D822 = {
 			isa = PBXGroup;
 			children = (
 				7CC6B8471B0193FC0059D822 /* axEvent */,
+				7C18C35C1B023E6B00885929 /* axEventTest */,
 				7CC6B8461B0193FC0059D822 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				7CC6B8451B0193FC0059D822 /* axEvent.framework */,
+				7C18C35B1B023E6B00885929 /* axEventTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +102,8 @@
 				7CC6B86B1B0195020059D822 /* axEventManager.h */,
 				7CC6B86C1B0195020059D822 /* axMsg.h */,
 				7CC6B8761B01984F0059D822 /* axObject.h */,
+				7C18C3531B02398100885929 /* axTimer.h */,
+				7C18C3541B02398100885929 /* axTimer.cpp */,
 				7CC6B86D1B0195020059D822 /* axEvent.cpp */,
 				7CC6B86E1B0195020059D822 /* axEventManager.cpp */,
 				7CC6B86F1B0195020059D822 /* axMsg.cpp */,
@@ -90,6 +130,7 @@
 			files = (
 				7CC6B8771B01984F0059D822 /* axObject.h in Headers */,
 				7CC6B8721B0195020059D822 /* axMsg.h in Headers */,
+				7C18C3551B02398100885929 /* axTimer.h in Headers */,
 				7CC6B8711B0195020059D822 /* axEventManager.h in Headers */,
 				7CC6B8701B0195020059D822 /* axEvent.h in Headers */,
 			);
@@ -98,6 +139,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7C18C35A1B023E6B00885929 /* axEventTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C18C35F1B023E6B00885929 /* Build configuration list for PBXNativeTarget "axEventTest" */;
+			buildPhases = (
+				7C18C3571B023E6B00885929 /* Sources */,
+				7C18C3581B023E6B00885929 /* Frameworks */,
+				7C18C3591B023E6B00885929 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = axEventTest;
+			productName = axEventTest;
+			productReference = 7C18C35B1B023E6B00885929 /* axEventTest */;
+			productType = "com.apple.product-type.tool";
+		};
 		7CC6B8441B0193FC0059D822 /* axEvent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CC6B85B1B0193FC0059D822 /* Build configuration list for PBXNativeTarget "axEvent" */;
@@ -125,6 +183,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alexandre Arsenault";
 				TargetAttributes = {
+					7C18C35A1B023E6B00885929 = {
+						CreatedOnToolsVersion = 6.1;
+					};
 					7CC6B8441B0193FC0059D822 = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -143,6 +204,7 @@
 			projectRoot = "";
 			targets = (
 				7CC6B8441B0193FC0059D822 /* axEvent */,
+				7C18C35A1B023E6B00885929 /* axEventTest */,
 			);
 		};
 /* End PBXProject section */
@@ -158,6 +220,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7C18C3571B023E6B00885929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C18C35E1B023E6B00885929 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CC6B8401B0193FC0059D822 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,12 +236,31 @@
 				7CC6B8791B01985F0059D822 /* axObject.cpp in Sources */,
 				7CC6B8751B0195020059D822 /* axMsg.cpp in Sources */,
 				7CC6B8741B0195020059D822 /* axEventManager.cpp in Sources */,
+				7C18C3561B02398100885929 /* axTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		7C18C3601B023E6B00885929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C18C3611B023E6B00885929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7CC6B8591B0193FC0059D822 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,6 +378,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7C18C35F1B023E6B00885929 /* Build configuration list for PBXNativeTarget "axEventTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C18C3601B023E6B00885929 /* Debug */,
+				7C18C3611B023E6B00885929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7CC6B83F1B0193FC0059D822 /* Build configuration list for PBXProject "axEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

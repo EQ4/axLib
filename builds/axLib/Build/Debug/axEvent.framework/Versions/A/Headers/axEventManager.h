@@ -53,6 +53,7 @@ namespace ax
         {
         public:
             Manager();
+            
             Manager(const std::function<void()>& unblock_main_thread_fct);
             
             void AddConnection(const ID& id, const Id& evtId, Function fct);
@@ -62,6 +63,10 @@ namespace ax
             void CallNext();
             
             int GetEventQueueSize() const;
+            
+            void RemoveObjectConnection(const ID& id);
+            
+            void RemoveEventConnection(const ID& id, const Id& evtId);
             
         private:
             void AddFunction(axBindedEvent fct);

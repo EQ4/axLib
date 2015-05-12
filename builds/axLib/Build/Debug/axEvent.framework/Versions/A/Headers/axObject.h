@@ -39,8 +39,6 @@
 
 namespace ax
 {
-//    class App;
-    
     namespace Event
     {
         class Manager;
@@ -59,31 +57,22 @@ namespace ax
             void AddConnection(const Id& evtId, Function fct) const;
                                
             /// Add the function to the EventManager queue.
-            void PushEvent(const ax::Event::Id& evtId, ax::Event::Msg* msg);
+            void PushEvent(const Id& evtId, Msg* msg);
             
             /// Indefine behavior if two axObject has the same id.
             void ChangeId(const ID& id);
             
             inline ID GetId() const { return _id; }
             
-            /// Add a function to the object map without adding it to the event manager.
+            /// Add a function to the object map without adding it
+            /// to the event manager.
             void AddEventFunction(const std::string& name, Function fct);
             
             /// Get a function from the object map.
-            ax::Event::Function GetEventFunction(const std::string& name);
-            
-            //        inline ax::App* GetApp()
-            //        {
-            //            return _app;
-            //        }
-            //
-            //        inline ax::App* GetApp() const
-            //        {
-            //            return _app;
-            //        }
-            
+            Function GetEventFunction(const std::string& name);
+
         private:
-            //        ax::App* _app;
+            /// Event manager.
             ax::Event::Manager* _evtManager;
             
             /// Unique identifier.
@@ -92,6 +81,7 @@ namespace ax
             /// Map of lamda functions.
             std::map<std::string, Function> _evtMap;
             
+            /// Global increment count variable.
             static ID _global_id_count;
             static ID IncrementGlobalIdCount();
         };

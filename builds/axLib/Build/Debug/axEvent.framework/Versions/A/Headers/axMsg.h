@@ -25,6 +25,8 @@
 /// @defgroup Event
 /// @{
 
+#include <string>
+
 namespace ax
 {
     namespace Event
@@ -38,6 +40,50 @@ namespace ax
             
             virtual Msg* GetCopy() = 0;
         };
+        
+        template<typename T>
+        class SimpleMsg : public Msg
+        {
+        public:
+            SimpleMsg(const T& msg):
+            _msg(msg)
+            {
+                
+            }
+            
+            static SimpleMsg<T>& Cast(Msg* msg)
+            {
+                return *static_cast<SimpleMsg<T>*>(msg);
+            }
+            
+            virtual Msg* GetCopy()
+            {
+                return new SimpleMsg<T>(*this);
+            };
+            
+            T GetMsg() const
+            {
+                return _msg;
+            }
+            
+        private:
+            T _msg;
+        };
+        
+        typedef SimpleMsg<std::string> StringMsg;
+        
+//        class StringMsg : public Msg
+//        {
+//        public:
+//            StringMsg(const std::string& msg);
+//            
+//            virtual Msg* GetCopy();
+//            
+//            std::string GetMsg() const;
+//            
+//        private:
+//            std::string _msg;
+//        };
     }
 }
 

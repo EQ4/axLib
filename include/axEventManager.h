@@ -64,6 +64,10 @@ namespace ax
             
             int GetEventQueueSize() const;
             
+            void RemoveObjectConnection(const ID& id);
+            
+            void RemoveEventConnection(const ID& id, const Id& evtId);
+            
         private:
             void AddFunction(axBindedEvent fct);
                         

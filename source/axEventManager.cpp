@@ -79,30 +79,46 @@ namespace ax
             
             auto it = _event_fct_map.find(id);
             
-            if(it != _event_fct_map.end())
+            if(it == _event_fct_map.end())
             {
-                // Pair of the first and last element of this id.
-                auto range(it->second.equal_range(evtId));
+                std::cerr << "Event Object id " << id <<
+                " has no function connected to event id " << evtId << std::endl;
                 
-                // Add every connected functions from this id to the event queue.
-                for (Multimap::iterator i = range.first; i != range.second; ++i)
+                manager_mutex.unlock();
+                delete msg;
+                return;
+            }
+            
+            // Pair of the first and last element of this id.
+            auto range(it->second.equal_range(evtId));
+            
+            if(range.first == it->second.end())
+            {
+                std::cerr << "Event Object id " << id <<
+                " has no function connected to event id " << evtId << std::endl;
+                
+                manager_mutex.unlock();
+                delete msg;
+                return;
+            }
+            
+            // Add every connected functions from this id to the event queue.
+            for (Multimap::iterator i = range.first; i != range.second; ++i)
+            {
+                // Create a Copy of child params
+                // (this will create a new pointer with his own memory).
+                Msg* msg_copy = msg->GetCopy();
+                
+                // Add binded function to event queue.
+                AddFunction(axBindedEvent(i->second, msg_copy));
+                
+                if(_unblockMainThreadFct)
                 {
-                    // Create a Copy of child params
-                    // (this will create a new pointer with his own memory).
-                    Msg* msg_copy = msg->GetCopy();
-                    
-                    // Add binded function to event queue.
-                    AddFunction(axBindedEvent(i->second, msg_copy));
-                    
-                    if(_unblockMainThreadFct)
-                    {
-                        _unblockMainThreadFct();
-                    }
+                    _unblockMainThreadFct();
                 }
             }
             
             manager_mutex.unlock();
-            
             delete msg;
         }
         
@@ -121,6 +137,36 @@ namespace ax
                 
                 // Remove function from queue.
                 _evtQueue.pop_front();
+            }
+            
+            manager_mutex.unlock();
+        }
+        
+        void Manager::RemoveObjectConnection(const ID& id)
+        {
+            manager_mutex.lock();
+            
+            auto it = _event_fct_map.find(id);
+            
+            if(it != _event_fct_map.end())
+            {
+                _event_fct_map.erase(it);
+            }
+            
+            manager_mutex.unlock();
+        }
+        
+        void Manager::RemoveEventConnection(const ID& id, const Id& evtId)
+        {
+            manager_mutex.lock();
+            
+            auto it = _event_fct_map.find(id);
+            
+            if(it != _event_fct_map.end())
+            {
+                // Pair of the first and last element of this id.
+                auto range(it->second.equal_range(evtId));
+                it->second.erase(range.first, range.second);
             }
             
             manager_mutex.unlock();
