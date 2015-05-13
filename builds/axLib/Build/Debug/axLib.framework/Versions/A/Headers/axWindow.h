@@ -43,7 +43,10 @@ class axWindow : public ax::Event::Object
 {
 public:
 	axWindow(axWindow* parent, const ax::Rect& rect);
+    
+    // First window in the application.
     axWindow(ax::App* app, const ax::Rect& rect);
+    
     virtual ~axWindow();
     
     enum axWindowType
@@ -60,11 +63,10 @@ public:
     
 	axWindow* GetParent() const;
 
+    //--------------------------------------------------------------------------
 	ax::Rect GetRect() const;
 	ax::Rect GetAbsoluteRect() const;
-
 	void SetRect(const ax::Rect& rect);
-    
 	ax::Size GetSize() const;
 	void SetSize(const ax::Size& size);
 	void SetPosition(const ax::Point& pos);
@@ -73,13 +75,14 @@ public:
     void SetSizeNoShowRect(const ax::Size& size);
     ax::Rect GetShownRect() const;
     
-    ax::Point GetBottomLeftPosition() const;
-    ax::Point GetTopRightPosition() const;
-    
-    ax::Point GetNextPosRight(const int& delta) const;
-    ax::Point GetNextPosDown(const int& delta) const;
-    ax::Point GetNextPosLeft(const int& delta) const;
-    ax::Point GetNextPosUp(const int& delta) const;
+//    ax::Point GetBottomLeftPosition() const;
+//    ax::Point GetTopRightPosition() const;
+//    
+//    ax::Point GetNextPosRight(const int& delta) const;
+//    ax::Point GetNextPosDown(const int& delta) const;
+//    ax::Point GetNextPosLeft(const int& delta) const;
+//    ax::Point GetNextPosUp(const int& delta) const;
+    //--------------------------------------------------------------------------
 
 	void SetScrollDecay(const ax::Point& decay);
 	ax::Point GetScrollDecay() const;
@@ -88,8 +91,6 @@ public:
     void Show();
     void Hide();
     
-//    ax::GC* GetGC();
-
 	void Reparent(axWindow* parent, const ax::Point& position);
 
     bool GetIsPopup();
@@ -181,9 +182,6 @@ private:
     ax::GL::FrameBuffer _frameBufferObj;
     ax::ResourceStorage _resourceManager;
     
-    /// @todo Remove this.
-//	axGC* _gc;
-
     bool _isPopup, _isRealPopup;
     bool _needUpdate;
     bool _isHidden;

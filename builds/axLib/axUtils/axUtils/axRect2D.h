@@ -156,6 +156,26 @@ namespace ax
                             position.y + size.y * 0.5);
             }
             
+            CPos GetNextPosRight(const T& delta) const
+            {
+                return CPos(position.x + size.x + delta, position.y);
+            }
+            
+            CPos GetNextPosDown(const T& delta) const
+            {
+                return CPos(position.x, position.y + size.y + delta);
+            }
+            
+            CPos GetNextPosLeft(const T& delta) const
+            {
+                return CPos(position.x, position.y - delta);
+            }
+            
+            CPos GetNextPosUp(const T& delta) const
+            {
+                return CPos(position.x, position.y - delta);
+            }
+            
             RectPoints<CPos> GetPoints() const
             {
                 return RectPoints<CPos>(CPos(position.x, position.y + size.y),

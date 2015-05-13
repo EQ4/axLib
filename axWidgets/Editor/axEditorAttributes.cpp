@@ -126,13 +126,13 @@ void axEditorAttributes::AddEditorAttribute(const ax::StringPair& att,
     
     if(_infoEditor.size())
     {
-        pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetNextPosDown(0);
+        pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetRect().GetNextPosDown(0);
     }
     
     axLabel* label = new_ axLabel(this, ax::Rect(pos, ax::Size(120, 25)),
                                   labelInfo, att.first);
     
-    axTextBox* txtBox = new_ axTextBox(this, ax::Rect(label->GetNextPosRight(0),
+    axTextBox* txtBox = new_ axTextBox(this, ax::Rect(label->GetRect().GetNextPosRight(0),
                                                     ax::Size(180, 25)),
                                        evt, txtInfo, "",
                                        att.second);
@@ -152,7 +152,7 @@ void axEditorAttributes::AddEditorLabel(const std::string& name,
     
     if(_infoEditor.size())
     {
-        pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetNextPosDown(0);
+        pos = std::get<1>(_infoEditor[_infoEditor.size() - 1])->GetRect().GetNextPosDown(0);
     }
     
     axLabel* label = new_ axLabel(this, ax::Rect(pos, ax::Size(300, 25)),

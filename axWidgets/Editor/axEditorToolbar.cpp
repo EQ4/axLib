@@ -30,7 +30,7 @@ axPanel(parent, rect)
     btn1->SetEditable(false);
     
     ax::Button* btn2 = new ax::Button(this,
-                                  ax::Rect(btn1->GetNextPosRight(10), ax::Size(60, 26)),
+                                  ax::Rect(btn1->GetRect().GetNextPosRight(10), ax::Size(60, 26)),
                                   evt,
                                   btn_info,
                                   "", "Attributes", ax::FlagValue::NO_FLAG, "Attributes");

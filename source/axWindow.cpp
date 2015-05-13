@@ -170,37 +170,37 @@ ax::Rect axWindow::GetRect() const
 {
 	return _rect;
 }
-
-ax::Point axWindow::GetBottomLeftPosition() const
-{
-	return ax::Point(_rect.position.x, 
-		_rect.position.y + _rect.size.y);
-}
-
-ax::Point axWindow::GetTopRightPosition() const
-{
-    return ax::Point(_rect.position.x + _rect.size.x, _rect.position.y);
-}
-
-ax::Point axWindow::GetNextPosRight(const int& delta) const
-{
-    return ax::Point(_rect.position.x + _rect.size.x + delta, _rect.position.y);
-}
-
-ax::Point axWindow::GetNextPosDown(const int& delta) const
-{
-    return ax::Point(_rect.position.x, _rect.position.y + _rect.size.y + delta);
-}
-
-ax::Point axWindow::GetNextPosLeft(const int& delta) const
-{
-     return ax::Point(_rect.position.x, _rect.position.y - delta);
-}
-
-ax::Point axWindow::GetNextPosUp(const int& delta) const
-{
-    return ax::Point(_rect.position.x, _rect.position.y - delta);
-}
+//
+//ax::Point axWindow::GetBottomLeftPosition() const
+//{
+//	return ax::Point(_rect.position.x, 
+//		_rect.position.y + _rect.size.y);
+//}
+//
+//ax::Point axWindow::GetTopRightPosition() const
+//{
+//    return ax::Point(_rect.position.x + _rect.size.x, _rect.position.y);
+//}
+//
+//ax::Point axWindow::GetNextPosRight(const int& delta) const
+//{
+//    return ax::Point(_rect.position.x + _rect.size.x + delta, _rect.position.y);
+//}
+//
+//ax::Point axWindow::GetNextPosDown(const int& delta) const
+//{
+//    return ax::Point(_rect.position.x, _rect.position.y + _rect.size.y + delta);
+//}
+//
+//ax::Point axWindow::GetNextPosLeft(const int& delta) const
+//{
+//     return ax::Point(_rect.position.x, _rect.position.y - delta);
+//}
+//
+//ax::Point axWindow::GetNextPosUp(const int& delta) const
+//{
+//    return ax::Point(_rect.position.x, _rect.position.y - delta);
+//}
 
 ax::Rect axWindow::GetAbsoluteRect() const
 {

@@ -20,19 +20,19 @@ axPanel(parent, rect)
                                               "Button");
     
     axEditorWidget* btn2 = new axEditorWidget(this,
-                                  ax::Rect(btn1->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn1->GetRect().GetNextPosDown(0), btnSize),
                                               "Toggle");
     
     axEditorWidget* btn3 = new axEditorWidget(this,
-                                  ax::Rect(btn2->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn2->GetRect().GetNextPosDown(0), btnSize),
                                               "Number");
     
     axEditorWidget* btn4 = new axEditorWidget(this,
-                                  ax::Rect(btn3->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn3->GetRect().GetNextPosDown(0), btnSize),
                                               "Knob");
     
     axEditorWidget* btn5 = new axEditorWidget(this,
-                                  ax::Rect(btn4->GetNextPosDown(0), btnSize),
+                                  ax::Rect(btn4->GetRect().GetNextPosDown(0), btnSize),
                                               "Slider");
 
     btn1->SetEditingWidget(true);

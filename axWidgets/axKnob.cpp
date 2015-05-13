@@ -260,7 +260,7 @@ axKnob* axKnob::Builder::Create(const ax::Event::Function& evt)
     {
         if(_direction == ax::Utils::axDIRECTION_RIGHT)
         {
-            ax::Point pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+            ax::Point pos(_pastKnob->GetRect().GetNextPosRight(_nextPositionDelta));
             return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size), evt,
                                           _info, _flags);
         }
@@ -288,7 +288,7 @@ axKnob* axKnob::Builder::Create()
     if(_pastKnob != nullptr)
     {
         axKnob::Events evts;
-        ax::Point pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+        ax::Point pos(_pastKnob->GetRect().GetNextPosRight(_nextPositionDelta));
         return _pastKnob = new_ axKnob(_parent, ax::Rect(pos, _size),
                                       evts, _info, _flags);
     }
