@@ -37,7 +37,7 @@
 /// @{
 
 #include "axWindow.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 #include "axWidget.h"
 
 /*******************************************************************************
@@ -176,7 +176,7 @@ private:
     ax::Flag _flags;
     ax::FloatRange _range;
 
-    axImage* m_knobImg;
+    ax::Image* m_knobImg;
     ax::Color* m_currentBgColor;
     unsigned int m_nCurrentImg;
     double m_knobValue;

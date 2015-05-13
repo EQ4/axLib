@@ -61,12 +61,13 @@ namespace ax
                 
             }
             
-            Color(const Color& col)
+            Color(const Color& col):
+            _r(col._r),
+            _g(col._g),
+            _b(col._b),
+            _a(col._a)
             {
-                _r = col._r;
-                _g = col._g;
-                _b = col._b;
-                _a = col._a;
+                
             }
             
             Color(const T& all, const T& alpha):
@@ -76,7 +77,7 @@ namespace ax
             }
             
             Color(const T& all):
-            _r(all), _g(all), _b(all), _a(1.0)
+            _r(all), _g(all), _b(all), _a(1)
             {
                 
             }

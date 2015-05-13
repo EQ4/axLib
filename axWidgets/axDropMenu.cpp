@@ -44,8 +44,8 @@ _msg(msg)
 {
     _currentColor = &_info.normal;
     
-    _btnImg = new_ axImage(img_path);
-    _bgImg = new_ axImage(bg_img_path);
+    _btnImg = new_ ax::Image(img_path);
+    _bgImg = new_ ax::Image(bg_img_path);
     
     _font = new_ axFont(0);
     

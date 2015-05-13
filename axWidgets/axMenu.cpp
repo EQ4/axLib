@@ -62,7 +62,7 @@ m_nSubNodeMax(axMENU_NODE_INIT_ARRAY_SIZE)
     //m_nodes = new_ axMenuNode* [ m_nSubNodeMax ];
     m_delta = parent->GetDelta() + 8;
 
-	m_img = new_ axImage(img_path);
+	m_img = new_ ax::Image(img_path);
 }
 
 void axMenuNode::AddSubNode(axMenuNode* node)

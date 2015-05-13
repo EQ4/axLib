@@ -40,7 +40,7 @@
 #include "axWidget.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
@@ -176,7 +176,7 @@ namespace ax
         
     protected:
         Button::Events _events;
-        axImage* _btnImg;
+        ax::Image* _btnImg;
         ax::Flag _flags;
         std::string _label, _msg;
         std::unique_ptr<axFont> _font;

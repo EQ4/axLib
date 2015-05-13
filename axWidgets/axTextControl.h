@@ -32,7 +32,7 @@
 #include "axPanel.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 #include <axEvent/axTimer.h>
 
@@ -185,7 +185,7 @@ protected:
     axTextControlEvents _events;
     axTextControlInfo _info;
     std::string _label;
-    axImage* _btnImg;
+    ax::Image* _btnImg;
     ax::Flag _flags;
     axFont* _font;
         

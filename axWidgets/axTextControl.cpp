@@ -45,7 +45,7 @@ _findClickCursorIndex(false)
 {
 	_currentColor = &_info.normal;
 
-    _btnImg = new_ axImage(img_path);
+    _btnImg = new_ ax::Image(img_path);
     
     if(_events.button_click)
     {

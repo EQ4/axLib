@@ -53,7 +53,7 @@ Create(ax::StringPairVector attributes)
         }
         else if(s.first == "path")
         {
-            _img = new_ axImage(s.second);
+            _img = new_ ax::Image(s.second);
             _size = _img->GetSize();
         }
     }
@@ -74,13 +74,13 @@ axStaticImage::axStaticImage(axWindow* parent,
                              const std::string& path):
 axPanel(parent, rect)
 {
-    _img = new_ axImage(path);
+    _img = new_ ax::Image(path);
     SetSelectable(false);
 }
 
 axStaticImage::axStaticImage(axWindow* parent,
                              const ax::Rect& rect,
-                             axImage* img):
+                             ax::Image* img):
 axPanel(parent, rect),
 _img(img)
 

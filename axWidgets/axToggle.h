@@ -43,7 +43,7 @@
 #include "axPanel.h"
 //#include "ax::Color.h"
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include <axEvent"ax::Event::Msg.h"
 #include <fstream>
 
@@ -215,7 +215,7 @@ protected:
 
     axToggle::Events _events;
 	ax::Color* _currentColor;
-	axImage* _bgImg;
+	ax::Image* _bgImg;
     std::string _label;
     std::string _msg;
     std::unique_ptr<axFont> _font;

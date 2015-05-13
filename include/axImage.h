@@ -31,127 +31,134 @@
 #define PNG_DEBUG 3
 /// @endcond
 
-#include "axC++.h"
+//#include "axC++.h"
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
 #include <map>
 
-class axImage;
+#include <axUtils/axUtils.h>
 
-struct axImageStruct
+namespace ax
 {
-	axImageStruct(GLuint tex, ax::Size size) :
-	_texture(tex), _size(size)
-	{
-	}
-
-	GLuint _texture;
-	ax::Size _size;
-};
-
-class axImageGlobalMapLoader
-{
-public:
-	axImageGlobalMapLoader();
-
-    bool LoadImage(const std::string& path, GLuint& _texture, ax::Size& _size);
-
-private:
-	std::map<std::string, axImageStruct> _imageMap;
-
-	bool InitImage(const std::string& path,
-				   GLuint& _texture, 
-				   ax::Size& _size);
-};
-
-class axImage
-{
-public:
-    axImage(const std::string& path);
+    class Image;
     
-    axImage(void* data, const ax::Size& size);
-
-	GLuint GetTexture();
-	bool IsImageReady();
-	ax::Size GetSize();
-	int GetHeight();
-	int GetWidth();
-    
-    bool SaveImage(const std::string& path);
-    
-    std::string GetImagePath() const
+    struct ImageStruct
     {
-        return _path;
-    }
-
-private:
-	GLuint _texture;
-	ax::Size _size;
-    std::string _path;
-
-	//bool InitImage(const string& path);
-
-	static axImageGlobalMapLoader _globalMap;
-
-	friend axImageGlobalMapLoader;
-};
-
-class axBigImage
-{
-public:
-	axBigImage(const std::string& path);
-
-	~axBigImage()
-	{
-		delete[] _imgData;
-	}
-
-	bool InitImage(const std::string& path);
-
-	enum ColorType
-	{
-		RGB,
-		RGBA
-	};
-
-	enum PixelDepth
-	{
-		UNSIGNED_BYTE
-	};
-
-	void* GetImageData()
-	{
-		return _imgData;
-	}
-
-	ColorType GetColorType() const
-	{
-		return _colorType;
-	}
-
-	PixelDepth GetPixelDepth() const
-	{
-		return _pixelDepth;
-	}
-
-	ax::Size GetImageSize() const
-	{
-		return _size;
-	}
-
-	bool IsImageReady() const
-	{
-		return _imgData != nullptr;
-	}
-
-private:
-	std::string _path;
-	ax::Size _size;
-	void* _imgData;
-	ColorType _colorType;
-	PixelDepth _pixelDepth;
-};
+        ImageStruct(uint32_t tex, ax::Size size) :
+        _texture(tex), _size(size)
+        {
+        }
+        
+        uint32_t _texture;
+        ax::Size _size;
+    };
+    
+    class ImageGlobalMapLoader
+    {
+    public:
+        ImageGlobalMapLoader();
+        
+        bool LoadImage(const std::string& path,
+                       uint32_t& _texture,
+                       ax::Size& _size);
+        
+    private:
+        std::map<std::string, ImageStruct> _imageMap;
+        
+        bool InitImage(const std::string& path,
+                       uint32_t& _texture,
+                       ax::Size& _size);
+    };
+    
+    class Image
+    {
+    public:
+        Image(const std::string& path);
+        
+        Image(void* data, const ax::Size& size);
+        
+        uint32_t GetTexture();
+        bool IsImageReady();
+        ax::Size GetSize();
+        int GetHeight();
+        int GetWidth();
+        
+        bool SaveImage(const std::string& path);
+        
+        std::string GetImagePath() const
+        {
+            return _path;
+        }
+        
+    private:
+        uint32_t _texture;
+        ax::Size _size;
+        std::string _path;
+        
+        //bool InitImage(const string& path);
+        
+        static ImageGlobalMapLoader _globalMap;
+        
+        friend ImageGlobalMapLoader;
+    };
+//    
+//    class axBigImage
+//    {
+//    public:
+//        axBigImage(const std::string& path);
+//        
+//        ~axBigImage()
+//        {
+//            delete[] _imgData;
+//        }
+//        
+//        bool InitImage(const std::string& path);
+//        
+//        enum ColorType
+//        {
+//            RGB,
+//            RGBA
+//        };
+//        
+//        enum PixelDepth
+//        {
+//            UNSIGNED_BYTE
+//        };
+//        
+//        void* GetImageData()
+//        {
+//            return _imgData;
+//        }
+//        
+//        ColorType GetColorType() const
+//        {
+//            return _colorType;
+//        }
+//        
+//        PixelDepth GetPixelDepth() const
+//        {
+//            return _pixelDepth;
+//        }
+//        
+//        ax::Size GetImageSize() const
+//        {
+//            return _size;
+//        }
+//        
+//        bool IsImageReady() const
+//        {
+//            return _imgData != nullptr;
+//        }
+//        
+//    private:
+//        std::string _path;
+//        ax::Size _size;
+//        void* _imgData;
+//        ColorType _colorType;
+//        PixelDepth _pixelDepth;
+//    };
+}
 
 /// @}
 #endif //__AX_IMAGE__

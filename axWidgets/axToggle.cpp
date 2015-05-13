@@ -354,8 +354,8 @@ _msg(msg),
 _font(nullptr)
 {
     _currentColor = &static_cast<Info*>(_info)->normal;
-//    _bgImg = new_ axImage(img_path);
-    _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
+//    _bgImg = new_ ax::Image(img_path);
+    _bgImg = new_ ax::Image(static_cast<Info*>(_info)->img);
     
 	_font = std::unique_ptr<axFont>(new_ axFont(0));
     _font->SetFontSize(static_cast<Info*>(_info)->font_size);

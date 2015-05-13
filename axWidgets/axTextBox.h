@@ -37,7 +37,7 @@
 #include "axWidget.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 #include "axConfig.h"
 #include "axWidgetBuilder.h"
@@ -172,7 +172,7 @@ public:
 protected:
     axTextBox::Events _events;
     std::string _label;
-    axImage* _btnImg;
+    ax::Image* _btnImg;
     ax::Flag _flags;
     axFont* _font;
         

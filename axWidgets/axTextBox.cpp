@@ -287,7 +287,7 @@ _maxNumChar(10000000)
 {
 	_currentColor = &static_cast<Info*>(_info)->normal;
 
-    _btnImg = new_ axImage(img_path);
+    _btnImg = new_ ax::Image(img_path);
     
     if(_events.button_click)
     {

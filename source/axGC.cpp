@@ -496,7 +496,7 @@ struct axRectPointsOrder
     ax::FloatPoint top_left, top_right, bottom_left, bottom_right;
 };
 
-void axGC::DrawImage(axImage* img, const ax::Point& position, double alpha)
+void axGC::DrawImage(ax::Image* img, const ax::Point& position, double alpha)
 {
 //	ax::Point pos = position + _win->GetAbsoluteRect().position;
     ax::Point pos = position;
@@ -534,7 +534,7 @@ void axGC::DrawImage(axImage* img, const ax::Point& position, double alpha)
 	glDisable(GL_TEXTURE_2D);
 }
 
-void axGC::DrawImageResize(axImage* img, const ax::Point& position, const ax::Size& size, double alpha)
+void axGC::DrawImageResize(ax::Image* img, const ax::Point& position, const ax::Size& size, double alpha)
 {
 //	ax::Point pos = position + _win->GetAbsoluteRect().position;
     ax::Point pos = position;
@@ -573,7 +573,7 @@ void axGC::DrawImageResize(axImage* img, const ax::Point& position, const ax::Si
 	glDisable(GL_TEXTURE_2D);
 }
 
-void axGC::DrawPartOfImage(axImage* img,
+void axGC::DrawPartOfImage(ax::Image* img,
                            const ax::Point& posInImage,
                            const ax::Size& sizeInImage,
                            const ax::Point& position,
@@ -626,7 +626,7 @@ void axGC::DrawPartOfImage(axImage* img,
 }
 
 
-void axGC::DrawPartOfImageResize(axImage* img,
+void axGC::DrawPartOfImageResize(ax::Image* img,
 					 const ax::Point& posInImage,
 					 const ax::Size& sizeInImage,
 					 const ax::Rect& rect,
@@ -1127,75 +1127,75 @@ void axGC::DrawCircle(const ax::Point& pos,
 //  
 //}
 
-
-void axGC::DrawBigImageResize(axBigImage* img,
-	const ax::Point& position,
-	const ax::Size& size,
-	double alpha)
-{
-	GLuint texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	axBigImage::ColorType color_type = img->GetColorType();
-	//axBigImage::PixelDepth depth = img->GetPixelDepth();
-	ax::Size real_img_size(img->GetImageSize());
-	void* data = img->GetImageData();
-
-	if (color_type == axBigImage::RGB)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, real_img_size.x, real_img_size.y,
-			0, GL_RGB, GL_UNSIGNED_BYTE, data);
-	}
-	else
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, real_img_size.x, real_img_size.y,
-			0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	}
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-	GLenum err = glGetError();
-	
-	if (err != GL_NO_ERROR)
-	{
-        ax::Error("Can't draw axBigImage in axGC : ", err);
-	}
-
-	ax::Point pos = position;
-
-	glColor4f(1.0, 1.0, 1.0, alpha);
-
-	glEnable(GL_TEXTURE_2D);
-	//	glEnable(GL_BLEND);
-	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	//glBindTexture(GL_TEXTURE_2D, texture);
-	//	glDepthMask(GL_TRUE);
-	ax::Size img_size = size;
-
-	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
-	glBegin(GL_QUADS);
-	// Buttom left.
-	glTexCoord2d(0.0, 1.0);
-	glVertex2d(pos.x, pos.y);
-
-	// Top left.
-	glTexCoord2d(0.0, 0.0);
-	glVertex2d(pos.x, pos.y + img_size.y);
-
-	// Top right.
-	glTexCoord2d(1.0, 0.0);
-	glVertex2d(pos.x + img_size.x, pos.y + img_size.y);
-
-	// Buttom right.
-	glTexCoord2d(1.0, 1.0);
-	glVertex2d(pos.x + img_size.x, pos.y);
-	glEnd();
-
-	//	glDisable(GL_BLEND);
-	glDisable(GL_TEXTURE_2D);
-	glDeleteTextures(1, &texture);
-}
+//
+//void axGC::DrawBigImageResize(axBigImage* img,
+//	const ax::Point& position,
+//	const ax::Size& size,
+//	double alpha)
+//{
+//	GLuint texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	axBigImage::ColorType color_type = img->GetColorType();
+//	//axBigImage::PixelDepth depth = img->GetPixelDepth();
+//	ax::Size real_img_size(img->GetImageSize());
+//	void* data = img->GetImageData();
+//
+//	if (color_type == axBigImage::RGB)
+//	{
+//		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, real_img_size.x, real_img_size.y,
+//			0, GL_RGB, GL_UNSIGNED_BYTE, data);
+//	}
+//	else
+//	{
+//		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, real_img_size.x, real_img_size.y,
+//			0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+//	}
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//
+//	GLenum err = glGetError();
+//	
+//	if (err != GL_NO_ERROR)
+//	{
+//        ax::Error("Can't draw axBigImage in axGC : ", err);
+//	}
+//
+//	ax::Point pos = position;
+//
+//	glColor4f(1.0, 1.0, 1.0, alpha);
+//
+//	glEnable(GL_TEXTURE_2D);
+//	//	glEnable(GL_BLEND);
+//	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//
+//	//glBindTexture(GL_TEXTURE_2D, texture);
+//	//	glDepthMask(GL_TRUE);
+//	ax::Size img_size = size;
+//
+//	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
+//	glBegin(GL_QUADS);
+//	// Buttom left.
+//	glTexCoord2d(0.0, 1.0);
+//	glVertex2d(pos.x, pos.y);
+//
+//	// Top left.
+//	glTexCoord2d(0.0, 0.0);
+//	glVertex2d(pos.x, pos.y + img_size.y);
+//
+//	// Top right.
+//	glTexCoord2d(1.0, 0.0);
+//	glVertex2d(pos.x + img_size.x, pos.y + img_size.y);
+//
+//	// Buttom right.
+//	glTexCoord2d(1.0, 1.0);
+//	glVertex2d(pos.x + img_size.x, pos.y);
+//	glEnd();
+//
+//	//	glDisable(GL_BLEND);
+//	glDisable(GL_TEXTURE_2D);
+//	glDeleteTextures(1, &texture);
+//}
 
 void axGC::DrawPolygone(const std::vector<ax::Point>& points)
 {

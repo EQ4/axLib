@@ -29,7 +29,7 @@
 /// @{
 
 #include "axWindow.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 #include "axWidget.h"
 #include "axObjectLoader.h"
 

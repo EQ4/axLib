@@ -362,7 +362,7 @@ _zeroToOneValue(value),
 _range(0.0, 1.0),
 _msg(msg)
 {
-    m_knobImg = new_ axImage(static_cast<Info*>(_info)->img_path);
+    m_knobImg = new_ ax::Image(static_cast<Info*>(_info)->img_path);
     _bgAlpha = 1.0;
     
     m_nCurrentImg = m_knobValue * (static_cast<Info*>(_info)->n_knob - 1);
@@ -383,7 +383,7 @@ void axKnob::SetInfo(const ax::StringPairVector& attributes)
     std::string path = _info->GetAttributeValue("img");
     if(m_knobImg->GetImagePath() != path)
     {
-        m_knobImg = new_ axImage(path);
+        m_knobImg = new_ ax::Image(path);
     }
 
     Update();

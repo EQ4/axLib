@@ -14,6 +14,10 @@
 		7C18C41A1B03C05D00885929 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C4191B03C05D00885929 /* OpenGL.framework */; };
 		7C18C41D1B03C0C200885929 /* axGLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C41B1B03C0C200885929 /* axGLMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C41E1B03C0C200885929 /* axGLMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C41C1B03C0C200885929 /* axGLMath.cpp */; };
+		7C18C4261B03D2CE00885929 /* axImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4251B03D2CE00885929 /* axImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C4281B03D2DE00885929 /* axImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4271B03D2DE00885929 /* axImage.cpp */; };
+		7C18C42A1B03D36F00885929 /* axBigImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4291B03D36F00885929 /* axBigImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C42C1B03D38900885929 /* axBigImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C42B1B03D38900885929 /* axBigImage.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		7C18C4191B03C05D00885929 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C18C41B1B03C0C200885929 /* axGLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axGLMath.h; path = ../../../../include/axGLMath.h; sourceTree = "<group>"; };
 		7C18C41C1B03C0C200885929 /* axGLMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axGLMath.cpp; path = ../../../../source/axGLMath.cpp; sourceTree = "<group>"; };
+		7C18C4251B03D2CE00885929 /* axImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axImage.h; path = ../../../../include/axImage.h; sourceTree = "<group>"; };
+		7C18C4271B03D2DE00885929 /* axImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axImage.cpp; path = ../../../../source/axImage.cpp; sourceTree = "<group>"; };
+		7C18C4291B03D36F00885929 /* axBigImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axBigImage.h; sourceTree = "<group>"; };
+		7C18C42B1B03D38900885929 /* axBigImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axBigImage.cpp; sourceTree = "<group>"; };
+		7C18C42D1B03D42100885929 /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = /Users/alexarse/Project/axLib/builds/axLib/../../../../../../usr/local/lib/libpng16.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,7 @@
 		7C18C3E21B03B77100885929 /* axGL */ = {
 			isa = PBXGroup;
 			children = (
+				7C18C42D1B03D42100885929 /* libpng16.a */,
 				7C18C3E51B03B77100885929 /* axGL.h */,
 				7C18C40A1B03B7E700885929 /* include */,
 				7C18C40B1B03B7ED00885929 /* source */,
@@ -83,6 +93,8 @@
 			children = (
 				7C18C4081B03B7E300885929 /* axFrameBuffer.h */,
 				7C18C41B1B03C0C200885929 /* axGLMath.h */,
+				7C18C4291B03D36F00885929 /* axBigImage.h */,
+				7C18C4251B03D2CE00885929 /* axImage.h */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -92,6 +104,8 @@
 			children = (
 				7C18C40C1B03B7FF00885929 /* axFrameBuffer.cpp */,
 				7C18C41C1B03C0C200885929 /* axGLMath.cpp */,
+				7C18C4271B03D2DE00885929 /* axImage.cpp */,
+				7C18C42B1B03D38900885929 /* axBigImage.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -106,6 +120,8 @@
 				7C18C3E61B03B77100885929 /* axGL.h in Headers */,
 				7C18C41D1B03C0C200885929 /* axGLMath.h in Headers */,
 				7C18C4091B03B7E300885929 /* axFrameBuffer.h in Headers */,
+				7C18C42A1B03D36F00885929 /* axBigImage.h in Headers */,
+				7C18C4261B03D2CE00885929 /* axImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +193,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C18C41E1B03C0C200885929 /* axGLMath.cpp in Sources */,
+				7C18C42C1B03D38900885929 /* axBigImage.cpp in Sources */,
+				7C18C4281B03D2DE00885929 /* axImage.cpp in Sources */,
 				7C18C40D1B03B7FF00885929 /* axFrameBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +236,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -256,6 +279,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -280,6 +308,14 @@
 				INFOPLIST_FILE = axGL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/../../../../../../usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng16.a,
+					/opt/local/lib/libz.a,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -301,6 +337,14 @@
 				INFOPLIST_FILE = axGL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/../../../../../../usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng16.a,
+					/opt/local/lib/libz.a,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

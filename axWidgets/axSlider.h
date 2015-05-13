@@ -34,7 +34,7 @@
 #include "axPanel.h"
 //#include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 
 /**************************************************************************//**
@@ -230,7 +230,7 @@ protected:
 
 
 
-	axImage _btnImg;
+	ax::Image _btnImg;
 	ax::Flag _flags;
 	int _nCurrentImg,
 		_sliderPosition,

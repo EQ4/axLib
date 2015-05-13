@@ -40,7 +40,7 @@
 #include "axWidget.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 
 /***************************************************************************
@@ -177,7 +177,7 @@ public:
 private:
     axNumberBox::Events _events;
     ax::Flag _flags;
-    axImage* _bgImg;
+    ax::Image* _bgImg;
     axFont* _font;
 
     ax::Utils::Control::Type _type;

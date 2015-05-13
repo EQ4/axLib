@@ -33,7 +33,7 @@
 #include "axPanel.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 
 class axMenu;
 
@@ -98,7 +98,7 @@ public:
 
 private:
     axMenuNodeSelectionMode m_select_mode;
-    axImage* m_img;
+    ax::Image* m_img;
     std::string m_label;
     int m_nCurrentImg;
     int m_delta;

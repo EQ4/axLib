@@ -40,7 +40,7 @@
 #include "axPanel.h"
 #include <axUtils/axUtils.h>
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 #include "axPopupMenu.h"
 
@@ -158,8 +158,8 @@ private:
     axDropMenuInfo _info;
     
     ax::Color* _currentColor;
-    axImage* _btnImg;
-    axImage* _bgImg;
+    ax::Image* _btnImg;
+    ax::Image* _bgImg;
     std::string _label;
     std::string _msg;
     axFont* _font;

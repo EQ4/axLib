@@ -291,7 +291,7 @@ _currentColor(&static_cast<Info*>(_info)->normal),
 _nCurrentImg(axNUM_BOX_NORMAL),
 _font(nullptr)
 {
-    _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
+    _bgImg = new_ ax::Image(static_cast<Info*>(_info)->img);
     
     _value = ax::Utils::Clamp<double>(value, _range.left, _range.right);
     
@@ -314,7 +314,7 @@ void axNumberBox::SetInfo(const ax::StringPairVector& attributes)
     std::string path = _info->GetAttributeValue("img");
     if(_bgImg->GetImagePath() != path)
     {
-        _bgImg = new_ axImage(path);
+        _bgImg = new_ ax::Image(path);
     }
     
     Update();

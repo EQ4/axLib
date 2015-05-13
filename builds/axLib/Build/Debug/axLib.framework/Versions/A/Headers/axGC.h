@@ -26,7 +26,7 @@
 /// @{
 
 #include <axUtils/axUtils.h>
-#include "axImage.h"
+#include <axGL/axImage.h>
 //#include "ax::Color.h"
 #include "axFont.h"
 //#include "axDrawingBuffer.h"
@@ -64,20 +64,20 @@ public:
     void DrawRoundedRectangleContourSmooth(const ax::Rect& rect,
                                            const int& radius);
     
-	void DrawImage(axImage* img, const ax::Point& pos, double alpha = 1.0);
+	void DrawImage(ax::Image* img, const ax::Point& pos, double alpha = 1.0);
     
-	void DrawImageResize(axImage* img,
+	void DrawImageResize(ax::Image* img,
                          const ax::Point& position,
                          const ax::Size& size,
                          double alpha = 1.0);
 
-	void DrawPartOfImage(axImage* img,
+	void DrawPartOfImage(ax::Image* img,
                          const ax::Point& posInImage,
                          const ax::Size& sizeInImage,
                          const ax::Point& pos,
                          double alpha = 1.0);
     
-    void DrawPartOfImageResize(axImage* img,
+    void DrawPartOfImageResize(ax::Image* img,
                                const ax::Point& posInImage,
                                const ax::Size& sizeInImage,
                                const ax::Rect& rect,
@@ -148,10 +148,10 @@ public:
                      const ax::Rect& rect,
                      ax::Color color = ax::Color(0.0, 0.0, 0.0));
     
-	void DrawBigImageResize(axBigImage* img,
-		const ax::Point& position,
-		const ax::Size& size,
-		double alpha = 1.0);
+//	void DrawBigImageResize(axBigImage* img,
+//		const ax::Point& position,
+//		const ax::Size& size,
+//		double alpha = 1.0);
 
 //    void DrawWindowBuffer();
     

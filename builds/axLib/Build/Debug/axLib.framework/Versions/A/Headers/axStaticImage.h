@@ -29,7 +29,7 @@
 /// @{
 
 #include "axWindow.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 #include "axWidget.h"
 #include "axObjectLoader.h"
 
@@ -45,7 +45,7 @@ public:
     
     axStaticImage(axWindow* parent,
                   const ax::Rect& rect,
-                  axImage* img);
+                  ax::Image* img);
     
     
     /***************************************************************************
@@ -63,11 +63,11 @@ public:
         std::string _path;
         ax::Rect _rect;
         ax::Size _size;
-        axImage* _img;
+        ax::Image* _img;
     };
     
 private:
-    axImage* _img;
+    ax::Image* _img;
     
     // Events.
     virtual void OnPaint();

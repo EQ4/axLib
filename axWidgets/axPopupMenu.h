@@ -34,7 +34,7 @@
 #include "axPanel.h"
 //#include "ax::Color.h"
 #include "axGC.h"
-#include "axImage.h"
+#include <axGL/axImage.h>
 #include "axToggle.h"
 
 /**************************************************************************//**

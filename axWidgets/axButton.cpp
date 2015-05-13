@@ -291,7 +291,7 @@ _font(nullptr)
 {
     _currentColor = &static_cast<ax::Button::Info*>(_info)->normal;
     
-    _btnImg = new_ axImage(img_path);
+    _btnImg = new_ ax::Image(img_path);
     
     _font = std::unique_ptr<axFont>(new_ axFont(0));
     
