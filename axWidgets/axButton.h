@@ -179,7 +179,7 @@ namespace ax
         ax::Image* _btnImg;
         ax::Flag _flags;
         std::string _label, _msg;
-        std::unique_ptr<axFont> _font;
+        std::unique_ptr<ax::Font> _font;
         
         ax::Color* _currentColor;
         bool _selected;

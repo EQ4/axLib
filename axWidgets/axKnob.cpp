@@ -530,7 +530,7 @@ void axKnobControl::OnPaint()
     gc->SetColor(ax::Color(0.6, 0.6, 0.6, 0.3));
     gc->DrawRectangle(labelRect);
     
-    axFont font("FreeSans.ttf");
+    ax::Font font("FreeSans.ttf");
 //    gc->SetFontSize(12);
     gc->SetColor(ax::Color(0.0, 0.0, 0.0));
     gc->DrawStringAlignedCenter(font, _label, labelRect);

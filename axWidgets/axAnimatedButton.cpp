@@ -121,7 +121,7 @@
 //    {
 //        gc->SetColor(static_cast<axButton::Info*>(_info)->font_color);
 ////        gc->SetFontSize(12);
-//        axFont font("FreeSans.ttf");
+//        ax::Font font("FreeSans.ttf");
 //        gc->DrawStringAlignedCenter(font, _label, rect0);
 //    }
 //    

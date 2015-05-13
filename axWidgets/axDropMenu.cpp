@@ -47,7 +47,7 @@ _msg(msg)
     _btnImg = new_ ax::Image(img_path);
     _bgImg = new_ ax::Image(bg_img_path);
     
-    _font = new_ axFont(0);
+    _font = new_ ax::Font(0);
     
     if(_events.selection_change)
     {
@@ -251,7 +251,7 @@ void axDropMenu::OnPaint()
     if_not_empty(_label)
     {
         gc->SetColor(_info.font_color, 1.0);
-//        axFont font("FreeSans.ttf");
+//        ax::Font font("FreeSans.ttf");
 //        gc->SetFontSize(12);
         gc->DrawStringAlignedCenter(*_font, _label, rect0);
     }

@@ -180,7 +180,7 @@ void axMenuNode::OnPaint()
     gc->DrawRectangle(rect0);
 
     gc->SetColor( ax::Color("#AAAAAA") );
-    axFont font("FreeSans.ttf");
+    ax::Font font("FreeSans.ttf");
     font.SetFontSize(13);
 //    gc->SetFontSize(13);
 

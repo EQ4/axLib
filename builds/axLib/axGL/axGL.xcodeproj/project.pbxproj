@@ -18,6 +18,9 @@
 		7C18C4281B03D2DE00885929 /* axImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4271B03D2DE00885929 /* axImage.cpp */; };
 		7C18C42A1B03D36F00885929 /* axBigImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4291B03D36F00885929 /* axBigImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C42C1B03D38900885929 /* axBigImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C42B1B03D38900885929 /* axBigImage.cpp */; };
+		7C18C4311B03DA2900885929 /* axFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C42F1B03DA2900885929 /* axFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C4321B03DA2900885929 /* axFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4301B03DA2900885929 /* axFont.cpp */; };
+		7C18C4341B03DC5700885929 /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4331B03DC5700885929 /* axDefaultFontBuffer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +37,9 @@
 		7C18C4271B03D2DE00885929 /* axImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axImage.cpp; path = ../../../../source/axImage.cpp; sourceTree = "<group>"; };
 		7C18C4291B03D36F00885929 /* axBigImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axBigImage.h; sourceTree = "<group>"; };
 		7C18C42B1B03D38900885929 /* axBigImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axBigImage.cpp; sourceTree = "<group>"; };
-		7C18C42D1B03D42100885929 /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = /Users/alexarse/Project/axLib/builds/axLib/../../../../../../usr/local/lib/libpng16.a; sourceTree = "<absolute>"; };
+		7C18C42F1B03DA2900885929 /* axFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axFont.h; path = ../../../../include/axFont.h; sourceTree = "<group>"; };
+		7C18C4301B03DA2900885929 /* axFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axFont.cpp; path = ../../../../source/axFont.cpp; sourceTree = "<group>"; };
+		7C18C4331B03DC5700885929 /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axDefaultFontBuffer.cpp; path = ../../../../source/axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +76,6 @@
 		7C18C3E21B03B77100885929 /* axGL */ = {
 			isa = PBXGroup;
 			children = (
-				7C18C42D1B03D42100885929 /* libpng16.a */,
 				7C18C3E51B03B77100885929 /* axGL.h */,
 				7C18C40A1B03B7E700885929 /* include */,
 				7C18C40B1B03B7ED00885929 /* source */,
@@ -91,9 +95,10 @@
 		7C18C40A1B03B7E700885929 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7C18C4291B03D36F00885929 /* axBigImage.h */,
+				7C18C42F1B03DA2900885929 /* axFont.h */,
 				7C18C4081B03B7E300885929 /* axFrameBuffer.h */,
 				7C18C41B1B03C0C200885929 /* axGLMath.h */,
-				7C18C4291B03D36F00885929 /* axBigImage.h */,
 				7C18C4251B03D2CE00885929 /* axImage.h */,
 			);
 			name = include;
@@ -102,10 +107,12 @@
 		7C18C40B1B03B7ED00885929 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7C18C42B1B03D38900885929 /* axBigImage.cpp */,
+				7C18C4331B03DC5700885929 /* axDefaultFontBuffer.cpp */,
+				7C18C4301B03DA2900885929 /* axFont.cpp */,
 				7C18C40C1B03B7FF00885929 /* axFrameBuffer.cpp */,
 				7C18C41C1B03C0C200885929 /* axGLMath.cpp */,
 				7C18C4271B03D2DE00885929 /* axImage.cpp */,
-				7C18C42B1B03D38900885929 /* axBigImage.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 				7C18C3E61B03B77100885929 /* axGL.h in Headers */,
 				7C18C41D1B03C0C200885929 /* axGLMath.h in Headers */,
 				7C18C4091B03B7E300885929 /* axFrameBuffer.h in Headers */,
+				7C18C4311B03DA2900885929 /* axFont.h in Headers */,
 				7C18C42A1B03D36F00885929 /* axBigImage.h in Headers */,
 				7C18C4261B03D2CE00885929 /* axImage.h in Headers */,
 			);
@@ -192,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C18C4321B03DA2900885929 /* axFont.cpp in Sources */,
+				7C18C4341B03DC5700885929 /* axDefaultFontBuffer.cpp in Sources */,
 				7C18C41E1B03C0C200885929 /* axGLMath.cpp in Sources */,
 				7C18C42C1B03D38900885929 /* axBigImage.cpp in Sources */,
 				7C18C4281B03D2DE00885929 /* axImage.cpp in Sources */,
@@ -240,6 +250,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include/,
+					/usr/local/include/freetype2/,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -283,6 +294,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include/,
+					/usr/local/include/freetype2/,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -315,6 +327,7 @@
 				OTHER_LDFLAGS = (
 					/usr/local/lib/libpng16.a,
 					/opt/local/lib/libz.a,
+					/usr/local/lib/libfreetype.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -344,6 +357,7 @@
 				OTHER_LDFLAGS = (
 					/usr/local/lib/libpng16.a,
 					/opt/local/lib/libz.a,
+					/usr/local/lib/libfreetype.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

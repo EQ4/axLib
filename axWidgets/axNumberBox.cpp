@@ -295,7 +295,7 @@ _font(nullptr)
     
     _value = ax::Utils::Clamp<double>(value, _range.left, _range.right);
     
-    _font = new_ axFont(0);
+    _font = new_ ax::Font(0);
     _font->SetFontSize(10);
 
     _zeroToOneValue = _range.GetZeroToOneValue(_value);

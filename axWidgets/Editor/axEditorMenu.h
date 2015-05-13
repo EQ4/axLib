@@ -18,7 +18,7 @@ public:
     axEVENT_ACCESSOR(ax::Button::Msg, OnEditorToolbar);
     
 private:
-	axFont _font;
+    ax::Font _font;
     axEditorAttributes* _editorAttributesPanel;
     axEditorWidgetsPanel* _editorWidgetPanel;
     axEditorToolbar* _toolbar;

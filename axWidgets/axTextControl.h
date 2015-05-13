@@ -187,7 +187,7 @@ protected:
     std::string _label;
     ax::Image* _btnImg;
     ax::Flag _flags;
-    axFont* _font;
+    ax::Font* _font;
         
     ax::Color* _currentColor;
     int _nCurrentImg;

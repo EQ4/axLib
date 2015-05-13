@@ -28,7 +28,7 @@
 #include <axUtils/axUtils.h>
 #include <axGL/axImage.h>
 //#include "ax::Color.h"
-#include "axFont.h"
+#include <axGL/axFont.h>
 //#include "axDrawingBuffer.h"
 
 class axWindow;
@@ -42,14 +42,14 @@ public:
     
     void SetColor(const ax::Color& color, const float& alpha);
 
-	void SetColor(const axDouble& r,
-                  const axDouble& g,
-                  const axDouble& b);
+	void SetColor(const double& r,
+                  const double& g,
+                  const double& b);
     
-    void SetColor(const axDouble& r,
-                  const axDouble& g,
-                  const axDouble& b,
-                  const axDouble& a);
+    void SetColor(const double& r,
+                  const double& g,
+                  const double& b,
+                  const double& a);
 
 	void DrawRectangle(const ax::Rect& rect);
 
@@ -83,15 +83,15 @@ public:
                                const ax::Rect& rect,
                                double alpha = 1.0);
 
-    ax::Point DrawChar(axFont& font,
+    ax::Point DrawChar(ax::Font& font,
                      const char& key,
                      const ax::Point& pos);
     
-	void DrawString(axFont& font,
+	void DrawString(ax::Font& font,
                     const std::string& text,
                     const ax::Point& pos);
 
-	void DrawStringAlignedCenter(axFont& font,
+	void DrawStringAlignedCenter(ax::Font& font,
                                  const std::string& text,
                                  const ax::Rect& rect);
 
@@ -144,7 +144,7 @@ public:
                     const double& radius,
                     const int& nSegments);
 	
-	void DrawTexture(GLuint texture,
+	void DrawTexture(uint32_t texture,
                      const ax::Rect& rect,
                      ax::Color color = ax::Color(0.0, 0.0, 0.0));
     
@@ -163,7 +163,7 @@ public:
 
 private:
 	axWindow* _win;
-//	axFont _font;
+//	ax::Font _font;
     
     ax::FloatRect RectToFloatRect(const ax::Rect& rect);
 };

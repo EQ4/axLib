@@ -46,7 +46,7 @@ _msg(""),
 _font(nullptr)
 {
     _currentColor = &_info.normal;
-    _font = std::unique_ptr<axFont>(new_ axFont(0));
+    _font = std::unique_ptr<ax::Font>(new_ ax::Font(0));
     
     SetEditingWidget(true);
     SetEditable(false);

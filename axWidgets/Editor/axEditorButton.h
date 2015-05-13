@@ -54,7 +54,7 @@ protected:
     std::string _label, _msg;
 //    axImage* _btnImg;
     ax::Flag _flags;
-    std::unique_ptr<axFont> _font;
+    std::unique_ptr<ax::Font> _font;
     
     ax::Color* _currentColor;
     bool _selected;

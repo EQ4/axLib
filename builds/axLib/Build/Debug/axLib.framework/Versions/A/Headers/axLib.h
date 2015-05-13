@@ -37,7 +37,7 @@
 #include "axGC.h"
 #include "axC++.h"
 //#include "axColor.h"
-#include "axFont.h"
+#include <axGL/axFont.h>
 
 #include <axUtils/axUtils.h>
 

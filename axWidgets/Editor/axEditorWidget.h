@@ -32,7 +32,7 @@ protected:
     ax::Button::Info _info;
     std::string _label, _msg;
     ax::Flag _flags;
-    axFont _fontBold, _font;
+    ax::Font _fontBold, _font;
     
     ax::Color* _currentColor;
     bool _selected;

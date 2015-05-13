@@ -41,15 +41,15 @@ ax::FloatRect axGC::RectToFloatRect(const ax::Rect& rect)
 					     axFloat(rect.size.x), axFloat(rect.size.y));
 }
 
-void axGC::SetColor(const axDouble& r, const axDouble& g, const axDouble& b)
+void axGC::SetColor(const double& r, const double& g, const double& b)
 {
 	glColor4d(r, b, g, 1.0);
 }
 
-void axGC::SetColor(const axDouble& r,
-                    const axDouble& g,
-                    const axDouble& b,
-                    const axDouble& a)
+void axGC::SetColor(const double& r,
+                    const double& g,
+                    const double& b,
+                    const double& a)
 {
     glColor4d(r, g, b, a);
 }
@@ -673,7 +673,7 @@ void axGC::DrawPartOfImageResize(ax::Image* img,
 	glDisable(GL_TEXTURE_2D);
 }
 
-void axGC::DrawString(axFont& font,
+void axGC::DrawString(ax::Font& font,
                       const std::string& text,
                       const ax::Point& pos)
 {
@@ -696,7 +696,7 @@ void axGC::DrawString(axFont& font,
 
 }
 
-ax::Point axGC::DrawChar(axFont& font,
+ax::Point axGC::DrawChar(ax::Font& font,
                        const char& key,
                        const ax::Point& pos)
 {
@@ -746,7 +746,7 @@ void axGC::UnBlockDrawing()
     glDisable(GL_SCISSOR_TEST);
 }
 
-void axGC::DrawStringAlignedCenter(axFont& font,
+void axGC::DrawStringAlignedCenter(ax::Font& font,
                                    const std::string& text,
 								   //const ax::Point& pos,
 								   const ax::Rect& rect)

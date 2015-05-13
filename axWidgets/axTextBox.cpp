@@ -307,7 +307,7 @@ _maxNumChar(10000000)
     
     _cursorIndex = (int)_label.size();
     
-    _font = new_ axFont(0);
+    _font = new_ ax::Font(0);
     
     
     // 

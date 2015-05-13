@@ -60,7 +60,7 @@ _findClickCursorIndex(false)
     
     _cursorIndex = _label.size();
     
-    _font = new_ axFont(0);
+    _font = new_ ax::Font(0);
     
     SetShownRect(ax::Rect(-5,
                         -5,

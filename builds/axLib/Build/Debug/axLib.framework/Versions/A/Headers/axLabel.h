@@ -112,8 +112,8 @@ public:
 private:
 //    axLabel::Info _info;
     std::string _label;
-    //axFont* _font;
-	std::unique_ptr<axFont> _font;
+    //ax::Font* _font;
+	std::unique_ptr<ax::Font> _font;
     
     // Events.
     virtual void OnPaint();

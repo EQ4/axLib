@@ -178,7 +178,7 @@ private:
     axNumberBox::Events _events;
     ax::Flag _flags;
     ax::Image* _bgImg;
-    axFont* _font;
+    ax::Font* _font;
 
     ax::Utils::Control::Type _type;
     ax::Utils::Control::Unit _unit;

@@ -25,7 +25,7 @@ public:
     axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
     
 private:
-    axFont _font;
+    ax::Font _font;
 //    std::vector<WidgetFolder*> _folders;
     
     typedef std::tuple<std::string, axLabel*, axTextBox*> axEditorTuple;

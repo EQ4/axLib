@@ -162,7 +162,7 @@ private:
     ax::Image* _bgImg;
     std::string _label;
     std::string _msg;
-    axFont* _font;
+    ax::Font* _font;
     
     bool _selected;
     ax::Flag _flags;
