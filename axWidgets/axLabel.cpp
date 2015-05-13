@@ -29,9 +29,9 @@ axLabel::Info::Info()
     
 }
 
-axLabel::Info::Info(const axColor& normal_color,
-                    const axColor& contour_color,
-                    const axColor& fontColor,
+axLabel::Info::Info(const ax::Color& normal_color,
+                    const ax::Color& contour_color,
+                    const ax::Color& fontColor,
                     const int fontSize,
                     const std::string& fontName,
                     const ax::Utils::Alignement& alignement):

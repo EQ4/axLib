@@ -17,7 +17,7 @@
 #include "axVar.h"
 #include "axPrint.h"
 #include "axFlag.h"
-
+#include "axColor.h"
 
 namespace ax
 {
@@ -53,6 +53,9 @@ namespace ax
     
     // ax::StringVector
     typedef Utils::String::Vector StringVector;
+    
+    // ax::Color
+    typedef Utils::Color<double> Color;
 }
 
 

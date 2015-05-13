@@ -53,28 +53,28 @@ public:
         
         Info(const ax::StringPairVector& attributes);
         
-        Info(const axColor& normal_color,
-             const axColor& contour_color,
-             const axColor& fontColor,
+        Info(const ax::Color& normal_color,
+             const ax::Color& contour_color,
+             const ax::Color& fontColor,
              const int fontSize,
              const std::string& font_name,
              const ax::Utils::Alignement& alignement);
         
-        Info(const axColor& normal_color,
-             const axColor& hover_color,
-             const axColor& clicked_color,
-             const axColor& selected_color,
-             const axColor& contour_color,
-             const axColor& font_color);
+        Info(const ax::Color& normal_color,
+             const ax::Color& hover_color,
+             const ax::Color& clicked_color,
+             const ax::Color& selected_color,
+             const ax::Color& contour_color,
+             const ax::Color& font_color);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual ax::StringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
         virtual void SetAttribute(const ax::StringPair& attribute);
         
-        axColor normal;
-        axColor contour;
-        axColor font_color;
+        ax::Color normal;
+        ax::Color contour;
+        ax::Color font_color;
         int font_size;
         std::string font_name;
         ax::Utils::Alignement _alignement;

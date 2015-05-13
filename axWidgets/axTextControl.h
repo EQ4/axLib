@@ -30,7 +30,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -91,24 +91,24 @@ struct axTextControlEvents
 
 struct axTextControlInfo
 {
-	axColor normal;
-	axColor hover;
-    axColor hightlight; // This needs to be transparent.
-	axColor selected;
-    axColor selected_shadow;
-	axColor cursor;
-	axColor contour;
-	axColor font_color;
+	ax::Color normal;
+	ax::Color hover;
+    ax::Color hightlight; // This needs to be transparent.
+	ax::Color selected;
+    ax::Color selected_shadow;
+	ax::Color cursor;
+	ax::Color contour;
+	ax::Color font_color;
 
 	axTextControlInfo(){}
-	axTextControlInfo(const axColor& normal_color,
-                  const axColor& hover_color,
-                  const axColor& hightlight_color,
-                  const axColor& selected_color,
-                  const axColor& selected_shadow_color,
-                  const axColor& cursor_color,
-                  const axColor& contour_color,
-                  const axColor& font_color_) :
+	axTextControlInfo(const ax::Color& normal_color,
+                  const ax::Color& hover_color,
+                  const ax::Color& hightlight_color,
+                  const ax::Color& selected_color,
+                  const ax::Color& selected_shadow_color,
+                  const ax::Color& cursor_color,
+                  const ax::Color& contour_color,
+                  const ax::Color& font_color_) :
     normal(normal_color),
     hover(hover_color),
     hightlight(hightlight_color),
@@ -189,7 +189,7 @@ protected:
     ax::Flag _flags;
     axFont* _font;
         
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     int _nCurrentImg;
     int _cursorIndex;
     bool _isHightlight;

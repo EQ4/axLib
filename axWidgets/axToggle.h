@@ -41,7 +41,7 @@
 
 #include "axWidget.h"
 #include "axPanel.h"
-#include "axColor.h"
+//#include "ax::Color.h"
 #include "axGC.h"
 #include "axImage.h"
 //#include <axEvent"ax::Event::Msg.h"
@@ -117,14 +117,14 @@ public:
         
         Info(const ax::StringPairVector& attributes);
         
-        Info(const axColor& normal_color,
-             const axColor& hover_color,
-             const axColor& clicked_color,
-             const axColor& selected_color,
-             const axColor& selectedHover_color,
-             const axColor& selectedClicking_color,
-             const axColor& contour_color,
-             const axColor& font_color_,
+        Info(const ax::Color& normal_color,
+             const ax::Color& hover_color,
+             const ax::Color& clicked_color,
+             const ax::Color& selected_color,
+             const ax::Color& selectedHover_color,
+             const ax::Color& selectedClicking_color,
+             const ax::Color& contour_color,
+             const ax::Color& font_color_,
              const std::string& img = "",
              const bool& singleImg = false);
         
@@ -133,19 +133,19 @@ public:
         virtual std::string GetAttributeValue(const std::string& name);
         virtual void SetAttribute(const ax::StringPair& attribute);
         
-        axColor normal;
-        axColor hover;
-        axColor clicking;
+        ax::Color normal;
+        ax::Color hover;
+        ax::Color clicking;
         
-        axColor selected;
-        axColor selected_hover;
-        axColor selected_clicking;
+        ax::Color selected;
+        ax::Color selected_hover;
+        ax::Color selected_clicking;
         
         /// @todo Add select font color to axToggle.
-        axColor selected_font_color;
+        ax::Color selected_font_color;
         
-        axColor contour;
-        axColor font_color;
+        ax::Color contour;
+        ax::Color font_color;
         int font_size = 12;
         
         std::string img;
@@ -214,7 +214,7 @@ protected:
 	int _nCurrentImg;
 
     axToggle::Events _events;
-	axColor* _currentColor;
+	ax::Color* _currentColor;
 	axImage* _bgImg;
     std::string _label;
     std::string _msg;
@@ -222,7 +222,7 @@ protected:
 	
 	bool _selected;
     ax::Flag _flags;
-	axColor test;
+	ax::Color test;
 	axFloat _bgAlpha;
 
     // Events.
@@ -234,22 +234,22 @@ protected:
 };
 
 #define axSTANDARD_TOGGLE 	axToggleInfo( \
-axColor(0.5, 0.5, 0.5),\
-axColor(0.6, 0.6, 0.6),\
-axColor(0.4, 0.4, 0.4),\
-axColor(0.5, 0.5, 0.5),\
-axColor(0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0))
+ax::Color(0.5, 0.5, 0.5),\
+ax::Color(0.6, 0.6, 0.6),\
+ax::Color(0.4, 0.4, 0.4),\
+ax::Color(0.5, 0.5, 0.5),\
+ax::Color(0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0))
 
 #define axTOGGLE_TRANSPARENT 	axToggleInfo( \
-axColor(0.5, 0.5, 0.5, 0.0),\
-axColor(0.6, 0.6, 0.6, 0.0),\
-axColor(0.4, 0.4, 0.4, 0.0),\
-axColor(0.5, 0.5, 0.5, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0))
+ax::Color(0.5, 0.5, 0.5, 0.0),\
+ax::Color(0.6, 0.6, 0.6, 0.0),\
+ax::Color(0.4, 0.4, 0.4, 0.0),\
+ax::Color(0.5, 0.5, 0.5, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 1.0))
 
 /// @}
 /// @}

@@ -70,14 +70,14 @@ public:
     void SetScrollBar(axScrollBar* scrollbar);
     axScrollBar* GetScrollBar();
 
-//    void SetPanelColor(const axColor& color);
+//    void SetPanelColor(const ax::Color& color);
 
 private:
 	bool _isInPopup;
     axScrollBar* _scrollBar = nullptr;
     axWindowType _windowType;
     
-//    axColor _panelColor;
+//    ax::Color _panelColor;
 };
 
 /// @}

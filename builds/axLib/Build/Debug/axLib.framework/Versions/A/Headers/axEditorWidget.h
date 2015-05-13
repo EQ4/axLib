@@ -34,7 +34,7 @@ protected:
     ax::Flag _flags;
     axFont _fontBold, _font;
     
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     bool _selected;
     
     virtual void OnPaint();

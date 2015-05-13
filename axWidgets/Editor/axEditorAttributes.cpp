@@ -17,26 +17,26 @@ void axEditorAttributes::SetEditingWidget(axWidget* widget)
     txtEvents.enter_click = GetOnAttributeEdit();
     
     axTextBox::Info txtInfo;
-    txtInfo.normal = axColor(1.0, 1.0, 1.0, 1.0);
-    txtInfo.hover = axColor(1.0, 1.0, 1.0, 1.0);
-    txtInfo.selected = axColor(1.0, 1.0, 1.0, 1.0);
-    txtInfo.highlight = axColor(0.4, 0.4, 0.6, 1.0);
-    txtInfo.contour = axColor(0.0, 0.0, 0.0, 1.0);
-    txtInfo.cursor = axColor(1.0, 0.0, 0.0, 1.0);
-    txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.2);
+    txtInfo.normal = ax::Color(1.0, 1.0, 1.0, 1.0);
+    txtInfo.hover = ax::Color(1.0, 1.0, 1.0, 1.0);
+    txtInfo.selected = ax::Color(1.0, 1.0, 1.0, 1.0);
+    txtInfo.highlight = ax::Color(0.4, 0.4, 0.6, 1.0);
+    txtInfo.contour = ax::Color(0.0, 0.0, 0.0, 1.0);
+    txtInfo.cursor = ax::Color(1.0, 0.0, 0.0, 1.0);
+    txtInfo.selected_shadow = ax::Color(0.8, 0.8, 0.8, 0.2);
     
     axLabel::Info labelInfo;
-    labelInfo.normal = axColor(0.8, 0.8, 0.8, 1.0);
-    labelInfo.contour = axColor(0.0, 0.0, 0.0, 1.0);
-    labelInfo.font_color = axColor(0.0, 0.0, 0.0, 1.0);
+    labelInfo.normal = ax::Color(0.8, 0.8, 0.8, 1.0);
+    labelInfo.contour = ax::Color(0.0, 0.0, 0.0, 1.0);
+    labelInfo.font_color = ax::Color(0.0, 0.0, 0.0, 1.0);
     labelInfo.font_size = 12;
     labelInfo._alignement = ax::Utils::Alignement::axALIGN_CENTER;
     
     
     axLabel::Info labelInfoWindow;
-    labelInfoWindow.normal = axColor(0.4, 0.4, 0.4, 1.0);
-    labelInfoWindow.contour = axColor(0.0, 0.0, 0.0, 1.0);
-    labelInfoWindow.font_color = axColor(0.8, 0.8, 0.8, 1.0);
+    labelInfoWindow.normal = ax::Color(0.4, 0.4, 0.4, 1.0);
+    labelInfoWindow.contour = ax::Color(0.0, 0.0, 0.0, 1.0);
+    labelInfoWindow.font_color = ax::Color(0.8, 0.8, 0.8, 1.0);
     labelInfoWindow.font_size = 12;
     labelInfoWindow._alignement = ax::Utils::Alignement::axALIGN_CENTER;
     
@@ -233,5 +233,5 @@ void axEditorAttributes::OnPaint()
     axGC gc(this);
     ax::Rect rect(GetDrawingRect());
     
-    gc.DrawRectangleColorFade(rect, axColor(0.5), axColor(0.6));
+    gc.DrawRectangleColorFade(rect, ax::Color(0.5), ax::Color(0.6));
 }

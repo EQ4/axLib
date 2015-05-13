@@ -55,12 +55,12 @@ _msg(msg)
                       _events.selection_change);
     }
     
-    axPopupMenuInfo menu_info(axColor(1.0, 1.0, 0.0, 0.0),
-                              axColor(0.2, 0.8, 0.8, 0.0),
-                              axColor(0.2, 0.8, 0.8, 0.0),
-                              axColor(0.2, 0.8, 0.8, 0.0),
-                              axColor(0.2, 0.8, 0.8, 0.0),
-                              axColor(0.5, 0.5, 0.0, 0.0));
+    axPopupMenuInfo menu_info(ax::Color(1.0, 1.0, 0.0, 0.0),
+                              ax::Color(0.2, 0.8, 0.8, 0.0),
+                              ax::Color(0.2, 0.8, 0.8, 0.0),
+                              ax::Color(0.2, 0.8, 0.8, 0.0),
+                              ax::Color(0.2, 0.8, 0.8, 0.0),
+                              ax::Color(0.5, 0.5, 0.0, 0.0));
     
     axPopupMenuEvents menu_evts;
     menu_evts.selection_change = GetOnPopupMenuChoice();

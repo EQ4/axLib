@@ -49,7 +49,7 @@ _currentElementColor(0.0, 0.8, 0.0)
 	}
 
 	// _gridElements[4][3].on = true;
-	// _gridElements[4][3].color = axColor(0.0, 0.4, 0.0);
+	// _gridElements[4][3].color = ax::Color(0.0, 0.4, 0.0);
 	// _gridElements[4][3].position = ax::Point((double(4) / _dimension.x) * rect.size.x,
 	// 									   (double(3) / _dimension.y) * rect.size.y);
 
@@ -92,7 +92,7 @@ void axGrid::SetBackgroundAlpha(const float& alpha)
 	// Update();
 }
 
-void axGrid::SetElementColor(const axColor& color)
+void axGrid::SetElementColor(const ax::Color& color)
 {
 	_currentElementColor = color;
 }
@@ -203,7 +203,7 @@ void axGrid::OnPaint()
 
 
 	//_selectedElement
-	gc->SetColor(axColor(0.0, 0.0, 1.0));
+	gc->SetColor(ax::Color(0.0, 0.0, 1.0));
 	//glLineWidth(4.0);
 	gc->DrawRectangleContour(ax::Rect(GetPositionOfElement(_selectedElement), element_size), 2);
 

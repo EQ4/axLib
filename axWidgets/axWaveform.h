@@ -31,26 +31,26 @@ public:
         
         Info(const axVectorPairString& attributes);
         
-        Info(const axColor& bg_color,
-             const axColor& waveform_color,
-             const axColor& contour_color,
-             const axColor& grid_main_line_color,
-             const axColor& grid_second_line_color,
-             const axColor& middle_line_color,
-             const axColor& env_color);
+        Info(const ax::Color& bg_color,
+             const ax::Color& waveform_color,
+             const ax::Color& contour_color,
+             const ax::Color& grid_main_line_color,
+             const ax::Color& grid_second_line_color,
+             const ax::Color& middle_line_color,
+             const ax::Color& env_color);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual axStringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
         virtual void SetAttribute(const axStringPair& attribute);
         
-        axColor bg_color;
-        axColor waveform_color;
-        axColor contour_color;
-        axColor grid_main_line_color;
-        axColor grid_second_line_color;
-        axColor middle_line_color;
-        axColor env_color;
+        ax::Color bg_color;
+        ax::Color waveform_color;
+        ax::Color contour_color;
+        ax::Color grid_main_line_color;
+        ax::Color grid_second_line_color;
+        ax::Color middle_line_color;
+        ax::Color env_color;
     };
     
     /***************************************************************************

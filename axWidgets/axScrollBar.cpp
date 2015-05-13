@@ -37,12 +37,12 @@ _flags(flags),
 _yClickDelta(0),
 _value(0.0)
 {
-    ax::Button::Info btn_info(axColor(0.8, 0.0, 0.0),
-                              axColor(0.9, 0.0, 0.0),
-                              axColor(0.8, 0.0, 0.0),
-                              axColor(0.8, 0.0, 0.0),
-                              axColor(0.0, 0.0, 0.0),
-                              axColor(0.0, 0.0, 0.0));
+    ax::Button::Info btn_info(ax::Color(0.8, 0.0, 0.0),
+                              ax::Color(0.9, 0.0, 0.0),
+                              ax::Color(0.8, 0.0, 0.0),
+                              ax::Color(0.8, 0.0, 0.0),
+                              ax::Color(0.0, 0.0, 0.0),
+                              ax::Color(0.0, 0.0, 0.0));
 
 	//function<void (axButtonMsg)> btnFct();
 
@@ -186,7 +186,7 @@ void axScrollBar::OnPaint()
 //	ax::Rect rect0(ax::Point(0, 0), GetRect().size);
     ax::Rect rect0(GetDrawingRect());
 //
-	gc->SetColor(axColor(1.0, 0.0, 0.0), 1.0);
+	gc->SetColor(ax::Color(1.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangle(rect0);
     
     gc->DrawRectangleColorFade(rect0,
@@ -195,7 +195,7 @@ void axScrollBar::OnPaint()
 //
 //	// gc->DrawImageResize(_bgImg, rect0.position, rect0.size);
 //
-//	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+//	gc->SetColor(ax::Color(0.0, 0.0, 0.0), 1.0);
 //	gc->DrawRectangleContour(ax::Rect(ax::Point(1, 1), rect0.size - ax::Size(1, 1) ));
 //
 
@@ -206,7 +206,7 @@ void axScrollBar::OnPaint()
     gc->SetColor(_info.slider_contour);
     gc->DrawRectangleContour(bar_rect);
 //
-//	gc->SetColor(axColor(0.3, 0.3, 0.3), 1.0);
+//	gc->SetColor(ax::Color(0.3, 0.3, 0.3), 1.0);
 //	gc->DrawRectangleContour(bar_rect);
 //
 	gc->SetColor(_info.contour);

@@ -26,6 +26,7 @@
 /// @{
 
 #include <axEvent/axObject.h>
+#include <axUtils/axUtils.h>
 #include "axC++.h"
 #include "axGC.h"
 //#include "axResourceManager.h"
@@ -118,9 +119,9 @@ public:
     
     bool IsEditable() const;
     
-    void SetWindowColor(const axColor& color);
+    void SetWindowColor(const ax::Color& color);
     
-    void SetContourColor(const axColor& color);
+    void SetContourColor(const ax::Color& color);
     
     void RenderWindow();
     
@@ -176,7 +177,7 @@ private:
 	axWindow* _parent;
 	ax::Rect _rect, _shownRect;
 	ax::Point _absolutePosition, _scrollDecay;
-    axColor _windowColor, _contourColor;
+    ax::Color _windowColor, _contourColor;
     ax::GL::FrameBuffer _frameBufferObj;
     ax::ResourceStorage _resourceManager;
     

@@ -316,36 +316,36 @@ void axWaveformNavigator::OnPaint()
     ax::Rect rect0(ax::Point(0, 0), rect.size);
     
     // Draw background.
-    gc->SetColor(axColor(0.5, 0.5, 0.5), 0.01);
+    gc->SetColor(ax::Color(0.5, 0.5, 0.5), 0.01);
     gc->DrawRectangle(rect0);
     
     // Draw waveform.
-    gc->SetColor(axColor(0.5, 0.5, 0.5), 1.0);
+    gc->SetColor(ax::Color(0.5, 0.5, 0.5), 1.0);
     gc->DrawLines(_waveformDrawingData);
     
     // Draw middle line.
     int middle_y = rect.size.y * 0.5;
-    gc->SetColor(axColor(0.5, 0.5, 0.5), 0.4);
+    gc->SetColor(ax::Color(0.5, 0.5, 0.5), 0.4);
     gc->DrawLine(ax::Point(1, middle_y), ax::Point(rect.size.x - 2, middle_y));
     
     // Draw navigator borders.
     ax::Rect borderRect(GetBorderRect());
-    gc->SetColor(axColor(0.9, 0.4, 0.0, _fillAlpha));
+    gc->SetColor(ax::Color(0.9, 0.4, 0.0, _fillAlpha));
     gc->DrawRectangle(borderRect);
     
     // Draw navigator borders contour.
-    gc->SetColor(axColor(0.9, 0.4, 0.0, 0.8));
+    gc->SetColor(ax::Color(0.9, 0.4, 0.0, 0.8));
     gc->DrawRectangleContour(borderRect);
     
     // Draw playing cursor.
     if(_playingPos != 0.0 && _playingPos < 1.0)
     {
-        gc->SetColor(axColor(0.0, 0.1, 1.0), 0.7);
+        gc->SetColor(ax::Color(0.0, 0.1, 1.0), 0.7);
         int x_pos = 1 + _playingPos * (rect.size.x - 2);
         gc->DrawLine(ax::Point(x_pos, 1), ax::Point(x_pos, rect.size.y - 2));
     }
 
     // Draw background contour.
-    gc->SetColor(axColor(0.5, 0.5, 0.5), 1.0);
+    gc->SetColor(ax::Color(0.5, 0.5, 0.5), 1.0);
     gc->DrawRectangleContour(rect0);
 }

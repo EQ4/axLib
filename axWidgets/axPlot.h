@@ -38,7 +38,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -90,19 +90,19 @@ struct axPlotEvents
 ******************************************************************************/
 struct axPlotInfo
 {
-    axColor background_color;
-    axColor grid_color;
-    axColor grid_dark_color;
-    axColor contour_color;
-    axColor function_color;
+    ax::Color background_color;
+    ax::Color grid_color;
+    ax::Color grid_dark_color;
+    ax::Color contour_color;
+    ax::Color function_color;
 
     axPlotInfo(){}
     axPlotInfo(
-        const axColor& bg_color,
-        const axColor& grid_color_,
-        const axColor& grid_dark_color_,
-        const axColor& contour_color_,
-        const axColor& function_color_) :
+        const ax::Color& bg_color,
+        const ax::Color& grid_color_,
+        const ax::Color& grid_dark_color_,
+        const ax::Color& contour_color_,
+        const ax::Color& function_color_) :
         background_color(bg_color),
         grid_color(grid_color_),
         grid_dark_color(grid_dark_color_),

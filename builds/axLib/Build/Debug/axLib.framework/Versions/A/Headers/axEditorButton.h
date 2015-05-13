@@ -56,7 +56,7 @@ protected:
     ax::Flag _flags;
     std::unique_ptr<axFont> _font;
     
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     bool _selected;
 //    int _nCurrentImg;
     

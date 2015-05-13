@@ -32,6 +32,8 @@
 		7C18C4131B03BA0A00885929 /* axPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4111B03BA0A00885929 /* axPrint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C4161B03BB1200885929 /* axFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4141B03BB1200885929 /* axFlag.cpp */; };
 		7C18C4171B03BB1200885929 /* axFlag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4151B03BB1200885929 /* axFlag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C4221B03CA4A00885929 /* axColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4211B03CA4A00885929 /* axColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C4241B03CA5500885929 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4231B03CA5500885929 /* axColor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		7C18C4111B03BA0A00885929 /* axPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPrint.h; sourceTree = "<group>"; };
 		7C18C4141B03BB1200885929 /* axFlag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFlag.cpp; sourceTree = "<group>"; };
 		7C18C4151B03BB1200885929 /* axFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFlag.h; sourceTree = "<group>"; };
+		7C18C4211B03CA4A00885929 /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axColor.h; path = ../../../../include/axColor.h; sourceTree = "<group>"; };
+		7C18C4231B03CA5500885929 /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axColor.cpp; path = ../../../../source/axColor.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			children = (
 				7C18C3AE1B02788200885929 /* axClamp.h */,
 				7C18C3B61B027C7F00885929 /* axControl.h */,
+				7C18C4211B03CA4A00885929 /* axColor.h */,
 				7C18C3BA1B027FF900885929 /* axDirection.h */,
 				7C18C4151B03BB1200885929 /* axFlag.h */,
 				7C18C3AA1B02774500885929 /* axInterpole.h */,
@@ -134,6 +139,7 @@
 			children = (
 				7C18C3AD1B02788200885929 /* axClamp.cpp */,
 				7C18C3B51B027C7F00885929 /* axControl.cpp */,
+				7C18C4231B03CA5500885929 /* axColor.cpp */,
 				7C18C3B91B027FF900885929 /* axDirection.cpp */,
 				7C18C4141B03BB1200885929 /* axFlag.cpp */,
 				7C18C3A91B02774500885929 /* axInterpole.cpp */,
@@ -168,6 +174,7 @@
 				7C18C3CD1B02BD3200885929 /* axResourceStorage.h in Headers */,
 				7C18C37C1B02709500885929 /* axUtils.h in Headers */,
 				7C18C3A41B02726D00885929 /* axRect2D.h in Headers */,
+				7C18C4221B03CA4A00885929 /* axColor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C18C3B71B027C7F00885929 /* axControl.cpp in Sources */,
+				7C18C4241B03CA5500885929 /* axColor.cpp in Sources */,
 				7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */,
 				7C18C3BB1B027FF900885929 /* axDirection.cpp in Sources */,
 				7C18C3A71B02747400885929 /* axRange.cpp in Sources */,

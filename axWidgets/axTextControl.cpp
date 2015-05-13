@@ -268,7 +268,7 @@ void axTextControl::DrawContourRectangle(axGC* gc)
             }
             else
             {
-                axColor col(_info.selected_shadow);
+                ax::Color col(_info.selected_shadow);
                 gc->SetColor(col);
                 
                 int nRect = 5;

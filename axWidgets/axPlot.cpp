@@ -29901,7 +29901,7 @@ void axPlot::OnPaint()
         past_v = v;
     }
     
-//     gc->SetColor(axColor(0.0, 0.0, 1.0));
+//     gc->SetColor(ax::Color(0.0, 0.0, 1.0));
 //    for(std::vector<axFloatPoint>& vec : _points)
 //    {
 //        for(auto& n : vec)

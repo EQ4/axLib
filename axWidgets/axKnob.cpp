@@ -48,9 +48,9 @@ ax::Event::Msg* axKnob::Msg::GetCopy()
 /*******************************************************************************
  * axKnob::Info.
  ******************************************************************************/
-axKnob::Info::Info( const axColor& bg_normalColor,
-                   const axColor& bg_hoverColor,
-                   const axColor& bg_clickingColor,
+axKnob::Info::Info( const ax::Color& bg_normalColor,
+                   const ax::Color& bg_hoverColor,
+                   const ax::Color& bg_clickingColor,
                    const unsigned int& numberKnob,
                    const ax::Size& size,
                    const std::string& imgPath,
@@ -523,16 +523,16 @@ void axKnobControl::OnPaint()
     axGC* gc = GetGC();
     ax::Rect rect0(ax::Point(0, 0), GetRect().size);
     
-    gc->SetColor(axColor(0.5, 0.5, 0.5, 0.3));
+    gc->SetColor(ax::Color(0.5, 0.5, 0.5, 0.3));
     gc->DrawRectangle(rect0);
     
     ax::Rect labelRect(0, 0, rect0.size.x - 1, 20);
-    gc->SetColor(axColor(0.6, 0.6, 0.6, 0.3));
+    gc->SetColor(ax::Color(0.6, 0.6, 0.6, 0.3));
     gc->DrawRectangle(labelRect);
     
     axFont font("FreeSans.ttf");
 //    gc->SetFontSize(12);
-    gc->SetColor(axColor(0.0, 0.0, 0.0));
+    gc->SetColor(ax::Color(0.0, 0.0, 0.0));
     gc->DrawStringAlignedCenter(font, _label, labelRect);
     
 //    gc->SetFontSize(10);
@@ -540,7 +540,7 @@ void axKnobControl::OnPaint()
     gc->DrawStringAlignedCenter(font, _value, ax::Rect(0, rect0.size.y - 20,
                                                rect0.size.x, 20));
     
-    gc->SetColor(axColor(0.0, 0.0, 0.0, 0.3));
+    gc->SetColor(ax::Color(0.0, 0.0, 0.0, 0.3));
     gc->DrawRectangleContour(rect0);
 
 }

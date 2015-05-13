@@ -56,9 +56,9 @@ void axEditorWidgetsPanel::OnPaint()
     axGC gc(this);
     ax::Rect rect(GetDrawingRect());
     
-    gc.DrawRectangleColorFade(rect, axColor(0.8), axColor(0.7));
-    
-    gc.SetColor(axColor(0.0));
+//    gc.DrawRectangleColorFade(rect, ax::Color(0.8), ax::Color(0.7));
+//    
+//    gc.SetColor(ax::Color(0.0));
     gc.DrawRectangleContour(rect);
     //    gc.DrawRectangleColorFade(ax::Rect(0, 0, rect.size.x, 40),
     //                              axColor(0.6), axColor(0.9));

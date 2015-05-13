@@ -30,7 +30,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 
@@ -86,21 +86,21 @@ struct axGridEvents
 
 struct axGridInfo
 {
-	axColor normal;
-	axColor hover;
-	axColor clicking;
-	axColor selected;
-	axColor contour;
-	axColor font_color;
+	ax::Color normal;
+	ax::Color hover;
+	ax::Color clicking;
+	ax::Color selected;
+	ax::Color contour;
+	ax::Color font_color;
 
 	axGridInfo(){}
 	axGridInfo(
-		const axColor& normal_color,
-		const axColor& hover_color,
-		const axColor& clicked_color,
-		const axColor& selected_color,
-		const axColor& contour_color,
-		const axColor& font_color_) :
+		const ax::Color& normal_color,
+		const ax::Color& hover_color,
+		const ax::Color& clicked_color,
+		const ax::Color& selected_color,
+		const ax::Color& contour_color,
+		const ax::Color& font_color_) :
 		normal(normal_color),
 		hover(hover_color),
 		clicking(clicked_color),
@@ -121,11 +121,11 @@ struct axGridInfo
 		{
 			std::string line;
 
-			axColor* ptr = &normal;
+			ax::Color* ptr = &normal;
 			while (file.good())
 			{
 				getline(file, line);
-				*ptr++ = axColor(line);
+				*ptr++ = ax::Color(line);
 			}
 		}
 	}
@@ -144,7 +144,7 @@ public:
 		std::string msg = "");
 
 	void SetBackgroundAlpha(const float& alpha);
-	void SetElementColor(const axColor& color);
+	void SetElementColor(const ax::Color& color);
 	void SetMsg(const std::string& msg);
 	void SetSelected(const bool& selected);
 
@@ -165,10 +165,10 @@ private:
 	{
 		bool on;
 		ax::Point position;
-		axColor color;
+		ax::Color color;
 	};
 
-	axColor _currentElementColor;
+	ax::Color _currentElementColor;
 	std::vector<std::vector<axGridElement>> _gridElements;
 	
 	void AddElement(const int& row, const int& col);

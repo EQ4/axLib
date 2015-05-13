@@ -38,7 +38,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -107,20 +107,20 @@ struct axDropMenuEvents
  ******************************************************************************/
 struct axDropMenuInfo
 {
-    axColor normal;
-    axColor hover;
-    axColor clicking;
-    axColor selected;
-    axColor contour;
-    axColor font_color;
+    ax::Color normal;
+    ax::Color hover;
+    ax::Color clicking;
+    ax::Color selected;
+    ax::Color contour;
+    ax::Color font_color;
     
     axDropMenuInfo(){}
-    axDropMenuInfo(const axColor& normal_color,
-                   const axColor& hover_color,
-                   const axColor& clicked_color,
-                   const axColor& selected_color,
-                   const axColor& contour_color,
-                   const axColor& font_color_) :
+    axDropMenuInfo(const ax::Color& normal_color,
+                   const ax::Color& hover_color,
+                   const ax::Color& clicked_color,
+                   const ax::Color& selected_color,
+                   const ax::Color& contour_color,
+                   const ax::Color& font_color_) :
     normal(normal_color),
     hover(hover_color),
     clicking(clicked_color),
@@ -157,7 +157,7 @@ private:
     axDropMenuEvents _events;
     axDropMenuInfo _info;
     
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     axImage* _btnImg;
     axImage* _bgImg;
     std::string _label;
@@ -166,7 +166,7 @@ private:
     
     bool _selected;
     ax::Flag _flags;
-    axColor test;
+    ax::Color test;
 //    axFloat _bgAlpha;
     
     axPopupMenu* _popMenu;
@@ -194,12 +194,12 @@ private:
  * axDropMenuInfo template.
  ******************************************************************************/
 #define axDROP_MENU_TRANSPARENT 	axDropMenuInfo( \
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0))
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 1.0))
 
 /// @}
 /// @}

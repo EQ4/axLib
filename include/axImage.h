@@ -31,8 +31,6 @@
 #define PNG_DEBUG 3
 /// @endcond
 
-
-
 #include "axC++.h"
 #include <string>
 #include <stdlib.h>

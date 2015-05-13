@@ -18,13 +18,13 @@ axInfo()
     
 }
 
-axWaveform::Info::Info(const axColor& bgColor,
-                       const axColor& waveformColor,
-                       const axColor& contourColor,
-                       const axColor& gridMainLineColor,
-                       const axColor& gridSecondLineColor,
-                       const axColor& middleLineColor,
-                       const axColor& envColor) :
+axWaveform::Info::Info(const ax::Color& bgColor,
+                       const ax::Color& waveformColor,
+                       const ax::Color& contourColor,
+                       const ax::Color& gridMainLineColor,
+                       const ax::Color& gridSecondLineColor,
+                       const ax::Color& middleLineColor,
+                       const ax::Color& envColor) :
 // Heritage.
 axInfo(),
 // Members.
@@ -461,7 +461,7 @@ void axWaveform::OnPaint()
 //        {
 //            int middle_y = rect.size.y * 0.5;
 //            
-////            gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
+////            gc->SetColor(ax::Color(0.0, 1.0, 0.0), 1.0);
 ////            
 ////            for(auto& n : *_envPoints)
 ////            {
@@ -472,7 +472,7 @@ void axWaveform::OnPaint()
 //////                std::cout << n.x << " " << n.y << std::endl;
 ////            }
 //            
-//            gc->SetColor(axColor(0.0, 0.0, 1.0), 1.0);
+//            gc->SetColor(ax::Color(0.0, 0.0, 1.0), 1.0);
 //            
 //            for(int i = 1; i < (*_envPoints).size(); i++)
 //            {

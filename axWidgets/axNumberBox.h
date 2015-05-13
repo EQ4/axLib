@@ -38,7 +38,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axWidget.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -104,12 +104,12 @@ public:
         
         Info(const ax::StringPairVector& attributes);
         
-        Info(const axColor& normal_color,
-             const axColor& hover_color,
-             const axColor& clicked_color,
-             const axColor& selected_color,
-             const axColor& contour_color,
-             const axColor& fontColor,
+        Info(const ax::Color& normal_color,
+             const ax::Color& hover_color,
+             const ax::Color& clicked_color,
+             const ax::Color& selected_color,
+             const ax::Color& contour_color,
+             const ax::Color& fontColor,
              const std::string& img = "",
              const bool& singleImg = false);
   
@@ -118,12 +118,12 @@ public:
         virtual std::string GetAttributeValue(const std::string& name);
         virtual void SetAttribute(const ax::StringPair& attribute);
 
-        axColor normal;
-        axColor hover;
-        axColor clicking;
-        axColor selected;
-        axColor contour;
-        axColor font_color;
+        ax::Color normal;
+        ax::Color hover;
+        ax::Color clicking;
+        ax::Color selected;
+        ax::Color contour;
+        ax::Color font_color;
         
         std::string img;
         bool single_img;
@@ -185,7 +185,7 @@ private:
     ax::FloatRange _range;
     ax::Utils::Control::Interpolation _interpolation;
 
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     int _nCurrentImg;
     double _value;
     double _zeroToOneValue;
@@ -210,17 +210,17 @@ private:
 
 };
 
-#define axNUMBER_BOX_STANDARD axNumberBox::Info( axColor("#AA1111"),          \
-                                               axColor("#CC1111"),          \
-                                               axColor("#FF1111"),          \
-                                               axColor("#FF0000"),          \
-                                               axColor("#000000") )
+#define axNUMBER_BOX_STANDARD axNumberBox::Info( ax::Color("#AA1111"),          \
+                                               ax::Color("#CC1111"),          \
+                                               ax::Color("#FF1111"),          \
+                                               ax::Color("#FF0000"),          \
+                                               ax::Color("#000000") )
 
-#define axNUMBER_BOX_WHITE axNumberBox::Info( axColor("#FFFFFF"),          \
-                                            axColor("#DDDDDD"),          \
-                                            axColor("#AAAAAA"),          \
-                                            axColor("#FF0000"),          \
-                                            axColor("#000000") )
+#define axNUMBER_BOX_WHITE axNumberBox::Info( ax::Color("#FFFFFF"),          \
+                                            ax::Color("#DDDDDD"),          \
+                                            ax::Color("#AAAAAA"),          \
+                                            ax::Color("#FF0000"),          \
+                                            ax::Color("#000000") )
 
 /// @}
 /// @}

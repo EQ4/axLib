@@ -89,9 +89,9 @@ public:
         
         Info(const ax::StringPairVector& attributes);
         
-        Info(const axColor& bg_normalColor,
-             const axColor& bg_hoverColor,
-             const axColor& bg_clickingColor,
+        Info(const ax::Color& bg_normalColor,
+             const ax::Color& bg_hoverColor,
+             const ax::Color& bg_clickingColor,
              const unsigned int& numberKnob,
              const ax::Size& size,
              const std::string& imgPath,
@@ -105,7 +105,7 @@ public:
         std::string img_path, selected_img_path;
         ax::Size knob_size;
         unsigned int n_knob;
-        axColor bgColorNormal, bgColorHover, bgColorClicked;
+        ax::Color bgColorNormal, bgColorHover, bgColorClicked;
     };
     
     /***************************************************************************
@@ -177,7 +177,7 @@ private:
     ax::FloatRange _range;
 
     axImage* m_knobImg;
-    axColor* m_currentBgColor;
+    ax::Color* m_currentBgColor;
     unsigned int m_nCurrentImg;
     double m_knobValue;
     int _clickPosY;
@@ -221,17 +221,17 @@ private:
 /********************************************************************************//**
  * Knob Templates.
  ***********************************************************************************/
-#define axKNOB_INFO_SMALL_RED axKnobInfo( axColor("#777777"),            \
-                                          axColor("#999999"),            \
-                                          axColor("#999999"),            \
+#define axKNOB_INFO_SMALL_RED axKnobInfo( ax::Color("#777777"),            \
+                                          ax::Color("#999999"),            \
+                                          ax::Color("#999999"),            \
                                           128,                           \
                                           ax::Size( 32, 32 ),              \
                                           "knob.png",         \
                                           "knobSelected.png")
 
-#define axKNOB_INFO_SIMPLE_BLUE axKnobInfo( axColor("#888888"),            \
-                                            axColor("#AAAAAA"),            \
-                                            axColor("#BBBBBB"),            \
+#define axKNOB_INFO_SIMPLE_BLUE axKnobInfo( ax::Color("#888888"),            \
+                                            ax::Color("#AAAAAA"),            \
+                                            ax::Color("#BBBBBB"),            \
                                             128,                           \
                                             ax::Size( 32, 32 ),              \
                                             "ressources/images/knobs/simple_blue_knob.png", \

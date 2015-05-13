@@ -29,7 +29,7 @@ axWidgetSelector::Info::Info()
     
 }
 
-axWidgetSelector::Info::Info(const axColor& color):
+axWidgetSelector::Info::Info(const ax::Color& color):
 _color(color)
 {
     
@@ -40,7 +40,7 @@ _color(color)
  ******************************************************************************/
 axWidgetSelector::axWidgetSelector(axWindow* parent):
 axPanel(3, parent, ax::Rect(0, 0, 20, 20)),
-_info(axColor(1.0, 0.33, 0.0)),
+_info(ax::Color(1.0, 0.33, 0.0)),
 _selectedWidget(nullptr)
 {
     SetSelectable(false);

@@ -44,10 +44,10 @@ public:
     public:
         Info();
         
-        Info(const axColor& color);
+        Info(const ax::Color& color);
 
         
-        axColor _color;
+        ax::Color _color;
     };
 
     /***************************************************************************

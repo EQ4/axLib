@@ -54,7 +54,7 @@ void axGC::SetColor(const axDouble& r,
     glColor4d(r, g, b, a);
 }
 
-void axGC::SetColor(const axColor& color)
+void axGC::SetColor(const ax::Color& color)
 {
 	glColor4d(color.GetRed(),
               color.GetGreen(),
@@ -62,7 +62,7 @@ void axGC::SetColor(const axColor& color)
               color.GetAlpha());
 }
 
-void axGC::SetColor(const axColor& color, const float& alpha)
+void axGC::SetColor(const ax::Color& color, const float& alpha)
 {
 	glColor4d(color.GetRed(), color.GetGreen(), color.GetBlue(), alpha);
 }
@@ -414,14 +414,14 @@ void axGC::DrawRectangleContour(const ax::Rect& rect, float linewidth)
     glLineWidth(1.0f);
 }
 
-void axGC::DrawTexture(GLuint texture, const ax::Rect& rect, axColor color)
+void axGC::DrawTexture(GLuint texture, const ax::Rect& rect, ax::Color color)
 {
 //	ax::Point pos = rect.position + _win->GetAbsoluteRect().position;
     ax::Point pos = rect.position;
 //	pos.x  -= _win->GetScrollDecay().x;
 //	pos.y  -= _win->GetScrollDecay().y;
 
-	//axColorStruct c = color.GetColorStruct();
+	//ax::ColorStruct c = color.GetColorStruct();
 	//glColor4f(c.r, c.g, c.b, 1.0);
 
 	glEnable(GL_TEXTURE_2D);
@@ -783,8 +783,8 @@ void axGC::DrawStringAlignedCenter(axFont& font,
 }
 
 void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
-								  const axColor& c1, const float& alpha1,
-								  const axColor& c2, const float& alpha2)
+								  const ax::Color& c1, const float& alpha1,
+								  const ax::Color& c2, const float& alpha2)
 {
 //	ax::FloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
     ax::FloatRect rect = RectToFloatRect(rectangle);
@@ -810,8 +810,8 @@ void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
 }
 
 void axGC::DrawRectangleColorFade(const ax::Rect& rectangle,
-                                  const axColor& c1,
-                                  const axColor& c2)
+                                  const ax::Color& c1,
+                                  const ax::Color& c2)
 {
 //    ax::FloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
     ax::FloatRect rect = RectToFloatRect(rectangle);
@@ -947,7 +947,7 @@ void axGC::DrawLine(const ax::Point& pt1, const ax::Point& pt2, float width)
 }
 
 void axGC::DrawLineColorfade(const ax::Point& pt1, const ax::Point& pt2,
-                             const axColor& c1, const axColor& c2,
+                             const ax::Color& c1, const ax::Color& c2,
                              float width)
 {
     ax::Point p1 = pt1;
@@ -1262,9 +1262,9 @@ void axGC::DrawArrow(const ax::Point& p1, const ax::Point& p2,
 void axGC::DrawTriangleColorFade(const ax::Point& p1,
                                  const ax::Point& p2,
                                  const ax::Point& p3,
-                                 const axColor& c1,
-                                 const axColor& c2,
-                                 const axColor& c3)
+                                 const ax::Color& c1,
+                                 const ax::Color& c2,
+                                 const ax::Color& c3)
 {
     glBegin(GL_POLYGON);
     

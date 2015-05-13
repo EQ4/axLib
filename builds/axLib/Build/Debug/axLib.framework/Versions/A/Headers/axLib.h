@@ -36,8 +36,10 @@
 #include "axImage.h"
 #include "axGC.h"
 #include "axC++.h"
-#include "axColor.h"
+//#include "axColor.h"
 #include "axFont.h"
+
+#include <axUtils/axUtils.h>
 
 /*******************************************************************************
  * Event.

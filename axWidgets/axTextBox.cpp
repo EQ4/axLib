@@ -67,14 +67,14 @@ axInfo()
     
 }
 
-axTextBox::Info::Info(const axColor& normalColor,
-                      const axColor& hoverColor,
-                      const axColor& highlightColor,
-                      const axColor& selectedColor,
-                      const axColor& selected_shadowColor,
-                      const axColor& cursorColor,
-                      const axColor& contourColor,
-                      const axColor& font_colorColor) :
+axTextBox::Info::Info(const ax::Color& normalColor,
+                      const ax::Color& hoverColor,
+                      const ax::Color& highlightColor,
+                      const ax::Color& selectedColor,
+                      const ax::Color& selected_shadowColor,
+                      const ax::Color& cursorColor,
+                      const ax::Color& contourColor,
+                      const ax::Color& font_colorColor) :
 // Heritage.
 axInfo(),
 // Members.
@@ -543,7 +543,7 @@ void axTextBox::DrawContourRectangle(axGC* gc)
             }
             else
             {
-                axColor col(static_cast<Info*>(_info)->selected_shadow);
+                ax::Color col(static_cast<Info*>(_info)->selected_shadow);
                 gc->SetColor(col);
                 
                 int nRect = 5;

@@ -32,7 +32,7 @@
 #include <axUtils/axUtils.h>
 //#include <axEvent/ax::Event::Msg.h>
 #include "axPanel.h"
-#include "axColor.h"
+//#include "ax::Color.h"
 #include "axGC.h"
 #include "axImage.h"
 #include "axToggle.h"
@@ -80,7 +80,7 @@ struct axPopupMenuEvents
 ******************************************************************************/
 struct axPopupMenuInfo
 {
-	axColor bgColorNormal,
+	ax::Color bgColorNormal,
 			bgColorHover,
 			bgColorSelected,
 			lineColor,
@@ -88,12 +88,12 @@ struct axPopupMenuInfo
 			fontColor;
 
 	axPopupMenuInfo(){}
-	axPopupMenuInfo(const axColor& bg_normal,
-		const axColor& bg_hover,
-		const axColor& bg_selected,
-		const axColor& lineColor,
-		const axColor& contour,
-		const axColor& font_color) :
+	axPopupMenuInfo(const ax::Color& bg_normal,
+		const ax::Color& bg_hover,
+		const ax::Color& bg_selected,
+		const ax::Color& lineColor,
+		const ax::Color& contour,
+		const ax::Color& font_color) :
 		// Members.
 		bgColorNormal(bg_normal),
 		bgColorHover(bg_hover),

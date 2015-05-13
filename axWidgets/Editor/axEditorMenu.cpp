@@ -1,5 +1,6 @@
 #include "axEditorMenu.h"
 #include "axWidget.h"
+#include <axUtils/axUtils.h>
 
 axEditorMenu::axEditorMenu(const ax::Rect& rect) :
 axPanel(3, nullptr, rect),
@@ -13,12 +14,12 @@ _font(0)
     
     axScrollBarEvents scrollEvents;
     axScrollBarInfo scroll_info;
-    scroll_info.normal = axColor(0.8, 0.8, 0.8);
-    scroll_info.hover = axColor(0.9, 0.9, 0.9);
-    scroll_info.clicking = axColor(0.7, 0.7, 0.7);
-    scroll_info.contour = axColor(0.0, 0.0, 0.0);
-    scroll_info.bg_top = axColor(0.45);
-    scroll_info.bg_bottom  = axColor(0.4);
+    scroll_info.normal = ax::Color(0.8, 0.8, 0.8);
+    scroll_info.hover = ax::Color(0.9, 0.9, 0.9);
+    scroll_info.clicking = ax::Color(0.7, 0.7, 0.7);
+    scroll_info.contour = ax::Color(0.0, 0.0, 0.0);
+    scroll_info.bg_top = ax::Color(0.45);
+    scroll_info.bg_bottom  = ax::Color(0.4);
     //    scroll_info.selected = scroll_info.normal;
     
  
@@ -81,5 +82,5 @@ void axEditorMenu::OnPaint()
 	axGC gc(this);
 	ax::Rect rect(GetDrawingRect());
 
-	gc.DrawRectangleColorFade(rect, axColor(0.5), axColor(0.6));
+	//gc.DrawRectangleColorFade(rect, ax::Color(0.5), ax::Color(0.6));
 }

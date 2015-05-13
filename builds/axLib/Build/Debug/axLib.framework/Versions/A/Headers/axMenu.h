@@ -31,7 +31,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 

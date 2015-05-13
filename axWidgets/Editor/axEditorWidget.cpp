@@ -16,12 +16,12 @@ axEditorWidget::axEditorWidget(axWindow* parent,
 axPanel(parent, rect),
 // Members.
 //_events(events),
-_info(axColor(0.7),
-      axColor(0.78),
-      axColor(0.74),
-      axColor(0.7),
-      axColor(0.0),
-      axColor(0.0)),
+_info(ax::Color(0.7),
+      ax::Color(0.78),
+      ax::Color(0.74),
+      ax::Color(0.7),
+      ax::Color(0.0),
+      ax::Color(0.0)),
 _label(label),
 _flags(ax::Button::Flags::SINGLE_IMG),
 _selected(false),
@@ -134,10 +134,10 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
             if(win->GetWindowType() == axWindowType::axWINDOW_TYPE_PANEL)
             {
                 ax::Button::Info btn_info;
-                btn_info.normal = axColor(0.7, 0.7, 0.7, 0.3);
-                btn_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
-                btn_info.clicking = axColor(0.8, 0.8, 0.8, 0.3);
-                btn_info.contour = axColor(0.0, 0.0, 0.0, 1.0);
+                btn_info.normal = ax::Color(0.7, 0.7, 0.7, 0.3);
+                btn_info.hover = ax::Color(0.9, 0.9, 0.9, 0.3);
+                btn_info.clicking = ax::Color(0.8, 0.8, 0.8, 0.3);
+                btn_info.contour = ax::Color(0.0, 0.0, 0.0, 1.0);
                 btn_info.selected = btn_info.normal;
                 btn_info.round_corner_radius = 3;
                 
@@ -215,7 +215,7 @@ void axEditorWidget::OnPaint()
 //    gc->SetColor(*_currentColor);
 //    gc->DrawRectangle(rect);
     
-    gc->DrawRectangleColorFade(rect, axColor(0.95), axColor(0.9));
+    gc->DrawRectangleColorFade(rect, ax::Color(0.95), ax::Color(0.9));
     
     gc->SetColor(0.0);
     gc->DrawRectangleContour(ax::Rect(5, 5, 40, 30));

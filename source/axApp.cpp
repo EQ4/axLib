@@ -133,16 +133,16 @@ void ax::App::CreateEditor()
                                       ax::Rect(size.x - 20, size.y - 20, 20, 20));
     
     axToggle::Info btn_info;
-    btn_info.normal = axColor(1.0, 0.8, 0.8, 0.0);
-    btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
-    btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
+    btn_info.normal = ax::Color(1.0, 0.8, 0.8, 0.0);
+    btn_info.hover = ax::Color(0.9, 0.9, 0.9, 0.0);
+    btn_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.0);
     
-    btn_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
-    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
-    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
+    btn_info.selected = ax::Color(0.8, 0.4, 0.4, 0.0);
+    btn_info.selected_hover = ax::Color(0.9, 0.4, 0.4, 0.0);
+    btn_info.selected_clicking = ax::Color(0.7, 0.4, 0.4, 0.0);
     
-    btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
-    btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    btn_info.contour = ax::Color(0.0, 0.0, 0.0, 0.0);
+    btn_info.font_color = ax::Color(0.0, 0.0, 0.0, 0.0);
     
     btn_info.img = GetResourceFile("settings.png");
     btn_info.single_img = true;

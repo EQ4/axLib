@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7C1351911A7FC77A00C97A99 /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351571A7FC77A00C97A99 /* axApp.cpp */; };
 		7C1351921A7FC77A00C97A99 /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351581A7FC77A00C97A99 /* axC++.cpp */; };
-		7C1351931A7FC77A00C97A99 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351591A7FC77A00C97A99 /* axColor.cpp */; };
 		7C1351941A7FC77A00C97A99 /* axConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13515A1A7FC77A00C97A99 /* axConfig.cpp */; };
 		7C1351951A7FC77A00C97A99 /* axCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13515B1A7FC77A00C97A99 /* axCore.cpp */; };
 		7C1351961A7FC77A00C97A99 /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C13515C1A7FC77A00C97A99 /* axDefaultFontBuffer.cpp */; };
@@ -34,7 +33,6 @@
 		7C13521E1A7FC8ED00C97A99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C13521D1A7FC8ED00C97A99 /* Foundation.framework */; };
 		7C15C7F41AB670A4007B6868 /* axApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D41AB670A4007B6868 /* axApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7F51AB670A4007B6868 /* axC++.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D51AB670A4007B6868 /* axC++.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C15C7F61AB670A4007B6868 /* axColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D61AB670A4007B6868 /* axColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7F71AB670A4007B6868 /* axConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D71AB670A4007B6868 /* axConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7F81AB670A4007B6868 /* axCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D81AB670A4007B6868 /* axCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C15C7F91AB670A4007B6868 /* axDrawingBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C7D91AB670A4007B6868 /* axDrawingBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,7 +164,6 @@
 		7C13511F1A7FC72800C97A99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C1351571A7FC77A00C97A99 /* axApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axApp.cpp; sourceTree = "<group>"; };
 		7C1351581A7FC77A00C97A99 /* axC++.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "axC++.cpp"; sourceTree = "<group>"; };
-		7C1351591A7FC77A00C97A99 /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axColor.cpp; sourceTree = "<group>"; };
 		7C13515A1A7FC77A00C97A99 /* axConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axConfig.cpp; sourceTree = "<group>"; };
 		7C13515B1A7FC77A00C97A99 /* axCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCore.cpp; sourceTree = "<group>"; };
 		7C13515C1A7FC77A00C97A99 /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
@@ -195,7 +192,6 @@
 		7C13521D1A7FC8ED00C97A99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C15C7D41AB670A4007B6868 /* axApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axApp.h; sourceTree = "<group>"; };
 		7C15C7D51AB670A4007B6868 /* axC++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "axC++.h"; sourceTree = "<group>"; };
-		7C15C7D61AB670A4007B6868 /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axColor.h; sourceTree = "<group>"; };
 		7C15C7D71AB670A4007B6868 /* axConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axConfig.h; sourceTree = "<group>"; };
 		7C15C7D81AB670A4007B6868 /* axCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCore.h; sourceTree = "<group>"; };
 		7C15C7D91AB670A4007B6868 /* axDrawingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDrawingBuffer.h; sourceTree = "<group>"; };
@@ -492,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				7C460E921A9827B400E51D13 /* axDrawingBuffer.cpp */,
-				7C1351591A7FC77A00C97A99 /* axColor.cpp */,
 				7C13515C1A7FC77A00C97A99 /* axDefaultFontBuffer.cpp */,
 				7C13515F1A7FC77A00C97A99 /* axFont.cpp */,
 				7C1351601A7FC77A00C97A99 /* axGC.cpp */,
@@ -558,7 +553,6 @@
 		7CC6B8351B00D6D90059D822 /* Graphic */ = {
 			isa = PBXGroup;
 			children = (
-				7C15C7D61AB670A4007B6868 /* axColor.h */,
 				7C15C7D91AB670A4007B6868 /* axDrawingBuffer.h */,
 				7C15C7DC1AB670A4007B6868 /* axFont.h */,
 				7C15C7DE1AB670A4007B6868 /* axGC.h */,
@@ -596,7 +590,6 @@
 				7C15C7F51AB670A4007B6868 /* axC++.h in Headers */,
 				7C15C8011AB670A4007B6868 /* axKeyboardManager.h in Headers */,
 				7C15C7F91AB670A4007B6868 /* axDrawingBuffer.h in Headers */,
-				7C15C7F61AB670A4007B6868 /* axColor.h in Headers */,
 				7C15C80F1AB670A4007B6868 /* axWidget.h in Headers */,
 				7C15C8131AB670A4007B6868 /* rapidxml.hpp in Headers */,
 				7C15C8061AB670A4007B6868 /* axMouseManager.h in Headers */,
@@ -782,7 +775,6 @@
 				7C841B7B1AC96C9A000B6364 /* axEditorMenu.cpp in Sources */,
 				7C88F1D81A942EAC00374108 /* axDropMenu.cpp in Sources */,
 				7C88F1F21A942EAD00374108 /* axToggle.cpp in Sources */,
-				7C1351931A7FC77A00C97A99 /* axColor.cpp in Sources */,
 				7CBB3AD11A95121700FFCBBB /* axGraphicInterface.cpp in Sources */,
 				7C1351A31A7FC77A00C97A99 /* axObjectLoader.cpp in Sources */,
 				7C88F1F01A942EAD00374108 /* axTextControl.cpp in Sources */,

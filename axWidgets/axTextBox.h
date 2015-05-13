@@ -35,7 +35,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axWidget.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -109,28 +109,28 @@ public:
         
         Info(const ax::StringPairVector& attributes);
         
-        Info(const axColor& normal,
-             const axColor& hover,
-             const axColor& highlight,
-             const axColor& selected,
-             const axColor& selected_shadow,
-             const axColor& cursor,
-             const axColor& contour,
-             const axColor& font_color);
+        Info(const ax::Color& normal,
+             const ax::Color& hover,
+             const ax::Color& highlight,
+             const ax::Color& selected,
+             const ax::Color& selected_shadow,
+             const ax::Color& cursor,
+             const ax::Color& contour,
+             const ax::Color& font_color);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual ax::StringVector GetParamNameList() const;
         virtual std::string GetAttributeValue(const std::string& name);
         virtual void SetAttribute(const ax::StringPair& attribute);
         
-        axColor normal;
-        axColor hover;
-        axColor highlight; // This needs to be transparent (alpha < 1.0).
-        axColor selected;
-        axColor selected_shadow;
-        axColor cursor;
-        axColor contour;
-        axColor font_color;
+        ax::Color normal;
+        ax::Color hover;
+        ax::Color highlight; // This needs to be transparent (alpha < 1.0).
+        ax::Color selected;
+        ax::Color selected_shadow;
+        ax::Color cursor;
+        ax::Color contour;
+        ax::Color font_color;
     };
     
     /***************************************************************************
@@ -176,7 +176,7 @@ protected:
     ax::Flag _flags;
     axFont* _font;
         
-    axColor* _currentColor;
+    ax::Color* _currentColor;
     int _nCurrentImg, _cursorIndex, _cursorBarXPosition, _lastCharXPosition;
     unsigned int _maxNumChar;
     bool _isHightlight, _findClickCursorIndex, _cursorFlashActive;

@@ -333,12 +333,12 @@ void axWindow::SetRealPopupWindow(const bool& popup)
     _isRealPopup = popup;
 }
 
-void axWindow::SetWindowColor(const axColor& color)
+void axWindow::SetWindowColor(const ax::Color& color)
 {
     _windowColor = color;
 }
 
-void axWindow::SetContourColor(const axColor& color)
+void axWindow::SetContourColor(const ax::Color& color)
 {
     _contourColor = color;
 }

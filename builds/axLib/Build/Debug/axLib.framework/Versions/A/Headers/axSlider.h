@@ -32,7 +32,7 @@
 #include <axEvent/axEvent.h>
 #include <axUtils/axUtils.h>
 #include "axPanel.h"
-#include "axColor.h"
+//#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -97,7 +97,7 @@ struct axSliderInfo
 	unsigned int slider_width;
     int contour_round_radius = 0;
 
-	axColor bgColorNormal,
+	ax::Color bgColorNormal,
 			bgColorHover,
 			bgColorClicked,
 			sliderColorNormal,
@@ -111,16 +111,16 @@ struct axSliderInfo
     axSliderInfo(){}
     axSliderInfo(const std::string& imgPath,
 				 const ax::Size& size,
-				 const axColor& bg_normal,
-				 const axColor& bg_hover,
-				 const axColor& bg_clicking,
-				 const axColor& slider_normal,
-				 const axColor& slider_hover,
-				 const axColor& slider_clicking,
-				 const axColor& slider_contour,
-				 const axColor& contour,
-				 const axColor& back_slider,
-				 const axColor& back_slider_contour,
+				 const ax::Color& bg_normal,
+				 const ax::Color& bg_hover,
+				 const ax::Color& bg_clicking,
+				 const ax::Color& slider_normal,
+				 const ax::Color& slider_hover,
+				 const ax::Color& slider_clicking,
+				 const ax::Color& slider_contour,
+				 const ax::Color& contour,
+				 const ax::Color& back_slider,
+				 const ax::Color& back_slider_contour,
 				 const unsigned int width,
                  const int& contourRadius) :
 				 // Members.
@@ -178,11 +178,11 @@ struct axSliderInfo
 	// 		}
 			
 
-	// 		axColor* ptr = &bgColorNormal;
+	// 		ax::Color* ptr = &bgColorNormal;
 	// 		while (file.good())
 	// 		{
 	// 			getline(file, line);
-	// 			*ptr++ = axColor(line);
+	// 			*ptr++ = ax::Color(line);
 	// 		}
 	// 	}
 	}
@@ -225,7 +225,7 @@ protected:
 	axSliderEvents _events;
 	axSliderInfo _info;
 	ax::Flag _flag;
-	axColor _currentBgColor, 
+	ax::Color _currentBgColor, 
 			_currentSliderColor;
 
 
@@ -291,45 +291,45 @@ protected:
 
 //#define axSLIDER_STANDARD_BLUE axSliderInfo( "ressources/images/bouttons/sliderCtrl.png",   \
 //											 ax::Size(12, 12),								\
-//											 axColor("#444444"),							\
-//											 axColor("#444444"),							\
-//											 axColor("#444444"),							\
-//											 axColor("#3333FF"),							\
-//											 axColor("#4444FF"),							\
-//											 axColor("#5555FF"),							\
-//											 axColor("#000000"),							\
-//											 axColor("#000000"),							\
-//											 axColor("#000000"),							\
-//											 axColor("#000000"),							\
+//											 ax::Color("#444444"),							\
+//											 ax::Color("#444444"),							\
+//											 ax::Color("#444444"),							\
+//											 ax::Color("#3333FF"),							\
+//											 ax::Color("#4444FF"),							\
+//											 ax::Color("#5555FF"),							\
+//											 ax::Color("#000000"),							\
+//											 ax::Color("#000000"),							\
+//											 ax::Color("#000000"),							\
+//											 ax::Color("#000000"),							\
 //											 5)
 //
 //#define axSLIDER_STANDARD_BLUE_NO_IMG axSliderInfo( "",										\
 //													ax::Size(0, 0),							\
-//													axColor("#AAAAAA"),						\
-//													axColor("#BBBBBB"),						\
-//													axColor("#CCCCCC"),						\
-//													axColor("#3333FF"),						\
-//													axColor("#4444FF"),						\
-//													axColor("#5555FF"),						\
-//													axColor("#000000"),						\
-//													axColor("#000000"),						\
-//													axColor("#000000"),						\
-//													axColor("#000000"),						\
+//													ax::Color("#AAAAAA"),						\
+//													ax::Color("#BBBBBB"),						\
+//													ax::Color("#CCCCCC"),						\
+//													ax::Color("#3333FF"),						\
+//													ax::Color("#4444FF"),						\
+//													ax::Color("#5555FF"),						\
+//													ax::Color("#000000"),						\
+//													ax::Color("#000000"),						\
+//													ax::Color("#000000"),						\
+//													ax::Color("#000000"),						\
 //													5)
 //
 
 #define axSLIDER_PLAIN_GREY     axSliderInfo( "/Users/alexarse/Project/axLib/ressources/sliderPlain.png",          \
 	ax::Size(12, 12), \
-	axColor(0.1, 0.1, 0.1), \
-	axColor("#888888"), \
-	axColor("#888888"), \
-	axColor("#3333FF"), \
-	axColor("#4444FF"), \
-	axColor("#5555FF"), \
-	axColor("#000000"), \
-	axColor(0.2, 0.2, 0.2), \
-	axColor("#444444"), \
-	axColor("#000000"), \
+	ax::Color(0.1, 0.1, 0.1), \
+	ax::Color("#888888"), \
+	ax::Color("#888888"), \
+	ax::Color("#3333FF"), \
+	ax::Color("#4444FF"), \
+	ax::Color("#5555FF"), \
+	ax::Color("#000000"), \
+	ax::Color(0.2, 0.2, 0.2), \
+	ax::Color("#444444"), \
+	ax::Color("#000000"), \
 	5)
 
 /// @}

@@ -176,10 +176,10 @@ void axMenuNode::OnPaint()
     ax::Rect rect( m_delta, 0, size.x, axMENU_NODE_HEIGHT );
 	ax::Rect rect0(0.0, 0.0, rect.size.x, rect.size.y);
 
-    gc->SetColor(axColor(0.6, 0.6, 0.6));
+    gc->SetColor(ax::Color(0.6, 0.6, 0.6));
     gc->DrawRectangle(rect0);
 
-    gc->SetColor( axColor("#AAAAAA") );
+    gc->SetColor( ax::Color("#AAAAAA") );
     axFont font("FreeSans.ttf");
     font.SetFontSize(13);
 //    gc->SetFontSize(13);
@@ -195,7 +195,7 @@ void axMenuNode::OnPaint()
     }
 
     // Contour.
-    gc->SetColor(axColor(0.0, 0.0, 0.0));
+    gc->SetColor(ax::Color(0.0, 0.0, 0.0));
     gc->DrawRectangleContour(ax::Rect(0, 0, size.x, size.y));
 }
 
@@ -241,11 +241,11 @@ void axMenu::OnPaint()
     ax::Rect rect(GetRect());
     ax::Rect rect0(ax::Point(0, 0), rect.size);
 
-    gc->SetColor( axColor("#444444") );
+    gc->SetColor( ax::Color("#444444") );
     gc->DrawRectangle(rect0);
 
     // Contour.
-    gc->SetColor(axColor("#000000"));
+    gc->SetColor(ax::Color("#000000"));
     gc->DrawRectangleContour(ax::Rect(1, 1, rect0.size.x - 1, rect0.size.y - 1));
 }
 

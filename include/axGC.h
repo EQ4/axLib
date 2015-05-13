@@ -25,8 +25,9 @@
 /// @defgroup Graphic
 /// @{
 
+#include <axUtils/axUtils.h>
 #include "axImage.h"
-#include "axColor.h"
+//#include "ax::Color.h"
 #include "axFont.h"
 //#include "axDrawingBuffer.h"
 
@@ -37,9 +38,9 @@ class axGC
 public:
 	axGC(axWindow* win);
 
-	void SetColor(const axColor& color);
+	void SetColor(const ax::Color& color);
     
-    void SetColor(const axColor& color, const float& alpha);
+    void SetColor(const ax::Color& color, const float& alpha);
 
 	void SetColor(const axDouble& r,
                   const axDouble& g,
@@ -95,14 +96,14 @@ public:
                                  const ax::Rect& rect);
 
 	void DrawRectangleColorFade(const ax::Rect& rect,
-                                const axColor& c1,
+                                const ax::Color& c1,
                                 const float& alpha1,
-                                const axColor& c2,
+                                const ax::Color& c2,
                                 const float& alpha2);
     
     void DrawRectangleColorFade(const ax::Rect& rect,
-                                const axColor& c1,
-                                const axColor& c2);
+                                const ax::Color& c1,
+                                const ax::Color& c2);
     
     void DrawPolygone(const std::vector<ax::Point>& points);
     
@@ -115,15 +116,15 @@ public:
     void DrawTriangleColorFade(const ax::Point& p1,
                           const ax::Point& p2,
                           const ax::Point& p3,
-                          const axColor& c1,
-                          const axColor& c2,
-                          const axColor& c3);
+                          const ax::Color& c1,
+                          const ax::Color& c2,
+                          const ax::Color& c3);
 
     
 	void DrawLine(const ax::Point& pt1, const ax::Point& pt2, float width = 1.0);
     
     void DrawLineColorfade(const ax::Point& pt1, const ax::Point& pt2,
-                           const axColor& c1, const axColor& c2,
+                           const ax::Color& c1, const ax::Color& c2,
                            float width = 1.0);
     
     void DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float width = 2.0);
@@ -145,7 +146,7 @@ public:
 	
 	void DrawTexture(GLuint texture,
                      const ax::Rect& rect,
-                     axColor color = axColor(0.0, 0.0, 0.0));
+                     ax::Color color = ax::Color(0.0, 0.0, 0.0));
     
 	void DrawBigImageResize(axBigImage* img,
 		const ax::Point& position,

@@ -31,7 +31,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 #include <fstream>
@@ -92,23 +92,23 @@ struct axScrollBarEvents
 
 struct axScrollBarInfo
 {
-	axColor normal;
-	axColor hover;
-	axColor clicking;
-	axColor slider_contour;
-	axColor contour;
-	axColor bg_top;
-    axColor bg_bottom;
+	ax::Color normal;
+	ax::Color hover;
+	ax::Color clicking;
+	ax::Color slider_contour;
+	ax::Color contour;
+	ax::Color bg_top;
+    ax::Color bg_bottom;
 
 	axScrollBarInfo(){}
 	axScrollBarInfo(
-		const axColor& normal_color,
-		const axColor& hover_color,
-		const axColor& clicked_color,
-		const axColor& sliderContour,
-		const axColor& contour_color,
-		const axColor& bgTop,
-        const axColor& bgBottom) :
+		const ax::Color& normal_color,
+		const ax::Color& hover_color,
+		const ax::Color& clicked_color,
+		const ax::Color& sliderContour,
+		const ax::Color& contour_color,
+		const ax::Color& bgTop,
+        const ax::Color& bgBottom) :
 		normal(normal_color),
 		hover(hover_color),
 		clicking(clicked_color),
@@ -152,7 +152,7 @@ private:
 	int _imgHeight, _sliderHeight, _sliderMaxHeight, _sliderPos, _yClickDelta;
     ax::Size _panelSize;
     
-    axColor* _currentScrollBarColor;
+    ax::Color* _currentScrollBarColor;
 	double _value;
 
 	virtual void OnPaint();

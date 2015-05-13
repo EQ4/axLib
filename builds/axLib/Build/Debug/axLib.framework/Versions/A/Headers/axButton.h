@@ -38,7 +38,7 @@
 
 #include <axEvent/axEvent.h>
 #include "axWidget.h"
-#include "axColor.h"
+#include <axUtils/axUtils.h>
 #include "axGC.h"
 #include "axImage.h"
 //#include "ax::Event::Msg.h"
@@ -112,12 +112,12 @@ namespace ax
             
             Info(const ax::StringPairVector& attributes);
             
-            Info(const axColor& normal_color,
-                 const axColor& hover_color,
-                 const axColor& clicked_color,
-                 const axColor& selected_color,
-                 const axColor& contour_color,
-                 const axColor& font_color,
+            Info(const ax::Color& normal_color,
+                 const ax::Color& hover_color,
+                 const ax::Color& clicked_color,
+                 const ax::Color& selected_color,
+                 const ax::Color& contour_color,
+                 const ax::Color& font_color,
                  const int& roundCornerRadius = 0);
             
             // Info needed for debug editor. Derived from axInfo.
@@ -125,12 +125,12 @@ namespace ax
             virtual std::string GetAttributeValue(const std::string& name);
             virtual void SetAttribute(const ax::StringPair& attribute);
             
-            axColor normal;
-            axColor hover;
-            axColor clicking;
-            axColor selected;
-            axColor contour;
-            axColor font_color;
+            ax::Color normal;
+            ax::Color hover;
+            ax::Color clicking;
+            ax::Color selected;
+            ax::Color contour;
+            ax::Color font_color;
             int round_corner_radius = 0;
         };
         
@@ -181,7 +181,7 @@ namespace ax
         std::string _label, _msg;
         std::unique_ptr<axFont> _font;
         
-        axColor* _currentColor;
+        ax::Color* _currentColor;
         bool _selected;
         int _nCurrentImg;
         
@@ -205,20 +205,20 @@ namespace ax
  * axButonInfo template.
  ******************************************************************************/
 #define axSTANDARD_BUTTON 	axButton::Info( \
-axColor(0.5, 0.5, 0.5),\
-axColor(0.6, 0.6, 0.6),\
-axColor(0.4, 0.4, 0.4),\
-axColor(0.5, 0.5, 0.5),\
-axColor(0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0), 3)
+ax::Color(0.5, 0.5, 0.5),\
+ax::Color(0.6, 0.6, 0.6),\
+ax::Color(0.4, 0.4, 0.4),\
+ax::Color(0.5, 0.5, 0.5),\
+ax::Color(0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0), 3)
 
 #define axBUTTON_TRANSPARENT 	axButton::Info( \
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0), 3)
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 0.0),\
+ax::Color(0.0, 0.0, 0.0, 1.0), 3)
 
 #define btn_xml "<?xml version=\"1.0\" encoding=\"UTF-8\"?>         \
                     <axButton normal=\"0.45, 0.45, 0.45, 1.0\"      \

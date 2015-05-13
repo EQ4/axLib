@@ -44,16 +44,16 @@ _lastSelected(nullptr)
 //    tog_event.button_click = GetOnButtonClick();
     
     axToggle::Info tog_info;
-    tog_info.normal = axColor(0.8, 0.8, 0.8, 0.6);
-    tog_info.hover = axColor(0.9, 0.9, 0.9, 0.6);
-    tog_info.clicking = axColor(0.7, 0.7, 0.7, 0.6);
+    tog_info.normal = ax::Color(0.8, 0.8, 0.8, 0.6);
+    tog_info.hover = ax::Color(0.9, 0.9, 0.9, 0.6);
+    tog_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.6);
     
-    tog_info.selected = axColor(0.8, 0.4, 0.4, 0.6);
-    tog_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.6);
-    tog_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.6);
+    tog_info.selected = ax::Color(0.8, 0.4, 0.4, 0.6);
+    tog_info.selected_hover = ax::Color(0.9, 0.4, 0.4, 0.6);
+    tog_info.selected_clicking = ax::Color(0.7, 0.4, 0.4, 0.6);
     
-    tog_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
-    tog_info.font_color = axColor(0.0, 0.0, 0.0, 1.0);
+    tog_info.contour = ax::Color(0.0, 0.0, 0.0, 0.0);
+    tog_info.font_color = ax::Color(0.0, 0.0, 0.0, 1.0);
     
 	for (int i = 0; i < _labels.size(); i++)
 	{

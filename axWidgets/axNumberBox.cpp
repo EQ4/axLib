@@ -57,12 +57,12 @@ axNumberBox::Info::Info()
     
 }
 
-axNumberBox::Info::Info(const axColor& normal_color,
-                        const axColor& hover_color,
-                        const axColor& clicked_color,
-                        const axColor& selected_color,
-                        const axColor& contour_color,
-                        const axColor& font_color_,
+axNumberBox::Info::Info(const ax::Color& normal_color,
+                        const ax::Color& hover_color,
+                        const ax::Color& clicked_color,
+                        const ax::Color& selected_color,
+                        const ax::Color& contour_color,
+                        const ax::Color& font_color_,
                         const std::string& imgPath,
                         const bool& singleImg) :
 normal(normal_color),
