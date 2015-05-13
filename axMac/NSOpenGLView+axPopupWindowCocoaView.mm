@@ -15,7 +15,7 @@
 #include "axLib.h"
 //#include "axMath.h"
 
-#include "axGraphicInterface.h"
+//#include "axGraphicInterface.h"
 
 axPopupWindowCocoaView* global_popup_view = nullptr;
 

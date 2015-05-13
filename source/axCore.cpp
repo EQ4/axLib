@@ -20,7 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axCore.h"
-#include "axGraphicInterface.h"
+#include <axGL/axGraphicInterface.h>
 
 axCore::axCore():
 // Members.
@@ -45,7 +45,7 @@ void axCore::InitManagers()
 
 int axCore::InitGL()
 {
-    axGraphicInterface::Init();
+    ax::GL::Init();
     return true;
 }
 
@@ -69,7 +69,7 @@ void axCore::ResizeGLScene(const ax::Size& size)
     // Prevent a division by zero.
 	_size = ax::Size(size.x, size.y == 0 ? 1 : size.y);
     
-    axGraphicInterface::Resize(_size);
+    ax::GL::Resize(_size);
     
 	_needToDraw = true;
 	_popupNeedToDraw = true;
@@ -97,7 +97,7 @@ int axCore::DrawGLScene()
 {
 	if (_needToDraw == true)
 	{
-        axGraphicInterface::Draw(_size);
+        ax::GL::Draw(_size);
 		
         GetWindowManager()->OnPaint();
         GetPopupManager()->OnPaint();

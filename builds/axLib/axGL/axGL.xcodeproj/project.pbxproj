@@ -23,6 +23,8 @@
 		7C18C4341B03DC5700885929 /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4331B03DC5700885929 /* axDefaultFontBuffer.cpp */; };
 		7C18C4361B03E44A00885929 /* axGC.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4351B03E44A00885929 /* axGC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C4381B03E45B00885929 /* axGC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4371B03E45B00885929 /* axGC.cpp */; };
+		7CAD660C1B03F29600C1B506 /* axGraphicInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CAD660A1B03F29600C1B506 /* axGraphicInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CAD660D1B03F29600C1B506 /* axGraphicInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CAD660B1B03F29600C1B506 /* axGraphicInterface.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		7C18C4331B03DC5700885929 /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axDefaultFontBuffer.cpp; path = ../../../../source/axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
 		7C18C4351B03E44A00885929 /* axGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axGC.h; path = ../../../../include/axGC.h; sourceTree = "<group>"; };
 		7C18C4371B03E45B00885929 /* axGC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axGC.cpp; path = ../../../../source/axGC.cpp; sourceTree = "<group>"; };
+		7CAD660A1B03F29600C1B506 /* axGraphicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axGraphicInterface.h; path = ../../../../include/axGraphicInterface.h; sourceTree = "<group>"; };
+		7CAD660B1B03F29600C1B506 /* axGraphicInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axGraphicInterface.cpp; path = ../../../../source/axGraphicInterface.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				7C18C4081B03B7E300885929 /* axFrameBuffer.h */,
 				7C18C4351B03E44A00885929 /* axGC.h */,
 				7C18C41B1B03C0C200885929 /* axGLMath.h */,
+				7CAD660A1B03F29600C1B506 /* axGraphicInterface.h */,
 				7C18C4251B03D2CE00885929 /* axImage.h */,
 			);
 			name = include;
@@ -118,6 +123,7 @@
 				7C18C40C1B03B7FF00885929 /* axFrameBuffer.cpp */,
 				7C18C4371B03E45B00885929 /* axGC.cpp */,
 				7C18C41C1B03C0C200885929 /* axGLMath.cpp */,
+				7CAD660B1B03F29600C1B506 /* axGraphicInterface.cpp */,
 				7C18C4271B03D2DE00885929 /* axImage.cpp */,
 			);
 			name = source;
@@ -135,6 +141,7 @@
 				7C18C4091B03B7E300885929 /* axFrameBuffer.h in Headers */,
 				7C18C4311B03DA2900885929 /* axFont.h in Headers */,
 				7C18C42A1B03D36F00885929 /* axBigImage.h in Headers */,
+				7CAD660C1B03F29600C1B506 /* axGraphicInterface.h in Headers */,
 				7C18C4361B03E44A00885929 /* axGC.h in Headers */,
 				7C18C4261B03D2CE00885929 /* axImage.h in Headers */,
 			);
@@ -214,6 +221,7 @@
 				7C18C42C1B03D38900885929 /* axBigImage.cpp in Sources */,
 				7C18C4281B03D2DE00885929 /* axImage.cpp in Sources */,
 				7C18C40D1B03B7FF00885929 /* axFrameBuffer.cpp in Sources */,
+				7CAD660D1B03F29600C1B506 /* axGraphicInterface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

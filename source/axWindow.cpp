@@ -23,7 +23,7 @@
 #include "axApp.h"
 //#include "axMath.h"
 #include "axConfig.h"
-#include "axGraphicInterface.h"
+//#include "axGraphicInterface.h"
 #include "axWindowTree.h"
 
 axWindow::axWindow(ax::App* app, const ax::Rect& rect):
