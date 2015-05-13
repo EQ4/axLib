@@ -20,16 +20,16 @@ axPanel(app, rect)
     axToggle::Events toggle_events;
     
     axRadio::Info radio_info;
-    radio_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
-    radio_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
-    radio_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
+    radio_info.normal = ax::Color(0.8, 0.8, 0.8, 0.0);
+    radio_info.hover = ax::Color(0.9, 0.9, 0.9, 0.0);
+    radio_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.0);
     
-    radio_info.selected = axColor("#35A6EE");
-    radio_info.selected_hover = axColor("#35A6EE");
-    radio_info.selected_clicking = axColor("#35A6EE");
+    radio_info.selected = ax::Color("#35A6EE");
+    radio_info.selected_hover = ax::Color("#35A6EE");
+    radio_info.selected_clicking = ax::Color("#35A6EE");
     
-    radio_info.contour = axColor("#35A6EE");
-//    radio_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    radio_info.contour = ax::Color("#35A6EE");
+//    radio_info.font_color = ax::Color(0.0, 0.0, 0.0, 0.0);
     radio_info.img = "";
     radio_info.single_img = false;
     
@@ -40,16 +40,16 @@ axPanel(app, rect)
                                   "");
     
     axToggle::Info tog_info;
-    tog_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
-    tog_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
-    tog_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
+    tog_info.normal = ax::Color(0.8, 0.8, 0.8, 0.0);
+    tog_info.hover = ax::Color(0.9, 0.9, 0.9, 0.0);
+    tog_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.0);
     
-    tog_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
-    tog_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
-    tog_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
+    tog_info.selected = ax::Color(0.8, 0.4, 0.4, 0.0);
+    tog_info.selected_hover = ax::Color(0.9, 0.4, 0.4, 0.0);
+    tog_info.selected_clicking = ax::Color(0.7, 0.4, 0.4, 0.0);
     
-    tog_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
-    tog_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    tog_info.contour = ax::Color(0.0, 0.0, 0.0, 0.0);
+    tog_info.font_color = ax::Color(0.0, 0.0, 0.0, 0.0);
     tog_info.img = "checkbox.png";
     tog_info.single_img = false;
     
@@ -76,7 +76,7 @@ axPanel(app, rect)
 //                                 "Button");
     
     axPanel* panel2 = new axPanel(this, ax::Rect(10, 10, 60, 25));
-    panel2->SetWindowColor(axColor(1.0, 0.0, 0.0));
+    panel2->SetWindowColor(ax::Color(1.0, 0.0, 0.0));
                                  
 }
 
@@ -90,7 +90,7 @@ void MainPanel::OnButtonClick(const ax::Button::Msg& msg)
 //        SetCurrentOpenGLContext();
 //        
 //        axPanel* panel = new axPanel(86, nullptr, axRect(0, 0, 200, 270));
-//        panel->SetWindowColor(axColor(1.0, 0.0, 0.0));
+//        panel->SetWindowColor(ax::Color(1.0, 0.0, 0.0));
 //        panel->SetRealPopupWindow(true);
 //        
 //        axApp* app = GetApp();
@@ -130,16 +130,16 @@ void MainPanel::OnPaint()
     axGC gc(this);
     ax::Rect rect(GetDrawingRect());
     
-    gc.SetColor(axColor(0.95));
+    gc.SetColor(ax::Color(0.95));
     gc.DrawRectangle(rect);
     
-    gc.SetColor(axColor(0.75));
+    gc.SetColor(ax::Color(0.75));
     gc.DrawRectangle(ax::Rect(0, 0, rect.size.x , 40));
     
-//    gc.SetColor(axColor(0.55));
+//    gc.SetColor(ax::Color(0.55));
 //    gc.DrawRectangle(axRect(0, 40, 200 , rect.size.y - 40));
     
-    gc.SetColor(axColor(0.45));
+    gc.SetColor(ax::Color(0.45));
     gc.DrawRectangleContour(rect);
 }
 

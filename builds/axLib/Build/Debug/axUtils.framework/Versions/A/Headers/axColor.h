@@ -76,7 +76,7 @@ namespace ax
             }
             
             Color(const T& all):
-            _r(all), _g(all), _b(all), _a(0)
+            _r(all), _g(all), _b(all), _a(1.0)
             {
                 
             }

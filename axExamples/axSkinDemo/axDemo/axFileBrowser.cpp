@@ -27,10 +27,10 @@ namespace ax
         axGC gc(this);
         ax::Rect rect(GetDrawingRect());
         
-        gc.SetColor(axColor(0.55));
+        gc.SetColor(ax::Color(0.55));
         gc.DrawRectangle(rect);
         
-        gc.SetColor(axColor(0.45));
+        gc.SetColor(ax::Color(0.45));
         gc.DrawRectangleContour(rect);
     }
     
