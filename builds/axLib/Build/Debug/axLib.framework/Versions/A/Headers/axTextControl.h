@@ -31,7 +31,7 @@
 #include <axEvent/axEvent.h>
 #include "axPanel.h"
 #include <axUtils/axUtils.h>
-#include "axGC.h"
+#include <axGL/axGC.h>
 #include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 #include <axEvent/axTimer.h>
@@ -225,7 +225,7 @@ protected:
     virtual void OnKeyDeleteDown();
     
     //
-    virtual void DrawContourRectangle(axGC* gc);
+    virtual void DrawContourRectangle(ax::GC* gc);
     
     void OnFlashingCursorTimer(const ax::Event::Timer::Msg& msg);
     

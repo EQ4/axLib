@@ -412,7 +412,7 @@ void ax::Button::OnMouseLeave()
 
 void ax::Button::OnPaint()
 {
-    axGC gc = axGC(this);
+    ax::GC gc = ax::GC();
     
     ax::Rect rect(GetRect());
     ax::Rect rect0(GetDrawingRect());

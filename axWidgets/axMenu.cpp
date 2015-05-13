@@ -171,7 +171,8 @@ void axMenuNode::OnMouseLeftDown(const ax::Point& pos)
 
 void axMenuNode::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gcs;
+    ax::GC* gc = &gcs;
     ax::Size size = GetSize();
     ax::Rect rect( m_delta, 0, size.x, axMENU_NODE_HEIGHT );
 	ax::Rect rect0(0.0, 0.0, rect.size.x, rect.size.y);
@@ -236,7 +237,8 @@ bool axMenu::AddRootNode(axMenuNode* node)
 
 void axMenu::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
     ax::Size size = GetSize();
     ax::Rect rect(GetRect());
     ax::Rect rect0(ax::Point(0, 0), rect.size);

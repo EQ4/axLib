@@ -236,7 +236,8 @@ void axLabel::SetLabel(const std::string& label)
 
 void axLabel::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 //    ax::Rect rect(ax::Point(0, 0), GetRect().size);
     ax::Rect rect(GetDrawingRect());
     

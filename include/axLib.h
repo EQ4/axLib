@@ -34,7 +34,7 @@
  * Graphic.
  ******************************************************************************/
 #include <axGL/axImage.h>
-#include "axGC.h"
+#include <axGL/axGC.h>
 #include "axC++.h"
 //#include "axColor.h"
 #include <axGL/axFont.h>

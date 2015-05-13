@@ -24,7 +24,7 @@ namespace ax
     
     void FileBrowser::OnPaint()
     {
-        axGC gc(this);
+        ax::GC gc;
         ax::Rect rect(GetDrawingRect());
         
         gc.SetColor(ax::Color(0.55));

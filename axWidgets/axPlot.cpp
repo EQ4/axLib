@@ -29823,7 +29823,8 @@ _flags(flags)
 
 void axPlot::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
     ax::Size size = GetSize();
     ax::Rect rect0(0, 0, size.x, size.y);
     

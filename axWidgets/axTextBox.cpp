@@ -527,7 +527,7 @@ void axTextBox::OnEnterDown()
 //    UnGrabKey();
 }
 
-void axTextBox::DrawContourRectangle(axGC* gc)
+void axTextBox::DrawContourRectangle(ax::GC* gc)
 {
     if(ax::IsFlag(Flags::CONTOUR_HIGHLIGHT, _flags))
     {
@@ -565,7 +565,8 @@ void axTextBox::DrawContourRectangle(axGC* gc)
 
 void axTextBox::OnPaint()
 {
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	ax::Rect rect(GetRect());
 	ax::Rect rect0(GetDrawingRect());
     

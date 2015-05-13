@@ -334,7 +334,7 @@ void axSlider::OnMouseLeave(const ax::Point& p)
 	}
 }
 
-void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0)
+void axSlider::DrawLineBehindSlider_Vertical(ax::GC* gc, const ax::Rect& rect0)
 {
 	int half_btn_size = _info.btn_size.y * 0.5;
 
@@ -363,7 +363,7 @@ void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0)
 	// gc->DrawRectangleContour(slider_rect);
 }
 
-void axSlider::DrawVerticalSlider(axGC* gc, const ax::Rect& rect0)
+void axSlider::DrawVerticalSlider(ax::GC* gc, const ax::Rect& rect0)
 {
 	ax::Size size(rect0.size);
 	int half_btn_size = _info.btn_size.y * 0.5;
@@ -401,7 +401,8 @@ void axSlider::DrawVerticalSlider(axGC* gc, const ax::Rect& rect0)
 
 void axSlider::OnPaint()
 {
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	ax::Size size = GetSize();
 //	ax::Rect rect0(0, 0, size.x, size.y);
     

@@ -218,15 +218,14 @@ void axDebugButton::OnMouseLeave()
 
 void axDebugButton::OnPaint()
 {
-    axGC* gc = GetGC();
-    ax::Rect rect(GetRect());
-    ax::Rect rect0(ax::Point(0, 0), rect.size);
+    ax::GC gc;
+    ax::Rect rect(GetDrawingRect());
     
-    gc->SetColor(*_currentColor);
-    gc->DrawRectangle(rect0);
+    gc.SetColor(*_currentColor);
+    gc.DrawRectangle(rect);
     
-    gc->SetColor(_info.contour);
-    gc->DrawRectangleContour(ax::Rect(ax::Point(0, 0), rect.size));
+    gc.SetColor(_info.contour);
+    gc.DrawRectangleContour(rect);
 }
 
 

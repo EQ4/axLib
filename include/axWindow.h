@@ -28,7 +28,7 @@
 #include <axEvent/axObject.h>
 #include <axUtils/axUtils.h>
 #include "axC++.h"
-#include "axGC.h"
+#include <axGL/axGC.h>
 //#include "axResourceManager.h"
 #include "axConfig.h"
 #include <axGL/axFrameBuffer.h>
@@ -88,7 +88,7 @@ public:
     void Show();
     void Hide();
     
-	axGC* GetGC();
+//    ax::GC* GetGC();
 
 	void Reparent(axWindow* parent, const ax::Point& position);
 
@@ -182,7 +182,7 @@ private:
     ax::ResourceStorage _resourceManager;
     
     /// @todo Remove this.
-	axGC* _gc;
+//	axGC* _gc;
 
     bool _isPopup, _isRealPopup;
     bool _needUpdate;

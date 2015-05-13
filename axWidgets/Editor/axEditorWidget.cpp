@@ -209,24 +209,24 @@ void axEditorWidget::OnMouseLeave()
 
 void axEditorWidget::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gc;
     ax::Rect rect(GetDrawingRect());
     
 //    gc->SetColor(*_currentColor);
 //    gc->DrawRectangle(rect);
     
-    gc->DrawRectangleColorFade(rect, ax::Color(0.95), ax::Color(0.9));
+    gc.DrawRectangleColorFade(rect, ax::Color(0.95), ax::Color(0.9));
     
-    gc->SetColor(0.0);
-    gc->DrawRectangleContour(ax::Rect(5, 5, 40, 30));
+    gc.SetColor(0.0);
+    gc.DrawRectangleContour(ax::Rect(5, 5, 40, 30));
     
-    gc->DrawString(_fontBold, _label, ax::Point(50, 12));
+    gc.DrawString(_fontBold, _label, ax::Point(50, 12));
     
-    gc->DrawString(_font, "Simple button (60x26)", ax::Point(120, 12));
+    gc.DrawString(_font, "Simple button (60x26)", ax::Point(120, 12));
 
     
-    gc->SetColor(_info.contour);
-    gc->DrawRectangleContour(rect);
+    gc.SetColor(_info.contour);
+    gc.DrawRectangleContour(rect);
 }
 
 

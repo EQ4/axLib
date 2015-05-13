@@ -85,7 +85,7 @@ _app(parent->GetApp())
 		_absolutePosition = parent->_absolutePosition + rect.position;
 	}
     
-	_gc = new axGC(this);
+//	_gc = new axGC(this);
 }
 
 axWindow::~axWindow()
@@ -223,10 +223,10 @@ ax::Size axWindow::GetSize() const
 	return _rect.size;
 }
 
-axGC* axWindow::GetGC()
-{
-	return _gc;
-}
+//axGC* axWindow::GetGC()
+//{
+//	return _gc;
+//}
 
 void axWindow::SetSize(const ax::Size& size)
 {
@@ -386,14 +386,15 @@ ax::ResourceStorage* axWindow::GetResourceManager()
 void axWindow::OnPaint()
 {
     
-    axGC* gc = GetGC();
-    ax::Rect rect(GetRect());
+//    ax::GC* gc = GetGC();
+    ax::GC gc;
+    ax::Rect rect(GetDrawingRect());
     
-    gc->SetColor(_windowColor);
-    gc->DrawRectangle(ax::Rect(ax::Point(0, 0), rect.size));
+    gc.SetColor(_windowColor);
+    gc.DrawRectangle(rect);
     
-    gc->SetColor(_contourColor);
-    gc->DrawRectangle(ax::Rect(ax::Point(0, 0), rect.size));
+    gc.SetColor(_contourColor);
+    gc.DrawRectangle(rect);
 }
 
 void axWindow::RenderWindow()

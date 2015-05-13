@@ -526,7 +526,8 @@ void axToggle::OnMouseLeave()
 
 void axToggle::OnPaint()
 {
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	ax::Rect rect(GetRect());
 	ax::Rect rect0(GetDrawingRect());
 

@@ -252,7 +252,7 @@ void axTextControl::OnRightArrowDown()
     Update();
 }
 
-void axTextControl::DrawContourRectangle(axGC* gc)
+void axTextControl::DrawContourRectangle(ax::GC* gc)
 {
     ax::Rect rect(GetRect());
     
@@ -290,7 +290,8 @@ void axTextControl::DrawContourRectangle(axGC* gc)
 
 void axTextControl::OnPaint()
 {
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	ax::Rect rect(GetRect());
 	ax::Rect rect0(ax::Point(0, 0), rect.size);
     

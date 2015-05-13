@@ -459,15 +459,15 @@ void axKnob::SetValue(const axFloat& value, bool callValueChangeEvent)
 
 void axKnob::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gc;
     ax::Size size = GetSize();
     ax::Rect rect0(0, 0, size.x, size.y);
 	
-	gc->SetColor(*m_currentBgColor);
+	gc.SetColor(*m_currentBgColor);
 
-    gc->DrawRectangle(rect0);
+    gc.DrawRectangle(rect0);
 
-    gc->DrawPartOfImage(m_knobImg,
+    gc.DrawPartOfImage(m_knobImg,
                         ax::Point( m_nCurrentImg * static_cast<Info*>(_info)->knob_size.x, 0),
                         static_cast<Info*>(_info)->knob_size,
                         ax::Point(0, 0));
@@ -520,7 +520,8 @@ void axKnobControl::OnKnobValueChange(const axKnob::Msg& msg)
 
 void axKnobControl::OnPaint()
 {
-    axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
     ax::Rect rect0(ax::Point(0, 0), GetRect().size);
     
     gc->SetColor(ax::Color(0.5, 0.5, 0.5, 0.3));

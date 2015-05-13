@@ -230,7 +230,7 @@ void axEditorAttributes::UpdateInfo()
 
 void axEditorAttributes::OnPaint()
 {
-    axGC gc(this);
+    ax::GC gc;
     ax::Rect rect(GetDrawingRect());
     
     gc.DrawRectangleColorFade(rect, ax::Color(0.5), ax::Color(0.6));

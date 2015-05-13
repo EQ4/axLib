@@ -53,7 +53,8 @@ axPanel(parent, rect)
 
 void axEditorWidgetsPanel::OnPaint()
 {
-    axGC gc(this);
+//    axGC gc(this);
+    ax::GC gc;
     ax::Rect rect(GetDrawingRect());
     
 //    gc.DrawRectangleColorFade(rect, ax::Color(0.8), ax::Color(0.7));

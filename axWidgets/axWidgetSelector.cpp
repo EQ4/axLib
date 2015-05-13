@@ -73,20 +73,20 @@ void axWidgetSelector::OnPaint()
         SetPosition(ax::Point(sel_rect.position.x - 3, sel_rect.position.y - 3));
         SetSize(ax::Size(sel_rect.size.x + 6, sel_rect.size.y + 6));
         
-        axGC* gc = GetGC();
+        ax::GC gc;
         ax::Rect rect(GetDrawingRect());
         
-        gc->SetColor(_info._color, 0.1);
-        gc->DrawRectangleContour(rect);
+        gc.SetColor(_info._color, 0.1);
+        gc.DrawRectangleContour(rect);
         
-        gc->SetColor(_info._color, 0.2);
-        gc->DrawRectangleContour(rect.GetInteriorRect(ax::Point(0, 0)));
+        gc.SetColor(_info._color, 0.2);
+        gc.DrawRectangleContour(rect.GetInteriorRect(ax::Point(0, 0)));
         
-        gc->SetColor(_info._color, 0.4);
-        gc->DrawRectangleContour(rect.GetInteriorRect(ax::Point(1, 1)));
+        gc.SetColor(_info._color, 0.4);
+        gc.DrawRectangleContour(rect.GetInteriorRect(ax::Point(1, 1)));
         
-        gc->SetColor(_info._color, 0.5);
-        gc->DrawRectangleContour(rect.GetInteriorRect(ax::Point(2, 2)));
+        gc.SetColor(_info._color, 0.5);
+        gc.DrawRectangleContour(rect.GetInteriorRect(ax::Point(2, 2)));
     }
 
 }

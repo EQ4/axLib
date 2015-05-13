@@ -33,7 +33,7 @@
 //#include <axEvent/ax::Event::Msg.h>
 #include "axPanel.h"
 //#include "ax::Color.h"
-#include "axGC.h"
+#include <axGL/axGC.h>
 #include <axGL/axImage.h>
 #include "axToggle.h"
 

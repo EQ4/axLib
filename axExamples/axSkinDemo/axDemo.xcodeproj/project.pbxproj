@@ -18,6 +18,7 @@
 		7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; };
 		7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
+		7CAD66091B03ED2C00C1B506 /* axGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C41F1B03C84C00885929 /* axGL.framework */; };
 		7CC6B83A1B01299B0059D822 /* axFileBrowser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 			files = (
 				7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */,
 				7C18C3BF1B02B8B100885929 /* axUtils.framework in Frameworks */,
+				7CAD66091B03ED2C00C1B506 /* axGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,7 +42,7 @@
 #include "axWidget.h"
 #include "axPanel.h"
 //#include "ax::Color.h"
-#include "axGC.h"
+#include <axGL/axGC.h>
 #include <axGL/axFont.h>
 #include <axGL/axImage.h>
 //#include <axEvent"ax::Event::Msg.h"

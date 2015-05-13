@@ -20,6 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axPopupMenu.h"
+#include <axGL/axGC.h>
 
 axPopupMenu::axPopupMenu(axWindow* parent,
                          const ax::Rect& rect,
@@ -161,7 +162,8 @@ void axPopupMenu::OnPaint()
 	//Resize(ax::Size(GetSize().x, m_labels.size() * LABEL_HEIGHT));
 
 	///axGC gc(GetBackBuffer());
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	//ax::Size size = GetSize();
 	ax::Rect rect0(ax::Point(0, 0), GetRect().size);
 

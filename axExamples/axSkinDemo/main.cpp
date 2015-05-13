@@ -127,7 +127,7 @@ void MainPanel::OnResize(const ax::Size& size)
 
 void MainPanel::OnPaint()
 {
-    axGC gc(this);
+    ax::GC gc;
     ax::Rect rect(GetDrawingRect());
     
     gc.SetColor(ax::Color(0.95));

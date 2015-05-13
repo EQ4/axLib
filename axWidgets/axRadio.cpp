@@ -41,7 +41,8 @@ axToggle(parent, rect, events, info, img_path, label, flags, msg)
 
 void axRadio::OnPaint()
 {
-	axGC* gc = GetGC();
+    ax::GC gcs = ax::GC();
+    ax::GC* gc = &gcs;
 	ax::Rect rect(GetRect());
 	ax::Rect rect0(GetDrawingRect());
 

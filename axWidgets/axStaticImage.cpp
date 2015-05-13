@@ -90,8 +90,9 @@ _img(img)
 
 void axStaticImage::OnPaint()
 {
-    axGC* gc = GetGC();
-    gc->DrawImage(_img, ax::Point(0, 0));
+//    axGC* gc = GetGC();
+    ax::GC gc = ax::GC();
+    gc.DrawImage(_img, ax::Point(0, 0));
 }
 
 

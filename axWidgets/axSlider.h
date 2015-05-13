@@ -33,7 +33,7 @@
 #include <axUtils/axUtils.h>
 #include "axPanel.h"
 //#include <axUtils/axUtils.h>
-#include "axGC.h"
+#include <axGL/axGC.h>
 #include <axGL/axImage.h>
 //#include "ax::Event::Msg.h"
 
@@ -252,8 +252,8 @@ protected:
 	void blockSliderPosition(const ax::Point& pos);
 	void updateSliderValue();
 
-	void DrawVerticalSlider(axGC* gc, const ax::Rect& rect0);
-	void DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0);
+    void DrawVerticalSlider(ax::GC* gc, const ax::Rect& rect0);
+    void DrawLineBehindSlider_Vertical(ax::GC* gc, const ax::Rect& rect0);
 
 
 
