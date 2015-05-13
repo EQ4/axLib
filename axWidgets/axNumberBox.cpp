@@ -399,8 +399,6 @@ void axNumberBox::OnMouseLeftDragging(const ax::Point& pos)
 void axNumberBox::OnPaint()
 {
 	axGC* gc = GetGC();
-	ax::Size size = GetSize();
-//	ax::Rect rect0(0, 0, size.x, size.y);
     ax::Rect rect0(GetDrawingRect());
     ax::Rect rect(GetRect());
 

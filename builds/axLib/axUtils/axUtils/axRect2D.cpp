@@ -7,3 +7,12 @@
 //
 
 #include "axRect2D.h"
+
+namespace ax
+{
+    namespace Utils
+    {
+        template class Rect2D<Point2D<int>, Point2D<int>, int>;
+        template class Rect2D<Point2D<double>, Point2D<double>, double>;
+    }
+}

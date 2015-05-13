@@ -40,7 +40,7 @@ namespace ax
         };
         
         /*******************************************************************************
-         * axTemplateRect.
+         * ax::Utils::Rect2D.
          ******************************************************************************/
         template < typename CPos, typename CSize, typename T >
         class Rect2D

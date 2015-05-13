@@ -19,41 +19,35 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#ifndef __AX_RESOURCE_MANAGER__
-#define __AX_RESOURCE_MANAGER__
+#include "axResourceStorage.h"
 
-#include "axVar.h"
-#include <string>
-#include <map>
-//#include <thread>
-#include <mutex>
 
-class axResourceManager
+namespace ax
 {
-public:
-    axResourceManager();
-    
-    void Add(std::string id, axVar value);
-    
-    axVar GetResource(const std::string& id);
-    
-    void Lock()
+    ResourceStorage::ResourceStorage()
     {
-        _resourceMutex.lock();
+        
     }
     
-    void Unlock()
+    void ResourceStorage::Add(std::string id, Var value)
     {
-        _resourceMutex.unlock();
+        MapIterator it = _resourceMap.find(id);
+        
+        if(it == _resourceMap.end())
+        {
+            _resourceMap.insert(Pair(id, value));
+        }
     }
     
-private:
-    std::map<std::string, axVar> _resourceMap;
-    typedef std::map<std::string, axVar>::iterator axResourceManagerIterator;
-    typedef std::pair<std::string, axVar> axResourcePair;
-    
-    std::mutex _resourceMutex;
-};
-
-#endif // __AX_RESOURCE_MANAGER__
-
+    Var ResourceStorage::GetResource(const std::string& id)
+    {
+        MapIterator it = _resourceMap.find(id);
+        
+        if(it != _resourceMap.end())
+        {
+            return it->second;
+        }
+        
+        return nullptr;
+    }
+}

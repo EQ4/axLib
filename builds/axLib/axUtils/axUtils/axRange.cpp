@@ -7,3 +7,6 @@
 //
 
 #include "axRange.h"
+
+template class ax::Utils::Range<int>;
+template class ax::Utils::Range<double>;

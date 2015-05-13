@@ -7,3 +7,6 @@
 //
 
 #include "axClamp.h"
+
+template int ax::Utils::Clamp<int>(int, int, int);
+template double ax::Utils::Clamp<double>(double, double, double);

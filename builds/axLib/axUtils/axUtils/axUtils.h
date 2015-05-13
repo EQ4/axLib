@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Alexandre Arsenault. All rights reserved.
 //
 
+#include "axPoint2D.h"
 #include "axRect2D.h"
 #include "axRange.h"
 #include "axInterpole.h"
@@ -13,6 +14,8 @@
 #include "axString.h"
 #include "axControl.h"
 #include "axDirection.h"
+#include "axVar.h"
+
 
 namespace ax
 {

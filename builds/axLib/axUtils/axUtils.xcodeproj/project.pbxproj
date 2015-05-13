@@ -24,6 +24,10 @@
 		7C18C3B81B027C7F00885929 /* axControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3B61B027C7F00885929 /* axControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C3BB1B027FF900885929 /* axDirection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3B91B027FF900885929 /* axDirection.cpp */; };
 		7C18C3BC1B027FF900885929 /* axDirection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3BA1B027FF900885929 /* axDirection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3C61B02BC6300885929 /* axVar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3C51B02BC6300885929 /* axVar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3CD1B02BD3200885929 /* axResourceStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C3CC1B02BD3200885929 /* axResourceStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C18C3CF1B02BD3F00885929 /* axResourceStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3CE1B02BD3F00885929 /* axResourceStorage.cpp */; };
+		7C18C3D11B02BD8200885929 /* axVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C3D01B02BD8200885929 /* axVar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		7C18C3B61B027C7F00885929 /* axControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axControl.h; sourceTree = "<group>"; };
 		7C18C3B91B027FF900885929 /* axDirection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDirection.cpp; sourceTree = "<group>"; };
 		7C18C3BA1B027FF900885929 /* axDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDirection.h; sourceTree = "<group>"; };
+		7C18C3C51B02BC6300885929 /* axVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVar.h; path = ../../../../include/axVar.h; sourceTree = "<group>"; };
+		7C18C3CC1B02BD3200885929 /* axResourceStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axResourceStorage.h; path = ../../../../include/axResourceStorage.h; sourceTree = "<group>"; };
+		7C18C3CE1B02BD3F00885929 /* axResourceStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axResourceStorage.cpp; path = ../../../../source/axResourceStorage.cpp; sourceTree = "<group>"; };
+		7C18C3D01B02BD8200885929 /* axVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVar.cpp; path = ../../../../source/axVar.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +112,9 @@
 				7C18C39C1B02713F00885929 /* axPoint2D.h */,
 				7C18C3A61B02747400885929 /* axRange.h */,
 				7C18C3A21B02726D00885929 /* axRect2D.h */,
+				7C18C3CC1B02BD3200885929 /* axResourceStorage.h */,
 				7C18C3B21B02790300885929 /* axString.h */,
+				7C18C3C51B02BC6300885929 /* axVar.h */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -119,7 +129,9 @@
 				7C18C39B1B02713F00885929 /* axPoint2D.cpp */,
 				7C18C3A51B02747400885929 /* axRange.cpp */,
 				7C18C3A11B02726D00885929 /* axRect2D.cpp */,
+				7C18C3CE1B02BD3F00885929 /* axResourceStorage.cpp */,
 				7C18C3B11B02790300885929 /* axString.cpp */,
+				7C18C3D01B02BD8200885929 /* axVar.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -137,7 +149,9 @@
 				7C18C3B01B02788200885929 /* axClamp.h in Headers */,
 				7C18C3B81B027C7F00885929 /* axControl.h in Headers */,
 				7C18C3AC1B02774500885929 /* axInterpole.h in Headers */,
+				7C18C3C61B02BC6300885929 /* axVar.h in Headers */,
 				7C18C3A81B02747400885929 /* axRange.h in Headers */,
+				7C18C3CD1B02BD3200885929 /* axResourceStorage.h in Headers */,
 				7C18C37C1B02709500885929 /* axUtils.h in Headers */,
 				7C18C3A41B02726D00885929 /* axRect2D.h in Headers */,
 			);
@@ -214,7 +228,9 @@
 				7C18C3A31B02726D00885929 /* axRect2D.cpp in Sources */,
 				7C18C3BB1B027FF900885929 /* axDirection.cpp in Sources */,
 				7C18C3A71B02747400885929 /* axRange.cpp in Sources */,
+				7C18C3CF1B02BD3F00885929 /* axResourceStorage.cpp in Sources */,
 				7C18C39D1B02713F00885929 /* axPoint2D.cpp in Sources */,
+				7C18C3D11B02BD8200885929 /* axVar.cpp in Sources */,
 				7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */,
 				7C18C3AF1B02788200885929 /* axClamp.cpp in Sources */,
 				7C18C3B31B02790300885929 /* axString.cpp in Sources */,
@@ -357,6 +373,7 @@
 				7C18C38E1B02709500885929 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

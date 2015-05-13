@@ -7,3 +7,6 @@
 //
 
 #include "axPoint2D.h"
+
+template class ax::Utils::Point2D<int>;
+template class ax::Utils::Point2D<double>;

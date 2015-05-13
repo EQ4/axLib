@@ -7,3 +7,20 @@
 //
 
 #include "axInterpole.h"
+
+namespace ax
+{
+    namespace Utils
+    {
+        namespace Interpole
+        {
+            template double Lineair<double>(const double&,
+                                            const double&,
+                                            const double&);
+            
+            template double Logarithmic<double>(const double&,
+                                                const double&,
+                                                const double&);
+        }
+    }
+}

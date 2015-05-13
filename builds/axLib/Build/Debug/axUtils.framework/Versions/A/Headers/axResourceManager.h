@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Alexandre Arsenault.
+ * Copyright (c) 2013 Alexandre Arsenault.
  *
  * This file is part of axLibrary.
  *
@@ -19,14 +19,44 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+#ifndef __AX_RESOURCE_MANAGER__
+#define __AX_RESOURCE_MANAGER__
+
 #include "axVar.h"
+#include <string>
+#include <map>
+#include <mutex>
 
-bool ax::Var::is_null() const
+namespace ax
 {
-	return ptr == nullptr ? true : false;
+    class ResourceStorage
+    {
+    public:
+        ResourceStorage();
+        
+        void Add(std::string id, Var value);
+        
+        Var GetResource(const std::string& id);
+        
+        void Lock()
+        {
+            _resourceMutex.lock();
+        }
+        
+        void Unlock()
+        {
+            _resourceMutex.unlock();
+        }
+        
+    private:
+        std::map<std::string, Var> _resourceMap;
+        
+        typedef std::map<std::string, Var>::iterator MapIterator;
+        typedef std::pair<std::string, Var> Pair;
+        
+        std::mutex _resourceMutex;
+    };
 }
 
-bool ax::Var::not_null() const
-{
-    return ptr == nullptr ? false : true;
-}
+#endif // __AX_RESOURCE_MANAGER__
+
