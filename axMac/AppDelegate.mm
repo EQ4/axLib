@@ -191,9 +191,9 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     ax::Size size3([[self window] contentLayoutRect].size.width,
                 [[self window] contentLayoutRect].size.height);
     
-    axPrint("windowDidResize. : ", size.x, size.y);
-    axPrint("Bounds : ", size2.x, size2.y);
-    axPrint("Content : ", size3.x, size3.y);
+    ax::Print("windowDidResize. : ", size.x, size.y);
+    ax::Print("Bounds : ", size2.x, size2.y);
+    ax::Print("Content : ", size3.x, size3.y);
     
 //    ax::Size size(frameSize.width, frameSize.height);
     
@@ -396,7 +396,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 {
     unsigned int key = [evt keyCode];
     
-    axPrint(key);
+    ax::Print(key);
 }
 
 - (void)keyDown: (NSEvent *) event

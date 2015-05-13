@@ -26,7 +26,9 @@
 /// @{
 
 #include <map>
-#include "axObject.h"
+//#include <axEvent/axEvent.h>
+#include <axEvent/axObject.h>
+//#include "axObject.h"
 #include "axC++.h"
 #include "axWindowTree.h"
 

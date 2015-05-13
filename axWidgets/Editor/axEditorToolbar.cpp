@@ -24,7 +24,7 @@ axPanel(parent, rect)
                                   ax::Rect(10, 7, 60, 26),
                                   evt,
                                   btn_info,
-                                  "", "Widgets", axNO_FLAG, "Widgets");
+                                  "", "Widgets", ax::FlagValue::NO_FLAG, "Widgets");
     
     btn1->SetEditingWidget(true);
     btn1->SetEditable(false);
@@ -33,7 +33,7 @@ axPanel(parent, rect)
                                   ax::Rect(btn1->GetNextPosRight(10), ax::Size(60, 26)),
                                   evt,
                                   btn_info,
-                                  "", "Attributes", axNO_FLAG, "Attributes");
+                                  "", "Attributes", ax::FlagValue::NO_FLAG, "Attributes");
     
     btn2->SetEditingWidget(true);
     btn2->SetEditable(false);

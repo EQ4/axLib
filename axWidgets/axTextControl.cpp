@@ -27,7 +27,7 @@ axTextControl::axTextControl(axWindow* parent,
                              const axTextControlInfo& info,
                              std::string img_path,
                              std::string label,
-                             axFlag flags) :
+                             ax::Flag flags) :
 // Heritage.
 axPanel(parent, rect),
 // Members.
@@ -52,7 +52,7 @@ _findClickCursorIndex(false)
         AddConnection(axTextControlEvents::BUTTON_CLICK, _events.button_click);
     }
     
-    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor = new_ ax::Event::Timer(ax::App::GetMainApp()->GetEventManager());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
@@ -128,7 +128,7 @@ void axTextControl::OnMouseLeftDoubleClick(const ax::Point& pos)
 
 void axTextControl::OnWasKeyUnGrabbed()
 {
-    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StopTimer();
     }
@@ -142,7 +142,7 @@ void axTextControl::OnWasKeyGrabbed()
 {
     _currentColor = &_info.selected;
     
-    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StartTimer(ax::Event::Timer::TimeMs(500));
     }
@@ -256,11 +256,11 @@ void axTextControl::DrawContourRectangle(axGC* gc)
 {
     ax::Rect rect(GetRect());
     
-    if(IsFlag(axTEXT_CTRL_CONTOUR_HIGHLIGHT, _flags))
+    if(ax::IsFlag(axTEXT_CTRL_CONTOUR_HIGHLIGHT, _flags))
     {
         if(IsKeyGrab())
         {
-            if(IsFlag(axTEXT_CTRL_CONOUR_NO_FADE, _flags)) // Shadow fade.
+            if(ax::IsFlag(axTEXT_CTRL_CONOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(_info.selected_shadow);
                 gc->DrawRectangle(ax::Rect(ax::Point(-5, -5),

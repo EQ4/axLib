@@ -27,7 +27,7 @@ axPopupMenu::axPopupMenu(axWindow* parent,
                          const axPopupMenuInfo& info,
                          const std::vector<std::string>& labels,
                          std::string bgImg,
-                         axFlag flag) :
+                         ax::Flag flag) :
 // Heritage.
 axPanel(3, nullptr, rect),
 // members.

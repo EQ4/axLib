@@ -25,10 +25,10 @@
 /*******************************************************************************
  * axTextBox::Flags.
  ******************************************************************************/
-const axFlag axTextBox::Flags::FLASHING_CURSOR = axFLAG_1;
-const axFlag axTextBox::Flags::CONTOUR_HIGHLIGHT = axFLAG_2;
-const axFlag axTextBox::Flags::CONTOUR_NO_FADE = axFLAG_3;
-const axFlag axTextBox::Flags::HIDDEN_TEXT = axFLAG_4;
+const ax::Flag axTextBox::Flags::FLASHING_CURSOR = ax::FlagValue::FLAG_1;
+const ax::Flag axTextBox::Flags::CONTOUR_HIGHLIGHT = ax::FlagValue::FLAG_2;
+const ax::Flag axTextBox::Flags::CONTOUR_NO_FADE = ax::FlagValue::FLAG_3;
+const ax::Flag axTextBox::Flags::HIDDEN_TEXT = ax::FlagValue::FLAG_4;
 /*******************************************************************************
  * axTextBox::Msg.
  ******************************************************************************/
@@ -267,7 +267,7 @@ axTextBox::axTextBox(axWindow* parent,
                      const axTextBox::Info& info,
                      std::string img_path,
                      std::string label,
-                     axFlag flags) :
+                     ax::Flag flags) :
 // Heritage.
 axWidget(parent, rect, new_ Info(info)),
 // Members.
@@ -299,7 +299,7 @@ _maxNumChar(10000000)
         AddConnection(Events::ENTER_CLICK, _events.enter_click);
     }
     
-    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor = new_ ax::Event::Timer(GetApp()->GetEventManager());
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
@@ -391,7 +391,7 @@ void axTextBox::OnMouseLeftDoubleClick(const ax::Point& pos)
 
 void axTextBox::OnWasKeyUnGrabbed()
 {
-    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StopTimer();
     }
@@ -405,7 +405,7 @@ void axTextBox::OnWasKeyGrabbed()
 {
     _currentColor = &static_cast<Info*>(_info)->selected;
     
-    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
+    if(ax::IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StartTimer(ax::Event::Timer::TimeMs(500));
     }
@@ -529,13 +529,13 @@ void axTextBox::OnEnterDown()
 
 void axTextBox::DrawContourRectangle(axGC* gc)
 {
-    if(IsFlag(Flags::CONTOUR_HIGHLIGHT, _flags))
+    if(ax::IsFlag(Flags::CONTOUR_HIGHLIGHT, _flags))
     {
         if(IsKeyGrab())
         {
             ax::Rect rect(GetRect());
             
-            if(IsFlag(Flags::CONTOUR_NO_FADE, _flags)) // Shadow fade.
+            if(ax::IsFlag(Flags::CONTOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(static_cast<Info*>(_info)->selected_shadow);
                 gc->DrawRectangle(ax::Rect(ax::Point(-5, -5),
@@ -579,7 +579,7 @@ void axTextBox::OnPaint()
     if_not_empty(_label)
     {
         
-        if(IsFlag(Flags::HIDDEN_TEXT, _flags))
+        if(ax::IsFlag(Flags::HIDDEN_TEXT, _flags))
         {
             // Start drawing label.
             int x_pos = 10;

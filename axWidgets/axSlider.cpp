@@ -27,7 +27,7 @@ axSlider::axSlider(axWindow* parent,
 	const axSliderInfo& info,
 	//string img_path,
 	//string label,
-	axFlag flags) :
+    ax::Flag flags) :
 	// Heritage.
 	axPanel(parent, rect),
 	// Members.
@@ -50,12 +50,12 @@ axSlider::axSlider(axWindow* parent,
                       _events.slider_value_change);
     }
 
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		_sliderYPos = (GetSize().x - _info.slider_width) * 0.5;
 		_btnYPos = (GetSize().x - _info.btn_size.x) * 0.5;
 
-		if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+        if (ax::IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 		{
 			_sliderPosition = GetSize().y - _info.btn_size.y;
 		}
@@ -65,7 +65,7 @@ axSlider::axSlider(axWindow* parent,
 		_sliderYPos = (GetSize().y - _info.slider_width) * 0.5;
 		_btnYPos = (GetSize().y - _info.btn_size.y) * 0.5;
 
-		if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+		if (ax::IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 		{
 			_sliderPosition = GetSize().x - _info.btn_size.x;
 		}
@@ -78,9 +78,9 @@ void axSlider::SetValue(const double& value)
 {
 	_sliderValue = value;
 
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
-        if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+        if (ax::IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
         {
             _sliderPosition = double(GetSize().y - _info.btn_size.y ) * (_sliderValue);
         }
@@ -104,7 +104,7 @@ void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 	ax::Point pos = mousePos - GetAbsoluteRect().position;
 
 	ax::Rect sliderBtnRect;
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		sliderBtnRect = ax::Rect(ax::Point(_btnYPos, _sliderPosition),
 			_info.btn_size);
@@ -116,12 +116,12 @@ void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 	}
 
 
-	if (IsFlag(axSLIDER_FLAG_CLICK_ANYWHERE, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_CLICK_ANYWHERE, _flags))
 	{
 		_nCurrentImg = axBTN_DOWN;
 		_currentSliderColor = _info.sliderColorClicked;
 		
-		if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))//IsMouseHoverRect( sliderBtnRect ) && m_nCurrentImg != axBTN_DOWN )
+        if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))//IsMouseHoverRect( sliderBtnRect ) && m_nCurrentImg != axBTN_DOWN )
 		{
 			_delta_click = -_info.btn_size.y * 0.5;
 		}
@@ -152,7 +152,7 @@ void axSlider::OnMouseLeftDown(const ax::Point& mousePos)
 			_nCurrentImg = axBTN_DOWN;
 			_currentSliderColor = _info.sliderColorClicked;
 
-			if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+            if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 			{
 				_delta_click = sliderBtnRect.position.y - pos.y;
 			}
@@ -217,7 +217,7 @@ void axSlider::blockSliderPosition(const ax::Point& pos)
 {
 	//ax::Point pos = p - GetRect().position;
 
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		int pos_y = pos.y + _delta_click;
 
@@ -241,7 +241,7 @@ void axSlider::blockSliderPosition(const ax::Point& pos)
 
 void axSlider::updateSliderValue()
 {
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		_sliderValue = (_sliderPosition - 1) /
 			double(GetSize().y - _info.btn_size.y - 2);
@@ -258,7 +258,7 @@ void axSlider::OnMouseMotion(const ax::Point& p)
 	ax::Point pos = p - GetAbsoluteRect().position;
 
 	ax::Rect sliderBtnRect;
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		sliderBtnRect = ax::Rect(ax::Point(_btnYPos, _sliderPosition),
 			_info.btn_size);
@@ -292,7 +292,7 @@ void axSlider::OnMouseEnter(const ax::Point& p)
 	// cout << "Enter" << endl;
 	ax::Point pos = p - GetAbsoluteRect().position;
 
-	if (IsFlag(axSLIDER_FLAG_LEFT_CLICK_ENTER, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_LEFT_CLICK_ENTER, _flags))
 	{
 		//if (GetParent()->LeftIsDown())
 		//{
@@ -301,7 +301,7 @@ void axSlider::OnMouseEnter(const ax::Point& p)
 
 			_nCurrentImg = axBTN_DOWN;
 			_currentSliderColor = _info.sliderColorClicked;
-			if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+            if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 			{
 				_delta_click = sliderBtnRect.position.y - pos.y;
 			}
@@ -320,7 +320,7 @@ void axSlider::OnMouseLeave(const ax::Point& p)
 {
 	ax::Point pos = p - GetAbsoluteRect().position;
 
-	if (IsFlag(axSLIDER_FLAG_RELEASE_ON_LEAVE, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_RELEASE_ON_LEAVE, _flags))
 	{
 		if (IsGrabbed())
 		{
@@ -339,7 +339,7 @@ void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const ax::Rect& rect0)
 	int half_btn_size = _info.btn_size.y * 0.5;
 
 	ax::Rect slider_rect;
-	if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 	{
 		// slider_rect = ax::Rect(_sliderYPos, _sliderPosition + half_btn_size,
 		// 					 12,// _info.slider_width,
@@ -381,7 +381,7 @@ void axSlider::DrawVerticalSlider(axGC* gc, const ax::Rect& rect0)
 	// }
 
 	// Draw line behind the slider.
-	if (!IsFlag(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
+    if (!ax::IsFlag(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
 	{
 		DrawLineBehindSlider_Vertical(gc, rect0);
 	}
@@ -422,7 +422,7 @@ void axSlider::OnPaint()
 
 
 	// VERTICAL SLIDER.
-	if (IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
+    if (ax::IsFlag(axSLIDER_FLAG_VERTICAL, _flags))
 	{
 		DrawVerticalSlider(gc, rect0);
 	}
@@ -430,7 +430,7 @@ void axSlider::OnPaint()
 	// HORIZONTAL SLIDER.
 	else
 	{
-		if (IsFlag(axSLIDER_FLAG_BACK_SLIDER, _flags))
+        if (ax::IsFlag(axSLIDER_FLAG_BACK_SLIDER, _flags))
 		{
 			// Back slider.
 			ax::Rect back_slider(0, _sliderYPos, size.x,
@@ -445,13 +445,13 @@ void axSlider::OnPaint()
 
 		int half_btn_size = _info.btn_size.x * 0.5;
 
-		if (!IsFlag(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
+        if (!ax::IsFlag(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
 		{
 			ax::Rect slider_rect(0, _sliderYPos,
 				_sliderPosition + half_btn_size,
 				_info.slider_width);
 
-			if (IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+            if (ax::IsFlag(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
 			{
 				slider_rect = ax::Rect(_sliderPosition,
 					_sliderYPos,

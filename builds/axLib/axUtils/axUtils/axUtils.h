@@ -15,6 +15,8 @@
 #include "axControl.h"
 #include "axDirection.h"
 #include "axVar.h"
+#include "axPrint.h"
+#include "axFlag.h"
 
 
 namespace ax

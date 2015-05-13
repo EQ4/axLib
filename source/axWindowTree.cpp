@@ -23,7 +23,8 @@
 #include "axWindow.h"
 #include "axApp.h"
 #include "axCore.h"
-#include "axMath.h"
+//#include "axMath.h"
+#include <axGL/axGLMath.h>
 #include "axConfig.h"
 
 axWindowNode::axWindowNode(axWindow* win)
@@ -99,7 +100,7 @@ void BeforeDrawing(axWindow* win)
 {
     if(win->IsBlockDrawing())
     {
-        axMatrix4 mview;
+        ax::GL::Math::Matrix4 mview;
         mview.Identity().Load();
         
         ax::Rect abs_rect = win->GetAbsoluteRect();
@@ -131,7 +132,7 @@ void EndDrawing(axWindow* win)
 
 void DrawWindow(axWindow* win)
 {
-    axMatrix4 mview;
+    ax::GL::Math::Matrix4 mview;
     mview.Identity().Load();
     
     mview.Translate(win->GetAbsoluteRect().position -
@@ -158,7 +159,7 @@ void axWindowNode::DrawNode()
         return;
     }
 
-    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+    ax::GL::Math::Matrix4 mview_before(GL_MODELVIEW_MATRIX);
     
     BeforeDrawing(window);
     DrawWindow(window);
@@ -184,7 +185,7 @@ void axWindowNode::DrawNode()
         }
         
         // Save matrix.
-        axMatrix4 mview_child_before(GL_MODELVIEW_MATRIX);
+        ax::GL::Math::Matrix4 mview_child_before(GL_MODELVIEW_MATRIX);
         
         // Block the drawging rectangle if window IsBlockDrawing activated.
         BeforeDrawing(it->window);
@@ -192,7 +193,7 @@ void axWindowNode::DrawNode()
         DrawWindow(it->window);
         it->DrawNode();
         
-        axMatrix4 mview;
+        ax::GL::Math::Matrix4 mview;
         mview.Identity().Load();
         mview.Translate(it->window->GetAbsoluteRect().position).Process();
         
@@ -355,7 +356,7 @@ void axWindowTree::DeleteWindow(axWindow* win)
     }
     else
     {
-        axPrint("axWindowTree::DeleteWindow :: Node is nullptr");
+        ax::Print("axWindowTree::DeleteWindow :: Node is nullptr");
     }
     
 }

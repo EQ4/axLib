@@ -59,10 +59,10 @@ public:
     class Flags
     {
     public:
-        static const axFlag SINGLE_IMG;
-        static const axFlag IMG_RESIZE;
-        static const axFlag CLICK_ON_LEFT_DOWN;
-        static const axFlag CANT_UNSELECT_WITH_MOUSE;
+        static const ax::Flag SINGLE_IMG;
+        static const ax::Flag IMG_RESIZE;
+        static const ax::Flag CLICK_ON_LEFT_DOWN;
+        static const ax::Flag CANT_UNSELECT_WITH_MOUSE;
     };
     
     /***************************************************************************
@@ -163,7 +163,7 @@ public:
                 const axToggle::Info& info,
                 std::string img_path = "",
                 std::string label = "",
-                axFlag flags = 0,
+                ax::Flag flags = 0,
                 int nextPositionDelta = 5,
                 ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
@@ -178,7 +178,7 @@ public:
         axToggle::Info _info;
         std::string _label;
         std::string _img;
-        axFlag _flags;
+        ax::Flag _flags;
         ax::Size _size;
         int _nextPositionDelta;
         axToggle* _past;
@@ -194,7 +194,7 @@ public:
              const axToggle::Info& info,
              std::string img_path = "",
              std::string label = "",
-             axFlag flags = 0,
+             ax::Flag flags = 0,
              std::string msg = "");
         
     void SetMsg(const std::string& msg);
@@ -221,7 +221,7 @@ protected:
     std::unique_ptr<axFont> _font;
 	
 	bool _selected;
-	axFlag _flags;
+    ax::Flag _flags;
 	axColor test;
 	axFloat _bgAlpha;
 

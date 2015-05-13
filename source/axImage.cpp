@@ -439,7 +439,7 @@ axBigImage::axBigImage(const std::string& path)
 {
 	if_error_in (InitImage(path))
 	{
-		axError("Can't load axBigImage : ", path);
+        ax::Error("Can't load axBigImage : ", path);
 	}
 }
 

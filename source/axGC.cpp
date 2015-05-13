@@ -21,7 +21,8 @@
  ******************************************************************************/
 #include "axGC.h"
 #include "axWindow.h"
-#include "axMath.h"
+//#include "axMath.h"
+#include <axGL/axGLMath.h>
 
 #include "axApp.h"
 #include "axCore.h"
@@ -722,8 +723,8 @@ ax::Point axGC::DrawChar(axFont& font,
 // Just blocking x axis for now.
 void axGC::BlockDrawing(const ax::Rect& rect)
 {
-    axMatrix4 before_proj(GL_MODELVIEW);
-    axMatrix4 proj;
+    ax::GL::Math::Matrix4 before_proj(GL_MODELVIEW);
+    ax::GL::Math::Matrix4 proj;
     proj.Identity().Load();
     
 //    ax::Rect r = rect;
@@ -890,7 +891,7 @@ void axGC::DrawSmouthLine(const ax::Point& pt1, const ax::Point& pt2, float widt
     }
     
     
-    axPrint("M : ", m);
+//    ax::Print("M : ", m);
 //    std::cout << "M : " << m <<
     
     	glEnable(GL_POLYGON_SMOOTH);
@@ -1157,7 +1158,7 @@ void axGC::DrawBigImageResize(axBigImage* img,
 	
 	if (err != GL_NO_ERROR)
 	{
-		axError("Can't draw axBigImage in axGC : ", err);
+        ax::Error("Can't draw axBigImage in axGC : ", err);
 	}
 
 	ax::Point pos = position;

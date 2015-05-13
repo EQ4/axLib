@@ -138,63 +138,63 @@ typedef unsigned char axByte;
 
 //typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
-// Since variadic templates are recursive, must have a base case.
-void axPrint();
+//// Since variadic templates are recursive, must have a base case.
+//void axPrint();
+//
+//template <typename T, typename ...P>
+//void axPrint(T t, P ...p)
+//{
+//    std::cout << t << ' ';
+//    {
+//        axPrint(p...);
+//    }
+//}
+//
+//
+//#define axDebug(x) axPrint(x)
+//
+//// Since variadic templates are recursive, must have a base case.
+//void axError();
+//
+//template <typename T, typename ...P>
+//void axError(T t, P ...p)
+//{
+//    std::cerr << "Error : " << t << ' ';
+//    {
+//        axError(p...);
+//    }
+//}
 
-template <typename T, typename ...P>
-void axPrint(T t, P ...p)
-{
-    std::cout << t << ' ';
-    {
-        axPrint(p...);
-    }
-}
-
-
-#define axDebug(x) axPrint(x)
-
-// Since variadic templates are recursive, must have a base case.
-void axError();
-
-template <typename T, typename ...P>
-void axError(T t, P ...p)
-{
-    std::cerr << "Error : " << t << ' ';
-    {
-        axError(p...);
-    }
-}
-
-// Flag.
-typedef uint16_t axFlag;
-
-typedef unsigned char axByte;
-
-//[[deprecated]]
-bool axFlag_exist(const axFlag& FLAG, axFlag flags);
-
-
-bool IsFlag(const axFlag& FLAG, axFlag flags);
-
-#define axNO_FLAG 0
-#define axFLAG_NONE 0
-#define axFLAG_0  0
-#define axFLAG_1  1
-#define axFLAG_2  2
-#define axFLAG_3  4
-#define axFLAG_4  8
-#define axFLAG_5  16
-#define axFLAG_6  32
-#define axFLAG_7  64
-#define axFLAG_8  128
-#define axFLAG_9  256
-#define axFLAG_10 512
-#define axFLAG_11 1024
-#define axFLAG_12 2048
-#define axFLAG_13 4096
-#define axFLAG_14 8192
-#define axFLAG_15 16384
-#define axFLAG_16 32768
+//// Flag.
+//typedef uint16_t axFlag;
+//
+//typedef unsigned char axByte;
+//
+////[[deprecated]]
+//bool axFlag_exist(const axFlag& FLAG, axFlag flags);
+//
+//
+//bool IsFlag(const axFlag& FLAG, axFlag flags);
+//
+//#define axNO_FLAG 0
+//#define axFLAG_NONE 0
+//#define axFLAG_0  0
+//#define axFLAG_1  1
+//#define axFLAG_2  2
+//#define axFLAG_3  4
+//#define axFLAG_4  8
+//#define axFLAG_5  16
+//#define axFLAG_6  32
+//#define axFLAG_7  64
+//#define axFLAG_8  128
+//#define axFLAG_9  256
+//#define axFLAG_10 512
+//#define axFLAG_11 1024
+//#define axFLAG_12 2048
+//#define axFLAG_13 4096
+//#define axFLAG_14 8192
+//#define axFLAG_15 16384
+//#define axFLAG_16 32768
 
 /// @}
 #endif //__AX_CPP__

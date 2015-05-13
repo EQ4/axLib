@@ -20,7 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axApp.h"
-#include "axResourceManager.h"
+#include <axUtils/axResourceStorage.h>
 
 #include "axPanel.h"
 #include "axToggle.h"
@@ -124,7 +124,7 @@ void ax::App::CreateEditor()
     
     ax::Size size = _core->GetGlobalSize();
     
-    axPrint("Size : ", size.x, size.y);
+    ax::Print("Size : ", size.x, size.y);
     
     _widgetSelector = new axWidgetSelector(nullptr);
     
@@ -219,7 +219,7 @@ std::string ax::App::GetAppDirectory()
 std::string ax::App::GetResourceFile(const std::string& file_name)
 {
     std::string app_path = GetCore()->GetAppPath();
-    axPrint("core ressource folder : ", app_path);
+//    ax::Print("core ressource folder : ", app_path);
     app_path = app_path.substr(0, app_path.find_last_of("/"));
     app_path = app_path.substr(0, app_path.find_last_of("/"));
     app_path = app_path.substr(0, app_path.find_last_of("/"));
@@ -234,7 +234,7 @@ std::string ax::App::GetResourceFile(const std::string& file_name)
     
     app_path += std::string("/Frameworks/axLib.framework/Resources/");
     
-    axPrint("axLib ressource folder : ", app_path);
+//    ax::Print("axLib ressource folder : ", app_path);
     return app_path + file_name;
 }
 
@@ -296,10 +296,10 @@ axCore* ax::App::GetCore()
 	return _core;
 }
 
-axResourceManager* ax::App::GetResourceManager()
+ax::ResourceStorage* ax::App::GetResourceManager()
 {
-    axResourceManager*& rm = _resourceManager;
-    return rm == nullptr ? rm = new axResourceManager() : rm;
+    ax::ResourceStorage*& rm = _resourceManager;
+    return rm == nullptr ? rm = new ax::ResourceStorage() : rm;
 }
 
 void ax::App::AddAfterGUILoadFunction(std::function<void()> fct)

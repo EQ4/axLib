@@ -41,8 +41,8 @@
 /**************************************************************************//**
  * axButtonFlags.
 ******************************************************************************/
-// #define axBUTTON_SINGLE_IMG	axFLAG_1
-// #define axBUTTON_IMG_RESIZE	axFLAG_2
+// #define axBUTTON_SINGLE_IMG	ax::Flag_1
+// #define axBUTTON_IMG_RESIZE	ax::Flag_2
 
 class axScrollBar;
 
@@ -126,7 +126,7 @@ public:
                 const ax::Rect& rect,
                 const axScrollBarEvents& events,
                 const axScrollBarInfo& info,
-                axFlag flags = 0);
+                ax::Flag flags = 0);
 
 //	double getZeroToOneValue();
 //
@@ -144,7 +144,7 @@ public:
 private:
 	axScrollBarEvents _events;
 	axScrollBarInfo _info;
-	axFlag _flags;
+	ax::Flag _flags;
     axWindow* _handle;
 
     ax::Button* _btn[2];

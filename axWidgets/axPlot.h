@@ -124,7 +124,7 @@ public:
            const std::vector<double> xGridDarkValue = {},
            const std::vector<double> yGridValue = {},
            const std::vector<double> yGridDarkValue = {},
-           const axFlag& flags = 0);
+           const ax::Flag& flags = 0);
     
     void SetExpression(const std::string& expr)
     {
@@ -145,7 +145,7 @@ public:
 private:
     axPlotEvents _events;
     axPlotInfo _info;
-    axFlag _flags;
+    ax::Flag _flags;
     std::string _expr;
     ax::FloatRange _xRange, _yRange;
     std::vector<double> _xGridValue, _xGridDarkValue;

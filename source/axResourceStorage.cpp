@@ -21,7 +21,6 @@
  ******************************************************************************/
 #include "axResourceStorage.h"
 
-
 namespace ax
 {
     ResourceStorage::ResourceStorage()

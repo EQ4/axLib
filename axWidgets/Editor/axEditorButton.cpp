@@ -185,7 +185,7 @@ void axDebugButton::OnAttributeEdit(const axTextBox::Msg& msg)
 
 void axDebugButton::OnKeyDown(const char& key)
 {
-    axPrint(key);
+    ax::Print(key);
 }
 
 void axDebugButton::OnMouseEnter()

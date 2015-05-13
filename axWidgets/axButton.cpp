@@ -22,14 +22,14 @@
 #include "axButton.h"
 #include "axObjectLoader.h"
 //#include "axDebugButton.h"
-#include "axMath.h"
+//#include "axMath.h"
 
 /*******************************************************************************
  * axButon::Flags.
  ******************************************************************************/
-const axFlag ax::Button::Flags::SINGLE_IMG = axFLAG_1;
-const axFlag ax::Button::Flags::IMG_RESIZE = axFLAG_2;
-const axFlag ax::Button::Flags::CAN_SELECTED = axFLAG_3;
+const ax::Flag ax::Button::Flags::SINGLE_IMG = ax::FlagValue::FLAG_1;
+const ax::Flag ax::Button::Flags::IMG_RESIZE = ax::FlagValue::FLAG_2;
+const ax::Flag ax::Button::Flags::CAN_SELECTED = ax::FlagValue::FLAG_3;
 
 /*******************************************************************************
  * axButon::Msg.
@@ -276,7 +276,7 @@ ax::Button::Button(axWindow* parent,
                    const ax::Button::Info& info,
                    std::string img_path,
                    std::string label,
-                   axFlag flags,
+                   ax::Flag flags,
                    std::string msg):
 // Heritage.
 axWidget(parent, rect, new_ ax::Button::Info(info)),
@@ -381,7 +381,7 @@ void ax::Button::OnMouseLeftUp(const ax::Point& pos)
 
 void ax::Button::OnMouseEnter()
 {
-    axDebug("ax::Button::OnMouseEnter()");
+//    axDebug("ax::Button::OnMouseEnter()");
     
     if (!IsGrabbed())
     {

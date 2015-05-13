@@ -27,7 +27,7 @@ axGrid::axGrid(axWindow* parent,
                const axGridInfo& info,
                ax::Size grid_dimension,
                //string label,
-               axFlag flags,
+               ax::Flag flags,
                std::string msg) :
 // Heritage.
 axPanel(parent, rect),

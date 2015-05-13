@@ -60,9 +60,9 @@ namespace ax
         class Flags
         {
         public:
-            static const axFlag SINGLE_IMG;
-            static const axFlag IMG_RESIZE;
-            static const axFlag CAN_SELECTED;
+            static const ax::Flag SINGLE_IMG;
+            static const ax::Flag IMG_RESIZE;
+            static const ax::Flag CAN_SELECTED;
         };
         
         /***********************************************************************
@@ -149,7 +149,7 @@ namespace ax
         private:
             Button::Info _info;
             std::string _label, _img, _msg;
-            axFlag _flags;
+            ax::Flag _flags;
             ax::Size _size;
             int _nextPositionDelta;
             Button* _past;
@@ -165,7 +165,7 @@ namespace ax
                  const Button::Info& info,
                  std::string img_path = "",
                  std::string label = "",
-                 axFlag flags = 0,
+                 ax::Flag flags = 0,
                  std::string msg = "");
         
         void SetMsg(const std::string& msg);
@@ -177,7 +177,7 @@ namespace ax
     protected:
         Button::Events _events;
         axImage* _btnImg;
-        axFlag _flags;
+        ax::Flag _flags;
         std::string _label, _msg;
         std::unique_ptr<axFont> _font;
         

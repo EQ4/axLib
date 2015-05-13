@@ -1,0 +1,6 @@
+framework module axGL {
+  umbrella header "axGL.h"
+
+  export *
+  module * { export * }
+}

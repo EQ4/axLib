@@ -30,6 +30,7 @@
 /// @{
 
 #include <axEvent/axEvent.h>
+#include <axUtils/axUtils.h>
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
@@ -39,14 +40,14 @@
 /**************************************************************************//**
  * axSliderFlags.
 ******************************************************************************/
-#define axSLIDER_FLAG_VERTICAL			axFLAG_1
-#define axSLIDER_FLAG_CLICK_ANYWHERE    axFLAG_2
-#define axSLIDER_FLAG_RELEASE_ON_LEAVE  axFLAG_3
-#define axSLIDER_FLAG_LEFT_CLICK_ENTER  axFLAG_4
-#define axSLIDER_FLAG_RIGHT_ALIGN       axFLAG_5
-#define axSLIDER_FLAG_MIDDLE_ALIGN      axFLAG_6
-#define axSLIDER_FLAG_BACK_SLIDER       axFLAG_7
-#define axSLIDER_FLAG_NO_SLIDER_LINE    axFLAG_8
+#define axSLIDER_FLAG_VERTICAL			ax::FlagValue::FLAG_1
+#define axSLIDER_FLAG_CLICK_ANYWHERE    ax::FlagValue::FLAG_2
+#define axSLIDER_FLAG_RELEASE_ON_LEAVE  ax::FlagValue::FLAG_3
+#define axSLIDER_FLAG_LEFT_CLICK_ENTER  ax::FlagValue::FLAG_4
+#define axSLIDER_FLAG_RIGHT_ALIGN       ax::FlagValue::FLAG_5
+#define axSLIDER_FLAG_MIDDLE_ALIGN      ax::FlagValue::FLAG_6
+#define axSLIDER_FLAG_BACK_SLIDER       ax::FlagValue::FLAG_7
+#define axSLIDER_FLAG_NO_SLIDER_LINE    ax::FlagValue::FLAG_8
 
 /**************************************************************************//**
  * axSliderMsg
@@ -197,7 +198,7 @@ public:
 			 const ax::Rect& rect,
 			 const axSliderEvents& events,
 			 const axSliderInfo& info,
-			 axFlag flags = 0);
+			 ax::Flag flags = 0);
 
 	void SetBackgroundAlpha(const float& alpha)
 	{
@@ -223,14 +224,14 @@ protected:
 	//axSliderOrientationStrategy* _sliderOrientationStrategy;
 	axSliderEvents _events;
 	axSliderInfo _info;
-	axFlag _flag;
+	ax::Flag _flag;
 	axColor _currentBgColor, 
 			_currentSliderColor;
 
 
 
 	axImage _btnImg;
-	axFlag _flags;
+	ax::Flag _flags;
 	int _nCurrentImg,
 		_sliderPosition,
 		_btnYPos,

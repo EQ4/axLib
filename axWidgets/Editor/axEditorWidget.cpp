@@ -129,7 +129,7 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
         
         if(id != -1)
         {
-            axPrint(id, win->GetWindowType());
+//            ax::Print(id, win->GetWindowType());
             
             if(win->GetWindowType() == axWindowType::axWINDOW_TYPE_PANEL)
             {
@@ -148,7 +148,8 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
                                                   ax::Button::Events(),
                                                   btn_info,
                                                   "", "Widgets",
-                                                  axNO_FLAG, "Widgets");
+                                                  ax::FlagValue::NO_FLAG,
+                                                  "Widgets");
             }
         }
         

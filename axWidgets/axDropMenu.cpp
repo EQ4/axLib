@@ -29,7 +29,7 @@ axDropMenu::axDropMenu(axWindow* parent,
                        std::string bg_img_path,
                        std::string toogle_img_path,
                        const std::vector<std::string>& menu_str,
-                       axFlag flags,
+                       ax::Flag flags,
                        std::string msg) :
 // Heritage.
 axPanel(parent, rect),
@@ -213,7 +213,7 @@ void axDropMenu::OnPaint()
     
     if (_bgImg->IsImageReady())
     {
-        if (axFlag_exist(axDROP_MENU_SINGLE_BACKGROUND_IMG, _flags))
+        if (ax::IsFlag(axDROP_MENU_SINGLE_BACKGROUND_IMG, _flags))
         {
             gc->DrawImageResize(_bgImg, ax::Point(0, 0), rect.size, 1.0);
         }
@@ -228,7 +228,7 @@ void axDropMenu::OnPaint()
     
     if (_btnImg->IsImageReady())
     {
-        if (axFlag_exist(axDROP_MENU_SINGLE_IMG, _flags))
+        if (ax::IsFlag(axDROP_MENU_SINGLE_IMG, _flags))
         {
             gc->DrawImageResize(_btnImg,
                                 ax::Point(rect.size.x - _btnImg->GetSize().x - 5,

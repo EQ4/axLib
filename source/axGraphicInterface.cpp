@@ -7,7 +7,8 @@
 //
 
 #include "axGraphicInterface.h"
-#include "axMath.h"
+#include <axGL/axGLMath.h>
+//#include "axMath.h"
 #include "axWindow.h"
 #include "axApp.h"
 #include "axConfig.h"
@@ -20,8 +21,8 @@ namespace axGraphicInterface
         
         glMatrixMode(GL_PROJECTION);
         
-        axMatrix4 proj;
-        axOrtho2D(proj.Identity().GetData(), size);
+        ax::GL::Math::Matrix4 proj;
+        ax::GL::Math::Ortho2D(proj.Identity().GetData(), size);
         
         // Select the modelview matrix.
         glMatrixMode(GL_MODELVIEW);
@@ -59,8 +60,8 @@ namespace axGraphicInterface
         // Set projection matrix.
         glMatrixMode(GL_PROJECTION);
         
-        axMatrix4 proj;
-        axOrtho2D(proj.Identity().GetData(), size);
+        ax::GL::Math::Matrix4 proj;
+        ax::GL::Math::Ortho2D(proj.Identity().GetData(), size);
         
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();

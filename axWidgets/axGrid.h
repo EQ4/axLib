@@ -140,7 +140,7 @@ public:
 		const axGridInfo& info,
 		ax::Size grid_dimension,
 		//string label = "",
-		axFlag flags = 0,
+        ax::Flag flags = 0,
 		std::string msg = "");
 
 	void SetBackgroundAlpha(const float& alpha);
@@ -154,7 +154,7 @@ private:
 	//string _label;
 	std::string _msg;
 	
-	axFlag _flags;
+    ax::Flag _flags;
 	ax::Size _dimension;
 
 	int _nCurrentImg;

@@ -47,8 +47,8 @@
 /*******************************************************************************
  * axDropMenuFlags.
  ******************************************************************************/
-#define axDROP_MENU_SINGLE_IMG	axFLAG_1
-#define axDROP_MENU_SINGLE_BACKGROUND_IMG axFLAG_2
+#define axDROP_MENU_SINGLE_IMG	ax::FlagValue::FLAG_1
+#define axDROP_MENU_SINGLE_BACKGROUND_IMG ax::FlagValue::FLAG_2
 
 class axDropMenu;
 
@@ -144,7 +144,7 @@ public:
                std::string bg_img_path = "",
                std::string toogle_img_path = "",
                const std::vector<std::string>& menu_str = {},
-               axFlag flags = 0,
+               ax::Flag flags = 0,
                std::string msg = "");
 
     void SetMsg(const std::string& msg);
@@ -165,7 +165,7 @@ private:
     axFont* _font;
     
     bool _selected;
-    axFlag _flags;
+    ax::Flag _flags;
     axColor test;
 //    axFloat _bgAlpha;
     

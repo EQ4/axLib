@@ -39,9 +39,9 @@
 /**************************************************************************//**
  * axTextControlFlags.
 ******************************************************************************/
-#define axTEXT_CTRL_FLASHING_CURSOR      axFLAG_1
-#define axTEXT_CTRL_CONTOUR_HIGHLIGHT    axFLAG_2
-#define axTEXT_CTRL_CONOUR_NO_FADE       axFLAG_3
+#define axTEXT_CTRL_FLASHING_CURSOR      ax::FlagValue::FLAG_1
+#define axTEXT_CTRL_CONTOUR_HIGHLIGHT    ax::FlagValue::FLAG_2
+#define axTEXT_CTRL_CONOUR_NO_FADE       ax::FlagValue::FLAG_3
 
 class axTextControl;
 
@@ -174,7 +174,7 @@ public:
                   const axTextControlInfo& info,
                   std::string img_path = "",
                   std::string label = "",
-                  axFlag flags = 0);
+                  ax::Flag flags = 0);
 
     void SetLabel(const std::string& label);
 
@@ -186,7 +186,7 @@ protected:
     axTextControlInfo _info;
     std::string _label;
     axImage* _btnImg;
-    axFlag _flags;
+    ax::Flag _flags;
     axFont* _font;
         
     axColor* _currentColor;

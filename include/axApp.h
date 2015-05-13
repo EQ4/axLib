@@ -51,7 +51,7 @@
 
 
 #include "axC++.h"
-#include "axResourceManager.h"
+#include <axUtils/axResourceStorage.h>
 
 class axEditorMenu;
 class axWidget;
@@ -97,7 +97,7 @@ namespace ax
         
         std::string GetAppDirectory();
         
-        axResourceManager* GetResourceManager();
+        ax::ResourceStorage* GetResourceManager();
         
         void ActivateDebugEditor(const bool& active);
         bool IsDebugEditorActive() const;
@@ -139,7 +139,7 @@ namespace ax
         
         std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
         std::function<void()> _popupEntryFunction;
-        axResourceManager* _resourceManager;
+        ax::ResourceStorage* _resourceManager;
         
         bool _debugEditorActive;
         

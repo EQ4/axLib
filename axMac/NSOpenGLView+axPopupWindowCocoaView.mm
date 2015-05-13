@@ -13,7 +13,7 @@
 
 #include <iostream>
 #include "axLib.h"
-#include "axMath.h"
+//#include "axMath.h"
 
 #include "axGraphicInterface.h"
 

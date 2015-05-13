@@ -53,7 +53,7 @@ protected:
     ax::Button::Info _info;
     std::string _label, _msg;
 //    axImage* _btnImg;
-    axFlag _flags;
+    ax::Flag _flags;
     std::unique_ptr<axFont> _font;
     
     axColor* _currentColor;

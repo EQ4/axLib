@@ -32,41 +32,39 @@
 /// @defgroup Graphic
 /// @{
 
-#include "axC++.h"
-//#include "cairo/cairo.h"
+#include <axUtils/axUtils.h>
+#include <stdint.h>
+#include <functional>
 
-class axFrameBuffer
+namespace ax
 {
-public:
-    axFrameBuffer(const ax::Size& size);
-    
-    void Init(const ax::Size& size);
-    
-    void Resize(const ax::Size& size);
-    
-    void DrawOnFrameBuffer(const std::function<void()>& fct,
-                           const ax::Size& size,
-                           const ax::Size& globalSize);
-    
-    void DrawFrameBuffer(const ax::Size& shownSize);
-    
-private:
-    GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
-    
-//    cairo_surface_t *surface;
-//    cairo_t *context;
-//    unsigned char* surf_data;
-    
-    void DrawingOnFrameBufferBlendFunction();
-    void DrawingFrameBufferBlendFunction();
-//    
-//    cairo_t*  create_cairo_context(int width,
-//                                   int height,
-//                                   int channels,
-//                                   cairo_surface_t** surf,
-//                                   unsigned char** buffer);
-   
-};
+    namespace GL
+    {
+        class FrameBuffer
+        {
+        public:
+            FrameBuffer(const ax::Size& size);
+            
+            void Init(const ax::Size& size);
+            
+            void Resize(const ax::Size& size);
+            
+            void DrawOnFrameBuffer(const std::function<void()>& fct,
+                                   const ax::Size& size,
+                                   const ax::Size& globalSize);
+            
+            void DrawFrameBuffer(const ax::Size& shownSize);
+            
+        private:
+            uint32_t _frameBuffer, _frameBufferTexture, _depthBuffer;
+
+            void DrawingOnFrameBufferBlendFunction();
+            void DrawingFrameBufferBlendFunction();
+        };
+    }
+}
+
+
 
 /// @}
 #endif // __AX_FRAME_BUFFER__

@@ -25,12 +25,13 @@
 /// @defgroup Core
 /// @{
 
-#include "axObject.h"
+#include <axEvent/axObject.h>
 #include "axC++.h"
 #include "axGC.h"
-#include "axResourceManager.h"
+//#include "axResourceManager.h"
 #include "axConfig.h"
-#include "axFrameBuffer.h"
+#include <axGL/axFrameBuffer.h>
+#include <axUtils/axResourceStorage.h>
 
 namespace ax
 {
@@ -107,7 +108,7 @@ public:
     
     void SetBlockDrawing(const bool& block);
 
-    axResourceManager* GetResourceManager();
+    ax::ResourceStorage* GetResourceManager();
     
     bool IsEditingWidget() const;
     
@@ -176,8 +177,8 @@ private:
 	ax::Rect _rect, _shownRect;
 	ax::Point _absolutePosition, _scrollDecay;
     axColor _windowColor, _contourColor;
-    axFrameBuffer _frameBufferObj;
-    axResourceManager _resourceManager;
+    ax::GL::FrameBuffer _frameBufferObj;
+    ax::ResourceStorage _resourceManager;
     
     /// @todo Remove this.
 	axGC* _gc;

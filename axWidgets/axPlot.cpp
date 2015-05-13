@@ -29803,7 +29803,7 @@ axPlot::axPlot(axWindow* parent,
                const std::vector<double> xGridDarkValue,
                const std::vector<double> yGridValue,
                const std::vector<double> yGridDarkValue,
-               const axFlag& flags):
+               const ax::Flag& flags):
 
 axPanel(parent, rect),
 // Members.

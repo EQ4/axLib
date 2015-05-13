@@ -31,7 +31,7 @@ protected:
     ax::Button::Events _events;
     ax::Button::Info _info;
     std::string _label, _msg;
-    axFlag _flags;
+    ax::Flag _flags;
     axFont _fontBold, _font;
     
     axColor* _currentColor;

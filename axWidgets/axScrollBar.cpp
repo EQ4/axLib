@@ -26,7 +26,7 @@ axScrollBar::axScrollBar(axWindow* parent,
                          const ax::Rect& rect,
                          const axScrollBarEvents& events,
                          const axScrollBarInfo& info,
-                         axFlag flags) :
+                         ax::Flag flags) :
 // Heritage.
 axPanel(parent, rect),
 // Members.

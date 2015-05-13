@@ -215,7 +215,7 @@ void axKnob::Info::SetAttribute(const ax::StringPair& attribute)
 axKnob::Builder::Builder(axWindow* parent,
                          const ax::Size& size,
                          const axKnob::Info& info,
-                         axFlag flags,
+                         ax::Flag flags,
                          int nextPositionDelta,
                          ax::Utils::Direction direction):
 _parent(parent),
@@ -231,7 +231,7 @@ _pastKnob(nullptr)
 }
 
 axKnob::Builder::Builder(axWindow* parent,
-                         axFlag flags,
+                         ax::Flag flags,
                          int nextPositionDelta,
                          ax::Utils::Direction direction):
 _parent(parent),
@@ -347,7 +347,7 @@ axKnob::axKnob(axWindow* parent,
                const ax::Rect& rect,
                const axKnob::Events& events,
                const axKnob::Info& info,
-               axFlag flags,
+               ax::Flag flags,
                double value,
                const std::string& msg):
 // Heritage.
@@ -481,7 +481,7 @@ axKnobControl::axKnobControl(axWindow* parent,
                              const axKnob::Events& events,
                              const axKnob::Info& info,
                              const std::string& label,
-                             axFlag flags,
+                             ax::Flag flags,
                              double value):
 // Heritage.
 axPanel(parent, rect),

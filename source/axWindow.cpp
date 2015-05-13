@@ -21,7 +21,7 @@
  ******************************************************************************/
 #include "axWindow.h"
 #include "axApp.h"
-#include "axMath.h"
+//#include "axMath.h"
 #include "axConfig.h"
 #include "axGraphicInterface.h"
 #include "axWindowTree.h"
@@ -378,7 +378,7 @@ void axWindow::SetHasBackBuffer(const bool& hasBackBuffer)
     _hasBackBuffer = hasBackBuffer;
 }
 
-axResourceManager* axWindow::GetResourceManager()
+ax::ResourceStorage* axWindow::GetResourceManager()
 {
     return &_resourceManager;
 }

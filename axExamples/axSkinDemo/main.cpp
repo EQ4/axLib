@@ -82,7 +82,7 @@ axPanel(app, rect)
 
 void MainPanel::OnButtonClick(const ax::Button::Msg& msg)
 {
-    axPrint("Btn click.");
+    ax::Print("Btn click.");
 //
 //    std::function<void()> popup_fct = [&]()
 //    {
@@ -119,7 +119,7 @@ void MainPanel::OnButtonClick(const ax::Button::Msg& msg)
 
 void MainPanel::OnResize(const ax::Size& size)
 {
-    axPrint("MainPanel::OnResize : size : ", size.x, size.y);
+    ax::Print("MainPanel::OnResize : size : ", size.x, size.y);
     SetSize(size);
     
     _fileBrowser->SetSize(ax::Size(200, size.y - 40));

@@ -10,6 +10,7 @@
 		7C18C3511B01AB1A00885929 /* axEvent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C18C3501B01AB1A00885929 /* axEvent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C18C3BF1B02B8B100885929 /* axUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C3BE1B02B8B100885929 /* axUtils.framework */; };
 		7C18C3C01B02B8B700885929 /* axUtils.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C18C3BE1B02B8B100885929 /* axUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C18C4201B03C84C00885929 /* axGL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C18C41F1B03C84C00885929 /* axGL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FA91A366F9E00544ACE /* Images.xcassets */; };
 		7C26300E1A36705F00544ACE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FC91A36705F00544ACE /* MainMenu.xib */; };
 		7C26303D1A3670BB00544ACE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630311A3670BB00544ACE /* main.cpp */; };
@@ -30,6 +31,7 @@
 				7C18C3C01B02B8B700885929 /* axUtils.framework in CopyFiles */,
 				7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */,
 				7C18C3511B01AB1A00885929 /* axEvent.framework in CopyFiles */,
+				7C18C4201B03C84C00885929 /* axGL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +40,7 @@
 /* Begin PBXFileReference section */
 		7C18C3501B01AB1A00885929 /* axEvent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axEvent.framework; path = ../../builds/axLib/Build/Debug/axEvent.framework; sourceTree = "<group>"; };
 		7C18C3BE1B02B8B100885929 /* axUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axUtils.framework; path = ../../builds/axLib/Build/Debug/axUtils.framework; sourceTree = "<group>"; };
+		7C18C41F1B03C84C00885929 /* axGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axGL.framework; path = ../../builds/axLib/Build/Debug/axGL.framework; sourceTree = "<group>"; };
 		7C262F9F1A366F9D00544ACE /* axDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = axDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C262FA31A366F9E00544ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C262FA91A366F9E00544ACE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		7C262F961A366F9D00544ACE = {
 			isa = PBXGroup;
 			children = (
+				7C18C41F1B03C84C00885929 /* axGL.framework */,
 				7C18C3BE1B02B8B100885929 /* axUtils.framework */,
 				7C18C3501B01AB1A00885929 /* axEvent.framework */,
 				7C8A7C291AE168A70094E9EF /* axLib.framework */,

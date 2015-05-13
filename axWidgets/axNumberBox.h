@@ -55,11 +55,11 @@ public:
     class Flags
     {
     public:
-        static const axFlag SINGLE_IMG;
-        static const axFlag NO_IMG_RESIZE;
-        static const axFlag LABEL;
-        static const axFlag SLIDER;
-        static const axFlag NO_MOUSE;
+        static const ax::Flag SINGLE_IMG;
+        static const ax::Flag NO_IMG_RESIZE;
+        static const ax::Flag LABEL;
+        static const ax::Flag SLIDER;
+        static const ax::Flag NO_MOUSE;
     };
     
     /***************************************************************************
@@ -142,7 +142,7 @@ public:
     private:
         axWindow* _parent;
         axNumberBox::Info _info;
-        axFlag _flags;
+        ax::Flag _flags;
         ax::Size _size;
         int _nextPositionDelta;
         axNumberBox* _past;
@@ -156,7 +156,7 @@ public:
                 const ax::Rect& rect,
                 const axNumberBox::Events& events,
                 const axNumberBox::Info& info,
-                axFlag flags = 0,
+                ax::Flag flags = 0,
                 double value = 0.0,
                 ax::FloatRange range = ax::FloatRange(0.0, 1.0),
                 ax::Utils::Control::Type type = ax::Utils::Control::axCTRL_FLOAT,
@@ -176,7 +176,7 @@ public:
     
 private:
     axNumberBox::Events _events;
-    axFlag _flags;
+    ax::Flag _flags;
     axImage* _bgImg;
     axFont* _font;
 

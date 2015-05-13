@@ -25,11 +25,11 @@
 /*******************************************************************************
  * axNumberBox::Flags.
  ******************************************************************************/
-const axFlag axNumberBox::Flags::SINGLE_IMG = axFLAG_1;
-const axFlag axNumberBox::Flags::NO_IMG_RESIZE = axFLAG_2;
-const axFlag axNumberBox::Flags::LABEL = axFLAG_3;
-const axFlag axNumberBox::Flags::SLIDER = axFLAG_4;
-const axFlag axNumberBox::Flags::NO_MOUSE = axFLAG_5;
+const ax::Flag axNumberBox::Flags::SINGLE_IMG = ax::FlagValue::FLAG_1;
+const ax::Flag axNumberBox::Flags::NO_IMG_RESIZE = ax::FlagValue::FLAG_2;
+const ax::Flag axNumberBox::Flags::LABEL = ax::FlagValue::FLAG_3;
+const ax::Flag axNumberBox::Flags::SLIDER = ax::FlagValue::FLAG_4;
+const ax::Flag axNumberBox::Flags::NO_MOUSE = ax::FlagValue::FLAG_5;
 
 /*******************************************************************************
  * axNumberBox::Msg.
@@ -270,7 +270,7 @@ axNumberBox::axNumberBox(axWindow* parent,
                          const ax::Rect& rect,
                          const axNumberBox::Events& events,
                          const axNumberBox::Info& info,
-                         axFlag flags,
+                         ax::Flag flags,
                          double value,
                          ax::FloatRange range,
                          ax::Utils::Control::Type type,
@@ -409,7 +409,7 @@ void axNumberBox::OnPaint()
     {
         if(static_cast<Info*>(_info)->single_img)
         {
-            if(IsFlag(Flags::NO_IMG_RESIZE, _flags))
+            if(ax::IsFlag(Flags::NO_IMG_RESIZE, _flags))
             {
                 gc->DrawImage(_bgImg, ax::Point(0, 0));
             }

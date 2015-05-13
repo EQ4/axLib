@@ -28,8 +28,8 @@
 /// @defgroup PopupMenu
 /// @{
 
-//#include "axEvent.h"
 #include <axEvent/axEvent.h>
+#include <axUtils/axUtils.h>
 //#include <axEvent/ax::Event::Msg.h>
 #include "axPanel.h"
 #include "axColor.h"
@@ -117,7 +117,7 @@ public:
 				const axPopupMenuInfo& info,
                 const std::vector<std::string>& labels,
                 std::string bgImg = "",
-				axFlag flags = 0);
+                ax::Flag flags = 0);
 
 	//~axPopupMenu();
 
@@ -127,7 +127,7 @@ public:
 private:
 	axPopupMenuEvents _events;
 	axPopupMenuInfo _info;
-	axFlag _flag;
+    ax::Flag _flag;
     std::vector<std::string> _labels;
     std::vector<axToggle*> _btns;
 	int _index;

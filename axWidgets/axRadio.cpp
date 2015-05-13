@@ -26,13 +26,13 @@
  * axToggle::axToggle.
  ******************************************************************************/
 axRadio::axRadio(axWindow* parent,
-                   const ax::Rect& rect,
-                   const axRadio::Events& events,
-                   const axRadio::Info& info,
-                   std::string img_path,
-                   std::string label,
-                   axFlag flags,
-                   std::string msg) :
+                 const ax::Rect& rect,
+                 const axRadio::Events& events,
+                 const axRadio::Info& info,
+                 std::string img_path,
+                 std::string label,
+                 ax::Flag flags,
+                 std::string msg) :
 // Heritage.
 axToggle(parent, rect, events, info, img_path, label, flags, msg)
 {

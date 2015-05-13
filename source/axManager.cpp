@@ -21,7 +21,7 @@
  ******************************************************************************/
 #include "axManager.h"
 #include "axWindow.h"
-#include "axMath.h"
+//#include "axMath.h"
 #include "axApp.h"
 #include "axCore.h"
 #include "axConfig.h"

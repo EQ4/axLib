@@ -25,10 +25,10 @@
 /*******************************************************************************
  * axToggle::Flags.
  ******************************************************************************/
-const axFlag axToggle::Flags::SINGLE_IMG = axFLAG_1;
-const axFlag axToggle::Flags::IMG_RESIZE = axFLAG_2;
-const axFlag axToggle::Flags::CLICK_ON_LEFT_DOWN = axFLAG_3;
-const axFlag axToggle::Flags::CANT_UNSELECT_WITH_MOUSE = axFLAG_4;
+const ax::Flag axToggle::Flags::SINGLE_IMG = ax::FlagValue::FLAG_1;
+const ax::Flag axToggle::Flags::IMG_RESIZE = ax::FlagValue::FLAG_2;
+const ax::Flag axToggle::Flags::CLICK_ON_LEFT_DOWN = ax::FlagValue::FLAG_3;
+const ax::Flag axToggle::Flags::CANT_UNSELECT_WITH_MOUSE = ax::FlagValue::FLAG_4;
 
 /*******************************************************************************
  * axToggle::Msg.
@@ -238,7 +238,7 @@ axToggle::Builder::Builder(axPanel* parent,
                            const axToggle::Info& info,
                            std::string img_path,
                            std::string label,
-                           axFlag flags,
+                           ax::Flag flags,
                            int nextPositionDelta,
                            ax::Utils::Direction direction):
 _parent(parent),
@@ -339,7 +339,7 @@ axToggle::axToggle(axWindow* parent,
                    const axToggle::Info& info,
                    std::string img_path,
                    std::string label,
-                   axFlag flags,
+                   ax::Flag flags,
                    std::string msg) :
 // Heritage.
 axWidget(parent, rect, new_ axToggle::Info(info)),
@@ -400,14 +400,14 @@ void axToggle::SetSelected(const bool& selected)
 
 void axToggle::OnMouseLeftDown(const ax::Point& pos)
 {
-    if(_selected && IsFlag(Flags::CANT_UNSELECT_WITH_MOUSE, _flags))
+    if(_selected && ax::IsFlag(Flags::CANT_UNSELECT_WITH_MOUSE, _flags))
     {
         // Don't do anything.
     }
     else
     {
         // Only switch selection on toggle_on_left_down.
-        if (IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
+        if (ax::IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
         {
             _selected = !_selected;
         }
@@ -425,7 +425,7 @@ void axToggle::OnMouseLeftDown(const ax::Point& pos)
         
         GrabMouse();
         
-        if (IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
+        if (ax::IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
         {
             PushEvent(Events::BUTTON_CLICK, new_ Msg(this, _selected, _msg));
         }
@@ -443,7 +443,7 @@ void axToggle::OnMouseLeftUp(const ax::Point& pos)
 		if (IsMouseHoverWindow())
 		{
             // Only invert selection on toggle_on_left_up.
-            if (!IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
+            if (!ax::IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
             {
                 _selected = !_selected;
             }
@@ -462,7 +462,7 @@ void axToggle::OnMouseLeftUp(const ax::Point& pos)
 			
             
             // If toggle on left up.
-            if (!IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
+            if (!ax::IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
             {
                 PushEvent(Events::BUTTON_CLICK, new_ Msg(this, _selected, _msg));
             }

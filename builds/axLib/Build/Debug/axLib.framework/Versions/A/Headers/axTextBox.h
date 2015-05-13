@@ -55,10 +55,10 @@ public:
     class Flags
     {
     public:
-        static const axFlag FLASHING_CURSOR;
-        static const axFlag CONTOUR_HIGHLIGHT;
-        static const axFlag CONTOUR_NO_FADE;
-        static const axFlag HIDDEN_TEXT;
+        static const ax::Flag FLASHING_CURSOR;
+        static const ax::Flag CONTOUR_HIGHLIGHT;
+        static const ax::Flag CONTOUR_NO_FADE;
+        static const ax::Flag HIDDEN_TEXT;
     };
     
     /***************************************************************************
@@ -145,7 +145,7 @@ public:
         
     private:
         ax::Size _size;
-        axFlag _flags;
+        ax::Flag _flags;
         axTextBox::Info _info;
         std::string _imgPath;
         std::string _label;
@@ -161,7 +161,7 @@ public:
               const axTextBox::Info& info,
               std::string img_path = "",
               std::string label = "",
-              axFlag flags = 0);
+              ax::Flag flags = 0);
 
     void SetLabel(const std::string& label);
     
@@ -173,7 +173,7 @@ protected:
     axTextBox::Events _events;
     std::string _label;
     axImage* _btnImg;
-    axFlag _flags;
+    ax::Flag _flags;
     axFont* _font;
         
     axColor* _currentColor;

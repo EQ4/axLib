@@ -117,12 +117,12 @@ public:
         Builder(axWindow* parent,
                 const ax::Size& size,
                 const axKnob::Info& info,
-                axFlag flags = 0,
+                ax::Flag flags = 0,
                 int nextPositionDelta = 5,
                 ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
         Builder(axWindow* parent,
-                axFlag flags = 0,
+                ax::Flag flags = 0,
                 int nextPositionDelta = 5,
                 ax::Utils::Direction direction = ax::Utils::axDIRECTION_RIGHT);
         
@@ -139,7 +139,7 @@ public:
     private:
         axWindow* _parent;
         axKnob::Info _info;
-        axFlag _flags;
+        ax::Flag _flags;
         ax::Size _size;
         int _nextPositionDelta;
         axKnob* _pastKnob;
@@ -153,7 +153,7 @@ public:
            const ax::Rect& rect,
            const axKnob::Events& events,
            const axKnob::Info& info,
-           axFlag flags = 0,
+           ax::Flag flags = 0,
            double value = 0.0,
            const std::string& msg = "");
 
@@ -173,7 +173,7 @@ private:
     axKnob::Events _events;
     std::string _msg;
 //    axKnob::Info _info;
-    axFlag _flags;
+    ax::Flag _flags;
     ax::FloatRange _range;
 
     axImage* m_knobImg;
@@ -201,7 +201,7 @@ private:
                    const axKnob::Events& events,
                    const axKnob::Info& info,
                    const std::string& label,
-                   axFlag flags = 0,
+                   ax::Flag flags = 0,
                    double value = 0.0);
      
      axEVENT_ACCESSOR(axKnob::Msg, OnKnobValueChange);
