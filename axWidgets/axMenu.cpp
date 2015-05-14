@@ -239,7 +239,7 @@ void axMenu::OnPaint()
 {
     ax::GC gcs = ax::GC();
     ax::GC* gc = &gcs;
-    ax::Size size = GetSize();
+//    ax::Size size = GetSize();
     ax::Rect rect(GetRect());
     ax::Rect rect0(ax::Point(0, 0), rect.size);
 

@@ -260,12 +260,12 @@ void ax::App::UpdateAll()
 	_core->UpdateAll();
 }
 
-axManager* ax::App::GetWindowManager()
+ax::Core::WindowManager* ax::App::GetWindowManager()
 {
 	return _core->GetWindowManager();
 }
 
-axManager* ax::App::GetPopupManager()
+ax::Core::WindowManager* ax::App::GetPopupManager()
 {
     return _core->GetPopupManager();
 }

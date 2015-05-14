@@ -509,7 +509,7 @@ void axTextBox::OnRightArrowDown()
     
     if(_cursorIndex > _label.size())
     {
-        _cursorIndex = _label.size();
+        _cursorIndex = (int)_label.size();
     }
     
     if(_isHightlight)
@@ -567,7 +567,7 @@ void axTextBox::OnPaint()
 {
     ax::GC gcs = ax::GC();
     ax::GC* gc = &gcs;
-	ax::Rect rect(GetRect());
+//	ax::Rect rect(GetRect());
 	ax::Rect rect0(GetDrawingRect());
     
 //    DrawContourRectangle(gc);

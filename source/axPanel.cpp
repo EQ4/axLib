@@ -131,7 +131,7 @@ axWindow(parent, rect)
 {
     if(f == 86)
     {
-        axManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
+        ax::Core::WindowManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
         man->Add(this);
         return;
     }
@@ -171,10 +171,10 @@ axPanel::~axPanel()
     axWindow::~axWindow();
 }
 
-axPanel::axWindowType axPanel::GetWindowType()
-{
-    return axWindowType::axWINDOW_TYPE_PANEL;
-}
+//axPanel::axWindowType axPanel::GetWindowType()
+//{
+//    return axWindowType::axWINDOW_TYPE_PANEL;
+//}
 
 void axPanel::BlockDrawing()
 {

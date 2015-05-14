@@ -103,7 +103,7 @@ public:
     bool IsInfoEditable() const;
     bool AcceptChild() const;
     
-    virtual axWindow::axWindowType GetWindowType();
+//    virtual axWindow::axWindowType GetWindowType();
     
     virtual void SetInfo(const ax::StringPairVector& attributes);
     

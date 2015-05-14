@@ -26,7 +26,7 @@
 /// @{
 
 #include "axC++.h"
-#include "axManager.h"
+#include "axWindowManager.h"
 #include <time.h>
 
 class axCore
@@ -64,11 +64,11 @@ public:
     
     int InitGL();
     
-	virtual axManager* GetWindowManager();
+	virtual ax::Core::WindowManager* GetWindowManager();
     
-	virtual axManager* GetPopupManager();
+	virtual ax::Core::WindowManager* GetPopupManager();
     
-    virtual axManager* GetRealPopWindowManager();
+    virtual ax::Core::WindowManager* GetRealPopWindowManager();
     
     ax::Size GetGlobalSize() const;
     
@@ -83,10 +83,10 @@ public:
 	virtual int DrawGLScene();
 
 protected:
-	std::unique_ptr<axManager> _windowManager;
-	std::unique_ptr<axManager> _popupManager;
+    std::unique_ptr<ax::Core::WindowManager> _windowManager;
+	std::unique_ptr<ax::Core::WindowManager> _popupManager;
     
-    std::unique_ptr<axManager> _realPopWindowManager;
+    std::unique_ptr<ax::Core::WindowManager> _realPopWindowManager;
 
 	bool _needToDraw, _popupNeedToDraw;
     ax::Size _size, _popSize;

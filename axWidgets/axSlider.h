@@ -141,7 +141,7 @@ struct axSliderInfo
 
     axSliderInfo(const std::string& info_path)
 	{
-		(info_path);
+		axUNUSED(info_path);
 	// 	ifstream file;
 	// 	file.open(info_path);
 

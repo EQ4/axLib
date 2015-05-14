@@ -107,7 +107,7 @@ void BeforeDrawing(axWindow* win)
         ax::Rect abs_rect = win->GetAbsoluteRect();
         ax::Rect shown_rect = win->GetShownRect();
         
-        double delta_size_x = shown_rect.size.x - abs_rect.size.x;
+//        double delta_size_x = shown_rect.size.x - abs_rect.size.x;
         double delta_size_y = shown_rect.size.y - abs_rect.size.y;
         
         double globalY = win->GetApp()->GetCore()->GetGlobalSize().y;

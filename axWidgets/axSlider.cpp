@@ -365,8 +365,8 @@ void axSlider::DrawLineBehindSlider_Vertical(ax::GC* gc, const ax::Rect& rect0)
 
 void axSlider::DrawVerticalSlider(ax::GC* gc, const ax::Rect& rect0)
 {
-	ax::Size size(rect0.size);
-	int half_btn_size = _info.btn_size.y * 0.5;
+//	ax::Size size(rect0.size);
+//	int half_btn_size = _info.btn_size.y * 0.5;
 
 	// if (IsFlag(axSLIDER_FLAG_BACK_SLIDER, _flags))
 	// {

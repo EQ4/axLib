@@ -64,4 +64,11 @@ namespace ax
     typedef Utils::Property<std::string> Property;
 }
 
+#ifdef _MSC_VER
+    #define axUNUSED(x) (x)
+#else //__APPLE__
+    #define axUNUSED(x)
+#endif // __APPLE__
+
+
 

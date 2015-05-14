@@ -33,13 +33,13 @@ _popupNeedToDraw(true)
 
 void axCore::InitManagers()
 {
-	_windowManager = std::unique_ptr<axManager>(new axManager());
+	_windowManager = std::unique_ptr<ax::Core::WindowManager>(new ax::Core::WindowManager());
     _windowManager->_managerName = "WindowManager";
     
-	_popupManager = std::unique_ptr<axManager>(new axManager());
+	_popupManager = std::unique_ptr<ax::Core::WindowManager>(new ax::Core::WindowManager());
     _popupManager->_managerName = "PopupManager";
     
-    _realPopWindowManager = std::unique_ptr<axManager>(new axManager());
+    _realPopWindowManager = std::unique_ptr<ax::Core::WindowManager>(new ax::Core::WindowManager());
     _realPopWindowManager->_managerName = "RealPopWindowManager";
 }
 
@@ -49,17 +49,17 @@ int axCore::InitGL()
     return true;
 }
 
-axManager* axCore::GetWindowManager()
+ax::Core::WindowManager* axCore::GetWindowManager()
 {
 	return _windowManager.get();
 }
 
-axManager* axCore::GetPopupManager()
+ax::Core::WindowManager* axCore::GetPopupManager()
 {
 	 return _popupManager.get();
 }
 
-axManager* axCore::GetRealPopWindowManager()
+ax::Core::WindowManager* axCore::GetRealPopWindowManager()
 {
     return _realPopWindowManager.get();
 }

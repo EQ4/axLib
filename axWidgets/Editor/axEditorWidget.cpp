@@ -122,7 +122,7 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
         
         // Find panel under mouse.
         
-        axManager* manager = GetApp()->GetCore()->GetWindowManager();
+        ax::Core::WindowManager* manager = GetApp()->GetCore()->GetWindowManager();
         axWindow* win = manager->GetWindowTree()->FindMousePosition(pos);
         
         
@@ -132,7 +132,8 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
         {
 //            ax::Print(id, win->GetWindowType());
             
-            if(win->GetWindowType() == axWindowType::axWINDOW_TYPE_PANEL)
+            //if(win->GetWindowType() == axWindowType::axWINDOW_TYPE_PANEL)
+            if(win->HasProperty("AcceptWidget"))
             {
                 ax::Button::Info btn_info;
                 btn_info.normal = ax::Color(0.7, 0.7, 0.7, 0.3);

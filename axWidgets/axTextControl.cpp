@@ -58,7 +58,7 @@ _findClickCursorIndex(false)
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
-    _cursorIndex = _label.size();
+    _cursorIndex = (int)_label.size();
     
     _font = new_ ax::Font(0);
     

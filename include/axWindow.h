@@ -27,18 +27,19 @@
 
 #include <axEvent/axObject.h>
 #include <axUtils/axUtils.h>
-#include "axC++.h"
-#include <axGL/axGC.h>
-//#include "axResourceManager.h"
-#include "axConfig.h"
-#include <axGL/axFrameBuffer.h>
 #include <axUtils/axResourceStorage.h>
+#include <axGL/axGC.h>
+#include <axGL/axFrameBuffer.h>
 
+#include "axConfig.h"
+#include "axC++.h"
 
 namespace ax
 {
     class App;
 }
+
+//class axManager;
 
 class axWindow : public ax::Event::Object
 {
@@ -52,29 +53,17 @@ public:
     
     axWindow* GetParent() const;
     
-    enum axWindowType
-    {
-        axWINDOW_TYPE_WINDOW,
-        axWINDOW_TYPE_PANEL,
-        axWINDOW_TYPE_WIDGET
-    };
-    
-    virtual axWindowType GetWindowType()
-    {
-        return axWINDOW_TYPE_WINDOW;
-    }
-    
     //--------------------------------------------------------------------------
 	ax::Rect GetRect() const;
 	ax::Rect GetAbsoluteRect() const;
-	void SetRect(const ax::Rect& rect);
 	ax::Size GetSize() const;
+    ax::Rect GetShownRect() const;
+    
+    void SetRect(const ax::Rect& rect);
 	void SetSize(const ax::Size& size);
 	void SetPosition(const ax::Point& pos);
-    
     void SetShownRect(const ax::Rect& size);
     void SetSizeNoShowRect(const ax::Size& size);
-    ax::Rect GetShownRect() const;
     //--------------------------------------------------------------------------
 
 	void SetScrollDecay(const ax::Point& decay);
@@ -107,19 +96,19 @@ public:
     // Mouse events.
     virtual void OnLeftDragging(){}
     virtual void OnRightDragging(){}
-	virtual void OnMouseMotion(const ax::Point& pos){ (pos); }
-	virtual void OnMouseLeftDown(const ax::Point& pos){ (pos); }
-	virtual void OnMouseLeftDoubleClick(const ax::Point& pos){ (pos); }
-	virtual void OnMouseLeftUp(const ax::Point& pos){ (pos); }
-	virtual void OnMouseRightDown(const ax::Point& pos){ (pos); }
+	virtual void OnMouseMotion(const ax::Point& pos){ axUNUSED(pos); }
+	virtual void OnMouseLeftDown(const ax::Point& pos){ axUNUSED(pos); }
+	virtual void OnMouseLeftDoubleClick(const ax::Point& pos){ axUNUSED(pos); }
+	virtual void OnMouseLeftUp(const ax::Point& pos){ axUNUSED(pos); }
+	virtual void OnMouseRightDown(const ax::Point& pos){ axUNUSED(pos); }
     virtual void OnMouseRightUp(){}
     virtual void OnMouseEnter(){}
     virtual void OnMouseLeave(){}
     virtual void OnFocusIn(){}
-	virtual void OnMouseLeftDragging(const ax::Point& pos){ (pos); }
+	virtual void OnMouseLeftDragging(const ax::Point& pos){ axUNUSED(pos); }
     
     // Keyboard events.
-	virtual void OnKeyDown(const char& key){ (key); }
+	virtual void OnKeyDown(const char& key){ axUNUSED(key); }
     virtual void OnBackSpaceDown(){}
     virtual void OnEnterDown(){}
     virtual void OnKeyDeleteDown(){}
@@ -128,34 +117,17 @@ public:
     virtual void OnWasKeyUnGrabbed(){}
     virtual void OnWasKeyGrabbed(){}
     
+    inline ax::App* GetApp() const;
     
-    inline ax::App* GetApp() const
-    {
-        return _app;
-    }
+    inline ax::App* GetApp();
     
-    inline ax::App* GetApp()
-    {
-        return _app;
-    }
+    ax::Property& GetProperties();
     
-    inline void AddProperty(const std::string& property)
-    {
-        _properties.AddProperty(property);
-//        _properties.insert(property);
-    }
+    void AddProperty(const std::string& property);
     
-    inline void RemoveProperty(const std::string& property)
-    {
-        _properties.RemoveProperty(property);
-//        _properties.erase(property);
-    }
+    void RemoveProperty(const std::string& property);
     
-    inline bool HasProperty(const std::string& property) const
-    {
-        return _properties.HasProperty(property);
-//        return _properties.find(property) == _properties.end() ? false : true;
-    }
+    bool HasProperty(const std::string& property) const;
     
 private:
     ax::App* _app;
@@ -179,9 +151,40 @@ private:
     // EditingWidget
     // Editable
     // BackBuffer
-//    std::unordered_set<std::string> _properties;
+    // AcceptWidget
     ax::Property _properties;
 };
+
+inline ax::App* axWindow::GetApp() const
+{
+    return _app;
+}
+
+inline ax::App* axWindow::GetApp()
+{
+    return _app;
+}
+
+inline void axWindow::AddProperty(const std::string& property)
+{
+    _properties.AddProperty(property);
+}
+
+inline void axWindow::RemoveProperty(const std::string& property)
+{
+    _properties.RemoveProperty(property);
+}
+
+inline bool axWindow::HasProperty(const std::string& property) const
+{
+    return _properties.HasProperty(property);
+}
+
+inline ax::Property& axWindow::GetProperties()
+{
+    return _properties;
+}
+
 
 /// @}
 #endif //__AX_WINDOW__

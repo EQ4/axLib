@@ -42,7 +42,7 @@ public:
 	void UpdateAll();
 	virtual void Update();
     
-    virtual axWindowType GetWindowType();
+//    virtual axWindowType GetWindowType();
 
 	void GrabMouse();
 	void UnGrabMouse();
@@ -75,7 +75,7 @@ public:
 private:
 	bool _isInPopup;
     axScrollBar* _scrollBar = nullptr;
-    axWindowType _windowType;
+//    axWindowType _windowType;
     
 //    ax::Color _panelColor;
 };

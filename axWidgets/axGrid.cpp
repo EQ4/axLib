@@ -168,7 +168,7 @@ void axGrid::OnPaint()
 
 	gc->SetColor(_info.contour, 1.0);
 
-	int y = 0;
+//	int y = 0;
 	glLineWidth(1.0);
 	for(int j = 0; j <= _dimension.y; j++)
 	{
@@ -176,7 +176,7 @@ void axGrid::OnPaint()
 		gc->DrawLine(ax::Point(0, y), ax::Point(rect.size.x, y));
 	}
 
-	int x = 0;
+//	int x = 0;
 	for(int i = 0; i <= _dimension.x; i++)
 	{
 		int x = (double(i) / _dimension.x) * rect.size.x;

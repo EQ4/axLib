@@ -80,8 +80,8 @@ namespace ax
         
         std::string GetResourceFile(const std::string& file_name);
         
-        axManager* GetWindowManager();
-        axManager* GetPopupManager();
+        ax::Core::WindowManager* GetWindowManager();
+        ax::Core::WindowManager* GetPopupManager();
         
         void AddWindow(axWindow* win);
         
