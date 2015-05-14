@@ -35,20 +35,25 @@ axPanel(parent, rect)
                                   ax::Rect(btn4->GetRect().GetNextPosDown(0), btnSize),
                                               "Slider");
 
-    btn1->SetEditingWidget(true);
-    btn1->SetEditable(false);
+//    btn1->SetEditingWidget(true);
+    btn1->AddProperty("EditingWidget");
+//    btn1->SetEditable(false);
     
-    btn2->SetEditingWidget(true);
-    btn2->SetEditable(false);
+//    btn2->SetEditingWidget(true);
+    btn2->AddProperty("EditingWidget");
+//    btn2->SetEditable(false);
     
-    btn3->SetEditingWidget(true);
-    btn3->SetEditable(false);
+//    btn3->SetEditingWidget(true);
+    btn3->AddProperty("EditingWidget");
+//    btn3->SetEditable(false);
     
-    btn4->SetEditingWidget(true);
-    btn4->SetEditable(false);
+//    btn4->SetEditingWidget(true);
+    btn4->AddProperty("EditingWidget");
+//    btn4->SetEditable(false);
     
-    btn5->SetEditingWidget(true);
-    btn5->SetEditable(false);
+//    btn5->SetEditingWidget(true);
+    btn5->AddProperty("EditingWidget");
+//    btn5->SetEditable(false);
 }
 
 void axEditorWidgetsPanel::OnPaint()

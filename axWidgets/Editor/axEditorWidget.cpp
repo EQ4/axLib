@@ -32,8 +32,9 @@ _fontBold("FreeSansBold.ttf")
 {
     _currentColor = &_info.normal;
     
-    SetEditingWidget(true);
-    SetEditable(false);
+//    SetEditingWidget(true);
+    AddProperty("EditingWidget");
+//    SetEditable(false);
 }
 
 void axEditorWidget::SetMsg(const std::string& msg)

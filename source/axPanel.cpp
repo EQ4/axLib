@@ -28,17 +28,18 @@
 axPanel::axPanel(ax::App* app, const ax::Rect& rect) :
 axWindow(app, rect)
 {
-    if(GetIsPopup())
-    {
-        app->AddPopWindow(this);
-    }
-    else if(GetIsRealPopup())
-    {
-        SetRealPopupWindow(true);
-        axManager* man = app->GetCore()->GetRealPopWindowManager();
-        man->Add(this);
-    }
-    else
+//    if(GetIsPopup())
+//    if(HasProperty("Popup"))
+//    {
+//        app->AddPopWindow(this);
+//    }
+//    else if(GetIsRealPopup())
+//    {
+//        SetRealPopupWindow(true);
+//        axManager* man = app->GetCore()->GetRealPopWindowManager();
+//        man->Add(this);
+//    }
+//    else
     {
         app->AddWindow(this);
     }
@@ -87,17 +88,19 @@ axWindow(parent, rect)
 {
 	if (parent != nullptr)
 	{
-		if (parent->GetIsPopup())
+//		if (parent->GetIsPopup())
+        if(parent->HasProperty("Popup"))
 		{
-            SetPopupWindow(true);
+//            SetPopupWindow(true);
+            AddProperty("Popup");
 			ax::App::GetMainApp()->AddPopWindow(this);
 		}
-        else if(parent->GetIsRealPopup())
-        {
-            SetRealPopupWindow(true);
-            axManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
-            man->Add(this);
-        }
+//        else if(parent->GetIsRealPopup())
+//        {
+//            SetRealPopupWindow(true);
+//            axManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
+//            man->Add(this);
+//        }
 		else
 		{
 			ax::App::GetMainApp()->AddWindow(this);
@@ -105,16 +108,16 @@ axWindow(parent, rect)
 	}
 	else
 	{
-        if(GetIsPopup())
+        if(HasProperty("Popup"))
         {
             ax::App::GetMainApp()->AddPopWindow(this);
         }
-        else if(GetIsRealPopup())
-        {
-            SetRealPopupWindow(true);
-            axManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
-            man->Add(this);
-        }
+//        else if(GetIsRealPopup())
+//        {
+//            SetRealPopupWindow(true);
+//            axManager* man = ax::App::GetMainApp()->GetCore()->GetRealPopWindowManager();
+//            man->Add(this);
+//        }
         else
         {
             ax::App::GetMainApp()->AddWindow(this);
@@ -133,7 +136,8 @@ axWindow(parent, rect)
         return;
     }
     
-    SetPopupWindow(true);
+//    SetPopupWindow(true);
+    AddProperty("Popup");
 	ax::App::GetMainApp()->AddPopWindow(this);
 }
 
@@ -146,7 +150,8 @@ axPanel::~axPanel()
     
     if(IsMouseHoverWindow())
     {
-        if(GetIsPopup())
+        //if(GetIsPopup())
+        if(HasProperty("Popup"))
         {
             ax::App::GetMainApp()->GetPopupManager()->ReleaseMouseHover();
         }
@@ -221,7 +226,8 @@ void axPanel::HideMouse()
 
 void axPanel::GrabMouse()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         ax::App::GetMainApp()->GetPopupManager()->GrabMouse(this);
     }
@@ -234,7 +240,8 @@ void axPanel::GrabMouse()
 
 void axPanel::UnGrabMouse()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         ax::App::GetMainApp()->GetPopupManager()->UnGrabMouse();
     }
@@ -247,7 +254,8 @@ void axPanel::UnGrabMouse()
 
 void axPanel::GrabKey()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         ax::App::GetMainApp()->GetPopupManager()->GrabKey(this);
     }
@@ -259,7 +267,8 @@ void axPanel::GrabKey()
 
 void axPanel::UnGrabKey()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         ax::App::GetMainApp()->GetPopupManager()->UnGrabKey();
     }
@@ -271,7 +280,8 @@ void axPanel::UnGrabKey()
 
 bool axPanel::IsKeyGrab()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         return ax::App::GetMainApp()->GetPopupManager()->IsKeyGrab(this);
     }
@@ -304,7 +314,8 @@ void axPanel::Update()
 
 bool axPanel::IsGrabbed()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         return ax::App::GetMainApp()->GetPopupManager()->IsGrab();
     }
@@ -317,7 +328,8 @@ bool axPanel::IsGrabbed()
 
 bool axPanel::IsMouseHoverWindow()
 {
-    if(GetIsPopup())
+//    if(GetIsPopup())
+    if(HasProperty("Popup"))
     {
         return ax::App::GetMainApp()->GetPopupManager()->IsMouseHoverWindow(this);
     }

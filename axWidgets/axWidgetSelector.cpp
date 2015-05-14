@@ -43,8 +43,10 @@ axPanel(3, parent, ax::Rect(0, 0, 20, 20)),
 _info(ax::Color(1.0, 0.33, 0.0)),
 _selectedWidget(nullptr)
 {
-    SetSelectable(false);
-    SetHasBackBuffer(false);
+    RemoveProperty("Selectable");
+    RemoveProperty("BackBuffer");
+//    SetSelectable(false);
+//    SetHasBackBuffer(false);
     Hide();
 }
 

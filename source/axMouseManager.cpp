@@ -90,7 +90,8 @@ void axMouseManager::OnMouseMotion(const ax::Point& pos)
 	{
 		axWindow* win = _windowTree->FindMousePosition(pos);
         
-        if(win != nullptr && win->IsSelectable())
+//        if(win != nullptr && win->IsSelectable())
+        if(win != nullptr && win->HasProperty("Selectable"))
         {
             _currentWindow = win;
             
@@ -156,7 +157,7 @@ void axMouseManager::OnMouseLeftDown(const ax::Point& pos)
 	{
 		axWindow* win = _windowTree->FindMousePosition(pos);
         
-        if(win != nullptr && win->IsSelectable())
+        if(win != nullptr && win->HasProperty("Selectable"))
         {
             _currentWindow = win;
             

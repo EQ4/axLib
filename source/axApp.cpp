@@ -154,7 +154,7 @@ void ax::App::CreateEditor()
                                  "",
                                  "",
                                  axToggle::Flags::SINGLE_IMG);
-    tog->SetEditable(false);
+//    tog->SetEditable(false);
     
     _debugMenu = new axEditorMenu(ax::Rect(size.x, 0, 300, size.y));
     _debugMenu->Hide();

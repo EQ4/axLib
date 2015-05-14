@@ -33,21 +33,22 @@ ax::Event::Object(app->GetEventManager()),
 _parent(nullptr),
 _rect(rect),
 _isHidden(false),
-_isPopup(false),
-_isRealPopup(false),
-_isBlockDrawing(false),
+//_isPopup(false),
+//_isRealPopup(false),
+//_isBlockDrawing(false),
 _shownRect(ax::Point(0, 0), rect.size),
-_isSelectable(true),
+//_isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
-_isEditingWidget(false),
-_isEditable(true),
+//_isEditingWidget(false),
+//_isEditable(true),
 _frameBufferObj(rect.size),
-_hasBackBuffer(true),
+//_hasBackBuffer(true),
 _app(app)
 {
-    
+    AddProperty("BackBuffer");
+    AddProperty("Selectable");
 }
 
 axWindow::axWindow(axWindow* parent, const ax::Rect& rect):
@@ -57,20 +58,23 @@ ax::Event::Object(parent->GetApp()->GetEventManager()),
 _parent(parent),
 _rect(rect),
 _isHidden(false),
-_isPopup(false),
-_isRealPopup(false),
-_isBlockDrawing(false),
+//_isPopup(false),
+//_isRealPopup(false),
+//_isBlockDrawing(false),
 _shownRect(ax::Point(0, 0), rect.size),
-_isSelectable(true),
+//_isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
-_isEditingWidget(false),
-_isEditable(true),
+//_isEditingWidget(false),
+//_isEditable(true),
 _frameBufferObj(rect.size),
-_hasBackBuffer(true),
+//_hasBackBuffer(true),
 _app(parent->GetApp())
 {
+    AddProperty("BackBuffer");
+    AddProperty("Selectable");
+    
 	if (parent == nullptr)
 	{
         // Should now never happen with new axApp.
@@ -234,7 +238,9 @@ void axWindow::SetSize(const ax::Size& size)
     _shownRect.size = size;
 
 //    InitGLWindowBackBufferDrawing();
-    if(_hasBackBuffer)
+    
+//    if(_hasBackBuffer)
+    if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(size);
     }
@@ -247,7 +253,8 @@ void axWindow::SetSizeNoShowRect(const ax::Size& size)
     _rect.size = size;
     
     //    InitGLWindowBackBufferDrawing();
-    if(_hasBackBuffer)
+//    if(_hasBackBuffer)
+    if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(size);
     }
@@ -263,7 +270,8 @@ void axWindow::SetRect(const ax::Rect& rect)
 
 	//    InitGLWindowBackBufferDrawing();
     
-    if(_hasBackBuffer)
+//    if(_hasBackBuffer)
+    if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(rect.size);
     }
@@ -287,51 +295,51 @@ void axWindow::SetPosition(const ax::Point& pos)
 	Update();
 }
 
-bool axWindow::IsSelectable() const
-{
-    if(IsEditingWidget() && GetApp()->IsDebugEditorActive() == false)
-    {
-        return false;
-    }
-    
-    return _isSelectable;
-}
+//bool axWindow::IsSelectable() const
+//{
+//    if(IsEditingWidget() && GetApp()->IsDebugEditorActive() == false)
+//    {
+//        return false;
+//    }
+//    
+//    return _isSelectable;
+//}
 
-bool axWindow::IsEditingWidget() const
-{
-    return _isEditingWidget;
-}
+//bool axWindow::IsEditingWidget() const
+//{
+//    return _isEditingWidget;
+//}
 
-void axWindow::SetEditingWidget(const bool& editing)
-{
-    _isEditingWidget = editing;
-}
+//void axWindow::SetEditingWidget(const bool& editing)
+//{
+//    _isEditingWidget = editing;
+//}
 
-void axWindow::SetEditable(const bool& editable)
-{
-    _isEditable = editable;
-}
+//void axWindow::SetEditable(const bool& editable)
+//{
+//    _isEditable = editable;
+//}
 
-bool axWindow::IsEditable() const
-{
-    return _isEditable;
-}
+//bool axWindow::IsEditable() const
+//{
+//    return _isEditable;
+//}
 
-void axWindow::SetPopupWindow(const bool& popup)
-{
-    _isPopup = popup;
-}
+//void axWindow::SetPopupWindow(const bool& popup)
+//{
+//    _isPopup = popup;
+//}
 
 
-bool axWindow::GetIsRealPopup()
-{
-    return _isRealPopup;
-}
+//bool axWindow::GetIsRealPopup()
+//{
+//    return _isRealPopup;
+//}
 
-void axWindow::SetRealPopupWindow(const bool& popup)
-{
-    _isRealPopup = popup;
-}
+//void axWindow::SetRealPopupWindow(const bool& popup)
+//{
+//    _isRealPopup = popup;
+//}
 
 void axWindow::SetWindowColor(const ax::Color& color)
 {
@@ -353,30 +361,30 @@ void axWindow::SetNeedUpdate()
     _needUpdate = true;
 }
 
-bool axWindow::GetIsPopup()
-{
-    return _isPopup;
-}
+//bool axWindow::GetIsPopup()
+//{
+//    return _isPopup;
+//}
 
-void axWindow::SetSelectable(const bool& selectable)
-{
-    _isSelectable = selectable;
-}
+//void axWindow::SetSelectable(const bool& selectable)
+//{
+//    _isSelectable = selectable;
+//}
 
-bool axWindow::IsBlockDrawing() const
-{
-    return _isBlockDrawing;
-}
+//bool axWindow::IsBlockDrawing() const
+//{
+//    return _isBlockDrawing;
+//}
 
-void axWindow::SetBlockDrawing(const bool& block)
-{
-    _isBlockDrawing = block;
-}
+//void axWindow::SetBlockDrawing(const bool& block)
+//{
+//    _isBlockDrawing = block;
+//}
 
-void axWindow::SetHasBackBuffer(const bool& hasBackBuffer)
-{
-    _hasBackBuffer = hasBackBuffer;
-}
+//void axWindow::SetHasBackBuffer(const bool& hasBackBuffer)
+//{
+//    _hasBackBuffer = hasBackBuffer;
+//}
 
 ax::ResourceStorage* axWindow::GetResourceManager()
 {
@@ -401,12 +409,11 @@ void axWindow::RenderWindow()
 {
 #if _axBackBufferWindow_ == 1
     
-    if(_hasBackBuffer)
+//    if(_hasBackBuffer)
+    if(HasProperty("BackBuffer"))
     {
         if(_needUpdate)
         {
-//            std::function<void()> draw([this](){ OnPaint(); });
-            
             _frameBufferObj.DrawOnFrameBuffer([this](){ OnPaint(); },
                                               GetRect().size,
                                               GetApp()->GetCore()->GetGlobalSize());

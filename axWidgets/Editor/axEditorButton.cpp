@@ -48,8 +48,9 @@ _font(nullptr)
     _currentColor = &_info.normal;
     _font = std::unique_ptr<ax::Font>(new_ ax::Font(0));
     
-    SetEditingWidget(true);
-    SetEditable(false);
+    AddProperty("EditingWidget");
+//    SetEditingWidget(true);
+//    SetEditable(false);
 }
 
 void axDebugButton::SetMsg(const std::string& msg)
@@ -95,7 +96,8 @@ void axDebugButton::OnMouseLeftDown(const ax::Point& pos)
     axWidget* widget = static_cast<axWidget*>(GetParent());
     
     // Prevent from click on the hidden edit button of editing widgets.
-    if(!widget->IsEditingWidget() && widget->axWindow::IsEditable())
+//    if(!widget->IsEditingWidget() && widget->axWindow::IsEditable())
+    if(!widget->HasProperty("EditingWidget") && widget->HasProperty("Editable"))
     {
         
         //axPrint("Ctrl :", );

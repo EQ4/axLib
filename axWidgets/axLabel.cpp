@@ -212,7 +212,8 @@ axWidget(parent, rect, new_ Info(info)),
 _label(label),
 _font(nullptr)
 {
-    SetSelectable(false);
+//    SetSelectable(false);
+    RemoveProperty("Selectable");
     
     if(static_cast<Info*>(_info)->font_name != "")
     {

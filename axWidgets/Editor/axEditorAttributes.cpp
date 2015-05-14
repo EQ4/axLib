@@ -6,7 +6,8 @@ _font(0),
 _widget(nullptr)
 {
     _font.SetFontSize(14);
-    SetBlockDrawing(true);
+//    SetBlockDrawing(true);
+    AddProperty("BlockDrawing");
 }
 
 void axEditorAttributes::SetEditingWidget(axWidget* widget)
@@ -139,10 +140,15 @@ void axEditorAttributes::AddEditorAttribute(const ax::StringPair& att,
     
     _infoEditor.push_back(axEditorTuple(att.first, label, txtBox));
     
-    label->SetEditingWidget(true);
-    txtBox->SetEditingWidget(true);
-    label->SetEditable(false);
-    txtBox->SetEditable(false);
+    
+    label->AddProperty("EditingWidget");
+    txtBox->AddProperty("EditingWidget");
+//    label->SetEditingWidget(true);
+//    txtBox->SetEditingWidget(true);
+    
+    
+//    label->SetEditable(false);
+//    txtBox->SetEditable(false);
 }
 
 void axEditorAttributes::AddEditorLabel(const std::string& name,
@@ -160,8 +166,9 @@ void axEditorAttributes::AddEditorLabel(const std::string& name,
     
     _infoEditor.push_back(axEditorTuple(name, label, nullptr));
     
-    label->SetEditingWidget(true);
-    label->SetEditable(false);
+    label->AddProperty("EditingWidget");
+//    label->SetEditingWidget(true);
+//    label->SetEditable(false);
 }
 
 void axEditorAttributes::OnAttributeEdit(const axTextBox::Msg& msg)

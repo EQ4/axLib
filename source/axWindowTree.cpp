@@ -98,7 +98,8 @@ std::vector<axWindowNode*>& axWindowNode::GetChild()
 
 void BeforeDrawing(axWindow* win)
 {
-    if(win->IsBlockDrawing())
+//    if(win->IsBlockDrawing())
+    if(win->HasProperty("BlockDrawing"))
     {
         ax::GL::Math::Matrix4 mview;
         mview.Identity().Load();
@@ -124,7 +125,8 @@ void BeforeDrawing(axWindow* win)
 
 void EndDrawing(axWindow* win)
 {
-    if(win->IsBlockDrawing())
+//    if(win->IsBlockDrawing())
+    if(win->HasProperty("BlockDrawing"))
     {
         glDisable(GL_SCISSOR_TEST);
     }
@@ -153,7 +155,8 @@ void axWindowNode::DrawNode()
         return;
     }
     
-    if(window->IsEditingWidget() && debug_active == false)
+//    if(window->IsEditingWidget() && debug_active == false)
+    if(window->HasProperty("EditingWidget") && debug_active == false)
     {
         // Don't draw debug editor window and childs.
         return;
@@ -171,7 +174,8 @@ void axWindowNode::DrawNode()
             continue;
         }
         
-        bool is_edit_widget = it->window->IsEditingWidget();
+//        bool is_edit_widget = it->window->IsEditingWidget();
+        bool is_edit_widget = it->window->HasProperty("EditingWidget");
         //axPrint("axWindowNode::DrawNode  id : ", it->window->GetId());
         
         if(!it->window->IsShown())
@@ -179,7 +183,8 @@ void axWindowNode::DrawNode()
             continue;
         }
         
-        if(is_edit_widget && (!debug_active || !window->IsEditable()))
+//        if(is_edit_widget && (!debug_active || !window->IsEditable()))
+        if(is_edit_widget && (!debug_active || !window->HasProperty("Editable")))
         {
             continue;
         }
@@ -413,7 +418,8 @@ axWindow* axWindowTree::FindMousePosition(const ax::Point& pos)
                 
                 if (rect.IsPointInside(pos) && it->window->IsShown())
                 {
-                    if(it->window->IsSelectable())
+//                    if(it->window->IsSelectable())
+                    if(it->window->HasProperty("Selectable"))
                     {
                         node = it;
                         break;
@@ -429,7 +435,8 @@ axWindow* axWindowTree::FindMousePosition(const ax::Point& pos)
                             ax::Point p = win->GetAbsoluteRect().position;
                             ax::Rect r(p, win->GetShownRect().size);
                             
-                            if(r.IsPointInside(pos) && win->IsEditingWidget())
+                            if(r.IsPointInside(pos) &&
+                               win->HasProperty("EditingWidget"))
                             {
                                 node = k;
                                 break;

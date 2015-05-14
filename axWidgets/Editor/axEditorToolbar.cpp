@@ -26,8 +26,9 @@ axPanel(parent, rect)
                                   btn_info,
                                   "", "Widgets", ax::FlagValue::NO_FLAG, "Widgets");
     
-    btn1->SetEditingWidget(true);
-    btn1->SetEditable(false);
+    btn1->AddProperty("EditingWidget");
+//    btn1->SetEditingWidget(true);
+//    btn1->SetEditable(false);
     
     ax::Button* btn2 = new ax::Button(this,
                                   ax::Rect(btn1->GetRect().GetNextPosRight(10), ax::Size(60, 26)),
@@ -35,8 +36,9 @@ axPanel(parent, rect)
                                   btn_info,
                                   "", "Attributes", ax::FlagValue::NO_FLAG, "Attributes");
     
-    btn2->SetEditingWidget(true);
-    btn2->SetEditable(false);
+    btn2->AddProperty("EditingWidget");
+//    btn2->SetEditingWidget(true);
+//    btn2->SetEditable(false);
 }
 
 void axEditorToolbar::OnPaint()

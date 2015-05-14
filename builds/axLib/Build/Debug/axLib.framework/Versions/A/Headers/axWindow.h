@@ -33,6 +33,7 @@
 #include "axConfig.h"
 #include <axGL/axFrameBuffer.h>
 #include <axUtils/axResourceStorage.h>
+#include <unordered_set>
 
 namespace ax
 {
@@ -93,32 +94,32 @@ public:
     
 	void Reparent(axWindow* parent, const ax::Point& position);
 
-    bool GetIsPopup();
+//    bool GetIsPopup();
     
-    void SetPopupWindow(const bool& popup);
-    
-    bool GetIsRealPopup();
-    
-    void SetRealPopupWindow(const bool& popup);
-    
-    
-    void SetSelectable(const bool& selectable);
-    
-    bool IsSelectable() const;
-    
-    bool IsBlockDrawing() const;
-    
-    void SetBlockDrawing(const bool& block);
+//    void SetPopupWindow(const bool& popup);
+//    
+//    bool GetIsRealPopup();
+//    
+//    void SetRealPopupWindow(const bool& popup);
+//    
+//    
+//    void SetSelectable(const bool& selectable);
+//    
+//    bool IsSelectable() const;
+//    
+//    bool IsBlockDrawing() const;
+//    
+//    void SetBlockDrawing(const bool& block);
 
     ax::ResourceStorage* GetResourceManager();
-    
-    bool IsEditingWidget() const;
-    
-    void SetEditingWidget(const bool& editing);
-    
-    void SetEditable(const bool& editable);
-    
-    bool IsEditable() const;
+//    
+//    bool IsEditingWidget() const;
+//    
+//    void SetEditingWidget(const bool& editing);
+//    
+//    void SetEditable(const bool& editable);
+//    
+//    bool IsEditable() const;
     
     void SetWindowColor(const ax::Color& color);
     
@@ -126,7 +127,7 @@ public:
     
     void RenderWindow();
     
-    void SetHasBackBuffer(const bool& hasBackBuffer);
+//    void SetHasBackBuffer(const bool& hasBackBuffer);
     
     ax::Rect GetDrawingRect() const;
     
@@ -172,7 +173,22 @@ public:
     {
         return _app;
     }
-
+    
+    inline void AddProperty(const std::string& property)
+    {
+        _properties.insert(property);
+    }
+    
+    inline void RemoveProperty(const std::string& property)
+    {
+        _properties.erase(property);
+    }
+    
+    inline bool HasProperty(const std::string& property) const
+    {
+        return _properties.find(property) == _properties.end() ? false : true;
+    }
+    
 private:
     ax::App* _app;
 	axWindow* _parent;
@@ -182,14 +198,26 @@ private:
     ax::GL::FrameBuffer _frameBufferObj;
     ax::ResourceStorage _resourceManager;
     
-    bool _isPopup, _isRealPopup;
+//    bool _isPopup, _isRealPopup;
     bool _needUpdate;
     bool _isHidden;
-    bool _isBlockDrawing;
-    bool _isSelectable;
-    bool _isEditingWidget;
-    bool _isEditable;
-    bool _hasBackBuffer;
+//    bool _isBlockDrawing;
+//    bool _isSelectable;
+//    bool _isEditingWidget;
+//    bool _isEditable;
+//    bool _hasBackBuffer;
+    
+    //--------------------
+    // Property list :
+    //--------------------
+    // Popup
+    // RealPopup
+    // BlockDrawing
+    // Selectable
+    // EditingWidget
+    // Editable
+    // BackBuffer
+    std::unordered_set<std::string> _properties;
 };
 
 /// @}

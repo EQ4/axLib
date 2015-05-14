@@ -75,7 +75,8 @@ axStaticImage::axStaticImage(axWindow* parent,
 axPanel(parent, rect)
 {
     _img = new_ ax::Image(path);
-    SetSelectable(false);
+//    SetSelectable(false);
+    RemoveProperty("Selectable");
 }
 
 axStaticImage::axStaticImage(axWindow* parent,
@@ -85,7 +86,8 @@ axPanel(parent, rect),
 _img(img)
 
 {
-    SetSelectable(false);
+//    SetSelectable(false);
+    RemoveProperty("Selectable");
 }
 
 void axStaticImage::OnPaint()
