@@ -9,6 +9,8 @@
 #include "axEditorWidget.h"
 #include "axButton.h"
 
+#include "axWindowManager.h"
+
 axEditorWidget::axEditorWidget(axWindow* parent,
                                const ax::Rect& rect,
                                const std::string& label) :
@@ -122,8 +124,10 @@ void axEditorWidget::OnMouseLeftUp(const ax::Point& pos)
         
         // Find panel under mouse.
         
-        ax::Core::WindowManager* manager = GetApp()->GetCore()->GetWindowManager();
-        axWindow* win = manager->GetWindowTree()->FindMousePosition(pos);
+//        ax::Core::WindowManager* manager = GetApp()->GetCore()->GetWindowManager();
+//        axWindow* win = manager->GetWindowTree()->FindMousePosition(pos);
+        
+        axWindow* win = GetApp()->GetWindowManager()->GetWindowTree()->FindMousePosition(pos);
         
         
         int id = win != nullptr ? win->GetId() : -1;

@@ -50,6 +50,8 @@
 		7C18C4181B03BFF300885929 /* axGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C4041B03B77200885929 /* axGL.framework */; };
 		7C3E4D971AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3E4D951AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C3E4D981AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E4D961AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm */; };
+		7C6A9A2A1B05549C004647D1 /* axCoreFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */; };
+		7C6A9A2B1B05549C004647D1 /* axCoreFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C6A9A291B05549C004647D1 /* axCoreFacade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B751AC96C9A000B6364 /* axEditorButton.cpp */; };
 		7C841B7A1AC96C9A000B6364 /* axEditorButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C841B761AC96C9A000B6364 /* axEditorButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C841B7B1AC96C9A000B6364 /* axEditorMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B771AC96C9A000B6364 /* axEditorMenu.cpp */; };
@@ -198,6 +200,8 @@
 		7C18C3FC1B03B77100885929 /* axGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = axGL.xcodeproj; path = axGL/axGL.xcodeproj; sourceTree = "<group>"; };
 		7C3E4D951AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOpenGLView+axPopupWindowCocoaView.h"; sourceTree = "<group>"; };
 		7C3E4D961AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSOpenGLView+axPopupWindowCocoaView.mm"; sourceTree = "<group>"; };
+		7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axCoreFacade.cpp; path = ../include/axCoreFacade.cpp; sourceTree = "<group>"; };
+		7C6A9A291B05549C004647D1 /* axCoreFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreFacade.h; sourceTree = "<group>"; };
 		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
 		7C841B761AC96C9A000B6364 /* axEditorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEditorButton.h; path = Editor/axEditorButton.h; sourceTree = "<group>"; };
 		7C841B771AC96C9A000B6364 /* axEditorMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorMenu.cpp; path = Editor/axEditorMenu.cpp; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 				7C15C7D71AB670A4007B6868 /* axConfig.h */,
 				7C15C7D81AB670A4007B6868 /* axCore.h */,
 				7C15C7E21AB670A4007B6868 /* axLib.h */,
+				7C6A9A291B05549C004647D1 /* axCoreFacade.h */,
 			);
 			name = include;
 			path = ../../../include;
@@ -341,6 +346,7 @@
 				7C841B831AC99F9A000B6364 /* Controller */,
 				7C1351571A7FC77A00C97A99 /* axApp.cpp */,
 				7C13515A1A7FC77A00C97A99 /* axConfig.cpp */,
+				7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */,
 				7C13515B1A7FC77A00C97A99 /* axCore.cpp */,
 			);
 			name = source;
@@ -561,10 +567,11 @@
 				7C841B951ACC959B000B6364 /* axEditorWidget.h in Headers */,
 				7C8A7C0E1AE0259F0094E9EF /* axRadio.h in Headers */,
 				7C3E4D971AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h in Headers */,
-				7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */,
 				7C88F2281A94303A00374108 /* axCoreMac.h in Headers */,
-				7C15C8021AB670A4007B6868 /* axLib.h in Headers */,
 				7C15C80A1AB670A4007B6868 /* axPanel.h in Headers */,
+				7C6A9A2B1B05549C004647D1 /* axCoreFacade.h in Headers */,
+				7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */,
+				7C15C8021AB670A4007B6868 /* axLib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +743,7 @@
 				7C1351B91A7FC7A800C97A99 /* axCoreMac.cpp in Sources */,
 				7C88F1E81A942EAD00374108 /* axScrollBar.cpp in Sources */,
 				7C841B941ACC959B000B6364 /* axEditorWidget.cpp in Sources */,
+				7C6A9A2A1B05549C004647D1 /* axCoreFacade.cpp in Sources */,
 				7C3E4D981AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm in Sources */,
 				7C1351A01A7FC77A00C97A99 /* axMouseManager.cpp in Sources */,
 				7C88F1DA1A942EAC00374108 /* axGrid.cpp in Sources */,

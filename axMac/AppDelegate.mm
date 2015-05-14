@@ -27,7 +27,7 @@
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
 #include "axCocoaInterfaceMac.h"
-
+#include "axWindowManager.h"
 #include <iostream>
 #include "axLib.h"
 
@@ -129,7 +129,8 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 #else
     
     _axApp = ax::App::GetMainApp();
-    _axApp->GetCore()->Init(ax::Size(500, 500));
+    _axApp->Init(ax::Size(500, 500));
+//    _axApp->GetCore()->Init(ax::Size(500, 500));
     
     _axApp->CallMainEntryFunction();
     _axApp->CallAfterGUILoadFunction();
@@ -197,7 +198,15 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
 //    ax::Size size(frameSize.width, frameSize.height);
     
-    ax::App::GetMainApp()->GetCore()->ResizeGLScene(size3);
+    
+    ///*************************************************************************************************************************************
+    ///*************************************************************************************************************************************
+    ///*************************************************************************************************************************************
+//    ax::App::GetMainApp()->GetCore()->ResizeGLScene(size3);
+    ax::App::GetMainApp()->SetFrameSize(size3);
+    ///*************************************************************************************************************************************
+    ///*************************************************************************************************************************************
+    ///*************************************************************************************************************************************
     
     // Resize openGL panel.
     [GlobalAppDelegate setFrame:NSMakeRect(0.f, 0.f, size3.x, size3.y)];
@@ -278,6 +287,11 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     // Double click.
     if (event.clickCount == 2)
     {
+//        _axApp->GetPopupManager()->OnMouseLeftDoubleClick(pos);
+//        if(_axApp->GetPopupManager()->IsEventReachWindow() == false)
+//        {
+//            _axApp->GetWindowManager()->OnMouseLeftDoubleClick(pos);
+//        }
         _axApp->GetPopupManager()->OnMouseLeftDoubleClick(pos);
         if(_axApp->GetPopupManager()->IsEventReachWindow() == false)
         {
@@ -500,14 +514,19 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
     
         //**************************************************************************
-    axCore* core = _axApp->GetCore();
+//    axCore* core = _axApp->GetCore();
     
-    ax::Size global_size = core->GetGlobalSize();
+//    ax::Size global_size = core->GetGlobalSize();
+    ax::Size global_size = _axApp->GetFrameSize();
+    
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
     {
-        core->ResizeGLScene(ax::Size(backingBounds.size.width,
-                                   backingBounds.size.height));
+        _axApp->SetFrameSize(ax::Size(backingBounds.size.width,
+                                      backingBounds.size.height));
+        
+//        core->ResizeGLScene(ax::Size(backingBounds.size.width,
+//                                   backingBounds.size.height));
 //        core->ResizeGLScene(backingBounds.size.width,
 //                            backingBounds.size.height,
 //                            frame_height - backingBounds.size.height);
@@ -521,7 +540,8 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 //    else
     {
         // Is only gonna draw if necessary.
-        core->DrawGLScene();
+//        core->DrawGLScene();
+        _axApp->Draw();
         glFlush();
     }
 

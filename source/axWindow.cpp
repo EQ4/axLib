@@ -127,6 +127,14 @@ axWindow::~axWindow()
 //    axApp::GetInstance()->GetCore()->GetWindowManager()->GetWindowTree()->DeleteWindow(this);
 }
 
+void axWindow::DeleteWindow()
+{
+    
+//    GetApp()->GetCore()->GetPopupManager()->GetWindowTree()->
+//    DeleteWindow( std::get<2>(_infoEditor[i]) );
+    _windowManager->GetWindowTree()->DeleteWindow(this);
+}
+
 axWindow* axWindow::GetParent() const
 {
 	return _parent;
@@ -368,9 +376,13 @@ void axWindow::RenderWindow()
     {
         if(_needUpdate)
         {
+//            _frameBufferObj.DrawOnFrameBuffer([this](){ OnPaint(); },
+//                                              GetRect().size,
+//                                              GetApp()->GetCore()->GetGlobalSize());
+            
             _frameBufferObj.DrawOnFrameBuffer([this](){ OnPaint(); },
                                               GetRect().size,
-                                              GetApp()->GetCore()->GetGlobalSize());
+                                              GetApp()->GetFrameSize());
             _needUpdate = false;
         }
         
@@ -397,8 +409,8 @@ ax::Rect axWindow::GetWindowPixelData(unsigned char*& data) const
     
     data = new unsigned char[rect.size.x * rect.size.y * 4];
     
-    ax::Size globalSize(_app->GetCore()->GetGlobalSize());
-    
+//    ax::Size globalSize(_app->GetCore()->GetGlobalSize());
+    ax::Size globalSize(_app->GetFrameSize());
     
     /// @todo Move this to axGL framework.
     glReadPixels(rect.position.x,

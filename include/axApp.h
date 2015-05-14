@@ -27,31 +27,33 @@
 /// @defgroup Core
 /// @{
 
-#ifdef __linux__
-#include "axCoreX11.h"
-//#endif //__linux__
-
-#elif _MSC_VER
-	#if _axWxWidgetsCore_ == 1
-		#include "axCoreWxWidgets.h"
-		
-	#else
-		#include "axCoreWin32.h"
-	#endif // _axWxWidgetsCore_.
-//#endif //_MSC_VER
-
-
-#else// __APPLE__
-    #ifdef _AX_VST_APP_
-        #include "axVstCoreMac.h"
-    #else
-        #include "axCoreMac.h"
-    #endif // _AX_VST_APP_
-#endif // __APPLE__
+//#ifdef __linux__
+//#include "axCoreX11.h"
+////#endif //__linux__
+//
+//#elif _MSC_VER
+//	#if _axWxWidgetsCore_ == 1
+//		#include "axCoreWxWidgets.h"
+//		
+//	#else
+//		#include "axCoreWin32.h"
+//	#endif // _axWxWidgetsCore_.
+////#endif //_MSC_VER
+//
+//
+//#else// __APPLE__
+//    #ifdef _AX_VST_APP_
+//        #include "axVstCoreMac.h"
+//    #else
+//        #include "axCoreMac.h"
+//    #endif // _AX_VST_APP_
+//#endif // __APPLE__
 
 
 #include "axC++.h"
+#include "axCoreFacade.h"
 #include <axUtils/axResourceStorage.h>
+#include <axEvent/axEvent.h>
 
 class axEditorMenu;
 class axWidget;
@@ -64,43 +66,20 @@ namespace ax
         class Manager;
     }
     
-    class App
+    class App : public ax::Core::Facade
     {
     public:
         App();
         
-        inline std::string GetAppPath()
-        {
-            return _core->GetAppPath();
-        }
-        
         App(const ax::Size& frame_size);
         
-        void MainLoop();
+        inline ax::Event::Manager* GetEventManager();
+        
+        static inline App* GetMainApp();
         
         std::string GetResourceFile(const std::string& file_name);
         
-        ax::Core::WindowManager* GetWindowManager();
-        ax::Core::WindowManager* GetPopupManager();
-        
-        void AddWindow(axWindow* win);
-        
-        void AddPopWindow(axWindow* win);
-        
-        void UpdateAll();
-        
-        axCore* GetCore();
-        
-        std::string OpenFileDialog();
-        
-        bool CreatePopupWindow(const char*, int, int);
-        
-        std::string GetAppDirectory();
-        
         ax::ResourceStorage* GetResourceManager();
-        
-        void ActivateDebugEditor(const bool& active);
-        bool IsDebugEditorActive() const;
         
         void CallMainEntryFunction();
         void AddMainEntry(std::function<void()> fct);
@@ -111,26 +90,47 @@ namespace ax
         void AddPopupEntryFunction(std::function<void()> fct);
         void CallPopupEntryFunction();
         
+        //----------------------------------------------------------------------
+
+        
+//        void MainLoop();
+//        
+//        ax::Core::WindowManager* GetWindowManager();
+//        ax::Core::WindowManager* GetPopupManager();
+//        
+//        void UpdateAll();
+//        
+//        axCore* GetCore();
+//        
+//        std::string OpenFileDialog();
+//        
+//        bool CreatePopupWindow(const char*, int, int);
+//        
+//        std::string GetAppDirectory();
+//        
+//        inline std::string GetAppPath()
+//        {
+//            return _core->GetAppPath();
+//        }
+        
+        
+        //----------------------------------------------------------------------
+        axEditorMenu* GetEditor();
         void CreateEditor();
         
         void SetEditingWidget(axWidget* widget);
         
         axWidgetSelector* _widgetSelector = nullptr;
         
-        axEditorMenu* GetEditor();
+        void ActivateDebugEditor(const bool& active);
+        bool IsDebugEditorActive() const;
         
-        inline ax::Event::Manager* GetEventManager()
-        {
-            return _evtManager;
-        }
+
         
-        static inline App* GetMainApp()
-        {
-            return _mainApp;
-        }
+        
         
     private:
-        axCore* _core;
+//        axCore* _core;
         static App* _mainApp;
         
         ax::Event::Manager* _evtManager;
@@ -146,6 +146,16 @@ namespace ax
         axEVENT_ACCESSOR(ax::Event::Msg, OnDebugEditor);
         void OnDebugEditor(const ax::Event::Msg& msg);
     };
+    
+    inline ax::Event::Manager* App::GetEventManager()
+    {
+        return _evtManager;
+    }
+    
+    inline App* App::GetMainApp()
+    {
+        return _mainApp;
+    }
 }
 
 /// @}

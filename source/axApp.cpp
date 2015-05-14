@@ -37,129 +37,146 @@ ax::App* ax::App::_mainApp = nullptr;
 //axResourceManager* axApp::_resourceManager = nullptr;
 
 ax::App::App():
+// Heritage.
+ax::Core::Facade(ax::Size(500, 500)),
+// Members.
 _debugEditorActive(false)
 {
     _mainApp = this;
+    
+//    _evtManager = new ax::Event::Manager([&]
+//    {
+//        this->GetCore()->PushEventOnSystemQueue();
+//    });
+    
     _evtManager = new ax::Event::Manager([&]
     {
-        this->GetCore()->PushEventOnSystemQueue();
+        this->PushEventOnSystemQueue();
     });
-    
-#ifdef __linux__
-	_core = new axCoreX11(this);
-	_core->Init(ax::Size(0, 0));
-//#endif //__linux__
-
-
-#elsif _MSC_VER
-	#if _axWxWidgetsCore_ == 1
-    
-	_core = new axCoreWxWidgets();
-	_core->Init(ax::Size(0, 0));
-	#else
-		_core = new axCoreWin32();
-		axCORE = _core;
-		_core->Init(ax::Size(0, 0));
-	#endif //_axWxWidgetsCore_
-
-//#endif //_MSC_VER
-    
-#else// __APPLE__
-    
-#ifdef _AX_VST_APP_
-    _core = new axVstCoreMac();
-    _core->Init(ax::Size(800, 273));
-#else
-    _core = new axCoreMac();
-//    _core->Init(ax::Size(500, 500));
-#endif // _AX_VST_APP_
-    
-#endif // __APPLE__
+//    
+//#ifdef __linux__
+//	_core = new axCoreX11(this);
+//	_core->Init(ax::Size(0, 0));
+////#endif //__linux__
+//
+//
+//#elsif _MSC_VER
+//	#if _axWxWidgetsCore_ == 1
+//    
+//	_core = new axCoreWxWidgets();
+//	_core->Init(ax::Size(0, 0));
+//	#else
+//		_core = new axCoreWin32();
+//		axCORE = _core;
+//		_core->Init(ax::Size(0, 0));
+//	#endif //_axWxWidgetsCore_
+//
+////#endif //_MSC_VER
+//    
+//#else// __APPLE__
+//    
+//#ifdef _AX_VST_APP_
+//    _core = new axVstCoreMac();
+//    _core->Init(ax::Size(800, 273));
+//#else
+//    _core = new axCoreMac();
+////    _core->Init(ax::Size(500, 500));
+//#endif // _AX_VST_APP_
+//    
+//#endif // __APPLE__
 
 }
 
 ax::App::App(const ax::Size& frame_size):
+// Heritage.
+ax::Core::Facade(frame_size),
+// Members.
 _debugEditorActive(false)
 {
     _mainApp = this;
-    _evtManager = new ax::Event::Manager();
-    
-#ifdef __linux__
-	_core = new axCoreX11(this);
-	_core->Init(frame_size);
-//#endif //__linux__
-
-#elsif _MSC_VER
-	#if _axWxWidgetsCore_ == 1
-		_core = new axCoreWxWidgets();
-		_core->Init(frame_size);
-	#else
-		_core = new axCoreWin32();
-		axCORE = _core;
-		_core->Init(frame_size);
-	#endif //_axWxWidgetsCore_
-
-//#endif // _MSC_VER
-    
-    
-#else// __APPLE__
-    
-#ifdef _AX_VST_APP_
-    _core = new axVstCoreMac();
-    _core->Init(frame_size);
-#else
-    _core = new axCoreMac();
-    _core->SetGlobalSize(frame_size);
-    //_core->Init(frame_size);
-#endif // _AX_VST_APP_
-    
-#endif // __APPLE__
+//    _evtManager = new ax::Event::Manager();
+    _evtManager = new ax::Event::Manager([&]
+    {
+        this->PushEventOnSystemQueue();
+    });
+//
+//    
+//#ifdef __linux__
+//	_core = new axCoreX11(this);
+//	_core->Init(frame_size);
+////#endif //__linux__
+//
+//#elsif _MSC_VER
+//	#if _axWxWidgetsCore_ == 1
+//		_core = new axCoreWxWidgets();
+//		_core->Init(frame_size);
+//	#else
+//		_core = new axCoreWin32();
+//		axCORE = _core;
+//		_core->Init(frame_size);
+//	#endif //_axWxWidgetsCore_
+//
+////#endif // _MSC_VER
+//    
+//    
+//#else// __APPLE__
+//    
+//#ifdef _AX_VST_APP_
+//    _core = new axVstCoreMac();
+//    _core->Init(frame_size);
+//#else
+//    _core = new axCoreMac();
+//    _core->SetGlobalSize(frame_size);
+//    //_core->Init(frame_size);
+//#endif // _AX_VST_APP_
+//    
+//#endif // __APPLE__
 }
 
 void ax::App::CreateEditor()
 {
-#if _axDebugEditor_ == 1
-    // @todo Fix this.
-//    MainInstance = this;
-    
-    ax::Size size = _core->GetGlobalSize();
-    
-    ax::Print("Size : ", size.x, size.y);
-    
-    _widgetSelector = new axWidgetSelector(nullptr);
-    
-    /// @todo Change debugPanel position.
-    axPanel* debugPanel = new axPanel(3, nullptr,
-                                      ax::Rect(size.x - 20, size.y - 20, 20, 20));
-    
-    axToggle::Info btn_info;
-    btn_info.normal = ax::Color(1.0, 0.8, 0.8, 0.0);
-    btn_info.hover = ax::Color(0.9, 0.9, 0.9, 0.0);
-    btn_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.0);
-    
-    btn_info.selected = ax::Color(0.8, 0.4, 0.4, 0.0);
-    btn_info.selected_hover = ax::Color(0.9, 0.4, 0.4, 0.0);
-    btn_info.selected_clicking = ax::Color(0.7, 0.4, 0.4, 0.0);
-    
-    btn_info.contour = ax::Color(0.0, 0.0, 0.0, 0.0);
-    btn_info.font_color = ax::Color(0.0, 0.0, 0.0, 0.0);
-    
-    btn_info.img = GetResourceFile("settings.png");
-    btn_info.single_img = true;
-    
-    axToggle* tog = new axToggle(debugPanel,
-                                 ax::Rect(ax::Point(0, 0), ax::Size(20, 20)),
-                                 axToggle::Events(GetOnDebugEditor()),
-                                 btn_info,
-                                 "",
-                                 "",
-                                 axToggle::Flags::SINGLE_IMG);
-//    tog->SetEditable(false);
-    
-    _debugMenu = new axEditorMenu(ax::Rect(size.x, 0, 300, size.y));
-    _debugMenu->Hide();
-
-#endif // _axDebugEditor_
+//#if _axDebugEditor_ == 1
+//    // @todo Fix this.
+////    MainInstance = this;
+//    
+//    ax::Size size = _core->GetGlobalSize();
+//    
+//    ax::Print("Size : ", size.x, size.y);
+//    
+//    _widgetSelector = new axWidgetSelector(nullptr);
+//    
+//    /// @todo Change debugPanel position.
+//    axPanel* debugPanel = new axPanel(3, nullptr,
+//                                      ax::Rect(size.x - 20, size.y - 20, 20, 20));
+//    
+//    axToggle::Info btn_info;
+//    btn_info.normal = ax::Color(1.0, 0.8, 0.8, 0.0);
+//    btn_info.hover = ax::Color(0.9, 0.9, 0.9, 0.0);
+//    btn_info.clicking = ax::Color(0.7, 0.7, 0.7, 0.0);
+//    
+//    btn_info.selected = ax::Color(0.8, 0.4, 0.4, 0.0);
+//    btn_info.selected_hover = ax::Color(0.9, 0.4, 0.4, 0.0);
+//    btn_info.selected_clicking = ax::Color(0.7, 0.4, 0.4, 0.0);
+//    
+//    btn_info.contour = ax::Color(0.0, 0.0, 0.0, 0.0);
+//    btn_info.font_color = ax::Color(0.0, 0.0, 0.0, 0.0);
+//    
+//    btn_info.img = GetResourceFile("settings.png");
+//    btn_info.single_img = true;
+//    
+//    axToggle* tog = new axToggle(debugPanel,
+//                                 ax::Rect(ax::Point(0, 0), ax::Size(20, 20)),
+//                                 axToggle::Events(GetOnDebugEditor()),
+//                                 btn_info,
+//                                 "",
+//                                 "",
+//                                 axToggle::Flags::SINGLE_IMG);
+////    tog->SetEditable(false);
+//    
+//    _debugMenu = new axEditorMenu(ax::Rect(size.x, 0, 300, size.y));
+//    _debugMenu->Hide();
+//
+//#endif // _axDebugEditor_
 }
 
 void ax::App::AddMainEntry(std::function<void()> fct)
@@ -178,48 +195,49 @@ void ax::App::CallMainEntryFunction()
 //------------------------------------------------------------------------------
 void ax::App::OnDebugEditor(const ax::Event::Msg& msg)
 {
-    if(_debugEditorActive)
-    {
-        _debugEditorActive = false;
-        ax::Size size = _core->GetGlobalSize();
-        _core->ResizeFrame(ax::Size(size.x - 300, size.y));
-        _debugMenu->Hide();
-        
-        if(_widgetSelector != nullptr)
-        {
-            _widgetSelector->Hide();
-        }
-    }
-    else
-    {
-        _debugEditorActive = true;
-        ax::Size size = _core->GetGlobalSize();
-        _core->ResizeFrame(ax::Size(size.x + 300, size.y));
-        _debugMenu->SetRect(ax::Rect(ax::Rect(size.x, 0, 310, size.y)));
-        _debugMenu->Show();
-        
-        if(_widgetSelector != nullptr)
-        {
-            _widgetSelector->Show();
-        }
-    }
+//    if(_debugEditorActive)
+//    {
+//        _debugEditorActive = false;
+//        ax::Size size = _core->GetGlobalSize();
+//        _core->ResizeFrame(ax::Size(size.x - 300, size.y));
+//        _debugMenu->Hide();
+//        
+//        if(_widgetSelector != nullptr)
+//        {
+//            _widgetSelector->Hide();
+//        }
+//    }
+//    else
+//    {
+//        _debugEditorActive = true;
+//        ax::Size size = _core->GetGlobalSize();
+//        _core->ResizeFrame(ax::Size(size.x + 300, size.y));
+//        _debugMenu->SetRect(ax::Rect(ax::Rect(size.x, 0, 310, size.y)));
+//        _debugMenu->Show();
+//        
+//        if(_widgetSelector != nullptr)
+//        {
+//            _widgetSelector->Show();
+//        }
+//    }
 }
 //------------------------------------------------------------------------------
 
-std::string ax::App::OpenFileDialog()
-{
-	return _core->OpenFileDialog();
-}
+//std::string ax::App::OpenFileDialog()
+//{
+//	return _core->OpenFileDialog();
+//}
 
-std::string ax::App::GetAppDirectory()
-{
-	return _core->GetAppDirectory();
-}
+//std::string ax::App::GetAppDirectory()
+//{
+//	return _core->GetAppDirectory();
+//}
 
 std::string ax::App::GetResourceFile(const std::string& file_name)
 {
-    std::string app_path = GetCore()->GetAppPath();
-//    ax::Print("core ressource folder : ", app_path);
+//    std::string app_path = GetCore()->GetAppPath();
+    std::string app_path = GetAppPath();
+    
     app_path = app_path.substr(0, app_path.find_last_of("/"));
     app_path = app_path.substr(0, app_path.find_last_of("/"));
     app_path = app_path.substr(0, app_path.find_last_of("/"));
@@ -244,41 +262,31 @@ std::string ax::App::GetResourceFile(const std::string& file_name)
 //}
 
 
-void ax::App::MainLoop()
-{
-	//CallMainEntryFunction();
-	_core->MainLoop();
-}
+//void ax::App::MainLoop()
+//{
+//	//CallMainEntryFunction();
+//	_core->MainLoop();
+//}
 
-void ax::App::UpdateAll()
-{
-//    if(_widgetSelector != nullptr)
-//    {
-//        _widgetSelector->SetNeedUpdate();
-//    }
-    
-	_core->UpdateAll();
-}
+//void ax::App::UpdateAll()
+//{
+////    if(_widgetSelector != nullptr)
+////    {
+////        _widgetSelector->SetNeedUpdate();
+////    }
+//    
+//	_core->UpdateAll();
+//}
 
-ax::Core::WindowManager* ax::App::GetWindowManager()
-{
-	return _core->GetWindowManager();
-}
-
-ax::Core::WindowManager* ax::App::GetPopupManager()
-{
-    return _core->GetPopupManager();
-}
-
-void ax::App::AddWindow(axWindow* win)
-{
-	GetWindowManager()->Add(win);
-}
-
-void ax::App::AddPopWindow(axWindow* win)
-{
-	_core->GetPopupManager()->Add(win);
-}
+//ax::Core::WindowManager* ax::App::GetWindowManager()
+//{
+//	return _core->GetWindowManager();
+//}
+//
+//ax::Core::WindowManager* ax::App::GetPopupManager()
+//{
+//    return _core->GetPopupManager();
+//}
 
 void ax::App::ActivateDebugEditor(const bool& active)
 {
@@ -291,10 +299,10 @@ bool ax::App::IsDebugEditorActive() const
     return _debugEditorActive;
 }
 
-axCore* ax::App::GetCore()
-{
-	return _core;
-}
+//axCore* ax::App::GetCore()
+//{
+//	return _core;
+//}
 
 ax::ResourceStorage* ax::App::GetResourceManager()
 {
@@ -330,8 +338,8 @@ void ax::App::CallPopupEntryFunction()
 
 void ax::App::SetEditingWidget(axWidget* widget)
 {
-    _widgetSelector->SetSelectedWidget(widget);
-    _debugMenu->SetEditingWidget(widget);
+//    _widgetSelector->SetSelectedWidget(widget);
+//    _debugMenu->SetEditingWidget(widget);
 }
 
 axEditorMenu* ax::App::GetEditor()

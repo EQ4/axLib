@@ -48,7 +48,7 @@ public:
 
     virtual std::string GetAppDirectory() = 0;
     
-    virtual std::string GetAppPath(){return "";}
+    virtual std::string GetAppPath() { return ""; }
     
     virtual ax::Rect GetScreenRect() = 0;
     

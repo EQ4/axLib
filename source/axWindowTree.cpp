@@ -110,7 +110,9 @@ void BeforeDrawing(axWindow* win)
 //        double delta_size_x = shown_rect.size.x - abs_rect.size.x;
         double delta_size_y = shown_rect.size.y - abs_rect.size.y;
         
-        double globalY = win->GetApp()->GetCore()->GetGlobalSize().y;
+//        double globalY = win->GetApp()->GetCore()->GetGlobalSize().y;
+        double globalY = win->GetApp()->GetFrameSize().y;
+        
         double sumY = (abs_rect.position.y + shown_rect.position.y +
                        abs_rect.size.y + delta_size_y);
         

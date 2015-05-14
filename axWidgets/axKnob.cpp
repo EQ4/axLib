@@ -397,7 +397,8 @@ void axKnob::OnMouseLeftDown(const ax::Point& pos)
     Update();
     
 //    HideMouse();
-    GetApp()->GetCore()->HideMouse();
+//    GetApp()->GetCore()->HideMouse();
+    GetApp()->HideMouse();
 
     PushEvent(0, new_ Msg(m_knobValue, _msg));
 }
@@ -406,7 +407,8 @@ void axKnob::OnMouseLeftUp(const ax::Point& pos)
 {
     if( IsGrabbed() )
     {
-        GetApp()->GetCore()->ShowMouse();
+//        GetApp()->GetCore()->ShowMouse();
+        GetApp()->ShowMouse();
         UnGrabMouse();
         Update();
 

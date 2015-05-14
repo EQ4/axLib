@@ -69,6 +69,8 @@ public:
     
     virtual ~axWindow();
     
+    void DeleteWindow();
+    
     axWindow* GetParent() const;
     
     //--------------------------------------------------------------------------
@@ -166,7 +168,6 @@ private:
 	ax::Point _absolutePosition, _scrollDecay;
     ax::Color _windowColor, _contourColor;
     ax::GL::FrameBuffer _frameBufferObj;
-    
     
     ax::ResourceStorage _resourceManager;
     
