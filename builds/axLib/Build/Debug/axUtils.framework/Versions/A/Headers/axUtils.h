@@ -18,6 +18,9 @@
 #include "axPrint.h"
 #include "axFlag.h"
 #include "axColor.h"
+#include "axProperty.h"
+
+#include <string>
 
 namespace ax
 {
@@ -56,6 +59,9 @@ namespace ax
     
     // ax::Color
     typedef Utils::Color<double> Color;
+    
+    // ax::Property
+    typedef Utils::Property<std::string> Property;
 }
 
 

@@ -33,7 +33,7 @@
 #include "axConfig.h"
 #include <axGL/axFrameBuffer.h>
 #include <axUtils/axResourceStorage.h>
-#include <unordered_set>
+
 
 namespace ax
 {
@@ -50,6 +50,8 @@ public:
     
     virtual ~axWindow();
     
+    axWindow* GetParent() const;
+    
     enum axWindowType
     {
         axWINDOW_TYPE_WINDOW,
@@ -62,8 +64,6 @@ public:
         return axWINDOW_TYPE_WINDOW;
     }
     
-	axWindow* GetParent() const;
-
     //--------------------------------------------------------------------------
 	ax::Rect GetRect() const;
 	ax::Rect GetAbsoluteRect() const;
@@ -75,14 +75,6 @@ public:
     void SetShownRect(const ax::Rect& size);
     void SetSizeNoShowRect(const ax::Size& size);
     ax::Rect GetShownRect() const;
-    
-//    ax::Point GetBottomLeftPosition() const;
-//    ax::Point GetTopRightPosition() const;
-//    
-//    ax::Point GetNextPosRight(const int& delta) const;
-//    ax::Point GetNextPosDown(const int& delta) const;
-//    ax::Point GetNextPosLeft(const int& delta) const;
-//    ax::Point GetNextPosUp(const int& delta) const;
     //--------------------------------------------------------------------------
 
 	void SetScrollDecay(const ax::Point& decay);
@@ -94,40 +86,13 @@ public:
     
 	void Reparent(axWindow* parent, const ax::Point& position);
 
-//    bool GetIsPopup();
-    
-//    void SetPopupWindow(const bool& popup);
-//    
-//    bool GetIsRealPopup();
-//    
-//    void SetRealPopupWindow(const bool& popup);
-//    
-//    
-//    void SetSelectable(const bool& selectable);
-//    
-//    bool IsSelectable() const;
-//    
-//    bool IsBlockDrawing() const;
-//    
-//    void SetBlockDrawing(const bool& block);
-
     ax::ResourceStorage* GetResourceManager();
-//    
-//    bool IsEditingWidget() const;
-//    
-//    void SetEditingWidget(const bool& editing);
-//    
-//    void SetEditable(const bool& editable);
-//    
-//    bool IsEditable() const;
     
     void SetWindowColor(const ax::Color& color);
     
     void SetContourColor(const ax::Color& color);
     
     void RenderWindow();
-    
-//    void SetHasBackBuffer(const bool& hasBackBuffer);
     
     ax::Rect GetDrawingRect() const;
     
@@ -176,17 +141,20 @@ public:
     
     inline void AddProperty(const std::string& property)
     {
-        _properties.insert(property);
+        _properties.AddProperty(property);
+//        _properties.insert(property);
     }
     
     inline void RemoveProperty(const std::string& property)
     {
-        _properties.erase(property);
+        _properties.RemoveProperty(property);
+//        _properties.erase(property);
     }
     
     inline bool HasProperty(const std::string& property) const
     {
-        return _properties.find(property) == _properties.end() ? false : true;
+        return _properties.HasProperty(property);
+//        return _properties.find(property) == _properties.end() ? false : true;
     }
     
 private:
@@ -198,14 +166,8 @@ private:
     ax::GL::FrameBuffer _frameBufferObj;
     ax::ResourceStorage _resourceManager;
     
-//    bool _isPopup, _isRealPopup;
     bool _needUpdate;
     bool _isHidden;
-//    bool _isBlockDrawing;
-//    bool _isSelectable;
-//    bool _isEditingWidget;
-//    bool _isEditable;
-//    bool _hasBackBuffer;
     
     //--------------------
     // Property list :
@@ -217,7 +179,8 @@ private:
     // EditingWidget
     // Editable
     // BackBuffer
-    std::unordered_set<std::string> _properties;
+//    std::unordered_set<std::string> _properties;
+    ax::Property _properties;
 };
 
 /// @}

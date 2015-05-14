@@ -21,9 +21,7 @@
  ******************************************************************************/
 #include "axWindow.h"
 #include "axApp.h"
-//#include "axMath.h"
 #include "axConfig.h"
-//#include "axGraphicInterface.h"
 #include "axWindowTree.h"
 
 axWindow::axWindow(ax::App* app, const ax::Rect& rect):
@@ -33,18 +31,11 @@ ax::Event::Object(app->GetEventManager()),
 _parent(nullptr),
 _rect(rect),
 _isHidden(false),
-//_isPopup(false),
-//_isRealPopup(false),
-//_isBlockDrawing(false),
 _shownRect(ax::Point(0, 0), rect.size),
-//_isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
-//_isEditingWidget(false),
-//_isEditable(true),
 _frameBufferObj(rect.size),
-//_hasBackBuffer(true),
 _app(app)
 {
     AddProperty("BackBuffer");
@@ -58,18 +49,11 @@ ax::Event::Object(parent->GetApp()->GetEventManager()),
 _parent(parent),
 _rect(rect),
 _isHidden(false),
-//_isPopup(false),
-//_isRealPopup(false),
-//_isBlockDrawing(false),
 _shownRect(ax::Point(0, 0), rect.size),
-//_isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
-//_isEditingWidget(false),
-//_isEditable(true),
 _frameBufferObj(rect.size),
-//_hasBackBuffer(true),
 _app(parent->GetApp())
 {
     AddProperty("BackBuffer");
@@ -174,37 +158,6 @@ ax::Rect axWindow::GetRect() const
 {
 	return _rect;
 }
-//
-//ax::Point axWindow::GetBottomLeftPosition() const
-//{
-//	return ax::Point(_rect.position.x, 
-//		_rect.position.y + _rect.size.y);
-//}
-//
-//ax::Point axWindow::GetTopRightPosition() const
-//{
-//    return ax::Point(_rect.position.x + _rect.size.x, _rect.position.y);
-//}
-//
-//ax::Point axWindow::GetNextPosRight(const int& delta) const
-//{
-//    return ax::Point(_rect.position.x + _rect.size.x + delta, _rect.position.y);
-//}
-//
-//ax::Point axWindow::GetNextPosDown(const int& delta) const
-//{
-//    return ax::Point(_rect.position.x, _rect.position.y + _rect.size.y + delta);
-//}
-//
-//ax::Point axWindow::GetNextPosLeft(const int& delta) const
-//{
-//     return ax::Point(_rect.position.x, _rect.position.y - delta);
-//}
-//
-//ax::Point axWindow::GetNextPosUp(const int& delta) const
-//{
-//    return ax::Point(_rect.position.x, _rect.position.y - delta);
-//}
 
 ax::Rect axWindow::GetAbsoluteRect() const
 {
@@ -227,19 +180,11 @@ ax::Size axWindow::GetSize() const
 	return _rect.size;
 }
 
-//axGC* axWindow::GetGC()
-//{
-//	return _gc;
-//}
-
 void axWindow::SetSize(const ax::Size& size)
 {
 	_rect.size = size;
     _shownRect.size = size;
 
-//    InitGLWindowBackBufferDrawing();
-    
-//    if(_hasBackBuffer)
     if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(size);
@@ -252,8 +197,6 @@ void axWindow::SetSizeNoShowRect(const ax::Size& size)
 {
     _rect.size = size;
     
-    //    InitGLWindowBackBufferDrawing();
-//    if(_hasBackBuffer)
     if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(size);
@@ -268,9 +211,6 @@ void axWindow::SetRect(const ax::Rect& rect)
 	_rect.size = rect.size;
 	_shownRect.size = rect.size;
 
-	//    InitGLWindowBackBufferDrawing();
-    
-//    if(_hasBackBuffer)
     if(HasProperty("BackBuffer"))
     {
         _frameBufferObj.Resize(rect.size);
@@ -295,52 +235,6 @@ void axWindow::SetPosition(const ax::Point& pos)
 	Update();
 }
 
-//bool axWindow::IsSelectable() const
-//{
-//    if(IsEditingWidget() && GetApp()->IsDebugEditorActive() == false)
-//    {
-//        return false;
-//    }
-//    
-//    return _isSelectable;
-//}
-
-//bool axWindow::IsEditingWidget() const
-//{
-//    return _isEditingWidget;
-//}
-
-//void axWindow::SetEditingWidget(const bool& editing)
-//{
-//    _isEditingWidget = editing;
-//}
-
-//void axWindow::SetEditable(const bool& editable)
-//{
-//    _isEditable = editable;
-//}
-
-//bool axWindow::IsEditable() const
-//{
-//    return _isEditable;
-//}
-
-//void axWindow::SetPopupWindow(const bool& popup)
-//{
-//    _isPopup = popup;
-//}
-
-
-//bool axWindow::GetIsRealPopup()
-//{
-//    return _isRealPopup;
-//}
-
-//void axWindow::SetRealPopupWindow(const bool& popup)
-//{
-//    _isRealPopup = popup;
-//}
-
 void axWindow::SetWindowColor(const ax::Color& color)
 {
     _windowColor = color;
@@ -361,31 +255,6 @@ void axWindow::SetNeedUpdate()
     _needUpdate = true;
 }
 
-//bool axWindow::GetIsPopup()
-//{
-//    return _isPopup;
-//}
-
-//void axWindow::SetSelectable(const bool& selectable)
-//{
-//    _isSelectable = selectable;
-//}
-
-//bool axWindow::IsBlockDrawing() const
-//{
-//    return _isBlockDrawing;
-//}
-
-//void axWindow::SetBlockDrawing(const bool& block)
-//{
-//    _isBlockDrawing = block;
-//}
-
-//void axWindow::SetHasBackBuffer(const bool& hasBackBuffer)
-//{
-//    _hasBackBuffer = hasBackBuffer;
-//}
-
 ax::ResourceStorage* axWindow::GetResourceManager()
 {
     return &_resourceManager;
@@ -393,8 +262,6 @@ ax::ResourceStorage* axWindow::GetResourceManager()
 
 void axWindow::OnPaint()
 {
-    
-//    ax::GC* gc = GetGC();
     ax::GC gc;
     ax::Rect rect(GetDrawingRect());
     
@@ -409,7 +276,6 @@ void axWindow::RenderWindow()
 {
 #if _axBackBufferWindow_ == 1
     
-//    if(_hasBackBuffer)
     if(HasProperty("BackBuffer"))
     {
         if(_needUpdate)
@@ -428,7 +294,6 @@ void axWindow::RenderWindow()
         OnPaint();
     }
     
-
 #else
     OnPaint();
 #endif //_axBackBufferWindow_

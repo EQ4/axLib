@@ -34,6 +34,8 @@
 		7C18C4171B03BB1200885929 /* axFlag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4151B03BB1200885929 /* axFlag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C4221B03CA4A00885929 /* axColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C18C4211B03CA4A00885929 /* axColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C18C4241B03CA5500885929 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C18C4231B03CA5500885929 /* axColor.cpp */; };
+		7C6A9A221B0525EE004647D1 /* axProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A9A201B0525EE004647D1 /* axProperty.cpp */; };
+		7C6A9A231B0525EE004647D1 /* axProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C6A9A211B0525EE004647D1 /* axProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		7C18C4151B03BB1200885929 /* axFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFlag.h; sourceTree = "<group>"; };
 		7C18C4211B03CA4A00885929 /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axColor.h; path = ../../../../include/axColor.h; sourceTree = "<group>"; };
 		7C18C4231B03CA5500885929 /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axColor.cpp; path = ../../../../source/axColor.cpp; sourceTree = "<group>"; };
+		7C6A9A201B0525EE004647D1 /* axProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axProperty.cpp; sourceTree = "<group>"; };
+		7C6A9A211B0525EE004647D1 /* axProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axProperty.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				7C18C4151B03BB1200885929 /* axFlag.h */,
 				7C18C3AA1B02774500885929 /* axInterpole.h */,
 				7C18C39C1B02713F00885929 /* axPoint2D.h */,
+				7C6A9A211B0525EE004647D1 /* axProperty.h */,
 				7C18C4111B03BA0A00885929 /* axPrint.h */,
 				7C18C3A61B02747400885929 /* axRange.h */,
 				7C18C3A21B02726D00885929 /* axRect2D.h */,
@@ -144,6 +149,7 @@
 				7C18C4141B03BB1200885929 /* axFlag.cpp */,
 				7C18C3A91B02774500885929 /* axInterpole.cpp */,
 				7C18C39B1B02713F00885929 /* axPoint2D.cpp */,
+				7C6A9A201B0525EE004647D1 /* axProperty.cpp */,
 				7C18C4101B03BA0A00885929 /* axPrint.cpp */,
 				7C18C3A51B02747400885929 /* axRange.cpp */,
 				7C18C3A11B02726D00885929 /* axRect2D.cpp */,
@@ -173,6 +179,7 @@
 				7C18C3A81B02747400885929 /* axRange.h in Headers */,
 				7C18C3CD1B02BD3200885929 /* axResourceStorage.h in Headers */,
 				7C18C37C1B02709500885929 /* axUtils.h in Headers */,
+				7C6A9A231B0525EE004647D1 /* axProperty.h in Headers */,
 				7C18C3A41B02726D00885929 /* axRect2D.h in Headers */,
 				7C18C4221B03CA4A00885929 /* axColor.h in Headers */,
 			);
@@ -256,6 +263,7 @@
 				7C18C3AB1B02774500885929 /* axInterpole.cpp in Sources */,
 				7C18C3AF1B02788200885929 /* axClamp.cpp in Sources */,
 				7C18C3B31B02790300885929 /* axString.cpp in Sources */,
+				7C6A9A221B0525EE004647D1 /* axProperty.cpp in Sources */,
 				7C18C4161B03BB1200885929 /* axFlag.cpp in Sources */,
 				7C18C4121B03BA0A00885929 /* axPrint.cpp in Sources */,
 			);

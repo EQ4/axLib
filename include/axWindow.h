@@ -33,7 +33,7 @@
 #include "axConfig.h"
 #include <axGL/axFrameBuffer.h>
 #include <axUtils/axResourceStorage.h>
-#include <unordered_set>
+
 
 namespace ax
 {
@@ -141,17 +141,20 @@ public:
     
     inline void AddProperty(const std::string& property)
     {
-        _properties.insert(property);
+        _properties.AddProperty(property);
+//        _properties.insert(property);
     }
     
     inline void RemoveProperty(const std::string& property)
     {
-        _properties.erase(property);
+        _properties.RemoveProperty(property);
+//        _properties.erase(property);
     }
     
     inline bool HasProperty(const std::string& property) const
     {
-        return _properties.find(property) == _properties.end() ? false : true;
+        return _properties.HasProperty(property);
+//        return _properties.find(property) == _properties.end() ? false : true;
     }
     
 private:
@@ -176,7 +179,8 @@ private:
     // EditingWidget
     // Editable
     // BackBuffer
-    std::unordered_set<std::string> _properties;
+//    std::unordered_set<std::string> _properties;
+    ax::Property _properties;
 };
 
 /// @}

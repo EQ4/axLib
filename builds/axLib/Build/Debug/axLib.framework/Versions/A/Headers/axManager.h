@@ -26,9 +26,7 @@
 /// @{
 
 #include <map>
-//#include <axEvent/axEvent.h>
 #include <axEvent/axObject.h>
-//#include "axObject.h"
 #include "axC++.h"
 #include "axWindowTree.h"
 
@@ -58,7 +56,6 @@ public:
     axWindowTree* GetWindowTree();
 
 private:
-//	axWindowMap _windows; // Map for drawing windows.
 	axWindowTree _windowTree;
 };
 

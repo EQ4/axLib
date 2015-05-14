@@ -323,7 +323,6 @@ bool axPanel::IsGrabbed()
     {
         return ax::App::GetMainApp()->GetWindowManager()->IsGrab();
     }
-	
 }
 
 bool axPanel::IsMouseHoverWindow()
