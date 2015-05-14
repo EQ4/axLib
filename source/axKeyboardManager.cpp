@@ -92,7 +92,7 @@ void axKeyboardManager::UnGrabKey()
     
 }
 
-bool axKeyboardManager::IsKeyGrab(axWindow* win) const
+bool axKeyboardManager::IsKeyGrab(const axWindow* win) const
 {
     return (win == _keyGrabbedWindow);
 }

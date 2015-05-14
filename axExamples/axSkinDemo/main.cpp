@@ -14,6 +14,8 @@ MainPanel::MainPanel(ax::App* app, const ax::Rect& rect):
 // Parent.
 axPanel(app, rect)
 {
+//    axPanel* failPanel = new axPanel((axWindow*)nullptr, ax::Rect(0, 0, 10, 10));
+    
     _fileBrowser = new ax::FileBrowser(this,
                                        ax::Rect(0, 40, 200, rect.size.y - 40));
     
@@ -62,7 +64,7 @@ axPanel(app, rect)
 //    axApp* app = GetApp();
     std::string btnInfoPath(app->GetResourceFile("axButtonBlueInfo.axobj"));
     
-    ax::Button* btn = new ax::Button(this, ax::Rect(150, 150, 60, 25),
+    ax::Button* btn = new ax::Button(this, ax::Rect(250, 150, 60, 25),
                                      GetOnButtonClick(),
                                      ax::Button::Info(btnInfoPath),
                                      "",

@@ -561,10 +561,10 @@
 				7C841B951ACC959B000B6364 /* axEditorWidget.h in Headers */,
 				7C8A7C0E1AE0259F0094E9EF /* axRadio.h in Headers */,
 				7C3E4D971AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h in Headers */,
-				7C15C80A1AB670A4007B6868 /* axPanel.h in Headers */,
-				7C15C8021AB670A4007B6868 /* axLib.h in Headers */,
 				7C8EBC621A9A54E600A55EEB /* axWidgetSelector.h in Headers */,
 				7C88F2281A94303A00374108 /* axCoreMac.h in Headers */,
+				7C15C8021AB670A4007B6868 /* axLib.h in Headers */,
+				7C15C80A1AB670A4007B6868 /* axPanel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

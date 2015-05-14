@@ -97,7 +97,7 @@ class axWidget : public axPanel
 {
 public:
     axWidget(axWindow* parent, const ax::Rect& rect, axInfo* info);
-    axWidget(int f, axWindow* parent, const ax::Rect& rect);
+    axWidget(const int& type, ax::App* app, const ax::Rect& rect);
     
     bool IsEditable() const;
     bool IsInfoEditable() const;

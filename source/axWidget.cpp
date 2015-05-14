@@ -35,8 +35,8 @@ _info(info)
     #endif // _axDebugEditor_
 }
 
-axWidget::axWidget(int f, axWindow* parent, const ax::Rect& rect):
-axPanel(f, parent, rect),
+axWidget::axWidget(const int& type, ax::App* app, const ax::Rect& rect):
+axPanel(type, app, rect),
 _info(nullptr)
 {
     #ifdef _axDebugEditor_
@@ -47,6 +47,21 @@ _info(nullptr)
 //axWindow::axWindowType axWidget::GetWindowType()
 //{
 //    return axWindow::axWindowType::axWINDOW_TYPE_WIDGET;
+//}
+
+//void axPanel::Update()
+//{
+////    if(ax::App::GetMainApp()->_widgetSelector != nullptr &&
+////       ax::App::GetMainApp()->_widgetSelector->GetSelectedWidget() == this)
+////    {
+////        if(ax::App::GetMainApp()->IsDebugEditorActive())
+////        {
+////            ax::App::GetMainApp()->_widgetSelector->SetSelectedWidget(this);
+////        }
+////
+////    }
+////    SetNeedUpdate();
+////	UpdateAll();
 //}
 
 void axWidget::SetInfo(const ax::StringPairVector& attributes)

@@ -48,8 +48,8 @@ public:
 	void GrabMouse(axWindow* win);
 	void UnGrabMouse();
     
-    bool IsGrab();
-    bool IsMouseHoverWindow(axWindow* win);
+    bool IsGrab() const;
+    bool IsMouseHoverWindow(const axWindow* win) const;
     bool IsEventReachWindow() const;
     
     void ReleaseMouseHover();

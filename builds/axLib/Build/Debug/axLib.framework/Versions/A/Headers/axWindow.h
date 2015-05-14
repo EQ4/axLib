@@ -33,10 +33,16 @@
 
 #include "axConfig.h"
 #include "axC++.h"
+#include <exception>
 
 namespace ax
 {
     class App;
+    
+    namespace Core
+    {
+        class WindowManager;
+    }
 }
 
 //class axManager;
@@ -44,10 +50,22 @@ namespace ax
 class axWindow : public ax::Event::Object
 {
 public:
-	axWindow(axWindow* parent, const ax::Rect& rect);
+    
+//    class axWindowException: public std::exception
+//    {
+//        virtual const char* what() const throw()
+//        {
+//            return "ax::Window needs a parent window. \
+//            Use ax::Window(ax::App* app, ...) constructor for top level window.";
+//        }
+//    } ExceptionNoParent;
     
     // First window in the application.
     axWindow(ax::App* app, const ax::Rect& rect);
+    
+	axWindow(axWindow* parent, const ax::Rect& rect);
+    
+    axWindow(const int& type, ax::App* app, const ax::Rect& rect);
     
     virtual ~axWindow();
     
@@ -83,14 +101,25 @@ public:
     
     void RenderWindow();
     
+    ax::Rect GetWindowPixelData(unsigned char*& data) const;
+    
     ax::Rect GetDrawingRect() const;
     
     void SetNeedUpdate();
     
+    void GrabMouse();
+    void UnGrabMouse();
+    bool IsGrabbed() const;
+    bool IsMouseHoverWindow() const;
+    
+    void GrabKey();
+    void UnGrabKey();
+    bool IsKeyGrab() const;
+    
     // Drawing events.
     virtual void OnPaint();
     virtual void OnPaintStatic(){}
-    virtual void Update() = 0;
+    virtual void Update();
     virtual void OnResize(const ax::Size& size){}
     
     // Mouse events.
@@ -131,11 +160,14 @@ public:
     
 private:
     ax::App* _app;
+    ax::Core::WindowManager* _windowManager;
 	axWindow* _parent;
 	ax::Rect _rect, _shownRect;
 	ax::Point _absolutePosition, _scrollDecay;
     ax::Color _windowColor, _contourColor;
     ax::GL::FrameBuffer _frameBufferObj;
+    
+    
     ax::ResourceStorage _resourceManager;
     
     bool _needUpdate;

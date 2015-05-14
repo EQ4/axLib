@@ -48,7 +48,7 @@ public:
     void GrabKey(axWindow* win);
     void UnGrabKey();
     
-    bool IsKeyGrab(axWindow* win) const;
+    bool IsKeyGrab(const axWindow* win) const;
 
 
 private:

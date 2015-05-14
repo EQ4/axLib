@@ -263,12 +263,12 @@ void axMouseManager::UnGrabMouse()
 	_mouseCaptureWindow = nullptr;
 }
 
-bool axMouseManager::IsGrab()
+bool axMouseManager::IsGrab() const
 {
 	return (_mouseCaptureWindow != nullptr);
 }
 
-bool axMouseManager::IsMouseHoverWindow(axWindow* win)
+bool axMouseManager::IsMouseHoverWindow(const axWindow* win) const
 {
 	return (_currentWindow == win);
 }

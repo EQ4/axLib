@@ -85,7 +85,6 @@ public:
 protected:
     std::unique_ptr<ax::Core::WindowManager> _windowManager;
 	std::unique_ptr<ax::Core::WindowManager> _popupManager;
-    
     std::unique_ptr<ax::Core::WindowManager> _realPopWindowManager;
 
 	bool _needToDraw, _popupNeedToDraw;

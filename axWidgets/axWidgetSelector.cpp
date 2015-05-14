@@ -39,7 +39,7 @@ _color(color)
  * axWidgetSelector.
  ******************************************************************************/
 axWidgetSelector::axWidgetSelector(axWindow* parent):
-axPanel(3, parent, ax::Rect(0, 0, 20, 20)),
+axPanel(3, parent->GetApp(), ax::Rect(0, 0, 20, 20)),
 _info(ax::Color(1.0, 0.33, 0.0)),
 _selectedWidget(nullptr)
 {

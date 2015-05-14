@@ -35,49 +35,15 @@ class axPanel : public axWindow
 public:
     axPanel(ax::App* app, const ax::Rect& rect);
 	axPanel(axWindow* parent, const ax::Rect& rect);
-	axPanel(int f, axWindow* parent, const ax::Rect& rect);
+	axPanel(const int& type, ax::App* app, const ax::Rect& rect);
 
     virtual ~axPanel();
-    
-	void UpdateAll();
-	virtual void Update();
-    
-//    virtual axWindowType GetWindowType();
-
-	void GrabMouse();
-	void UnGrabMouse();
-	bool IsGrabbed();
-	bool IsMouseHoverWindow();
-	void DeleteWindow(axWindow* win);
-
-    void GrabKey();
-    void UnGrabKey();
-    
-    void ShowMouse();
-    void HideMouse();
-    
-    bool IsKeyGrab();
-    
-//	axApp* GetApp();
-
-	void BlockDrawing();
-	void BlockDrawing(const ax::Rect& rect);
-
-	void UnBlockDrawing();
-    
-    ax::Rect GetWindowPixelData(unsigned char*& data) const;
-    
+        
     void SetScrollBar(axScrollBar* scrollbar);
     axScrollBar* GetScrollBar();
 
-//    void SetPanelColor(const ax::Color& color);
-
 private:
-	bool _isInPopup;
     axScrollBar* _scrollBar = nullptr;
-//    axWindowType _windowType;
-    
-//    ax::Color _panelColor;
 };
 
 /// @}

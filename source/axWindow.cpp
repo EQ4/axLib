@@ -23,6 +23,7 @@
 #include "axApp.h"
 #include "axConfig.h"
 #include "axWindowTree.h"
+#include "axWindowManager.h"
 
 axWindow::axWindow(ax::App* app, const ax::Rect& rect):
 // Heritage.
@@ -36,13 +37,21 @@ _windowColor(0.0, 0.0, 0.0, 0.0),
 _contourColor(0.0, 0.0, 0.0, 0.0),
 _needUpdate(true),
 _frameBufferObj(rect.size),
-_app(app)
+_app(app),
+_windowManager(app->GetWindowManager())
 {
     AddProperty("BackBuffer");
     AddProperty("Selectable");
+    
+    _windowManager->Add(this);
 }
 
-axWindow::axWindow(axWindow* parent, const ax::Rect& rect):
+// A nullptr parent should never be use.
+// First parent->GetApp()->GetEventManager() is gonna crash and a nullptr
+// argument should generate an anbiguous error between ax::App* and ax::Window*
+// constructor. Use axApp* constructor for top level window.
+
+ axWindow::axWindow(axWindow* parent, const ax::Rect& rect):
 // Heritage.
 ax::Event::Object(parent->GetApp()->GetEventManager()),
 // Members.
@@ -58,26 +67,62 @@ _app(parent->GetApp())
 {
     AddProperty("BackBuffer");
     AddProperty("Selectable");
+
+    _absolutePosition = parent->_absolutePosition + rect.position;
+
+    if(parent->HasProperty("Popup"))
+    {
+        AddProperty("Popup");
+        _windowManager = _app->GetPopupManager();
+    }
+    else
+    {
+        _windowManager = _app->GetWindowManager();
+    }
     
-	if (parent == nullptr)
-	{
-        // Should now never happen with new axApp.
-//        std::cerr << "SHOULD NEVER HAPPEN." << std::endl;
-//        assert(true);
-        
-		_absolutePosition = rect.position;
-	}
-	else
-	{
-//        _app = parent->GetApp();
-		_absolutePosition = parent->_absolutePosition + rect.position;
-	}
+    _windowManager->Add(this);
+}
+
+axWindow::axWindow(const int& type, ax::App* app, const ax::Rect& rect):
+// Heritage.
+ax::Event::Object(app->GetEventManager()),
+// Members.
+_parent(nullptr),
+_rect(rect),
+_isHidden(false),
+_shownRect(ax::Point(0, 0), rect.size),
+_windowColor(0.0, 0.0, 0.0, 0.0),
+_contourColor(0.0, 0.0, 0.0, 0.0),
+_needUpdate(true),
+_frameBufferObj(rect.size),
+_app(app)
+{
+    axUNUSED(type); // For now only popup window possible.
+    AddProperty("BackBuffer");
+    AddProperty("Selectable");
+    AddProperty("Popup");
     
-//	_gc = new axGC(this);
+    _windowManager = app->GetPopupManager();
+    _windowManager->Add(this);
 }
 
 axWindow::~axWindow()
 {
+    if(IsGrabbed())
+    {
+        UnGrabMouse();
+    }
+    
+    if(IsMouseHoverWindow())
+    {
+        _windowManager->ReleaseMouseHover();
+    }
+    
+    if(IsKeyGrab())
+    {
+        UnGrabKey();
+    }
+    
 //    axPrint("DELETE WINDOW : ", GetId());
 //    axApp::GetInstance()->GetCore()->GetWindowManager()->GetWindowTree()->DeleteWindow(this);
 }
@@ -260,6 +305,49 @@ ax::ResourceStorage* axWindow::GetResourceManager()
     return &_resourceManager;
 }
 
+
+void axWindow::GrabMouse()
+{
+    _windowManager->GrabMouse(this);
+}
+
+void axWindow::UnGrabMouse()
+{
+    _windowManager->UnGrabMouse();
+}
+
+bool axWindow::IsGrabbed() const
+{
+    // Need to change this with this pointer to current ax::Window.
+    return _windowManager->IsGrab();
+}
+
+bool axWindow::IsMouseHoverWindow() const
+{
+    return _windowManager->IsMouseHoverWindow(this);
+}
+
+void axWindow::GrabKey()
+{
+    _windowManager->GrabKey(this);
+}
+
+void axWindow::UnGrabKey()
+{
+    _windowManager->UnGrabKey();
+}
+
+bool axWindow::IsKeyGrab() const
+{
+    return _windowManager->IsKeyGrab(this);
+}
+
+void axWindow::Update()
+{
+    _needUpdate = true;
+    _app->UpdateAll();
+}
+
 void axWindow::OnPaint()
 {
     ax::GC gc;
@@ -297,4 +385,29 @@ void axWindow::RenderWindow()
 #else
     OnPaint();
 #endif //_axBackBufferWindow_
+}
+
+ax::Rect axWindow::GetWindowPixelData(unsigned char*& data) const
+{
+    ax::Rect rect(GetAbsoluteRect());
+    rect.position.x -= 1;
+    rect.size.x += 1;
+    rect.position.y -= 1;
+    rect.size.y += 1;
+    
+    data = new unsigned char[rect.size.x * rect.size.y * 4];
+    
+    ax::Size globalSize(_app->GetCore()->GetGlobalSize());
+    
+    
+    /// @todo Move this to axGL framework.
+    glReadPixels(rect.position.x,
+                 globalSize.y - rect.position.y - rect.size.y,
+                 rect.size.x,
+                 rect.size.y,
+                 GL_RGBA, // Format.
+                 GL_UNSIGNED_BYTE, // Type.
+                 (void*)data);
+    
+    return rect;
 }
