@@ -50,6 +50,10 @@
 		7C18C4181B03BFF300885929 /* axGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C4041B03B77200885929 /* axGL.framework */; };
 		7C3E4D971AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3E4D951AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C3E4D981AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E4D961AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm */; };
+		7C5EC1921B0AC43100D37FC0 /* axNodeAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC1901B0AC43100D37FC0 /* axNodeAdapter.cpp */; };
+		7C5EC1931B0AC43100D37FC0 /* axNodeAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC1911B0AC43100D37FC0 /* axNodeAdapter.h */; };
+		7C5EC19E1B0B5B0800D37FC0 /* axModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC19C1B0B5B0800D37FC0 /* axModelLoader.cpp */; };
+		7C5EC19F1B0B5B0800D37FC0 /* axModelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC19D1B0B5B0800D37FC0 /* axModelLoader.h */; };
 		7C6A9A2A1B05549C004647D1 /* axCoreFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */; };
 		7C6A9A2B1B05549C004647D1 /* axCoreFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C6A9A291B05549C004647D1 /* axCoreFacade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C841B751AC96C9A000B6364 /* axEditorButton.cpp */; };
@@ -129,6 +133,20 @@
 			remoteGlobalIDString = 7C18C3E01B03B77100885929;
 			remoteInfo = axGL;
 		};
+		7C5EC1CB1B0B634E00D37FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C5EC1AA1B0B634B00D37FC0;
+			remoteInfo = axAudio;
+		};
+		7C5EC1CD1B0B634E00D37FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C5EC1B51B0B634C00D37FC0;
+			remoteInfo = axAudioTests;
+		};
 		7CC6B8661B0193FE0059D822 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CC6B8611B0193FD0059D822 /* axEvent.xcodeproj */;
@@ -200,6 +218,11 @@
 		7C18C3FC1B03B77100885929 /* axGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = axGL.xcodeproj; path = axGL/axGL.xcodeproj; sourceTree = "<group>"; };
 		7C3E4D951AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOpenGLView+axPopupWindowCocoaView.h"; sourceTree = "<group>"; };
 		7C3E4D961AF3D7ED005075E8 /* NSOpenGLView+axPopupWindowCocoaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSOpenGLView+axPopupWindowCocoaView.mm"; sourceTree = "<group>"; };
+		7C5EC1901B0AC43100D37FC0 /* axNodeAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axNodeAdapter.cpp; sourceTree = "<group>"; };
+		7C5EC1911B0AC43100D37FC0 /* axNodeAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axNodeAdapter.h; sourceTree = "<group>"; };
+		7C5EC19C1B0B5B0800D37FC0 /* axModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axModelLoader.cpp; sourceTree = "<group>"; };
+		7C5EC19D1B0B5B0800D37FC0 /* axModelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axModelLoader.h; sourceTree = "<group>"; };
+		7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = axAudio.xcodeproj; path = axAudio/axAudio.xcodeproj; sourceTree = "<group>"; };
 		7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axCoreFacade.cpp; path = ../include/axCoreFacade.cpp; sourceTree = "<group>"; };
 		7C6A9A291B05549C004647D1 /* axCoreFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreFacade.h; sourceTree = "<group>"; };
 		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
@@ -276,6 +299,7 @@
 		7C1351111A7FC72800C97A99 = {
 			isa = PBXGroup;
 			children = (
+				7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */,
 				7C18C3FC1B03B77100885929 /* axGL.xcodeproj */,
 				7C18C3921B02709500885929 /* axUtils.xcodeproj */,
 				7CC6B8611B0193FD0059D822 /* axEvent.xcodeproj */,
@@ -305,11 +329,14 @@
 		7C13511D1A7FC72800C97A99 /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C5EC19B1B0B5ADD00D37FC0 /* ax3D */,
 				7C88F1AA1A942EAC00374108 /* axWidgets */,
 				7C1351AD1A7FC7A800C97A99 /* axMac */,
 				7C1351371A7FC77900C97A99 /* include */,
 				7C1351551A7FC77A00C97A99 /* source */,
 				7C13511E1A7FC72800C97A99 /* Supporting Files */,
+				7C5EC1901B0AC43100D37FC0 /* axNodeAdapter.cpp */,
+				7C5EC1911B0AC43100D37FC0 /* axNodeAdapter.h */,
 			);
 			path = axLib;
 			sourceTree = "<group>";
@@ -381,6 +408,24 @@
 			isa = PBXGroup;
 			children = (
 				7C18C4041B03B77200885929 /* axGL.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C5EC19B1B0B5ADD00D37FC0 /* ax3D */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC19C1B0B5B0800D37FC0 /* axModelLoader.cpp */,
+				7C5EC19D1B0B5B0800D37FC0 /* axModelLoader.h */,
+			);
+			name = ax3D;
+			sourceTree = "<group>";
+		};
+		7C5EC1C71B0B634C00D37FC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC1CC1B0B634E00D37FC0 /* axAudio.framework */,
+				7C5EC1CE1B0B634E00D37FC0 /* axAudioTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -554,12 +599,14 @@
 				7C88F2031A942F7600374108 /* axPopupMenu.h in Headers */,
 				7C88F2041A942F7600374108 /* axScrollBar.h in Headers */,
 				7C88F2051A942F7600374108 /* axSlider.h in Headers */,
+				7C5EC1931B0AC43100D37FC0 /* axNodeAdapter.h in Headers */,
 				7C841B7A1AC96C9A000B6364 /* axEditorButton.h in Headers */,
 				7C841B7C1AC96C9A000B6364 /* axEditorMenu.h in Headers */,
 				7C88F2061A942F7600374108 /* axStaticImage.h in Headers */,
 				7C88F2071A942F7600374108 /* axTextBox.h in Headers */,
 				7C841B8B1ACAE8F3000B6364 /* axEditorToolbar.h in Headers */,
 				7C841B871ACA290A000B6364 /* axEditorAttributes.h in Headers */,
+				7C5EC19F1B0B5B0800D37FC0 /* axModelLoader.h in Headers */,
 				7C88F2081A942F7600374108 /* axTextControl.h in Headers */,
 				7C88F2091A942F7600374108 /* axToggle.h in Headers */,
 				7C88F2271A94303A00374108 /* axCocoaInterfaceMac.h in Headers */,
@@ -624,6 +671,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 7C5EC1C71B0B634C00D37FC0 /* Products */;
+					ProjectRef = 7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */;
+				},
+				{
 					ProductGroup = 7CC6B8621B0193FD0059D822 /* Products */;
 					ProjectRef = 7CC6B8611B0193FD0059D822 /* axEvent.xcodeproj */;
 				},
@@ -663,6 +714,20 @@
 			fileType = wrapper.framework;
 			path = axGL.framework;
 			remoteRef = 7C18C4031B03B77200885929 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7C5EC1CC1B0B634E00D37FC0 /* axAudio.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = axAudio.framework;
+			remoteRef = 7C5EC1CB1B0B634E00D37FC0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7C5EC1CE1B0B634E00D37FC0 /* axAudioTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = axAudioTests.xctest;
+			remoteRef = 7C5EC1CD1B0B634E00D37FC0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7CC6B8671B0193FE0059D822 /* axEvent.framework */ = {
@@ -732,9 +797,11 @@
 				7C841B791AC96C9A000B6364 /* axEditorButton.cpp in Sources */,
 				7C1351AA1A7FC77A00C97A99 /* axWidgetBuilder.cpp in Sources */,
 				7C88F1DE1A942EAC00374108 /* axLabel.cpp in Sources */,
+				7C5EC1921B0AC43100D37FC0 /* axNodeAdapter.cpp in Sources */,
 				7C88F1D41A942EAC00374108 /* axButton.cpp in Sources */,
 				7C1351941A7FC77A00C97A99 /* axConfig.cpp in Sources */,
 				7C1351AC1A7FC77A00C97A99 /* axWindowTree.cpp in Sources */,
+				7C5EC19E1B0B5B0800D37FC0 /* axModelLoader.cpp in Sources */,
 				7C1351921A7FC77A00C97A99 /* axC++.cpp in Sources */,
 				7C88F1EA1A942EAD00374108 /* axSlider.cpp in Sources */,
 				7C1351951A7FC77A00C97A99 /* axCore.cpp in Sources */,

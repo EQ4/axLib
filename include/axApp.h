@@ -27,29 +27,6 @@
 /// @defgroup Core
 /// @{
 
-//#ifdef __linux__
-//#include "axCoreX11.h"
-////#endif //__linux__
-//
-//#elif _MSC_VER
-//	#if _axWxWidgetsCore_ == 1
-//		#include "axCoreWxWidgets.h"
-//		
-//	#else
-//		#include "axCoreWin32.h"
-//	#endif // _axWxWidgetsCore_.
-////#endif //_MSC_VER
-//
-//
-//#else// __APPLE__
-//    #ifdef _AX_VST_APP_
-//        #include "axVstCoreMac.h"
-//    #else
-//        #include "axCoreMac.h"
-//    #endif // _AX_VST_APP_
-//#endif // __APPLE__
-
-
 #include "axC++.h"
 #include "axCoreFacade.h"
 #include <axUtils/axResourceStorage.h>
@@ -90,31 +67,6 @@ namespace ax
         void AddPopupEntryFunction(std::function<void()> fct);
         void CallPopupEntryFunction();
         
-        //----------------------------------------------------------------------
-
-        
-//        void MainLoop();
-//        
-//        ax::Core::WindowManager* GetWindowManager();
-//        ax::Core::WindowManager* GetPopupManager();
-//        
-//        void UpdateAll();
-//        
-//        axCore* GetCore();
-//        
-//        std::string OpenFileDialog();
-//        
-//        bool CreatePopupWindow(const char*, int, int);
-//        
-//        std::string GetAppDirectory();
-//        
-//        inline std::string GetAppPath()
-//        {
-//            return _core->GetAppPath();
-//        }
-        
-        
-        //----------------------------------------------------------------------
         axEditorMenu* GetEditor();
         void CreateEditor();
         
@@ -125,12 +77,7 @@ namespace ax
         void ActivateDebugEditor(const bool& active);
         bool IsDebugEditorActive() const;
         
-
-        
-        
-        
     private:
-//        axCore* _core;
         static App* _mainApp;
         
         ax::Event::Manager* _evtManager;

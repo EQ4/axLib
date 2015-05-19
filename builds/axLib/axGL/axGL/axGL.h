@@ -16,4 +16,20 @@
 
 // In this header, you should import all the public headers of your framework using statements like #import <axGL/PublicHeader.h>
 
+#ifdef __linux__
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <GL/glx.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
+#elif _MSC_VER
+#include <windows.h>
+#include "GL/glew.h"
+//#include <gl\gl.h>
+#include <gl\glu.h>
+
+#else //__APPLE__
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/glu.h>
+#endif // __APPLE__

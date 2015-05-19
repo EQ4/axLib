@@ -1,0 +1,6 @@
+framework module axWindowSystem {
+  umbrella header "axWindowSystem.h"
+
+  export *
+  module * { export * }
+}

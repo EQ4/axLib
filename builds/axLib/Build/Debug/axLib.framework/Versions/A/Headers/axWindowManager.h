@@ -33,8 +33,8 @@
 #include "axMouseManager.h"
 #include "axKeyboardManager.h"
 
-typedef std::map<ax::Event::ID, axWindow*> axWindowMap;
-typedef std::pair<ax::Event::ID, axWindow*> axWindowPair;
+//typedef std::map<ax::Event::ID, axWindow*> axWindowMap;
+//typedef std::pair<ax::Event::ID, axWindow*> axWindowPair;
 
 class axWindow;
 

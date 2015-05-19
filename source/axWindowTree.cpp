@@ -413,6 +413,7 @@ axWindow* axWindowTree::FindMousePosition(const ax::Point& pos)
         do
         {
             n = node;
+            
             for (axWindowNode* it : n->GetChild())
             {
                 ax::Point position = it->window->GetAbsoluteRect().position;
