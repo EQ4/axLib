@@ -20,9 +20,11 @@
 		7C5EC2111B0B68C400D37FC0 /* axAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5EC2101B0B68C400D37FC0 /* axAudio.framework */; };
 		7C5EC2121B0B690800D37FC0 /* axAudio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C5EC2101B0B68C400D37FC0 /* axAudio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C5EC2151B0B6B7700D37FC0 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2131B0B6B7700D37FC0 /* Audio.cpp */; };
+		7C5EC24F1B0B766500D37FC0 /* axMidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5EC24E1B0B766500D37FC0 /* axMidi.framework */; };
+		7C5EC2501B0B766A00D37FC0 /* axMidi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C5EC24E1B0B766500D37FC0 /* axMidi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C5EC2531B0B768900D37FC0 /* MidiPiano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2511B0B768900D37FC0 /* MidiPiano.cpp */; };
 		7C8A7C2A1AE168A70094E9EF /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; };
 		7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C8A7C291AE168A70094E9EF /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
 		7CAD66091B03ED2C00C1B506 /* axGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C18C41F1B03C84C00885929 /* axGL.framework */; };
 		7CC6B83A1B01299B0059D822 /* axFileBrowser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7C5EC2501B0B766A00D37FC0 /* axMidi.framework in CopyFiles */,
 				7C5EC2121B0B690800D37FC0 /* axAudio.framework in CopyFiles */,
 				7C18C3C01B02B8B700885929 /* axUtils.framework in CopyFiles */,
 				7C8A7C2B1AE168AC0094E9EF /* axLib.framework in CopyFiles */,
@@ -59,9 +62,10 @@
 		7C5EC2101B0B68C400D37FC0 /* axAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axAudio.framework; path = ../../builds/axLib/Build/Debug/axAudio.framework; sourceTree = "<group>"; };
 		7C5EC2131B0B6B7700D37FC0 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Audio.cpp; path = ../Audio.cpp; sourceTree = "<group>"; };
 		7C5EC2141B0B6B7700D37FC0 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = ../Audio.h; sourceTree = "<group>"; };
+		7C5EC24E1B0B766500D37FC0 /* axMidi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axMidi.framework; path = ../../builds/axLib/Build/Debug/axMidi.framework; sourceTree = "<group>"; };
+		7C5EC2511B0B768900D37FC0 /* MidiPiano.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidiPiano.cpp; path = ../MidiPiano.cpp; sourceTree = "<group>"; };
+		7C5EC2521B0B768900D37FC0 /* MidiPiano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiPiano.h; path = ../MidiPiano.h; sourceTree = "<group>"; };
 		7C8A7C291AE168A70094E9EF /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
-		7CA3C1901A75D8F400564F21 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = "../../libs/rtmidi-2.1.0/RtMidi.cpp"; sourceTree = "<group>"; };
-		7CA3C1911A75D8F400564F21 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = "../../libs/rtmidi-2.1.0/RtMidi.h"; sourceTree = "<group>"; };
 		7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFileBrowser.cpp; sourceTree = "<group>"; };
 		7CC6B8391B01299B0059D822 /* axFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFileBrowser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +81,7 @@
 				7CAD66091B03ED2C00C1B506 /* axGL.framework in Frameworks */,
 				7C5EC2111B0B68C400D37FC0 /* axAudio.framework in Frameworks */,
 				7C5EC19A1B0AD7A800D37FC0 /* axEvent.framework in Frameworks */,
+				7C5EC24F1B0B766500D37FC0 /* axMidi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,14 +91,13 @@
 		7C262F961A366F9D00544ACE = {
 			isa = PBXGroup;
 			children = (
+				7C5EC24E1B0B766500D37FC0 /* axMidi.framework */,
 				7C5EC2101B0B68C400D37FC0 /* axAudio.framework */,
 				7C5EC1981B0AD2BC00D37FC0 /* OpenGL.framework */,
 				7C18C41F1B03C84C00885929 /* axGL.framework */,
 				7C18C3BE1B02B8B100885929 /* axUtils.framework */,
 				7C18C3501B01AB1A00885929 /* axEvent.framework */,
 				7C8A7C291AE168A70094E9EF /* axLib.framework */,
-				7CA3C1901A75D8F400564F21 /* RtMidi.cpp */,
-				7CA3C1911A75D8F400564F21 /* RtMidi.h */,
 				7C262FC91A36705F00544ACE /* MainMenu.xib */,
 				7C3E4D931AF3CE5C005075E8 /* axPopupWindow.xib */,
 				7C262FA11A366F9E00544ACE /* axDemo */,
@@ -118,6 +122,8 @@
 				7C262FA21A366F9E00544ACE /* Supporting Files */,
 				7CC6B8381B01299B0059D822 /* axFileBrowser.cpp */,
 				7CC6B8391B01299B0059D822 /* axFileBrowser.h */,
+				7C5EC2511B0B768900D37FC0 /* MidiPiano.cpp */,
+				7C5EC2521B0B768900D37FC0 /* MidiPiano.h */,
 				7C5EC2131B0B6B7700D37FC0 /* Audio.cpp */,
 				7C5EC2141B0B6B7700D37FC0 /* Audio.h */,
 			);
@@ -203,8 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5EC2531B0B768900D37FC0 /* MidiPiano.cpp in Sources */,
 				7C5EC2151B0B6B7700D37FC0 /* Audio.cpp in Sources */,
-				7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */,
 				7C26303D1A3670BB00544ACE /* main.cpp in Sources */,
 				7CC6B83A1B01299B0059D822 /* axFileBrowser.cpp in Sources */,
 			);

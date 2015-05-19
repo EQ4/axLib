@@ -140,12 +140,19 @@
 			remoteGlobalIDString = 7C5EC1AA1B0B634B00D37FC0;
 			remoteInfo = axAudio;
 		};
-		7C5EC1CD1B0B634E00D37FC0 /* PBXContainerItemProxy */ = {
+		7C5EC2411B0B74B800D37FC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */;
+			containerPortal = 7C5EC23C1B0B74B700D37FC0 /* axMidi.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 7C5EC1B51B0B634C00D37FC0;
-			remoteInfo = axAudioTests;
+			remoteGlobalIDString = 7C5EC2201B0B74B700D37FC0;
+			remoteInfo = axMidi;
+		};
+		7C5EC2431B0B74B800D37FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5EC23C1B0B74B700D37FC0 /* axMidi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C5EC22B1B0B74B700D37FC0;
+			remoteInfo = axMidiTests;
 		};
 		7CC6B8661B0193FE0059D822 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -223,6 +230,7 @@
 		7C5EC19C1B0B5B0800D37FC0 /* axModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axModelLoader.cpp; sourceTree = "<group>"; };
 		7C5EC19D1B0B5B0800D37FC0 /* axModelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axModelLoader.h; sourceTree = "<group>"; };
 		7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = axAudio.xcodeproj; path = axAudio/axAudio.xcodeproj; sourceTree = "<group>"; };
+		7C5EC23C1B0B74B700D37FC0 /* axMidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = axMidi.xcodeproj; path = axMidi/axMidi.xcodeproj; sourceTree = "<group>"; };
 		7C6A9A281B05549C004647D1 /* axCoreFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axCoreFacade.cpp; path = ../include/axCoreFacade.cpp; sourceTree = "<group>"; };
 		7C6A9A291B05549C004647D1 /* axCoreFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreFacade.h; sourceTree = "<group>"; };
 		7C841B751AC96C9A000B6364 /* axEditorButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEditorButton.cpp; path = Editor/axEditorButton.cpp; sourceTree = "<group>"; };
@@ -299,6 +307,7 @@
 		7C1351111A7FC72800C97A99 = {
 			isa = PBXGroup;
 			children = (
+				7C5EC23C1B0B74B700D37FC0 /* axMidi.xcodeproj */,
 				7C5EC1C61B0B634C00D37FC0 /* axAudio.xcodeproj */,
 				7C18C3FC1B03B77100885929 /* axGL.xcodeproj */,
 				7C18C3921B02709500885929 /* axUtils.xcodeproj */,
@@ -425,7 +434,15 @@
 			isa = PBXGroup;
 			children = (
 				7C5EC1CC1B0B634E00D37FC0 /* axAudio.framework */,
-				7C5EC1CE1B0B634E00D37FC0 /* axAudioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C5EC23D1B0B74B700D37FC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC2421B0B74B800D37FC0 /* axMidi.framework */,
+				7C5EC2441B0B74B800D37FC0 /* axMidiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -683,6 +700,10 @@
 					ProjectRef = 7C18C3FC1B03B77100885929 /* axGL.xcodeproj */;
 				},
 				{
+					ProductGroup = 7C5EC23D1B0B74B700D37FC0 /* Products */;
+					ProjectRef = 7C5EC23C1B0B74B700D37FC0 /* axMidi.xcodeproj */;
+				},
+				{
 					ProductGroup = 7C18C3931B02709500885929 /* Products */;
 					ProjectRef = 7C18C3921B02709500885929 /* axUtils.xcodeproj */;
 				},
@@ -723,11 +744,18 @@
 			remoteRef = 7C5EC1CB1B0B634E00D37FC0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7C5EC1CE1B0B634E00D37FC0 /* axAudioTests.xctest */ = {
+		7C5EC2421B0B74B800D37FC0 /* axMidi.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = axMidi.framework;
+			remoteRef = 7C5EC2411B0B74B800D37FC0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7C5EC2441B0B74B800D37FC0 /* axMidiTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = axAudioTests.xctest;
-			remoteRef = 7C5EC1CD1B0B634E00D37FC0 /* PBXContainerItemProxy */;
+			path = axMidiTests.xctest;
+			remoteRef = 7C5EC2431B0B74B800D37FC0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7CC6B8671B0193FE0059D822 /* axEvent.framework */ = {

@@ -10,7 +10,7 @@
 #define __axDemo__Audio__
 
 #include <axAudio/axAudio.h>
-#include <axAudio/axAudioWaveTable.h>
+//#include <axAudio/axAudioWaveTable.h>
 
 class AudioPiano : public ax::Audio::Core
 {
@@ -19,15 +19,14 @@ public:
     
 private:
     axAudioWaveTable* _waveTable;
+    ax::Audio::Buffer* _buffer;
+    axAudioBufferPlayer* _player;
+    
     
     
     int CoreCallbackAudio(const float* input,
                           float* output,
                           unsigned long frameCount);
-//    virtual int CallbackAudio(ax::Audio::Frames<const float, 1>* inputs,
-//                              ax::Audio::Frames<float, 1>* outputs,
-//                              unsigned long frameCount);
-
 };
 
 #endif /* defined(__axDemo__Audio__) */

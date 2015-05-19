@@ -12,6 +12,12 @@ AudioPiano::AudioPiano()
 {
     _waveTable = new axAudioWaveTable();
     _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SAW);
+    
+    _buffer = new ax::Audio::Buffer("GrandPiano.wav");
+    _player = new axAudioBufferPlayer(_buffer);
+    _player->SetPlayingType(axAudioBufferPlayer::AUDIO_PLAYING_TYPE_REPEAT);
+    
+    _player->Play();
 }
 
 //int AudioPiano::CallbackAudio(ax::Audio::Frames<const float, 1>* inputs,
@@ -25,6 +31,7 @@ int AudioPiano::CoreCallbackAudio(const float* input,
                                   float* output,
                                   unsigned long frameCount)
 {
-    _waveTable->ProcessBlock(output, frameCount);
+//    _waveTable->ProcessBlock(output, frameCount);
+    _player->ProcessBlock(output, frameCount);
     return 0;
 }

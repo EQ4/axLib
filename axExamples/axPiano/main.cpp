@@ -9,7 +9,10 @@
 #include "main.h"
 #include <axlib/axCocoaInterfaceMac.h>
 #include "axFileBrowser.h"
+
 #include "Audio.h"
+#include "MidiPiano.h"
+
 
 MainPanel::MainPanel(ax::App* app, const ax::Rect& rect):
 // Parent.
@@ -50,6 +53,8 @@ void MainPanel::OnPaint()
 int main(int argc, char* argv[])
 {
     AudioPiano piano;
+    PianoMidi midi;
+    
     ax::App app(ax::Size(550, 500));
 
     app.AddMainEntry([&app]()

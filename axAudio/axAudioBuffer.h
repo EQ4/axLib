@@ -35,42 +35,48 @@ struct axBufferInfo
 //  int samplerate, channels, format, sections, seekable;
 //} SF_INFO ;
 
-
-
-class axAudioBuffer
+namespace ax
 {
-public:
-    axAudioBuffer(const string& snd_path);
-    
-    axAudioBuffer(const std::string& path, const int& test);
+    namespace Audio
+    {
+        class Buffer
+        {
+        public:
+            Buffer(const string& snd_path);
+            
+            Buffer(const std::string& path, const int& test);
+            
+            axSOUND_ERROR OpenSoundFile( const string& snd_path );
+            
+            axFloat* GetBuffer();
+            
+            axBufferInfo GetBufferInfo();
+            
+            int GetSampleRate();
+            
+            int GetNumberChannels();
+            
+            string GetSoundPath();
+            
+            void ShowInfo();
+            
+        private:
+            // Libsndfile.
+            SNDFILE* m_sndFile;
+            SF_INFO* m_info;
+            std::string m_path;
+            sf_count_t m_count;
+            
+            float *m_buffer, *m_start, *m_end;
+            
+            axBufferInfo _info;
+            
+            //    static std::mutex audio_buffer_mutex;
+            
+        };
+    }
+}
 
-    axSOUND_ERROR OpenSoundFile( const string& snd_path );
 
-    axFloat* GetBuffer();
-
-    axBufferInfo GetBufferInfo();
-
-    int GetSampleRate();
-
-    int GetNumberChannels();
-
-    string GetSoundPath();
-
-    void ShowInfo();
-
-private:
-    // Libsndfile.
-    SNDFILE* m_sndFile;
-    SF_INFO* m_info;
-    std::string m_path;
-    sf_count_t m_count;
-
-    float *m_buffer, *m_start, *m_end;
-    
-    axBufferInfo _info;
-    
-//    static std::mutex audio_buffer_mutex;
-    
-};
 
 #endif // __AX_AUDIO_BUFFER__.

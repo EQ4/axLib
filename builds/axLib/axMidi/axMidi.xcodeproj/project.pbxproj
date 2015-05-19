@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C5EC2471B0B74DB00D37FC0 /* axMidiCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2451B0B74DA00D37FC0 /* axMidiCore.cpp */; };
+		7C5EC2481B0B74DB00D37FC0 /* axMidiCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC2461B0B74DB00D37FC0 /* axMidiCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C5EC24B1B0B751F00D37FC0 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2491B0B751F00D37FC0 /* RtMidi.cpp */; };
+		7C5EC24C1B0B751F00D37FC0 /* RtMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC24A1B0B751F00D37FC0 /* RtMidi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C5EC2541B0B770400D37FC0 /* axMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC24D1B0B753300D37FC0 /* axMidi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C5EC2561B0B787700D37FC0 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C5EC2201B0B74B700D37FC0 /* axMidi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axMidi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C5EC2241B0B74B700D37FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C5EC2451B0B74DA00D37FC0 /* axMidiCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMidiCore.cpp; path = ../../../../axMidi/axMidiCore.cpp; sourceTree = "<group>"; };
+		7C5EC2461B0B74DB00D37FC0 /* axMidiCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMidiCore.h; path = ../../../../axMidi/axMidiCore.h; sourceTree = "<group>"; };
+		7C5EC2491B0B751F00D37FC0 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = ../../../../axMidi/RtMidi.cpp; sourceTree = "<group>"; };
+		7C5EC24A1B0B751F00D37FC0 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = ../../../../axMidi/RtMidi.h; sourceTree = "<group>"; };
+		7C5EC24D1B0B753300D37FC0 /* axMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axMidi.h; sourceTree = "<group>"; };
+		7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C5EC21C1B0B74B700D37FC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C5EC2561B0B787700D37FC0 /* CoreMIDI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C5EC2161B0B74B700D37FC0 = {
+			isa = PBXGroup;
+			children = (
+				7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */,
+				7C5EC2221B0B74B700D37FC0 /* axMidi */,
+				7C5EC2211B0B74B700D37FC0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C5EC2211B0B74B700D37FC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC2201B0B74B700D37FC0 /* axMidi.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C5EC2221B0B74B700D37FC0 /* axMidi */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC24D1B0B753300D37FC0 /* axMidi.h */,
+				7C5EC2491B0B751F00D37FC0 /* RtMidi.cpp */,
+				7C5EC24A1B0B751F00D37FC0 /* RtMidi.h */,
+				7C5EC2451B0B74DA00D37FC0 /* axMidiCore.cpp */,
+				7C5EC2461B0B74DB00D37FC0 /* axMidiCore.h */,
+				7C5EC2231B0B74B700D37FC0 /* Supporting Files */,
+			);
+			path = axMidi;
+			sourceTree = "<group>";
+		};
+		7C5EC2231B0B74B700D37FC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C5EC2241B0B74B700D37FC0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7C5EC21D1B0B74B700D37FC0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C5EC2481B0B74DB00D37FC0 /* axMidiCore.h in Headers */,
+				7C5EC24C1B0B751F00D37FC0 /* RtMidi.h in Headers */,
+				7C5EC2541B0B770400D37FC0 /* axMidi.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7C5EC21F1B0B74B700D37FC0 /* axMidi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C5EC2361B0B74B700D37FC0 /* Build configuration list for PBXNativeTarget "axMidi" */;
+			buildPhases = (
+				7C5EC21B1B0B74B700D37FC0 /* Sources */,
+				7C5EC21C1B0B74B700D37FC0 /* Frameworks */,
+				7C5EC21D1B0B74B700D37FC0 /* Headers */,
+				7C5EC21E1B0B74B700D37FC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = axMidi;
+			productName = axMidi;
+			productReference = 7C5EC2201B0B74B700D37FC0 /* axMidi.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C5EC2171B0B74B700D37FC0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexandre Arsenault";
+				TargetAttributes = {
+					7C5EC21F1B0B74B700D37FC0 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7C5EC21A1B0B74B700D37FC0 /* Build configuration list for PBXProject "axMidi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7C5EC2161B0B74B700D37FC0;
+			productRefGroup = 7C5EC2211B0B74B700D37FC0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C5EC21F1B0B74B700D37FC0 /* axMidi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C5EC21E1B0B74B700D37FC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C5EC21B1B0B74B700D37FC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C5EC24B1B0B751F00D37FC0 /* RtMidi.cpp in Sources */,
+				7C5EC2471B0B74DB00D37FC0 /* axMidiCore.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7C5EC2341B0B74B700D37FC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C5EC2351B0B74B700D37FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C5EC2371B0B74B700D37FC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = axMidi/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7C5EC2381B0B74B700D37FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = axMidi/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C5EC21A1B0B74B700D37FC0 /* Build configuration list for PBXProject "axMidi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C5EC2341B0B74B700D37FC0 /* Debug */,
+				7C5EC2351B0B74B700D37FC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C5EC2361B0B74B700D37FC0 /* Build configuration list for PBXNativeTarget "axMidi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C5EC2371B0B74B700D37FC0 /* Debug */,
+				7C5EC2381B0B74B700D37FC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C5EC2171B0B74B700D37FC0 /* Project object */;
+}

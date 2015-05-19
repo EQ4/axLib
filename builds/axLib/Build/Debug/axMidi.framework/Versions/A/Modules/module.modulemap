@@ -1,0 +1,6 @@
+framework module axMidi {
+  umbrella header "axMidi.h"
+
+  export *
+  module * { export * }
+}

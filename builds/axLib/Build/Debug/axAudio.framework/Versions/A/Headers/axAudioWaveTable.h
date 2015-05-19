@@ -13,13 +13,19 @@
 
 #define axBUFFER_SIZE 2048
 
-class axAudioBuffer;
+namespace ax
+{
+    namespace Audio
+    {
+        class Buffer;
+    }
+}
 
 class axAudioWaveTable
 {
 public:
     axAudioWaveTable();
-    axAudioWaveTable(axAudioBuffer* buffer);
+    axAudioWaveTable(ax::Audio::Buffer* buffer);
     
     enum axWaveformType
     {

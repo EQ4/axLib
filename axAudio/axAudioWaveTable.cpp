@@ -20,7 +20,7 @@ _bufferSize(axBUFFER_SIZE)
     SetWaveformType(axWAVE_TYPE_SINE);
 }
 
-axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
+axAudioWaveTable::axAudioWaveTable(ax::Audio::Buffer* buffer)
 {
     _bufferSize = (int)buffer->GetBufferInfo().frames;
     _data = new float[_bufferSize + 1];

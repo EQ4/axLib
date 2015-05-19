@@ -23,7 +23,7 @@ _rmsNSamples(1.0)
     
 }
 
-axAudioBufferPlayer::axAudioBufferPlayer(axAudioBuffer* buffer):
+axAudioBufferPlayer::axAudioBufferPlayer(ax::Audio::Buffer* buffer):
 _bufferCurrentIndex(0),
 _buffer(buffer),
 _bufferData(_buffer->GetBuffer()),
@@ -36,7 +36,7 @@ _rmsNSamples(1.0)
     
 }
 
-void axAudioBufferPlayer::SetBuffer(axAudioBuffer* buffer)
+void axAudioBufferPlayer::SetBuffer(ax::Audio::Buffer* buffer)
 {
     _bufferCurrentIndex = 0;
     _buffer = buffer;
@@ -237,7 +237,7 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
     
     _rms = 0.0;
     
-    if(stereo_index + frameCount * 2 < buffer_total_frame * 2)
+    if(stereo_index + frameCount * 2 < buffer_total_frame)
     {
         for(int i = 0; i < frameCount; i++)
         {
@@ -253,10 +253,11 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
         {
             float v = _playing ? buf[stereo_index++] : 0.0f;
             _rms += v * v;
+            
             *out++ = v;
             *out++ = _playing ? buf[stereo_index++] : 0.0f;
             
-            if(stereo_index >= buffer_total_frame * 2)
+            if(stereo_index >= buffer_total_frame)
             {
                 if(_playingType == AUDIO_PLAYING_TYPE_PLAY_ONCE)
                 {

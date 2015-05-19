@@ -11,15 +11,22 @@
 
 #include "axAudioUtils.h"
 
-class axAudioBuffer;
+namespace ax
+{
+    namespace Audio
+    {
+        class Buffer;
+    }
+}
+
 
 class axAudioBufferPlayer
 {
 public:
     axAudioBufferPlayer();
-    axAudioBufferPlayer(axAudioBuffer* buffer);
+    axAudioBufferPlayer(ax::Audio::Buffer* buffer);
     
-    void SetBuffer(axAudioBuffer* buffer);
+    void SetBuffer(ax::Audio::Buffer* buffer);
     
     void Play();
     
@@ -44,7 +51,7 @@ public:
     
 private:
     unsigned long _bufferCurrentIndex;
-    axAudioBuffer* _buffer;
+    ax::Audio::Buffer* _buffer;
     float* _bufferData;
     double _currentVolumeValue;
     double _rms, _rmsNSamples;
