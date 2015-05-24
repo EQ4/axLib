@@ -49,7 +49,7 @@ namespace Audio
         
         //----------------------------------------------------------------------
         //----------------------------------------------------------------------
-        outputParameters.device = Pa_GetDefaultOutputDevice();
+        outputParameters.device = 2;//Pa_GetDefaultOutputDevice();
         //----------------------------------------------------------------------
         //----------------------------------------------------------------------
         
@@ -72,7 +72,7 @@ namespace Audio
                             NULL, // No input.
                             &outputParameters,
                             44100, // Sample rate.
-                            1024, // Buffer size.
+                            2048, // Buffer size.
                             paClipOff, // No cliping.
                             myPaCallback,
                             this);

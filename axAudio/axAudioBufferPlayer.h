@@ -36,6 +36,8 @@ public:
         AUDIO_PLAYING_TYPE_REPEAT
     };
     
+    void SetPlaySpeed(const double& speed);
+    
     bool IsPlaying() const;
     
     void SetPlayingType(const axAudioBufferPlayingType& type);
@@ -54,7 +56,9 @@ private:
     ax::Audio::Buffer* _buffer;
     float* _bufferData;
     double _currentVolumeValue;
+    double _speedBufferRatio;
     double _rms, _rmsNSamples;
+    double _speed;
     bool _playing;
     axAudioBufferPlayingType _playingType;
     
@@ -63,6 +67,8 @@ private:
     
     void ProcessStereoSample(float* out);
     void ProcessStereoBlock(float* out, unsigned long frameCount);
+    
+    void ProcessSpeedChangeStereoBlock(float* out, unsigned long frameCount);
 };
 
 #endif /* defined(__MidiSequencer__axBufferPlayer__) */

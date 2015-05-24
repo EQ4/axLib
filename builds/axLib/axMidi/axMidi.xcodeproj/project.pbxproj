@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C4E48651B0B817D0068574D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4E48641B0B817D0068574D /* CoreFoundation.framework */; };
+		7C4E48671B0B818E0068574D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4E48661B0B818E0068574D /* CoreAudio.framework */; };
+		7C4E48681B0B81A30068574D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */; };
 		7C5EC2471B0B74DB00D37FC0 /* axMidiCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2451B0B74DA00D37FC0 /* axMidiCore.cpp */; };
 		7C5EC2481B0B74DB00D37FC0 /* axMidiCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC2461B0B74DB00D37FC0 /* axMidiCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C5EC24B1B0B751F00D37FC0 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EC2491B0B751F00D37FC0 /* RtMidi.cpp */; };
 		7C5EC24C1B0B751F00D37FC0 /* RtMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC24A1B0B751F00D37FC0 /* RtMidi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C5EC2541B0B770400D37FC0 /* axMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5EC24D1B0B753300D37FC0 /* axMidi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C5EC2561B0B787700D37FC0 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C4E48621B0B816C0068574D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7C4E48641B0B817D0068574D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		7C4E48661B0B818E0068574D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		7C5EC2201B0B74B700D37FC0 /* axMidi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axMidi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5EC2241B0B74B700D37FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C5EC2451B0B74DA00D37FC0 /* axMidiCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMidiCore.cpp; path = ../../../../axMidi/axMidiCore.cpp; sourceTree = "<group>"; };
@@ -31,7 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C5EC2561B0B787700D37FC0 /* CoreMIDI.framework in Frameworks */,
+				7C4E48681B0B81A30068574D /* CoreMIDI.framework in Frameworks */,
+				7C4E48671B0B818E0068574D /* CoreAudio.framework in Frameworks */,
+				7C4E48651B0B817D0068574D /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +48,9 @@
 		7C5EC2161B0B74B700D37FC0 = {
 			isa = PBXGroup;
 			children = (
+				7C4E48661B0B818E0068574D /* CoreAudio.framework */,
+				7C4E48641B0B817D0068574D /* CoreFoundation.framework */,
+				7C4E48621B0B816C0068574D /* AudioToolbox.framework */,
 				7C5EC2551B0B787700D37FC0 /* CoreMIDI.framework */,
 				7C5EC2221B0B74B700D37FC0 /* axMidi */,
 				7C5EC2211B0B74B700D37FC0 /* Products */,
@@ -190,6 +200,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					__MACOSX_CORE__,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -297,6 +308,7 @@
 				7C5EC2381B0B74B700D37FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

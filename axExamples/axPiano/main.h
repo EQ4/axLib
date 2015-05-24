@@ -11,10 +11,10 @@
 
 #include <axLib/axLib.h>
 
-namespace ax
-{
-    class FileBrowser;
-}
+//namespace ax
+//{
+//    class FileBrowser;
+//}
 
 class MainPanel : public axPanel
 {
@@ -22,12 +22,16 @@ public:
     MainPanel(ax::App* app, const ax::Rect& rect);
     
     axEVENT_ACCESSOR(ax::Button::Msg, OnButtonClick);
+    axEVENT_ACCESSOR(ax::Event::SimpleMsg<double>, OnLoadSampleProcess);
     
 private:
-    ax::FileBrowser* _fileBrowser;
+//    ax::FileBrowser* _fileBrowser;
     virtual void OnPaint();
     
+    double _loadPercent;
+    
     void OnButtonClick(const ax::Button::Msg& msg);
+    void OnLoadSampleProcess(const ax::Event::SimpleMsg<double>& msg);
     
     virtual void OnResize(const ax::Size& size);
     

@@ -98,7 +98,13 @@ namespace ax
             {
                 Core* audio = static_cast<Core*>(userData);
                 
+                float* output = (float*)out;
                 
+                // Init output buffer with zeros.
+                for(int i = 0; i < frameCount * 2; i++)
+                {
+                    output[i] = 0.0f;
+                }
                 
                 return audio->CoreCallbackAudio((const float*)in,
                                                 (float*)out,

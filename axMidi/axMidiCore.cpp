@@ -18,8 +18,19 @@ namespace ax
                 
                 /// @todo Trhow exception.
             }
+            for(int i = 0; i < nPorts; i++)
+            {
+//                std::cout << _midiInHandle->RtMidi::getPortName() << std::endl;
+                std::cout <<  _midiInHandle->getPortName() << std::endl;
+            }
             
-            _midiInHandle->openPort( 0 );
+            for(int i = 0; i < nPorts; i++)
+            {
+                _midiInHandle->openPort(i);
+            }
+//            _midiInHandle->openPort( 0 );
+//            _midiInHandle->openPort( 0 );
+            
             
             // Set our callback function.  This should be done immediately after
             // opening the port to avoid having incoming messages written to the

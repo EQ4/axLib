@@ -8,14 +8,17 @@
 
 #include "MidiPiano.h"
 #include <axUtils/axUtils.h>
+#include "AudioPiano.h"
 
-PianoMidi::PianoMidi()
+PianoMidi::PianoMidi(AudioPiano* audio):
+_audio(audio)
 {
     
 }
 
 void PianoMidi::OnMidiNoteOn(const ax::Midi::Note& msg)
 {
+    _audio->PlayNode(msg.GetNote(), msg.GetVelocity());
     ax::Print("Midi on", msg.GetNote(), msg.GetVelocity());
 }
 

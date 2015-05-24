@@ -12,12 +12,16 @@
 //#include <axMidi/axMidi.h>
 #include <axMidi/axMidi.h>
 
+class AudioPiano;
+
 class PianoMidi : public ax::Midi::Core
 {
 public:
-    PianoMidi();
+    PianoMidi(AudioPiano* audio);
     
 protected:
+    AudioPiano* _audio;
+    
     virtual void OnMidiNoteOn(const ax::Midi::Note& msg);
     virtual void OnMidiNoteOff(const ax::Midi::Note& msg);
 };

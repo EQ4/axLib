@@ -10,19 +10,27 @@
 #define __axDemo__Audio__
 
 #include <axAudio/axAudio.h>
+#include <vector>
+#include <axLib/axLib.h>
 //#include <axAudio/axAudioWaveTable.h>
 
-class AudioPiano : public ax::Audio::Core
+
+
+class AudioPiano : public ax::Audio::Core, public ax::Event::Object
 {
 public:
-    AudioPiano();
+    AudioPiano(ax::App* app);
     
-private:
-    axAudioWaveTable* _waveTable;
-    ax::Audio::Buffer* _buffer;
-    axAudioBufferPlayer* _player;
+    void LoadSamples();
     
+    void PlayNode(const int& note, const int& velocity);
     
+    typedef std::vector<ax::Audio::Buffer*> BufferVector;
+    typedef std::vector<axAudioBufferPlayer*> PlayerVector;
+    
+private:    
+    std::vector<BufferVector> _buffers;
+    std::vector<PlayerVector> _players;
     
     int CoreCallbackAudio(const float* input,
                           float* output,

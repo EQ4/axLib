@@ -83,6 +83,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     std::cout << "applicationDidFinishLaunching" << std::endl;
+    _axApp->CallAfterGUILoadFunction();
     
     
 //    [[self window] setAcceptsMouseMovedEvents:YES];
@@ -133,7 +134,8 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 //    _axApp->GetCore()->Init(ax::Size(500, 500));
     
     _axApp->CallMainEntryFunction();
-    _axApp->CallAfterGUILoadFunction();
+    
+//    _axApp->CallAfterGUILoadFunction();
 //    _axApp->CreateEditor();
     //axEventManager::GetInstance();
 //    axApp* app = axApp::GetInstance();
@@ -508,7 +510,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
-    std::cout << "DrawRect" << std::endl;
+//    std::cout << "DrawRect" << std::endl;
     //int frame_height = bounds.size.height;
 
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
